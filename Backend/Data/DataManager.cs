@@ -2,10 +2,7 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
-//
-// Copyright (c) NickAc. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-//
+using NHibernate;
 using NickAc.LightPOS.Backend.Objects;
 using System.Collections.Generic;
 using System.IO;
@@ -29,6 +26,52 @@ namespace NickAc.LightPOS.Backend.Data
                     using (var trans = session.BeginTransaction()) {
                         session.SaveOrUpdate(p.Category);
                         session.SaveOrUpdate(p);
+                        trans.Commit();
+                    }
+                }
+            }
+        }
+
+        public static void AddCategory(Category c)
+        {
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    using (var trans = session.BeginTransaction()) {
+                        session.SaveOrUpdate(c);
+                        trans.Commit();
+                    }
+                }
+            }
+        }
+
+        public static void RemoveCategory(Category c)
+        {
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    using (var trans = session.BeginTransaction()) {
+                        session.Delete(c);
+                        trans.Commit();
+                    }
+                }
+            }
+        }
+        public static void RemoveProduct(Product p)
+        {
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    using (var trans = session.BeginTransaction()) {
+                        session.Delete(p);
+                        trans.Commit();
+                    }
+                }
+            }
+        }
+        public static void RemoveProduct(int productID)
+        {
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    using (var trans = session.BeginTransaction()) {
+                        session.Delete("from Product p where p.ID = ?", productID, NHibernateUtil.Int32);
                         trans.Commit();
                     }
                 }

@@ -2,10 +2,6 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
-//
-// Copyright (c) NickAc. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-//
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
@@ -20,7 +16,6 @@ namespace NickAc.LightPOS.Backend.Data
     {
         private readonly FileInfo _dbFile;
         private readonly bool _overwriteExisting;
-        private static ISessionFactory sessionFactory;
 
         public DataFactory(FileInfo file, bool overwriteExisting)
         {
@@ -30,7 +25,9 @@ namespace NickAc.LightPOS.Backend.Data
 
         public void Create()
         {
-            using (var sf = CreateSessionFactory()) {
+            if (_dbFile.Exists) return;
+            DataFactory df = new DataFactory(_dbFile, true);
+            using (var sf = df.CreateSessionFactory()) {
                 sf.Close();
             }
         }
@@ -55,6 +52,7 @@ namespace NickAc.LightPOS.Backend.Data
                 var se = new SchemaExport(config);
                 se.Execute(true, true, false);
             }
+
         }
     }
 }

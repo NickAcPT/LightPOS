@@ -1,11 +1,13 @@
-﻿using FluentNHibernate.Conventions;
+﻿//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
+using FluentNHibernate.Conventions;
 using FluentNHibernate.Conventions.AcceptanceCriteria;
 using FluentNHibernate.Conventions.Inspections;
 using FluentNHibernate.Conventions.Instances;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace NickAc.LightPOS.Backend.Mapping
 {

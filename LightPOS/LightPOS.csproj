@@ -98,4 +98,11 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>IF "$(ConfigurationName)" EQU "Debug" goto :eof
+
+del dependencies.libz
+libz add -l dependencies.libz --move --safe-load -i *.dll
+libz instrument -a LightPOS.exe --libz-file dependencies.libz</PostBuildEvent>
+  </PropertyGroup>
 </Project>
