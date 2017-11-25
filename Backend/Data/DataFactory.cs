@@ -2,11 +2,16 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
+//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
+using NickAc.LightPOS.Backend.Mapping;
 using System.IO;
 
 namespace NickAc.LightPOS.Backend.Data
@@ -15,6 +20,7 @@ namespace NickAc.LightPOS.Backend.Data
     {
         private readonly FileInfo _dbFile;
         private readonly bool _overwriteExisting;
+        private static ISessionFactory sessionFactory;
 
         public DataFactory(FileInfo file, bool overwriteExisting)
         {
@@ -22,10 +28,9 @@ namespace NickAc.LightPOS.Backend.Data
             _overwriteExisting = overwriteExisting;
         }
 
-        public static void Create(FileInfo file)
+        public void Create()
         {
-            DataFactory df = new DataFactory(file, false);
-            using (var sf = df.CreateSessionFactory()) {
+            using (var sf = CreateSessionFactory()) {
                 sf.Close();
             }
         }
@@ -37,7 +42,7 @@ namespace NickAc.LightPOS.Backend.Data
                     SQLiteConfiguration.Standard
                         .UsingFile(_dbFile.FullName)
                 )
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<DataFactory>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<DataFactory>().Conventions.Add(new ReferenceConvention()))
                 .ExposeConfiguration(BuildSchema)
                 .BuildSessionFactory();
         }

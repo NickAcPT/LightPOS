@@ -2,9 +2,14 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
+//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
 using NickAc.LightPOS.Backend.Data;
+using NickAc.LightPOS.Backend.Utils;
 using System;
-using System.Drawing;
+using System.Linq;
 
 namespace NickAc.LightPOS.Frontend
 {
@@ -19,19 +24,20 @@ namespace NickAc.LightPOS.Frontend
             /*Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());*/
-            DataManager.Initialize(new System.IO.FileInfo("POS.db"));
-            DataManager.AddProduct(new Backend.Objects.Product
-            {
-                Name = "Test Product 2",
-                Barcode = "12",
-                Category = new Backend.Objects.Category
-                {
-                    Name = "Test",
-                    Color = Color.Red
-                },
-                Price = 1.25f,
-                Quantity = 1,
-                UnitPrice = 1.25f
+            TimeMeasurer.MeasureTime(() => {
+                DataManager.Initialize(new System.IO.FileInfo("POS.db"));
+            });
+            TimeMeasurer.MeasureTime(() => {
+                DataManager.GetProducts().All(p => {
+                    Console.WriteLine(p);
+                    return true;
+                });
+            });
+            TimeMeasurer.MeasureTime(() => {
+                DataManager.GetProducts().All(p => {
+                    Console.WriteLine(p);
+                    return true;
+                });
             });
         }
     }

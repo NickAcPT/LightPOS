@@ -2,6 +2,10 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
+//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
 using NickAc.LightPOS.Backend.Objects;
 using System.Collections.Generic;
 using System.IO;
@@ -10,13 +14,13 @@ namespace NickAc.LightPOS.Backend.Data
 {
     public static class DataManager
     {
+        public static DataFactory DataFactory { get; set; }
+
         public static void Initialize(FileInfo file)
         {
             DataFactory = new DataFactory(file, false);
-            DataFactory.Create(file);
+            DataFactory.Create();
         }
-
-        public static DataFactory DataFactory { get; set; }
 
         public static void AddProduct(Product p)
         {

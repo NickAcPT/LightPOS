@@ -12,5 +12,10 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual Int32 ID { get; set; }
         public virtual String Name { get; set; }
         public virtual Color Color { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("Category[ID={0}, Name={1}, Color={2}]", ID, Name, Color);
+        }
     }
 }
