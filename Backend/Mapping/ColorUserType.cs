@@ -1,12 +1,13 @@
-﻿using NHibernate;
+﻿//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
+using NHibernate;
 using NHibernate.SqlTypes;
 using NHibernate.UserTypes;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace NickAc.LightPOS.Backend.Mapping
 {
@@ -44,7 +45,6 @@ namespace NickAc.LightPOS.Backend.Mapping
             else {
                 ((IDataParameter)cmd.Parameters[index]).Value = ColorTranslator.ToHtml((Color)value);
             }
-
         }
 
         public object DeepCopy(object value)

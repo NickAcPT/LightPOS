@@ -1,20 +1,20 @@
-﻿using FluentNHibernate.Cfg;
+﻿//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
+using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace NickAc.LightPOS.Backend.Data
 {
     public class DataFactory
     {
-        readonly FileInfo _dbFile;
-        readonly bool _overwriteExisting;
+        private readonly FileInfo _dbFile;
+        private readonly bool _overwriteExisting;
 
         public DataFactory(FileInfo file, bool overwriteExisting)
         {
@@ -24,7 +24,7 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void Create(FileInfo file)
         {
-            DataFactory df = new DataFactory(file, true);
+            DataFactory df = new DataFactory(file, false);
             using (var sf = df.CreateSessionFactory()) {
                 sf.Close();
             }
