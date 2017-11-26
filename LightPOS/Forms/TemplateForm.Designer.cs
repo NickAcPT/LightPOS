@@ -62,6 +62,6 @@
 
         #endregion
 
-        private ModernUIDoneRight.Controls.AppBar appBar1;
+        public ModernUIDoneRight.Controls.AppBar appBar1;
     }
 }

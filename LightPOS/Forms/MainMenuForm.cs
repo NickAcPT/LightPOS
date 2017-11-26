@@ -15,7 +15,7 @@ namespace NickAc.LightPOS.Frontend.Forms
         {
             InitializeComponent();
             translationHelper1.Translate(this);
-           var c = ModernUIDoneRight.Objects.DefaultColorSchemes.Blue.PrimaryColor;
         }
+        public override Size MaximumSize { get => Size.Empty; set => base.MaximumSize = value; }
     }
 }
