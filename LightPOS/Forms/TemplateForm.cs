@@ -1,13 +1,8 @@
-﻿using NickAc.LightPOS.Backend.Utils;
+﻿//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
 using NickAc.ModernUIDoneRight.Forms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace NickAc.LightPOS.Frontend.Forms
 {
