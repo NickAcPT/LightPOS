@@ -35,10 +35,10 @@
             // 
             this.appBar1.ColorScheme = this.ColorScheme;
             this.appBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.appBar1.IconVisible = true;
+            this.appBar1.IconVisible = false;
             this.appBar1.Location = new System.Drawing.Point(1, 33);
             this.appBar1.Name = "appBar1";
-            this.appBar1.Size = new System.Drawing.Size(298, 50);
+            this.appBar1.Size = new System.Drawing.Size(302, 50);
             this.appBar1.TabIndex = 0;
             this.appBar1.Text = "appBar1";
             this.appBar1.TextFont = new System.Drawing.Font("Segoe UI", 14F);
@@ -47,7 +47,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 300);
+            this.ClientSize = new System.Drawing.Size(304, 300);
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
             this.Controls.Add(this.appBar1);

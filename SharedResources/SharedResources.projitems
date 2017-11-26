@@ -9,9 +9,11 @@
     <Import_RootNamespace>SharedResources</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)lightpos-white.ico" />
     <Content Include="$(MSBuildThisFileDirectory)lightpos.ico" />
     <Content Include="$(MSBuildThisFileDirectory)lightpos.png" />
     <Content Include="$(MSBuildThisFileDirectory)lightpos2.png" />
+    <Content Include="$(MSBuildThisFileDirectory)lightpos3.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)tilePanel3.Image.png" />

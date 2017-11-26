@@ -23,46 +23,6 @@ namespace NickAc.LightPOS.Frontend
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Forms.MainMenuForm());
-            /*
-            TimeMeasurer.MeasureTime(() => {
-                DataManager.Initialize(new System.IO.FileInfo("POS.db"));
-            });
-            
-            Customer customer = new Customer
-            {
-                Name = "Default",
-                PhoneNumber = "+XXX 9XX XXX XXX",
-                Street = "Street 1234"
-            };
-            Customer customer = DataManager.GetCustomer(1);
-            TimeMeasurer.MeasureTime(() => {
-                DataManager.GetProducts().All(p => {
-                    Console.WriteLine(p);
-                    return true;
-                });
-            });
-            Product p1 = new Product
-            {
-                Name = "Test Product",
-                Barcode = "1",
-                Category = new Category
-                {
-                    Name = "Test Category",
-                    Color = Color.Red
-                },
-                Price = 1.1f,
-                UnitPrice = 1.1f,
-                Quantity = 1,
-            };
-            TimeMeasurer.MeasureTime(() => {
-                DataManager.AddProduct(p1);
-            });
-            TimeMeasurer.MeasureTime(() => {
-                DataManager.AddSale(DataManager.CreateSale(customer, 1.2f, p1));
-            });
-            TimeMeasurer.MeasureTime(() => {
-                Customer c = DataManager.GetCustomer(1);
-            });*/
         }
     }
 }
