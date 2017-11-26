@@ -84,6 +84,12 @@ namespace NickAc.LightPOS.Backend.Translation
                     c.Refresh();
                 }
             }
+            if (c is Panel panel) {
+                panel.Controls.Cast<Control>().All(cc => {
+                    TranslateControl(cc);
+                    return true;
+                });
+            }
         }
 
         private string GetTranslation(ResourceManager lang, string loc)

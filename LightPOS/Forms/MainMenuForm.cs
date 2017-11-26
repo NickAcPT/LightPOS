@@ -9,11 +9,13 @@ using System.Windows.Forms;
 
 namespace NickAc.LightPOS.Frontend.Forms
 {
-    public partial class FormAddProduct : TemplateForm
+    public partial class MainMenuForm : TemplateForm
     {
-        public FormAddProduct()
+        public MainMenuForm()
         {
             InitializeComponent();
+            translationHelper1.Translate(this);
+           var c = ModernUIDoneRight.Objects.DefaultColorSchemes.Blue.PrimaryColor;
         }
     }
 }

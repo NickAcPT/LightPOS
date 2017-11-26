@@ -1,6 +1,6 @@
 ﻿namespace NickAc.LightPOS.Frontend.Forms
 {
-    partial class FormAddProduct
+    partial class AddProductForm
     {
         /// <summary>
         /// Required designer variable.
