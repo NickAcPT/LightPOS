@@ -50,9 +50,9 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.tilePanelReborn1);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(26, 70);
+            this.panel1.Location = new System.Drawing.Point(26, 144);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(735, 395);
+            this.panel1.Size = new System.Drawing.Size(735, 190);
             this.panel1.TabIndex = 1;
             this.translationHelper1.SetTranslationLocation(this.panel1, "");
             // 
