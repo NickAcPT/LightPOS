@@ -29,8 +29,10 @@
         {
             this.translationHelper1 = new NickAc.LightPOS.Backend.Translation.TranslationHelper();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tilePanelReborn2 = new NickAc.ModernUIDoneRight.Controls.TilePanelReborn();
+            this.label2 = new System.Windows.Forms.Label();
             this.tilePanelReborn1 = new NickAc.ModernUIDoneRight.Controls.TilePanelReborn();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,6 +41,8 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.tilePanelReborn2);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.tilePanelReborn1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(13, 101);
@@ -47,16 +51,33 @@
             this.panel1.TabIndex = 1;
             this.translationHelper1.SetTranslationLocation(this.panel1, "");
             // 
-            // label1
+            // tilePanelReborn2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.label1.Location = new System.Drawing.Point(43, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "labelMain";
-            this.translationHelper1.SetTranslationLocation(this.label1, "main_menu_labelMain");
+            this.tilePanelReborn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(108)))), ((int)(((byte)(0)))));
+            this.tilePanelReborn2.BrandedTile = false;
+            this.tilePanelReborn2.CanBeHovered = true;
+            this.tilePanelReborn2.Checkable = false;
+            this.tilePanelReborn2.Flat = false;
+            this.tilePanelReborn2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tilePanelReborn2.ForeColor = System.Drawing.Color.White;
+            this.tilePanelReborn2.Image = global::NickAc.LightPOS.Frontend.Properties.Resources.tilePanel3_Image;
+            this.tilePanelReborn2.Location = new System.Drawing.Point(368, 68);
+            this.tilePanelReborn2.Name = "tilePanelReborn2";
+            this.tilePanelReborn2.Size = new System.Drawing.Size(222, 109);
+            this.tilePanelReborn2.TabIndex = 1;
+            this.tilePanelReborn2.Text = "posManagementTile";
+            this.translationHelper1.SetTranslationLocation(this.tilePanelReborn2, "main_menu_pos_management");
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.label2.Location = new System.Drawing.Point(363, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(165, 25);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "labelManagement";
+            this.translationHelper1.SetTranslationLocation(this.label2, "main_menu_labelManagement");
             // 
             // tilePanelReborn1
             // 
@@ -70,10 +91,21 @@
             this.tilePanelReborn1.Image = global::NickAc.LightPOS.Frontend.Properties.Resources.lightpos;
             this.tilePanelReborn1.Location = new System.Drawing.Point(48, 68);
             this.tilePanelReborn1.Name = "tilePanelReborn1";
-            this.tilePanelReborn1.Size = new System.Drawing.Size(198, 109);
+            this.tilePanelReborn1.Size = new System.Drawing.Size(222, 109);
             this.tilePanelReborn1.TabIndex = 1;
             this.tilePanelReborn1.Text = "openLightPOSTile";
             this.translationHelper1.SetTranslationLocation(this.tilePanelReborn1, "main_menu_openLightPOSTile");
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.label1.Location = new System.Drawing.Point(43, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "labelMain";
+            this.translationHelper1.SetTranslationLocation(this.label1, "main_menu_labelMain");
             // 
             // MainMenuForm
             // 
@@ -100,5 +132,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private ModernUIDoneRight.Controls.TilePanelReborn tilePanelReborn1;
+        private ModernUIDoneRight.Controls.TilePanelReborn tilePanelReborn2;
+        private System.Windows.Forms.Label label2;
     }
 }

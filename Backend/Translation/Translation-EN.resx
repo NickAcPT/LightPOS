@@ -129,8 +129,14 @@
   <data name="main_menu_labelMain" xml:space="preserve">
     <value>Main</value>
   </data>
+  <data name="main_menu_labelManagement" xml:space="preserve">
+    <value>Management</value>
+  </data>
   <data name="main_menu_openLightPOSTile" xml:space="preserve">
     <value>Open $prefix</value>
+  </data>
+  <data name="main_menu_pos_management" xml:space="preserve">
+    <value>$prefix Management</value>
   </data>
   <data name="main_menu_title" xml:space="preserve">
     <value>$prefix - Menu</value>

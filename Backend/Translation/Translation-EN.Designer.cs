@@ -97,11 +97,29 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Management.
+        /// </summary>
+        public static string main_menu_labelManagement {
+            get {
+                return ResourceManager.GetString("main_menu_labelManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open $prefix.
         /// </summary>
         public static string main_menu_openLightPOSTile {
             get {
                 return ResourceManager.GetString("main_menu_openLightPOSTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $prefix Management.
+        /// </summary>
+        public static string main_menu_pos_management {
+            get {
+                return ResourceManager.GetString("main_menu_pos_management", resourceCulture);
             }
         }
         
