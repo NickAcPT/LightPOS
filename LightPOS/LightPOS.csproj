@@ -103,6 +103,6 @@
 
 del dependencies.libz
 libz add -l dependencies.libz --move --safe-load -i *.dll
-libz instrument -a LightPOS.exe --libz-file dependencies.libz</PostBuildEvent>
+libz instrument -a $(TargetFileName) --libz-file dependencies.libz</PostBuildEvent>
   </PropertyGroup>
 </Project>
