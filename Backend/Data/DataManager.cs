@@ -6,6 +6,7 @@ using NHibernate;
 using NickAc.LightPOS.Backend.Objects;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace NickAc.LightPOS.Backend.Data
 {
@@ -30,6 +31,44 @@ namespace NickAc.LightPOS.Backend.Data
                     }
                 }
             }
+        }
+        public static void AddSale(Sale s)
+        {
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    using (var trans = session.BeginTransaction()) {
+                        if (!NHibernateUtil.IsInitialized(s.Customer.Sales))
+                            NHibernateUtil.Initialize(s.Customer.Sales);
+                        s.Customer.Sales.Add(s);
+                        session.SaveOrUpdate(s.Customer);
+                        session.SaveOrUpdate(s);
+                        trans.Commit();
+                    }
+                }
+            }
+        }
+
+        public static Sale CreateSale(Customer customer, float paidPrice, params Product[] prods)
+        {
+            float total = CalculateTotal(prods);
+            return new Sale
+            {
+                TotalPrice = total,
+                PaidPrice = paidPrice,
+                ChangePrice = paidPrice - total,
+                Products = prods,
+                Customer = customer
+            };
+        }
+
+        public static float CalculateTotal(IList<Product> products)
+        {
+            float total = 0.0f;
+            products.All(p => {
+                total += p.Price;
+                return true;
+            });
+            return total;
         }
 
         public static void AddCategory(Category c)
@@ -87,6 +126,17 @@ namespace NickAc.LightPOS.Backend.Data
                 }
             }
             return list;
+        }
+
+        public static Customer GetCustomer(int id)
+        {
+            Customer customer;
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    customer = session.QueryOver<Customer>().Where(x => x.ID == id).List().FirstOrDefault();
+                    return customer;
+                }
+            }
         }
 
         /// <summary>

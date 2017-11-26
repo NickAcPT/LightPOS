@@ -98,6 +98,7 @@
     <Compile Include="Mapping\ColorUserType.cs" />
     <Compile Include="Data\DataFactory.cs" />
     <Compile Include="Data\DataManager.cs" />
+    <Compile Include="Mapping\CustomerMap.cs" />
     <Compile Include="Mapping\ProductMap.cs" />
     <Compile Include="Mapping\ReferenceConvention.cs" />
     <Compile Include="Mapping\SaleMap.cs" />

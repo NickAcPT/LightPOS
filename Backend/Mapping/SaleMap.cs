@@ -13,7 +13,7 @@ namespace NickAc.LightPOS.Backend.Mapping
         public SaleMap()
         {
             Table("Sales");
-            Id(x => x.SaleID).Unique().GeneratedBy.GuidComb();
+            Id(x => x.ID).GeneratedBy.Native();
             HasMany(x => x.Products);
             Map(x => x.TotalPrice);
             Map(x => x.PaidPrice);
