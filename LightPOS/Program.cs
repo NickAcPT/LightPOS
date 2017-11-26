@@ -7,6 +7,7 @@ using NickAc.LightPOS.Backend.Utils;
 using System;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace NickAc.LightPOS.Frontend
 {
@@ -18,9 +19,10 @@ namespace NickAc.LightPOS.Frontend
         [STAThread]
         private static void Main()
         {
-            /*Application.EnableVisualStyles();
+            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());*/
+            Application.Run(new Forms.FormMenu());
+            /*
             TimeMeasurer.MeasureTime(() => {
                 DataManager.Initialize(new System.IO.FileInfo("POS.db"));
             });
@@ -64,7 +66,7 @@ namespace NickAc.LightPOS.Frontend
 
             TimeMeasurer.MeasureTime(() => {
                 DataManager.RemoveProduct(1);
-            });
+            });*/
         }
     }
 }

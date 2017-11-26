@@ -15,6 +15,7 @@ namespace NickAc.LightPOS.Frontend.Forms
         public FormMenu()
         {
             InitializeComponent();
+            translationHelper1.Translate(this);
         }
     }
 }
