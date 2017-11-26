@@ -1,4 +1,5 @@
-﻿using NickAc.ModernUIDoneRight.Forms;
+﻿using NickAc.LightPOS.Backend.Utils;
+using NickAc.ModernUIDoneRight.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,12 +11,11 @@ using System.Windows.Forms;
 
 namespace NickAc.LightPOS.Frontend.Forms
 {
-    public partial class FormMenu : ModernForm
+    public partial class TemplateForm : ModernForm
     {
-        public FormMenu()
+        public TemplateForm()
         {
             InitializeComponent();
-            translationHelper1.Translate(this);
         }
     }
 }

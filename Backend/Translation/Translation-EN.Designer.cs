@@ -61,11 +61,38 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product Name:.
+        /// </summary>
+        public static string add_prod_name {
+            get {
+                return ResourceManager.GetString("add_prod_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product Price:.
+        /// </summary>
+        public static string add_prod_price {
+            get {
+                return ResourceManager.GetString("add_prod_price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $prefix - Add Product.
+        /// </summary>
+        public static string add_prod_title {
+            get {
+                return ResourceManager.GetString("add_prod_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to $prefix - Menu.
         /// </summary>
-        public static string main_menu {
+        public static string main_menu_title {
             get {
-                return ResourceManager.GetString("main_menu", resourceCulture);
+                return ResourceManager.GetString("main_menu_title", resourceCulture);
             }
         }
         

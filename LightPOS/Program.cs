@@ -21,7 +21,7 @@ namespace NickAc.LightPOS.Frontend
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.FormMenu());
+            Application.Run(new Forms.FormAddProduct());
             /*
             TimeMeasurer.MeasureTime(() => {
                 DataManager.Initialize(new System.IO.FileInfo("POS.db"));
