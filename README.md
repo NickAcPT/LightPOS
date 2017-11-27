@@ -7,6 +7,12 @@ Using ModernUIDoneRight by NickAc.
 
 **Please don't use this in a real environment! The laws in your country may not allow it!**
 
+## Why did I create this?
+Simple. A long time ago, I made an app called NickPOS (bad naming) using C# (I went from Java to C#) which I developed on my free-time (I'm a student). As time evolved, so did the app.
+
+And if you look through the code, you'll find some beginner mistakes (using wrong naming conventions; unoptimized code; you name it)!
+So, I created this project to try new things ([Fluent] NHibernate).
+
 ## Compiling
 After you've downloaded/cloned this repo, open the solution on Visual Studio (preferably VS 2017).
 
