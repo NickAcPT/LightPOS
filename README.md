@@ -1,3 +1,5 @@
+<img src="https://i.imgur.com/JYXeSag.png" width="150px"></img>
+
 # LightPOS (.NET Framework 4.0)
 A simple Point-Of-Sale app made in C# with WinForms.
 
