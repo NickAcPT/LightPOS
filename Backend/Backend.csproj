@@ -86,18 +86,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapping\CategoryMap.cs" />
-    <Compile Include="Mapping\ColorUserType.cs" />
+    <Compile Include="Mapping\Other\ColorUserType.cs" />
     <Compile Include="Data\DataFactory.cs" />
     <Compile Include="Data\DataManager.cs" />
     <Compile Include="Mapping\CustomerMap.cs" />
     <Compile Include="Mapping\ProductMap.cs" />
-    <Compile Include="Mapping\ReferenceConvention.cs" />
+    <Compile Include="Mapping\Other\ReferenceConvention.cs" />
     <Compile Include="Mapping\SaleMap.cs" />
+    <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Objects\Category.cs" />
     <Compile Include="Objects\Customer.cs" />
     <Compile Include="Objects\Product.cs" />
     <Compile Include="Objects\Sale.cs" />
     <Compile Include="Objects\User.cs" />
+    <Compile Include="Objects\UserAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translation\Translation-EN.Designer.cs">
       <AutoGen>True</AutoGen>

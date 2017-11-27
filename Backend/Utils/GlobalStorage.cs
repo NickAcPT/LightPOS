@@ -8,6 +8,5 @@ namespace NickAc.LightPOS.Backend.Utils
 {
     public static class GlobalStorage
     {
-        public static ColorScheme ColorScheme { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NickAc.LightPOS.Backend.Mapping;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
@@ -7,20 +8,28 @@ using System.Text;
 
 namespace NickAc.LightPOS.Backend.Objects
 {
-    class User
+    public class User
     {
         public virtual int UserID { get; set; }
         public virtual string UserName { get; set; }
         public virtual string HashedPassword { get; set; }
+        [NotLazy]
         public virtual string Salt { get; set; }
-        
+        public virtual IList<UserAction> Actions { get; set; }
+
         public static void CreateUser(string userName, string password)
         {
-            User u = new User();
-            u.UserName = userName;
-            u.Salt = Guid.NewGuid().ToString().Replace("-", "");
-            u.HashedPassword = Sha256(u.Salt + password);
+            User u = new User
+            {
+                UserName = userName,
+                Salt = Guid.NewGuid().ToString().Replace("-", "")
+            };
+            u.HashedPassword = HashWithSalt(password, u.Salt);
+        }
 
+        private static string HashWithSalt(string password, string salt)
+        {
+            return Sha256(salt + password);
         }
 
         private static string Sha256(string randomString)
