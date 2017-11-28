@@ -12,12 +12,24 @@ namespace NickAc.LightPOS.Backend.Data
 {
     public static class DataManager
     {
+        #region Properties
+
         public static DataFactory DataFactory { get; set; }
 
-        public static void Initialize(FileInfo file)
+        #endregion
+
+        #region Methods
+
+        public static void AddCategory(Category c)
         {
-            DataFactory = new DataFactory(file, false);
-            DataFactory.Create();
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    using (var trans = session.BeginTransaction()) {
+                        session.SaveOrUpdate(c);
+                        trans.Commit();
+                    }
+                }
+            }
         }
 
         public static void AddProduct(Product p)
@@ -32,6 +44,7 @@ namespace NickAc.LightPOS.Backend.Data
                 }
             }
         }
+
         public static void AddSale(Sale s)
         {
             using (var sf = DataFactory.CreateSessionFactory()) {
@@ -48,6 +61,16 @@ namespace NickAc.LightPOS.Backend.Data
             }
         }
 
+        public static float CalculateTotal(IList<Product> products)
+        {
+            float total = 0.0f;
+            products.All(p => {
+                total += p.Price;
+                return true;
+            });
+            return total;
+        }
+
         public static Sale CreateSale(Customer customer, float paidPrice, params Product[] prods)
         {
             float total = CalculateTotal(prods);
@@ -61,26 +84,62 @@ namespace NickAc.LightPOS.Backend.Data
             };
         }
 
-        public static float CalculateTotal(IList<Product> products)
+        public static Customer GetCustomer(int id)
         {
-            float total = 0.0f;
-            products.All(p => {
-                total += p.Price;
-                return true;
-            });
-            return total;
-        }
-
-        public static void AddCategory(Category c)
-        {
+            Customer customer;
             using (var sf = DataFactory.CreateSessionFactory()) {
                 using (var session = sf.OpenSession()) {
-                    using (var trans = session.BeginTransaction()) {
-                        session.SaveOrUpdate(c);
-                        trans.Commit();
-                    }
+                    customer = session.QueryOver<Customer>().Where(x => x.ID == id).List().FirstOrDefault();
+                    return customer;
                 }
             }
+        }
+
+        public static Product GetProduct(int id)
+        {
+            Product product;
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    product = session.QueryOver<Product>().Where(x => x.ID == id).List().FirstOrDefault();
+                    return product;
+                }
+            }
+        }
+
+        public static Product GetProduct(string barcode)
+        {
+            Product product;
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    product = session.QueryOver<Product>().Where(x => x.Barcode == barcode).List().FirstOrDefault();
+                    return product;
+                }
+            }
+        }
+
+        public static IList<Product> GetProducts()
+        {
+            IList<Product> list;
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    list = session.QueryOver<Product>().List();
+                }
+            }
+            return list;
+        }
+
+        public static void Initialize(FileInfo file)
+        {
+            DataFactory = new DataFactory(file, false);
+            DataFactory.Create();
+        }
+        /// <summary>
+        /// Never called! Exists just to tell Visual Studio to copy the assemblies to the build directory
+        /// </summary>
+        public static void InitStuff()
+        {
+            System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand();
+            cmd.Dispose();
         }
 
         public static void RemoveCategory(Category c)
@@ -117,35 +176,6 @@ namespace NickAc.LightPOS.Backend.Data
             }
         }
 
-        public static IList<Product> GetProducts()
-        {
-            IList<Product> list;
-            using (var sf = DataFactory.CreateSessionFactory()) {
-                using (var session = sf.OpenSession()) {
-                    list = session.QueryOver<Product>().List();
-                }
-            }
-            return list;
-        }
-
-        public static Customer GetCustomer(int id)
-        {
-            Customer customer;
-            using (var sf = DataFactory.CreateSessionFactory()) {
-                using (var session = sf.OpenSession()) {
-                    customer = session.QueryOver<Customer>().Where(x => x.ID == id).List().FirstOrDefault();
-                    return customer;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Never called! Exists just to tell Visual Studio to copy the assemblies to the build directory
-        /// </summary>
-        public static void InitStuff()
-        {
-            System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand();
-            cmd.Dispose();
-        }
+        #endregion
     }
 }

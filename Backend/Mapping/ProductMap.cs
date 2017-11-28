@@ -14,7 +14,7 @@ namespace NickAc.LightPOS.Backend.Mapping
             Table("Products");
             Id(x => x.ID).GeneratedBy.Native();
             Map(x => x.Name);
-            Map(x => x.Barcode);
+            Map(x => x.Barcode).Unique();
             Map(x => x.Price);
             Map(x => x.UnitPrice);
             Map(x => x.Quantity);
