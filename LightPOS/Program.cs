@@ -22,7 +22,7 @@ namespace NickAc.LightPOS.Frontend
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.MainMenuForm());
+            Application.Run(new Forms.AddUserForm());
         }
     }
 }
