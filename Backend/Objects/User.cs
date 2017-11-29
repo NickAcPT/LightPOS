@@ -13,9 +13,19 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual int UserID { get; set; }
         public virtual string UserName { get; set; }
         public virtual string HashedPassword { get; set; }
-        [NotLazy]
         public virtual string Salt { get; set; }
+        [NotLazy]
         public virtual IList<UserAction> Actions { get; set; }
+        public virtual UserPermission Permissions { get; set; }
+
+        [NotLazy]
+        public virtual IList<Sale> Sales { get; set; }
+
+        public bool HasPermission(UserPermission perm)
+        {
+            return Permissions.HasFlag(perm) || Permissions.HasFlag(UserPermission.All);
+        }
+
 
         public static void CreateUser(string userName, string password)
         {

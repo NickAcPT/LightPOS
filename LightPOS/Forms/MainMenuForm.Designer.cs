@@ -123,7 +123,6 @@
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
             this.Controls.Add(this.panel1);
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MainMenuForm";
             this.Text = "MainMenuForm";
             this.TitlebarVisible = false;

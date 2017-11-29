@@ -53,6 +53,7 @@ namespace NickAc.LightPOS.Backend.Data
                         if (!NHibernateUtil.IsInitialized(s.Customer.Sales))
                             NHibernateUtil.Initialize(s.Customer.Sales);
                         s.Customer.Sales.Add(s);
+                        session.SaveOrUpdate(s.User);
                         session.SaveOrUpdate(s.Customer);
                         session.SaveOrUpdate(s);
                         trans.Commit();
@@ -60,6 +61,22 @@ namespace NickAc.LightPOS.Backend.Data
                 }
             }
         }
+
+
+        public static void AddSale(User user)
+        {
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    using (var trans = session.BeginTransaction()) {
+                        if (!NHibernateUtil.IsInitialized(user.Sales))
+                            NHibernateUtil.Initialize(user.Sales);
+                        session.SaveOrUpdate(user);
+                        trans.Commit();
+                    }
+                }
+            }
+        }
+
 
         public static float CalculateTotal(IList<Product> products)
         {
@@ -71,17 +88,22 @@ namespace NickAc.LightPOS.Backend.Data
             return total;
         }
 
-        public static Sale CreateSale(Customer customer, float paidPrice, params Product[] prods)
+        public static Sale CreateSale(Customer customer, User user, float paidPrice, params Product[] prods)
         {
             float total = CalculateTotal(prods);
-            return new Sale
+            var finalSale = new Sale
             {
                 TotalPrice = total,
                 PaidPrice = paidPrice,
                 ChangePrice = paidPrice - total,
                 Products = prods,
-                Customer = customer
+                Customer = customer,
+                User = user
             };
+            if (!NHibernateUtil.IsInitialized(user.Sales))
+                NHibernateUtil.Initialize(user.Sales);
+            user.Sales.Add(finalSale);
+            return finalSale;
         }
 
         public static Customer GetCustomer(int id)

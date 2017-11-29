@@ -20,6 +20,7 @@ namespace NickAc.LightPOS.Backend.Mapping
             Map(x => x.ChangePrice);
 
             References(x => x.Customer);
+            References(x => x.User);
         }
     }
 }

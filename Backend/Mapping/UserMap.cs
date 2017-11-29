@@ -16,7 +16,11 @@ namespace NickAc.LightPOS.Backend.Mapping
             Map(x => x.UserName);
             Map(x => x.HashedPassword);
             Map(x => x.Salt);
+
+            Map(x => x.Permissions).CustomType(typeof(UserPermission)).Not.Nullable();
+
             HasMany(x => x.Actions);
+            HasMany(x => x.Sales).Not.LazyLoad();
         }
     }
 }

@@ -17,5 +17,7 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual float ChangePrice { get; set; }
         [NotLazy]
         public virtual Customer Customer { get; set; }
+        [NotLazy]
+        public virtual User User { get; set; }
     }
 }
