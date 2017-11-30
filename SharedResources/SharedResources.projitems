@@ -9,6 +9,7 @@
     <Import_RootNamespace>SharedResources</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)ic_menu_white_48dp_2x.png" />
     <Content Include="$(MSBuildThisFileDirectory)lightpos-white.ico" />
     <Content Include="$(MSBuildThisFileDirectory)lightpos.ico" />
     <Content Include="$(MSBuildThisFileDirectory)lightpos.png" />

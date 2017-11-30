@@ -117,37 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="add_prod_name" xml:space="preserve">
-    <value>Product Name:</value>
-  </data>
-  <data name="add_prod_price" xml:space="preserve">
-    <value>Product Price:</value>
-  </data>
-  <data name="add_prod_title" xml:space="preserve">
-    <value>$prefix - Add Product</value>
-  </data>
-  <data name="create_user_title" xml:space="preserve">
-    <value>$prefix - Create User</value>
-  </data>
-  <data name="edit_user_title" xml:space="preserve">
-    <value>$prefix - Edit User</value>
-  </data>
-  <data name="main_menu_labelMain" xml:space="preserve">
-    <value>Main</value>
-  </data>
-  <data name="main_menu_labelManagement" xml:space="preserve">
-    <value>Management</value>
-  </data>
-  <data name="main_menu_openLightPOSTile" xml:space="preserve">
-    <value>Open $prefix</value>
-  </data>
-  <data name="main_menu_pos_management" xml:space="preserve">
-    <value>$prefix Management</value>
-  </data>
-  <data name="main_menu_title" xml:space="preserve">
-    <value>$prefix - Menu</value>
-  </data>
-  <data name="prefix" xml:space="preserve">
-    <value>LightPOS</value>
-  </data>
+  <metadata name="translationHelper1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="translationHelper1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

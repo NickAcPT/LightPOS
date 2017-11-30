@@ -88,11 +88,20 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $prefix - User Management.
+        ///   Looks up a localized string similar to $prefix - Create User.
         /// </summary>
-        public static string add_user_title {
+        public static string create_user_title {
             get {
-                return ResourceManager.GetString("add_user_title", resourceCulture);
+                return ResourceManager.GetString("create_user_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $prefix - Edit User.
+        /// </summary>
+        public static string edit_user_title {
+            get {
+                return ResourceManager.GetString("edit_user_title", resourceCulture);
             }
         }
         
