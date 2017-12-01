@@ -25,7 +25,7 @@ namespace NickAc.LightPOS.Backend.Objects
         [NotLazy]
         public virtual IList<Sale> Sales { get; set; }
 
-        public bool HasPermission(UserPermission perm)
+        public virtual bool HasPermission(UserPermission perm)
         {
             return Permissions.HasFlag(perm) || Permissions.HasFlag(UserPermission.All);
         }

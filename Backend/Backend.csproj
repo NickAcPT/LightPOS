@@ -93,6 +93,7 @@
     <Compile Include="Mapping\ProductMap.cs" />
     <Compile Include="Mapping\Other\ReferenceConvention.cs" />
     <Compile Include="Mapping\SaleMap.cs" />
+    <Compile Include="Mapping\UserActionMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Objects\Category.cs" />
     <Compile Include="Objects\Customer.cs" />

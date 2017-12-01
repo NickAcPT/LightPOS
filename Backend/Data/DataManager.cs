@@ -117,6 +117,28 @@ namespace NickAc.LightPOS.Backend.Data
             }
         }
 
+        public static IList<User> GetUsers()
+        {
+            IList<User> list;
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    list = session.QueryOver<User>().List();
+                }
+            }
+            return list;
+        }
+
+        public static User GetUser(int ID)
+        {
+            User user;
+            using (var sf = DataFactory.CreateSessionFactory()) {
+                using (var session = sf.OpenSession()) {
+                    user = session.QueryOver<User>().Where(u => u.UserID == ID).List().FirstOrDefault();
+                }
+            }
+            return user;
+        }
+
         public static Product GetProduct(int id)
         {
             Product product;
