@@ -27,6 +27,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.translationHelper1 = new NickAc.LightPOS.Backend.Translation.TranslationHelper();
             this.SuspendLayout();
             // 
             // appBar1
@@ -42,10 +43,13 @@
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
             this.Name = "UserLoginForm";
             this.Text = "UserLoginForm";
+            this.translationHelper1.SetTranslationLocation(this, "user_login_title");
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private Backend.Translation.TranslationHelper translationHelper1;
     }
 }
