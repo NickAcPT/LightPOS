@@ -1,8 +1,10 @@
-﻿using NickAc.LightPOS.Backend.Mapping;
+﻿//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
+using NickAc.LightPOS.Backend.Mapping;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -14,8 +16,10 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual string UserName { get; set; }
         public virtual string HashedPassword { get; set; }
         public virtual string Salt { get; set; }
+
         [NotLazy]
         public virtual IList<UserAction> Actions { get; set; }
+
         public virtual UserPermission Permissions { get; set; }
 
         [NotLazy]
@@ -25,7 +29,6 @@ namespace NickAc.LightPOS.Backend.Objects
         {
             return Permissions.HasFlag(perm) || Permissions.HasFlag(UserPermission.All);
         }
-
 
         public static void CreateUser(string userName, string password)
         {
