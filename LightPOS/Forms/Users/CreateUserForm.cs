@@ -15,6 +15,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         public CreateUserForm()
         {
             InitializeComponent();
+            translationHelper1.Translate(this);
         }
     }
 }

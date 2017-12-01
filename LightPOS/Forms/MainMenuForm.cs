@@ -14,8 +14,8 @@ namespace NickAc.LightPOS.Frontend.Forms
         {
             InitializeComponent();
             translationHelper1.Translate(this);
-        }
 
+        }
         #endregion
 
         #region Properties
@@ -23,5 +23,14 @@ namespace NickAc.LightPOS.Frontend.Forms
         public override Size MaximumSize { get => Size.Empty; set => base.MaximumSize = value; }
 
         #endregion
+
+        private void TilePanelReborn2_Click(object sender, System.EventArgs e)
+        {
+            //POS Management tile
+            Visible = false;
+            new Users.CreateUserForm().ShowDialog();
+            Visible = true;
+            Activate();
+        }
     }
 }

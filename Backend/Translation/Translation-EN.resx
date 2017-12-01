@@ -126,6 +126,12 @@
   <data name="add_prod_title" xml:space="preserve">
     <value>$prefix - Add Product</value>
   </data>
+  <data name="create_user_name" xml:space="preserve">
+    <value>Username:</value>
+  </data>
+  <data name="create_user_okbutton" xml:space="preserve">
+    <value>Create User</value>
+  </data>
   <data name="create_user_title" xml:space="preserve">
     <value>$prefix - Create User</value>
   </data>

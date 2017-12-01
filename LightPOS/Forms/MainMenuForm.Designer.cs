@@ -72,6 +72,7 @@
             this.tilePanelReborn2.TabIndex = 1;
             this.tilePanelReborn2.Text = "posManagementTile";
             this.translationHelper1.SetTranslationLocation(this.tilePanelReborn2, "main_menu_pos_management");
+            this.tilePanelReborn2.Click += new System.EventHandler(this.TilePanelReborn2_Click);
             // 
             // label2
             // 
