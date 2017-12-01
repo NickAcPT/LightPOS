@@ -63,7 +63,7 @@ namespace NickAc.LightPOS.Backend.Data
         }
 
 
-        public static void AddSale(User user)
+        public static void AddUser(User user)
         {
             using (var sf = DataFactory.CreateSessionFactory()) {
                 using (var session = sf.OpenSession()) {
