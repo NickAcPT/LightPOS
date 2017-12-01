@@ -1,6 +1,6 @@
 ﻿namespace NickAc.LightPOS.Frontend.Forms.Users
 {
-    partial class CreateUserForm
+    partial class ModifyUserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         private void InitializeComponent()
         {
             this.translationHelper1 = new NickAc.LightPOS.Backend.Translation.TranslationHelper();
-            this.metroButton1 = new NickAc.ModernUIDoneRight.Controls.MetroButton();
+            this.metroButton1 = new NickAc.ModernUIDoneRight.Controls.ModernButton();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@
             // 
             this.metroButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.metroButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroButton1.Location = new System.Drawing.Point(224, 293);
+            this.metroButton1.Location = new System.Drawing.Point(224, 285);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(197, 47);
             this.metroButton1.TabIndex = 1;
@@ -58,13 +58,13 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.label1.Location = new System.Drawing.Point(13, 100);
+            this.label1.Location = new System.Drawing.Point(13, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 27);
             this.label1.TabIndex = 2;
-            this.label1.Text = "create_user_name";
+            this.label1.Text = "edit_user_name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.translationHelper1.SetTranslationLocation(this.label1, "create_user_name");
+            this.translationHelper1.SetTranslationLocation(this.label1, "edit_user_name");
             // 
             // textBox1
             // 
@@ -79,13 +79,13 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.label2.Location = new System.Drawing.Point(13, 165);
+            this.label2.Location = new System.Drawing.Point(13, 167);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 27);
             this.label2.TabIndex = 2;
-            this.label2.Text = "create_user_permissions";
+            this.label2.Text = "edit_user_permissions";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.translationHelper1.SetTranslationLocation(this.label2, "create_user_permissions");
+            this.translationHelper1.SetTranslationLocation(this.label2, "edit_user_permissions");
             // 
             // checkedListBox1
             // 
@@ -97,20 +97,20 @@
             this.checkedListBox1.IntegralHeight = false;
             this.checkedListBox1.Location = new System.Drawing.Point(136, 165);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(496, 114);
+            this.checkedListBox1.Size = new System.Drawing.Size(496, 110);
             this.checkedListBox1.TabIndex = 5;
             this.translationHelper1.SetTranslationLocation(this.checkedListBox1, "");
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.label3.Location = new System.Drawing.Point(13, 137);
+            this.label3.Location = new System.Drawing.Point(13, 132);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(117, 27);
             this.label3.TabIndex = 2;
-            this.label3.Text = "create_user_password";
+            this.label3.Text = "edit_user_password";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.translationHelper1.SetTranslationLocation(this.label3, "create_user_password");
+            this.translationHelper1.SetTranslationLocation(this.label3, "edit_user_password");
             // 
             // textBox2
             // 
@@ -123,10 +123,10 @@
             this.translationHelper1.SetTranslationLocation(this.textBox2, "");
             this.textBox2.UseSystemPasswordChar = true;
             // 
-            // CreateUserForm
+            // ModifyUserForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(645, 353);
+            this.ClientSize = new System.Drawing.Size(645, 345);
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
             this.Controls.Add(this.checkedListBox1);
@@ -137,9 +137,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.metroButton1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Name = "CreateUserForm";
-            this.Text = "CreateUserForm";
-            this.translationHelper1.SetTranslationLocation(this, "create_user_title");
+            this.MinimumSize = new System.Drawing.Size(645, 345);
+            this.Name = "ModifyUserForm";
+            this.Text = "ModifyUserForm";
+            this.translationHelper1.SetTranslationLocation(this, "edit_user_title");
             this.Controls.SetChildIndex(this.appBar1, 0);
             this.Controls.SetChildIndex(this.metroButton1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
@@ -156,7 +157,7 @@
         #endregion
 
         private Backend.Translation.TranslationHelper translationHelper1;
-        private ModernUIDoneRight.Controls.MetroButton metroButton1;
+        private ModernUIDoneRight.Controls.ModernButton metroButton1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
