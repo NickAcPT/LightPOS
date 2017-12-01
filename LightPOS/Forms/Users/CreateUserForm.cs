@@ -42,12 +42,11 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         }
 
 
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void MetroButton1_Click(object sender, EventArgs e)
         {
             UserPermission perm = GetPermissions(checkedListBox1.CheckedItems.OfType<object>());
             if (!string.IsNullOrWhiteSpace(textBox1.Text) && !string.IsNullOrWhiteSpace(textBox2.Text)) {
                 User user = User.CreateUser(textBox1.Text.Trim(), textBox2.Text.Trim(), perm);
-                user.ToString();
             }
         }
 
