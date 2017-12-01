@@ -6,8 +6,11 @@ using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NickAc.LightPOS.Frontend
@@ -20,9 +23,14 @@ namespace NickAc.LightPOS.Frontend
         [STAThread]
         private static void Main()
         {
+            //Initialize the database engine.
+            //Yes. I initialize if before the app loads
+            DataManager.Initialize(new System.IO.FileInfo("POS.db"));
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Forms.MainMenuForm());
         }
+
     }
 }
