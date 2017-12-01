@@ -30,7 +30,7 @@ namespace NickAc.LightPOS.Backend.Objects
             return Permissions.HasFlag(perm) || Permissions.HasFlag(UserPermission.All);
         }
 
-        public static void CreateUser(string userName, string password)
+        public static User CreateUser(string userName, string password, UserPermission permissions)
         {
             User u = new User
             {
@@ -38,6 +38,10 @@ namespace NickAc.LightPOS.Backend.Objects
                 Salt = Guid.NewGuid().ToString().Replace("-", "")
             };
             u.HashedPassword = HashWithSalt(password, u.Salt);
+            u.Permissions = permissions;
+            u.Actions = new List<UserAction>();
+            u.Sales = new List<Sale>();
+            return u;
         }
 
         private static string HashWithSalt(string password, string salt)
