@@ -90,11 +90,11 @@
     <Compile Include="Forms\TemplateForm.Designer.cs">
       <DependentUpon>TemplateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Users\CreateUserForm.cs">
+    <Compile Include="Forms\Users\ModifyUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Users\CreateUserForm.Designer.cs">
-      <DependentUpon>CreateUserForm.cs</DependentUpon>
+    <Compile Include="Forms\Users\ModifyUserForm.Designer.cs">
+      <DependentUpon>ModifyUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Users\UserLoginForm.cs">
       <SubType>Form</SubType>
@@ -113,8 +113,8 @@
     <EmbeddedResource Include="Forms\TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Users\CreateUserForm.resx">
-      <DependentUpon>CreateUserForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Users\ModifyUserForm.resx">
+      <DependentUpon>ModifyUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Users\UserLoginForm.resx">
       <DependentUpon>UserLoginForm.cs</DependentUpon>
