@@ -13,7 +13,7 @@ namespace NickAc.LightPOS.Backend.Mapping
 {
     /// <summary>
     /// Taken from https://stackoverflow.com/questions/1063933/nhibernate-mapping-to-system-drawing-color
-    /// All the credits go to David M(https://stackoverflow.com/users/83109/david-m)
+    /// All credits go to David M(https://stackoverflow.com/users/83109/david-m)
     /// </summary>
     public class ColorUserType : IUserType
     {
