@@ -132,6 +132,12 @@
   <data name="create_user_okbutton" xml:space="preserve">
     <value>Create User</value>
   </data>
+  <data name="create_user_password" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="create_user_permissions" xml:space="preserve">
+    <value>Permissions:</value>
+  </data>
   <data name="create_user_title" xml:space="preserve">
     <value>$prefix - Create User</value>
   </data>
