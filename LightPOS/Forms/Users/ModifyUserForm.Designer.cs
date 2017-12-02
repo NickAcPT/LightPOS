@@ -40,7 +40,6 @@
             // appBar1
             // 
             this.appBar1.Size = new System.Drawing.Size(643, 50);
-            this.appBar1.TabIndex = 7;
             this.appBar1.TabStop = false;
             this.translationHelper1.SetTranslationLocation(this.appBar1, "");
             // 
@@ -51,7 +50,7 @@
             this.metroButton1.Location = new System.Drawing.Point(224, 285);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(197, 47);
-            this.metroButton1.TabIndex = 6;
+            this.metroButton1.TabIndex = 7;
             this.metroButton1.Text = "create_user_okbutton";
             this.translationHelper1.SetTranslationLocation(this.metroButton1, "create_user_okbutton");
             this.metroButton1.UseVisualStyleBackColor = true;
@@ -63,7 +62,7 @@
             this.label1.Location = new System.Drawing.Point(13, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 27);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 1;
             this.label1.Text = "edit_user_name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.translationHelper1.SetTranslationLocation(this.label1, "edit_user_name");
@@ -77,7 +76,7 @@
             this.textBox1.Location = new System.Drawing.Point(136, 103);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(496, 25);
-            this.textBox1.TabIndex = 1;
+            this.textBox1.TabIndex = 2;
             this.translationHelper1.SetTranslationLocation(this.textBox1, "");
             // 
             // label2
@@ -86,7 +85,7 @@
             this.label2.Location = new System.Drawing.Point(13, 167);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 27);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 5;
             this.label2.Text = "edit_user_permissions";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.translationHelper1.SetTranslationLocation(this.label2, "edit_user_permissions");
@@ -102,7 +101,7 @@
             this.checkedListBox1.Location = new System.Drawing.Point(136, 165);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(496, 110);
-            this.checkedListBox1.TabIndex = 5;
+            this.checkedListBox1.TabIndex = 6;
             this.translationHelper1.SetTranslationLocation(this.checkedListBox1, "");
             // 
             // label3
@@ -111,7 +110,7 @@
             this.label3.Location = new System.Drawing.Point(13, 132);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(117, 27);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 3;
             this.label3.Text = "edit_user_password";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.translationHelper1.SetTranslationLocation(this.label3, "edit_user_password");
@@ -121,7 +120,7 @@
             this.textBoxEx1.Location = new System.Drawing.Point(136, 134);
             this.textBoxEx1.Name = "textBoxEx1";
             this.textBoxEx1.Size = new System.Drawing.Size(496, 25);
-            this.textBoxEx1.TabIndex = 8;
+            this.textBoxEx1.TabIndex = 4;
             this.translationHelper1.SetTranslationLocation(this.textBoxEx1, "");
             // 
             // ModifyUserForm
