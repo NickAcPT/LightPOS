@@ -28,28 +28,66 @@
         private void InitializeComponent()
         {
             this.translationHelper1 = new NickAc.LightPOS.Backend.Translation.TranslationHelper();
+            this.panel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // appBar1
             // 
-            this.appBar1.Size = new System.Drawing.Size(459, 50);
+            this.appBar1.Location = new System.Drawing.Point(1, 0);
+            this.appBar1.Size = new System.Drawing.Size(773, 50);
+            this.translationHelper1.SetTranslationLocation(this.appBar1, "");
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Location = new System.Drawing.Point(13, 59);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(5);
+            this.panel1.Size = new System.Drawing.Size(749, 364);
+            this.panel1.TabIndex = 2;
+            this.translationHelper1.SetTranslationLocation(this.panel1, "");
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.label1.Location = new System.Drawing.Point(291, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(192, 30);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "user_login_loading";
+            this.translationHelper1.SetTranslationLocation(this.label1, "user_login_loading");
             // 
             // UserLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 300);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(775, 435);
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
             this.Name = "UserLoginForm";
             this.Text = "UserLoginForm";
+            this.TitlebarVisible = false;
             this.translationHelper1.SetTranslationLocation(this, "user_login_title");
+            this.Controls.SetChildIndex(this.appBar1, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private Backend.Translation.TranslationHelper translationHelper1;
+        private System.Windows.Forms.FlowLayoutPanel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }
