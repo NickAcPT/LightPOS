@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ShadowPanel.cs" />
     <Compile Include="Controls\TextBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -80,6 +81,10 @@
     </Compile>
     <Compile Include="Forms\AddProductForm.Designer.cs">
       <DependentUpon>AddProductForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ControlTestForm.cs" />
+    <Compile Include="Forms\ControlTestForm.Designer.cs">
+      <DependentUpon>ControlTestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainMenuForm.cs">
       <SubType>Form</SubType>
@@ -109,6 +114,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AddProductForm.resx">
       <DependentUpon>AddProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ControlTestForm.resx">
+      <DependentUpon>ControlTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
