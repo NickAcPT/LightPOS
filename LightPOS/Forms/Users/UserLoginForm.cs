@@ -157,16 +157,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     form.Controls.Add(mainLabel);
                     Recenter(mainLabel, vertical: false);
 
-
-                    TextBoxEx textBox = new TextBoxEx
-                    {
-                        Font = mainLabel.Font,
-                        UseSystemPasswordChar = true,
-                        Size = new Size((int)(form.Width * textBoxPercentage), 0 /* The textbox sizes automatically */)
-                    };
-                    form.Controls.Add(textBox);
-                    Recenter(textBox);
-
                     ModernButton btn = new ModernButton
                     {
                         Text = translationHelper1.GetTranslation("user_login_okbutton"),
@@ -174,6 +164,23 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
                         Location = new Point(0 /* Will be centered later */, (int)(form.Height * textBoxPercentage) - formPadding)
                     };
+
+                    Point point = new Point(new Size(btn.Location));
+                    point.Offset(0, -8);
+
+                    TextBoxEx textBox = new TextBoxEx
+                    {
+                        Font = mainLabel.Font,
+                        UseSystemPasswordChar = true,
+                        Size = new Size((int)(form.Width * textBoxPercentage), 0 /* The textbox sizes automatically */),
+                    };
+                    point.Offset(0, -textBox.Height);
+                    textBox.Location = point;
+
+                    form.Controls.Add(textBox);
+                    Recenter(textBox, vertical: false);
+
+                    //Now we can add the button click
                     btn.Click += (s, ee) => {
                         if (!string.IsNullOrWhiteSpace(textBox.Text)) {
                             if (usr.CheckPassword(textBox.Text)) {
