@@ -29,26 +29,19 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
             translationHelper1.Translate(this);
-            // users = DataManager.GetUsers();
         }
 
         private void InitEverything()
         {
-            TimeMeasurer.MeasureTime("InitializeDatabase();", () => {
-                Program.InitializeDatabase();
-            });
+            Program.InitializeDatabase();
             //Get the translated administrator account username
             string adminUserName = "";
-            TimeMeasurer.MeasureTime("Get admin account name translation", () => {
-                using (var helper = new TranslationHelper()) {
-                    adminUserName = helper.GetTranslation("create_user_admin");
-                }
-            });
+            using (var helper = new TranslationHelper()) {
+                adminUserName = helper.GetTranslation("create_user_admin");
+            }
 
             int numberOfUsers = 0;
-            TimeMeasurer.MeasureTime("DataManager.GetNumberOfUsers()", () => {
-                numberOfUsers = DataManager.GetNumberOfUsers();
-            });
+            numberOfUsers = DataManager.GetNumberOfUsers();
             if (numberOfUsers < 1) {
                 Application.Run(new Forms.Users.ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All));
             }
@@ -68,13 +61,9 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             base.OnLoad(e);
             Thread th = new Thread(() => {
 
-                TimeMeasurer.MeasureTime("InitEverything();", () => {
-                    InitEverything();
-                });
+                InitEverything();
 
-                TimeMeasurer.MeasureTime("DataManager.GetUsers();", () => {
-                    users = DataManager.GetUsers();
-                });
+                users = DataManager.GetUsers();
                 SetupUsers(users);
             });
             th.Start();
@@ -196,7 +185,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                                 //Then we can start the thread and and hide this form
                                 Hide();
                                 th.Start();
-                            } else {
+                            }
+                            else {
                                 //Password doesn't work
                                 //Clear the textbox
                                 textBox.Clear();
