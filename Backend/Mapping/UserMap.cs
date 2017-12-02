@@ -18,9 +18,9 @@ namespace NickAc.LightPOS.Backend.Mapping
             Map(x => x.Salt);
 
             Map(x => x.Permissions).CustomType(typeof(UserPermission)).Not.Nullable();
-
-            HasMany(x => x.Actions).Not.LazyLoad();
-            HasMany(x => x.Sales).Not.LazyLoad();
+            
+            HasMany(x => x.Actions)/*.Not.LazyLoad()*/;
+            HasMany(x => x.Sales)/*.Not.LazyLoad()*/;
         }
     }
 }

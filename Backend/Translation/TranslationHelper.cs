@@ -74,6 +74,11 @@ namespace NickAc.LightPOS.Backend.Translation
             });
         }
 
+        public String GetTranslation(string loc)
+        {
+            return GetTranslation(GetLanguage(CurrentLanguage), loc);
+        }
+
         public void TranslateControl(Control c)
         {
             var lang = GetLanguage(CurrentLanguage);

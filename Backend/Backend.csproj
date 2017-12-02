@@ -112,6 +112,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utils\EnumUtils.cs" />
+    <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\GlobalStorage.cs" />
     <Compile Include="Utils\TimeMeasurer.cs" />
   </ItemGroup>

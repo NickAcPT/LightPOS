@@ -4,6 +4,7 @@
 //
 using NHibernate;
 using NickAc.LightPOS.Backend.Objects;
+using NickAc.LightPOS.Backend.Utils;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,10 +20,10 @@ namespace NickAc.LightPOS.Backend.Data
         #endregion
 
         #region Methods
-
+        public static ISessionFactory SessionFactory { get; set; }
         public static void AddCategory(Category c)
         {
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     using (var trans = session.BeginTransaction()) {
                         session.SaveOrUpdate(c);
@@ -34,7 +35,7 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void AddProduct(Product p)
         {
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     using (var trans = session.BeginTransaction()) {
                         session.SaveOrUpdate(p.Category);
@@ -47,7 +48,7 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void AddSale(Sale s)
         {
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     using (var trans = session.BeginTransaction()) {
                         if (!NHibernateUtil.IsInitialized(s.Customer.Sales))
@@ -65,7 +66,7 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void AddUser(User user)
         {
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     using (var trans = session.BeginTransaction()) {
                         if (!NHibernateUtil.IsInitialized(user.Sales))
@@ -109,7 +110,7 @@ namespace NickAc.LightPOS.Backend.Data
         public static Customer GetCustomer(int id)
         {
             Customer customer;
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     customer = session.QueryOver<Customer>().Where(x => x.ID == id).List().FirstOrDefault();
                     return customer;
@@ -117,12 +118,24 @@ namespace NickAc.LightPOS.Backend.Data
             }
         }
 
+        public static int GetNumberOfUsers()
+        {
+            int userNumber;
+            using (var sf = SessionFactory) {
+                using (var session = sf.OpenSession()) {
+                    userNumber = session.QueryOver<User>().ToRowCountQuery().FutureValue<int>().Value;
+                }
+            }
+            return userNumber;
+        }
+
         public static IList<User> GetUsers()
         {
             IList<User> list;
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
-                    list = session.QueryOver<User>().List();
+                    list = session.QueryOver<User>().Fetch(u => u.Actions)
+                  .Eager.List();
                 }
             }
             return list;
@@ -131,9 +144,34 @@ namespace NickAc.LightPOS.Backend.Data
         public static User GetUser(int ID)
         {
             User user;
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
-                    user = session.QueryOver<User>().Where(u => u.UserID == ID).List().FirstOrDefault();
+                    user = session.QueryOver<User>().Fetch(u => u.Actions)
+                  .Eager.Where(u => u.UserID == ID).List().FirstOrDefault();
+                }
+            }
+            return user;
+        }
+
+
+        public static User GetUserWithSales(int ID)
+        {
+            User user;
+            using (var sf = SessionFactory) {
+                using (var session = sf.OpenSession()) {
+                    user = session.QueryOver<User>().Fetch(u => u.Sales).Eager.Where(u => u.UserID == ID).List().FirstOrDefault();
+                }
+            }
+            return user;
+        }
+
+
+        public static User GetUserWithSales()
+        {
+            User user;
+            using (var sf = SessionFactory) {
+                using (var session = sf.OpenSession()) {
+                    user = session.QueryOver<User>().Fetch(u => u.Sales).Eager.List().FirstOrDefault();
                 }
             }
             return user;
@@ -142,7 +180,7 @@ namespace NickAc.LightPOS.Backend.Data
         public static Product GetProduct(int id)
         {
             Product product;
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     product = session.QueryOver<Product>().Where(x => x.ID == id).List().FirstOrDefault();
                     return product;
@@ -153,7 +191,7 @@ namespace NickAc.LightPOS.Backend.Data
         public static Product GetProduct(string barcode)
         {
             Product product;
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     product = session.QueryOver<Product>().Where(x => x.Barcode == barcode).List().FirstOrDefault();
                     return product;
@@ -164,7 +202,7 @@ namespace NickAc.LightPOS.Backend.Data
         public static IList<Product> GetProducts()
         {
             IList<Product> list;
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     list = session.QueryOver<Product>().List();
                 }
@@ -174,8 +212,14 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void Initialize(FileInfo file)
         {
-            DataFactory = new DataFactory(file, false);
-            DataFactory.Create();
+            TimeMeasurer.MeasureTime("new DataFactory();", () => {
+                DataFactory = new DataFactory(file, false);
+            });
+            TimeMeasurer.MeasureTime("DataFactory.Create();", () => {
+                DataFactory.Create();
+            });
+
+            SessionFactory = DataFactory.CreateSessionFactory();
         }
         /// <summary>
         /// Never called! Exists just to tell Visual Studio to copy the assemblies to the build directory
@@ -188,7 +232,7 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void RemoveCategory(Category c)
         {
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     using (var trans = session.BeginTransaction()) {
                         session.Delete(c);
@@ -199,7 +243,7 @@ namespace NickAc.LightPOS.Backend.Data
         }
         public static void RemoveProduct(Product p)
         {
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     using (var trans = session.BeginTransaction()) {
                         session.Delete(p);
@@ -210,7 +254,7 @@ namespace NickAc.LightPOS.Backend.Data
         }
         public static void RemoveProduct(int productID)
         {
-            using (var sf = DataFactory.CreateSessionFactory()) {
+            using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     using (var trans = session.BeginTransaction()) {
                         session.Delete("from Product p where p.ID = ?", productID, NHibernateUtil.Int32);
