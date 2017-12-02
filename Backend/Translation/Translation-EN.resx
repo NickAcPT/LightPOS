@@ -168,6 +168,9 @@
   <data name="user_login_loading" xml:space="preserve">
     <value>Loading...</value>
   </data>
+  <data name="user_login_okbutton" xml:space="preserve">
+    <value>Login</value>
+  </data>
   <data name="user_login_simple_title" xml:space="preserve">
     <value>User Login</value>
   </data>

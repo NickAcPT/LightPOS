@@ -214,6 +214,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string user_login_okbutton {
+            get {
+                return ResourceManager.GetString("user_login_okbutton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User Login.
         /// </summary>
         public static string user_login_simple_title {

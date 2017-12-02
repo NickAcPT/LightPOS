@@ -1,6 +1,8 @@
 ﻿using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
+using NickAc.LightPOS.Backend.Translation;
 using NickAc.LightPOS.Backend.Utils;
+using NickAc.LightPOS.Frontend.Controls;
 using NickAc.ModernUIDoneRight.Controls;
 using NickAc.ModernUIDoneRight.Forms;
 using System;
@@ -30,12 +32,36 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             // users = DataManager.GetUsers();
         }
 
+        private void InitEverything()
+        {
+            Program.InitializeDatabase();
+
+            //Get the translated administrator account username
+            string adminUserName;
+            using (var helper = new TranslationHelper()) {
+                adminUserName = helper.GetTranslation("create_user_admin");
+            }
+
+            if (DataManager.GetNumberOfUsers() < 1) {
+                Application.Run(new Forms.Users.ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All));
+            }
+            //The person might've not created a user
+            //Check for it
+            if (DataManager.GetNumberOfUsers() < 1) {
+                //Just run the login form
+                return;
+            }
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             Recenter(label1);
             panel1.Hide();
             base.OnLoad(e);
             Thread th = new Thread(() => {
+
+                InitEverything();
+
                 users = DataManager.GetUsers();
                 SetupUsers(users);
             });
@@ -91,7 +117,9 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         {
             if (sender is TilePanelReborn tile) {
                 if (tile.Tag is User usr) {
-                    var percentage = 0.25f;
+                    const int formPadding = 8;
+                    const float percentage = 0.25f;
+                    const float textBoxPercentage = 0.75f;
                     ModernForm form = new ModernForm
                     {
                         Sizable = false,
@@ -105,17 +133,37 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                                 ss.Close();
                         }
                     };
-
                     Label mainLabel = new Label
                     {
                         AutoSize = true,
                         BackColor = Color.Transparent,
                         Text = translationHelper1.GetTranslation("user_login_simple_title"),
-                        Font = new Font(Font.FontFamily, 12)
+                        Font = new Font(base.Font.FontFamily, 12),
+                        Location = new Point(formPadding, 0)
                     };
 
                     form.Controls.Add(mainLabel);
                     Recenter(mainLabel, vertical: false);
+
+
+                    TextBoxEx textBox = new TextBoxEx
+                    {
+                        Font = mainLabel.Font,
+                        UseSystemPasswordChar = true,
+                        Size = new Size((int)(form.Width * textBoxPercentage), 0 /* The textbox sizes automatically */)
+                    };
+                    form.Controls.Add(textBox);
+                    Recenter(textBox);
+
+                    ModernButton btn = new ModernButton
+                    {
+                        Text = translationHelper1.GetTranslation("user_login_okbutton"),
+                        Size = new Size((int)(form.Width * percentage), (int)(form.Height * percentage)),
+
+                        Location = new Point(0 /* Will be centered later */, (int)(form.Height * textBoxPercentage) - formPadding)
+                    };
+                    form.Controls.Add(btn);
+                    Recenter(btn, vertical: false);
 
                     form.ShowDialog();
                 }
