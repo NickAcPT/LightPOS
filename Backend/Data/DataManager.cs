@@ -134,7 +134,8 @@ namespace NickAc.LightPOS.Backend.Data
             IList<User> list;
             using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
-                    list = session.QueryOver<User>().List();
+                    list = session.QueryOver<User>().Fetch(u => u.Actions)
+                  .Eager.List();
                 }
             }
             return list;
@@ -145,7 +146,32 @@ namespace NickAc.LightPOS.Backend.Data
             User user;
             using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
-                    user = session.QueryOver<User>().Where(u => u.UserID == ID).List().FirstOrDefault();
+                    user = session.QueryOver<User>().Fetch(u => u.Actions)
+                  .Eager.Where(u => u.UserID == ID).List().FirstOrDefault();
+                }
+            }
+            return user;
+        }
+
+
+        public static User GetUserWithSales(int ID)
+        {
+            User user;
+            using (var sf = SessionFactory) {
+                using (var session = sf.OpenSession()) {
+                    user = session.QueryOver<User>().Fetch(u => u.Sales).Eager.Where(u => u.UserID == ID).List().FirstOrDefault();
+                }
+            }
+            return user;
+        }
+
+
+        public static User GetUserWithSales()
+        {
+            User user;
+            using (var sf = SessionFactory) {
+                using (var session = sf.OpenSession()) {
+                    user = session.QueryOver<User>().Fetch(u => u.Sales).Eager.List().FirstOrDefault();
                 }
             }
             return user;
