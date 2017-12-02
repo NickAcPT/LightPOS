@@ -9,13 +9,15 @@ namespace NickAc.LightPOS.Backend.Utils
 {
     public static class TimeMeasurer
     {
-        public static void MeasureTime(Action a)
+        public static void MeasureTime(Action a) => MeasureTime("", a);
+
+        public static void MeasureTime(string action, Action a)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
             a();
             sw.Stop();
-            Console.WriteLine(string.Format("Action took {0}ms to execute.", sw.ElapsedMilliseconds));
+            Console.WriteLine(string.Format("Action[{1}] took {0}ms to execute.", sw.ElapsedMilliseconds, action));
         }
     }
 }

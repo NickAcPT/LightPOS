@@ -34,15 +34,22 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         private void InitEverything()
         {
-            Program.InitializeDatabase();
-
+            TimeMeasurer.MeasureTime("InitializeDatabase();", () => {
+                Program.InitializeDatabase();
+            });
             //Get the translated administrator account username
-            string adminUserName;
-            using (var helper = new TranslationHelper()) {
-                adminUserName = helper.GetTranslation("create_user_admin");
-            }
+            string adminUserName = "";
+            TimeMeasurer.MeasureTime("Get admin account name translation", () => {
+                using (var helper = new TranslationHelper()) {
+                    adminUserName = helper.GetTranslation("create_user_admin");
+                }
+            });
 
-            if (DataManager.GetNumberOfUsers() < 1) {
+            int numberOfUsers = 0;
+            TimeMeasurer.MeasureTime("DataManager.GetNumberOfUsers()", () => {
+                numberOfUsers = DataManager.GetNumberOfUsers();
+            });
+            if (numberOfUsers < 1) {
                 Application.Run(new Forms.Users.ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All));
             }
             //The person might've not created a user
@@ -60,9 +67,13 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             base.OnLoad(e);
             Thread th = new Thread(() => {
 
-                InitEverything();
+                TimeMeasurer.MeasureTime("InitEverything();", () => {
+                    InitEverything();
+                });
 
-                users = DataManager.GetUsers();
+                TimeMeasurer.MeasureTime("DataManager.GetUsers();", () => {
+                    users = DataManager.GetUsers();
+                });
                 SetupUsers(users);
             });
             th.Start();
@@ -164,6 +175,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     };
                     form.Controls.Add(btn);
                     Recenter(btn, vertical: false);
+                    form.AcceptButton = btn;
 
                     form.ShowDialog();
                 }
