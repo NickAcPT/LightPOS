@@ -151,7 +151,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                         BackColor = Color.Transparent,
                         Text = translationHelper1.GetTranslation("user_login_simple_title"),
                         Font = new Font(base.Font.FontFamily, 12),
-                        Location = new Point(formPadding, 0)
+                        Location = new Point(0, formPadding)
                     };
 
                     form.Controls.Add(mainLabel);
@@ -173,6 +173,28 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                         Size = new Size((int)(form.Width * percentage), (int)(form.Height * percentage)),
 
                         Location = new Point(0 /* Will be centered later */, (int)(form.Height * textBoxPercentage) - formPadding)
+                    };
+                    btn.Click += (s, ee) => {
+                        if (!string.IsNullOrWhiteSpace(textBox.Text)) {
+                            if (usr.CheckPassword(textBox.Text)) {
+                                //Close our smal login-form
+                                form.Close();
+                                Thread th = new Thread(() => {
+                                    //Start a new application loop.
+                                    Application.Run(new MainMenuForm());
+                                    this.InvokeIfRequired(() => Show());
+                                });
+                                //Setting the apartment state is needed.
+                                th.SetApartmentState(ApartmentState.STA);
+                                //Then we can start the thread and and hide this form
+                                Hide();
+                                th.Start();
+                            } else {
+                                //Password doesn't work
+                                //Clear the textbox
+                                textBox.Clear();
+                            }
+                        }
                     };
                     form.Controls.Add(btn);
                     Recenter(btn, vertical: false);

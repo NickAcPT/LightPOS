@@ -29,12 +29,12 @@
         {
             this.metroButton1 = new NickAc.ModernUIDoneRight.Controls.ModernButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.translationHelper1 = new NickAc.LightPOS.Backend.Translation.TranslationHelper();
             this.textBoxEx1 = new NickAc.LightPOS.Frontend.Controls.TextBoxEx();
+            this.textBox1 = new NickAc.LightPOS.Frontend.Controls.TextBoxEx();
             this.SuspendLayout();
             // 
             // appBar1
@@ -66,18 +66,6 @@
             this.label1.Text = "edit_user_name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.translationHelper1.SetTranslationLocation(this.label1, "edit_user_name");
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
-            this.textBox1.Location = new System.Drawing.Point(136, 103);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(496, 25);
-            this.textBox1.TabIndex = 2;
-            this.translationHelper1.SetTranslationLocation(this.textBox1, "");
             // 
             // label2
             // 
@@ -124,6 +112,14 @@
             this.translationHelper1.SetTranslationLocation(this.textBoxEx1, "");
             this.textBoxEx1.UseSystemPasswordChar = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(136, 103);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(496, 25);
+            this.textBox1.TabIndex = 4;
+            this.translationHelper1.SetTranslationLocation(this.textBox1, "");
+            // 
             // ModifyUserForm
             // 
             this.AcceptButton = this.metroButton1;
@@ -131,9 +127,9 @@
             this.ClientSize = new System.Drawing.Size(645, 345);
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBoxEx1);
             this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -148,9 +144,9 @@
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
             this.Controls.SetChildIndex(this.checkedListBox1, 0);
             this.Controls.SetChildIndex(this.textBoxEx1, 0);
+            this.Controls.SetChildIndex(this.textBox1, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,10 +157,10 @@
         private Backend.Translation.TranslationHelper translationHelper1;
         private ModernUIDoneRight.Controls.ModernButton metroButton1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Label label3;
         private Controls.TextBoxEx textBoxEx1;
+        private Controls.TextBoxEx textBox1;
     }
 }

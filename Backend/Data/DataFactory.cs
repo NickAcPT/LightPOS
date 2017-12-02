@@ -11,6 +11,7 @@ using NickAc.LightPOS.Backend.Mapping;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System;
 
 namespace NickAc.LightPOS.Backend.Data
 {
@@ -51,7 +52,8 @@ namespace NickAc.LightPOS.Backend.Data
                     }
                 }
             }
-            catch (SerializationException e) {
+            catch (SerializationException ex) {
+                Ignore(ex);
                 //Ignore errors...
             }
             FluentConfiguration fluentConfiguration = Fluently.Configure()
@@ -67,6 +69,11 @@ namespace NickAc.LightPOS.Backend.Data
                 bf.Serialize(file, fluentConfiguration.BuildConfiguration());
             }
             return fluentConfiguration;
+        }
+
+        private void Ignore(SerializationException ex)
+        {
+            string exx = ex.GetType().GUID.ToString();
         }
 
         private void BuildSchema(Configuration config)
