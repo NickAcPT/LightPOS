@@ -13,11 +13,15 @@ namespace NickAc.LightPOS.Backend.Utils
 
         public static void MeasureTime(string action, Action a)
         {
+#if DEBUG
             Stopwatch sw = new Stopwatch();
             sw.Start();
+#endif
             a();
+#if DEBUG
             sw.Stop();
             Console.WriteLine(string.Format("Action[{1}] took {0}ms to execute.", sw.ElapsedMilliseconds, action));
+#endif
         }
     }
 }
