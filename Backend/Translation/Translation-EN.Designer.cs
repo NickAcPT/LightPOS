@@ -214,7 +214,16 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $prefix - User Login.
+        ///   Looks up a localized string similar to User Login.
+        /// </summary>
+        public static string user_login_simple_title {
+            get {
+                return ResourceManager.GetString("user_login_simple_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $prefix - $user_login_simple_title.
         /// </summary>
         public static string user_login_title {
             get {

@@ -2,6 +2,7 @@
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.ModernUIDoneRight.Controls;
+using NickAc.ModernUIDoneRight.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,9 +32,9 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         protected override void OnLoad(EventArgs e)
         {
-            base.OnLoad(e);
             Recenter(label1);
             panel1.Hide();
+            base.OnLoad(e);
             Thread th = new Thread(() => {
                 users = DataManager.GetUsers();
                 SetupUsers(users);
@@ -42,10 +43,12 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         }
 
 
-        public void Recenter(Control c)
+        public void Recenter(Control c, bool horizontal = true, bool vertical = true)
         {
-            c.Left = (ClientSize.Width - c.Width) / 2;
-            c.Top = (ClientSize.Height - c.Height) / 2;
+            if (horizontal)
+                c.Left = (c.Parent.ClientSize.Width - c.Width) / 2;
+            if (vertical)
+                c.Top = (c.Parent.ClientSize.Height - c.Height) / 2;
         }
 
         private void SetupUsers(IList<User> usr)
@@ -59,6 +62,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             foreach (var user in usr) {
                 TilePanelReborn rb = new TilePanelReborn
                 {
+                    Tag = user,
                     Size = tileSz,
                     Text = user.UserName,
                     Image = Properties.Resources.ic_person_white_48dp_2x,
@@ -69,13 +73,54 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     Flat = true
                 };
 
+
                 panel1.InvokeIfRequired(() => panel1.Controls.Add(rb));
+
+                rb.InvokeIfRequired(() => {
+                    rb.Click += UserTile_Click;
+                });
             }
             panel1.InvokeIfRequired(() => {
                 panel1.Show();
                 Recenter(panel1);
                 label1.Hide();
             });
+        }
+
+        private void UserTile_Click(object sender, EventArgs e)
+        {
+            if (sender is TilePanelReborn tile) {
+                if (tile.Tag is User usr) {
+                    var percentage = 0.25f;
+                    ModernForm form = new ModernForm
+                    {
+                        Sizable = false,
+                        Size = new Size((int)(Width * percentage), (int)(Height * percentage)),
+                        TitlebarVisible = false,
+                        Text = Text
+                    };
+                    form.KeyUp += (s, ee) => {
+                        if (ee.KeyCode == Keys.Escape && !ee.Control && !ee.Alt && !ee.Shift) {
+                            if (s is Form ss)
+                                ss.Close();
+                        }
+                    };
+
+                    Label mainLabel = new Label
+                    {
+                        AutoSize = true,
+                        BackColor = Color.Transparent,
+                        Text = translationHelper1.GetTranslation("user_login_simple_title"),
+                        Font = new Font(Font.FontFamily, 12)
+                    };
+
+                    form.Controls.Add(mainLabel);
+                    Recenter(mainLabel, vertical: false);
+
+                    form.ShowDialog();
+                }
+            }
+
         }
     }
 }
