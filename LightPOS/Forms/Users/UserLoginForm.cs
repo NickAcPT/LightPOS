@@ -53,9 +53,10 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 Application.Run(new Forms.Users.ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All));
             }
             //The person might've not created a user
-            //Check for it
+            //Check if it was created
             if (DataManager.GetNumberOfUsers() < 1) {
-                //Just run the login form
+                //A new use wasn't created, so we'll exit the app.
+                Close();
                 return;
             }
         }
