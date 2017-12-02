@@ -15,6 +15,7 @@ namespace NickAc.LightPOS.Backend.Mapping
     /// Taken from https://stackoverflow.com/questions/1063933/nhibernate-mapping-to-system-drawing-color
     /// All credits go to David M(https://stackoverflow.com/users/83109/david-m)
     /// </summary>
+    [Serializable]
     public class ColorUserType : IUserType
     {
         public new bool Equals(object x, object y)

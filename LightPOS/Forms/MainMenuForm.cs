@@ -28,7 +28,7 @@ namespace NickAc.LightPOS.Frontend.Forms
         {
             //POS Management tile
             Visible = false;
-            new Users.CreateUserForm().ShowDialog();
+            new Users.ModifyUserForm().ShowDialog();
             Visible = true;
             Activate();
         }

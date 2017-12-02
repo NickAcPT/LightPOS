@@ -72,6 +72,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\TextBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\AddProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,11 +93,17 @@
     <Compile Include="Forms\TemplateForm.Designer.cs">
       <DependentUpon>TemplateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Users\CreateUserForm.cs">
+    <Compile Include="Forms\Users\ModifyUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Users\CreateUserForm.Designer.cs">
-      <DependentUpon>CreateUserForm.cs</DependentUpon>
+    <Compile Include="Forms\Users\ModifyUserForm.Designer.cs">
+      <DependentUpon>ModifyUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Users\UserLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Users\UserLoginForm.Designer.cs">
+      <DependentUpon>UserLoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,8 +116,11 @@
     <EmbeddedResource Include="Forms\TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Users\CreateUserForm.resx">
-      <DependentUpon>CreateUserForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Users\ModifyUserForm.resx">
+      <DependentUpon>ModifyUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users\UserLoginForm.resx">
+      <DependentUpon>UserLoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -142,7 +154,9 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\ic_person_white_48dp_2x.png" />
+  </ItemGroup>
   <Import Project="..\SharedResources\SharedResources.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

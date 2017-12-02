@@ -88,11 +88,11 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Username:.
+        ///   Looks up a localized string similar to Administrator.
         /// </summary>
-        public static string create_user_name {
+        public static string create_user_admin {
             get {
-                return ResourceManager.GetString("create_user_name", resourceCulture);
+                return ResourceManager.GetString("create_user_admin", resourceCulture);
             }
         }
         
@@ -106,34 +106,43 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Username:.
+        /// </summary>
+        public static string edit_user_name {
+            get {
+                return ResourceManager.GetString("edit_user_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify User.
+        /// </summary>
+        public static string edit_user_okbutton {
+            get {
+                return ResourceManager.GetString("edit_user_okbutton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password:.
         /// </summary>
-        public static string create_user_password {
+        public static string edit_user_password {
             get {
-                return ResourceManager.GetString("create_user_password", resourceCulture);
+                return ResourceManager.GetString("edit_user_password", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Permissions:.
         /// </summary>
-        public static string create_user_permissions {
+        public static string edit_user_permissions {
             get {
-                return ResourceManager.GetString("create_user_permissions", resourceCulture);
+                return ResourceManager.GetString("edit_user_permissions", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $prefix - Create User.
-        /// </summary>
-        public static string create_user_title {
-            get {
-                return ResourceManager.GetString("create_user_title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to $prefix - Edit User.
+        ///   Looks up a localized string similar to $prefix - User Management.
         /// </summary>
         public static string edit_user_title {
             get {
@@ -192,6 +201,42 @@ namespace NickAc.LightPOS.Backend.Translation {
         public static string prefix {
             get {
                 return ResourceManager.GetString("prefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading....
+        /// </summary>
+        public static string user_login_loading {
+            get {
+                return ResourceManager.GetString("user_login_loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string user_login_okbutton {
+            get {
+                return ResourceManager.GetString("user_login_okbutton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Login.
+        /// </summary>
+        public static string user_login_simple_title {
+            get {
+                return ResourceManager.GetString("user_login_simple_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $prefix - $user_login_simple_title.
+        /// </summary>
+        public static string user_login_title {
+            get {
+                return ResourceManager.GetString("user_login_title", resourceCulture);
             }
         }
     }

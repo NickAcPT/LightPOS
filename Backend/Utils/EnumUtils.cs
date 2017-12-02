@@ -3,6 +3,8 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace NickAc.LightPOS.Backend.Utils
@@ -24,6 +26,15 @@ namespace NickAc.LightPOS.Backend.Utils
                 attributes.Length > 0)
                 return attributes[0].Description;
             return value.ToString();
+        }
+
+        public static List<T> SplitFlags<T>(this Enum val) where T : struct
+        {
+            List<T> result = new List<T>();
+            foreach (Enum r in Enum.GetValues(val.GetType())) {
+                if (val.HasFlag(r)) result.Add((T)Enum.Parse(typeof(T), r.ToString()));
+            }
+            return result;
         }
 
         public static Boolean HasDescription(this Enum value)
