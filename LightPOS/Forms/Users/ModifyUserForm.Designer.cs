@@ -122,6 +122,7 @@
             this.textBoxEx1.Size = new System.Drawing.Size(496, 25);
             this.textBoxEx1.TabIndex = 4;
             this.translationHelper1.SetTranslationLocation(this.textBoxEx1, "");
+            this.textBoxEx1.UseSystemPasswordChar = true;
             // 
             // ModifyUserForm
             // 
