@@ -185,8 +185,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                                 //Then we can start the thread and and hide this form
                                 Hide();
                                 th.Start();
-                            }
-                            else {
+                            } else {
                                 //Password doesn't work
                                 //Clear the textbox
                                 textBox.Clear();
