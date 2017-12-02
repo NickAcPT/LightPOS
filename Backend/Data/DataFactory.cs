@@ -50,7 +50,7 @@ namespace NickAc.LightPOS.Backend.Data
                 if (_dbFile.Exists) _dbFile.Delete();
 
                 var se = new SchemaExport(config);
-                se.Execute(true, true, false);
+                se.Execute(false, true, false);
             }
 
         }

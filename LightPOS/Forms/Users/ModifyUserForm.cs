@@ -29,6 +29,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             translationHelper1.Translate(this);
             InitializePermissions(checkedListBox1);
             checkedListBox1.CheckOnClick = true;
+            Focus();
         }
 
         public ModifyUserForm WithAction(UserAction.Action action)
@@ -79,8 +80,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         private void MetroButton1_Click(object sender, EventArgs e)
         {
             UserPermission perm = GetPermissions(checkedListBox1.CheckedItems.OfType<object>());
-            if (!string.IsNullOrWhiteSpace(textBox1.Text) && !string.IsNullOrWhiteSpace(textBox2.Text)) {
-                User user = User.CreateUser(textBox1.Text.Trim(), textBox2.Text.Trim(), perm);
+            if (!string.IsNullOrWhiteSpace(textBox1.Text) && !string.IsNullOrWhiteSpace(textBoxEx1.Text)) {
+                User user = User.CreateUser(textBox1.Text.Trim(), textBoxEx1.Text.Trim(), perm);
                 switch (UserAction) {
                     case Backend.Objects.UserAction.Action.CreateUser:
                     case Backend.Objects.UserAction.Action.ModifyUser:
