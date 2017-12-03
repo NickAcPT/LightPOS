@@ -60,7 +60,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             panel1.Hide();
             base.OnLoad(e);
             Thread th = new Thread(() => {
-
                 InitEverything();
 
                 users = DataManager.GetUsers();
