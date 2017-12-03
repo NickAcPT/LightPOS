@@ -54,7 +54,8 @@ namespace NickAc.LightPOS.Backend.Data
             }
             catch (SerializationException ex) {
                 Ignore(ex);
-                //Ignore errors...
+                //Ignore errors deserialization errors and delete the existent file
+                File.Delete(fileConfig);
             }
             FluentConfiguration fluentConfiguration = Fluently.Configure()
                             .Database(
