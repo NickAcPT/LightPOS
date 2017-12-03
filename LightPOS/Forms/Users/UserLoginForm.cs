@@ -7,11 +7,7 @@ using NickAc.ModernUIDoneRight.Controls;
 using NickAc.ModernUIDoneRight.Forms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -34,6 +30,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         private void InitEverything()
         {
             Program.InitializeDatabase();
+
             //Get the translated administrator account username
             string adminUserName = "";
             using (var helper = new TranslationHelper()) {
@@ -43,6 +40,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             int numberOfUsers = 0;
             numberOfUsers = DataManager.GetNumberOfUsers();
             if (numberOfUsers < 1) {
+                //Create an administrator account
                 Application.Run(new Forms.Users.ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All));
             }
             //The person might've not created a user
@@ -109,8 +107,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             panel1.InvokeIfRequired(() => {
                 panel1.Show();
                 Recenter(panel1);
-                label1.Hide();
             });
+            label1.InvokeIfRequired(() => label1.Hide());
         }
 
         private void UserTile_Click(object sender, EventArgs e)
@@ -119,7 +117,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 if (tile.Tag is User usr) {
                     const int formPadding = 8;
                     const float percentage = 0.25f;
-                    const float textBoxPercentage = 0.75f;
+                    const float userNamePercentage = 0.25f;
+                    const float textBoxPercentage = 0.65f;
                     ModernForm form = new ModernForm
                     {
                         Sizable = false,
@@ -138,27 +137,40 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                         AutoSize = true,
                         BackColor = Color.Transparent,
                         Text = translationHelper1.GetTranslation("user_login_simple_title"),
-                        Font = new Font(base.Font.FontFamily, 12),
+                        Font = new Font(base.Font.FontFamily, 16),
                         Location = new Point(0, formPadding)
                     };
 
                     form.Controls.Add(mainLabel);
                     Recenter(mainLabel, vertical: false);
 
+
+                    Label userNameLabel = new Label
+                    {
+                        AutoSize = true,
+                        BackColor = Color.Transparent,
+                        Text = usr.UserName,
+                        Font = new Font(base.Font.FontFamily, 12),
+                        Location = new Point(0, (int)(form.Height * userNamePercentage))
+                    };
+
+                    form.Controls.Add(userNameLabel);
+                    Recenter(userNameLabel, vertical: false);
+
                     ModernButton btn = new ModernButton
                     {
                         Text = translationHelper1.GetTranslation("user_login_okbutton"),
                         Size = new Size((int)(form.Width * percentage), (int)(form.Height * percentage)),
 
-                        Location = new Point(0 /* Will be centered later */, (int)(form.Height * textBoxPercentage) - formPadding)
                     };
+                    btn.Location = new Point(0 /* Will be centered later */, form.Bottom - formPadding - btn.Height);
 
-                    Point point = new Point(new Size(btn.Location));
+                    Point point = new Point(0, (int)(form.Height * textBoxPercentage));
                     point.Offset(0, -8);
 
                     TextBoxEx textBox = new TextBoxEx
                     {
-                        Font = mainLabel.Font,
+                        Font = userNameLabel.Font,
                         UseSystemPasswordChar = true,
                         Size = new Size((int)(form.Width * textBoxPercentage), 0 /* The textbox sizes automatically */),
                     };
