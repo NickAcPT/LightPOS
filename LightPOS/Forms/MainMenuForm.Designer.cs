@@ -66,7 +66,7 @@
             this.tilePanelReborn2.Flat = true;
             this.tilePanelReborn2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tilePanelReborn2.ForeColor = System.Drawing.Color.White;
-            this.tilePanelReborn2.Image = ((System.Drawing.Image)(resources.GetObject("tilePanelReborn2.Image")));
+            this.tilePanelReborn2.Image = global::NickAc.LightPOS.Frontend.Properties.Resources.ic_person_white_48dp_2x;
             this.tilePanelReborn2.Location = new System.Drawing.Point(444, 49);
             this.tilePanelReborn2.Name = "tilePanelReborn2";
             this.tilePanelReborn2.Size = new System.Drawing.Size(273, 122);
