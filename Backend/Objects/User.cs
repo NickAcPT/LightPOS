@@ -58,7 +58,7 @@ namespace NickAc.LightPOS.Backend.Objects
         {
             SHA256Managed crypt = new SHA256Managed();
             string hash = String.Empty;
-            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(randomString), 0, Encoding.ASCII.GetByteCount(randomString));
+            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(randomString), 0, Encoding.UTF8.GetByteCount(randomString));
             foreach (byte theByte in crypto) {
                 hash += theByte.ToString("x2");
             }
