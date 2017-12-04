@@ -196,6 +196,51 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apply discounts.
+        /// </summary>
+        public static string permissions_apply_discounts {
+            get {
+                return ResourceManager.GetString("permissions_apply_discounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create users.
+        /// </summary>
+        public static string permissions_create_user {
+            get {
+                return ResourceManager.GetString("permissions_create_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do sales.
+        /// </summary>
+        public static string permissions_do_sale {
+            get {
+                return ResourceManager.GetString("permissions_do_sale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Print receipts.
+        /// </summary>
+        public static string permissions_print_receipt {
+            get {
+                return ResourceManager.GetString("permissions_print_receipt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove users.
+        /// </summary>
+        public static string permissions_remove_user {
+            get {
+                return ResourceManager.GetString("permissions_remove_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LightPOS.
         /// </summary>
         public static string prefix {

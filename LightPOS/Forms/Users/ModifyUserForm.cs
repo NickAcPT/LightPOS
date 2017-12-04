@@ -69,7 +69,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 if (e.HasDescription()) {
                     dynamic obj = new ExpandoObject();
                     obj.EnumValue = e;
-                    obj.Description = e.GetDescription();
+                    obj.Description = translationHelper1.GetTranslation(e.GetDescription());
                     listBox.Items.Add(obj);
                 }
 

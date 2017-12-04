@@ -48,7 +48,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             //Check if it was created
             if (DataManager.GetNumberOfUsers() < 1) {
                 //A new user wasn't created, so we'll exit the app.
-                Close();
+                this.InvokeIfRequired(Close);
                 return;
             }
         }

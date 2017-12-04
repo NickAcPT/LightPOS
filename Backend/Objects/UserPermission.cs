@@ -12,15 +12,15 @@ namespace NickAc.LightPOS.Backend.Objects
     public enum UserPermission
     {
         None = 0,
-        [Description("Do sales")]
+        [Description("permissions_do_sale")]
         DoSale = 1,
-        [Description("Print receipts")]
+        [Description("permissions_print_receipt")]
         PrintReceipt = 2,
-        [Description("Create users")]
+        [Description("permissions_create_user")]
         CreateUser = 4,
-        [Description("Remove users")]
+        [Description("permissions_remove_user")]
         RemoveUser = 8,
-        [Description("Apply Discounts")]
+        [Description("permissions_apply_discounts")]
         ApplyDiscount = 16,
         All = DoSale | PrintReceipt | CreateUser | RemoveUser | ApplyDiscount
     }
