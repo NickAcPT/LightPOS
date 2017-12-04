@@ -124,12 +124,12 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                         Sizable = false,
                         Size = new Size((int)(Width * percentage), (int)(Height * percentage)),
                         TitlebarVisible = false,
-                        Text = Text
+                        Text = Text,
+                        Opacity = 0
                     };
-                    form.KeyUp += (s, ee) => {
+                    KeyEventHandler escapeKey = (Object s, KeyEventArgs ee) => {
                         if (ee.KeyCode == Keys.Escape && !ee.Control && !ee.Alt && !ee.Shift) {
-                            if (s is Form ss)
-                                ss.Close();
+                            form.Close();
                         }
                     };
                     Label mainLabel = new Label
@@ -206,7 +206,24 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     form.Controls.Add(btn);
                     Recenter(btn, vertical: false);
                     form.AcceptButton = btn;
-
+                    textBox.KeyUp += escapeKey;
+                    form.KeyUp += escapeKey;
+                    form.Load += (ss, ee) => {
+                        var anim = new Animation().WithLimit(20).WithAction((a) => form.Opacity += 0.05f);
+                        anim.Start();
+                    };
+                    bool canCloseForm = false;
+                    form.FormClosing += (ss, ee) => {
+                        ee.Cancel = !canCloseForm;
+                        var anim = new Animation().WithLimit(20).WithAction((a) => {
+                            form.Opacity -= 0.05f;
+                            if (Math.Abs(form.Opacity) < float.Epsilon) {
+                                canCloseForm = true;
+                                form.Close();
+                            }
+                        });
+                        anim.Start();
+                    };
                     form.ShowDialog();
                 }
             }

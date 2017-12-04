@@ -54,5 +54,9 @@ namespace NickAc.LightPOS.Backend.Utils
             internalTimer.Stop();
             return this;
         }
+        ~Animation()
+        {
+            internalTimer.Dispose();
+        }
     }
 }

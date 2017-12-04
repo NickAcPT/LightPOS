@@ -15,7 +15,7 @@ namespace NickAc.LightPOS.Backend.Objects
         [Description("Do sales")]
         DoSale = 1,
         [Description("Print receipts")]
-        PrintReceipt = 2, //Later
+        PrintReceipt = 2,
         [Description("Create users")]
         CreateUser = 4,
         [Description("Remove users")]
