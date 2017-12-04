@@ -7,6 +7,7 @@ using NickAc.ModernUIDoneRight.Controls;
 using NickAc.ModernUIDoneRight.Forms;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -108,7 +109,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 panel1.Show();
                 Recenter(panel1);
             });
-            label1.InvokeIfRequired(() => label1.Hide());
+            label1.InvokeIfRequired(label1.Hide);
         }
 
         private void UserTile_Click(object sender, EventArgs e)
@@ -189,7 +190,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                                 Thread th = new Thread(() => {
                                     //Start a new application loop.
                                     Application.Run(new MainMenuForm());
-                                    this.InvokeIfRequired(() => Show());
+                                    this.InvokeIfRequired(Show);
                                 });
                                 //Setting the apartment state is needed.
                                 th.SetApartmentState(ApartmentState.STA);
@@ -213,10 +214,13 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                         anim.Start();
                     };
                     bool canCloseForm = false;
+                    MethodInvoker reduceOpacity = () => form.Opacity -= 0.05f;
+
                     form.FormClosing += (ss, ee) => {
                         ee.Cancel = !canCloseForm;
+                        Debug.WriteLine(ee.CloseReason);
                         var anim = new Animation().WithLimit(20).WithAction((a) => {
-                            form.InvokeIfRequired(() => form.Opacity += 0.05f);
+                            form.InvokeIfRequired(reduceOpacity);
                             if (Math.Abs(form.Opacity) < float.Epsilon) {
                                 canCloseForm = true;
                                 form.InvokeIfRequired(form.Close);

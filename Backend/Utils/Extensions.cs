@@ -13,7 +13,7 @@ namespace NickAc.LightPOS.Backend.Utils
         public static void InvokeIfRequired(this Control control, MethodInvoker action)
         {
             if (control.InvokeRequired) {
-                control.Invoke(action);
+                if (!control.IsDisposed && !control.Disposing) control.Invoke(action);
             }
             else {
                 action();
