@@ -209,17 +209,17 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     textBox.KeyUp += escapeKey;
                     form.KeyUp += escapeKey;
                     form.Load += (ss, ee) => {
-                        var anim = new Animation().WithLimit(20).WithAction((a) => form.Opacity += 0.05f);
+                        var anim = new Animation().WithLimit(20).WithAction((a) => form.InvokeIfRequired(() => form.Opacity += 0.05f));
                         anim.Start();
                     };
                     bool canCloseForm = false;
                     form.FormClosing += (ss, ee) => {
                         ee.Cancel = !canCloseForm;
                         var anim = new Animation().WithLimit(20).WithAction((a) => {
-                            form.Opacity -= 0.05f;
+                            form.InvokeIfRequired(() => form.Opacity += 0.05f);
                             if (Math.Abs(form.Opacity) < float.Epsilon) {
                                 canCloseForm = true;
-                                form.Close();
+                                form.InvokeIfRequired(form.Close);
                             }
                         });
                         anim.Start();
