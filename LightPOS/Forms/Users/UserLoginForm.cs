@@ -2,10 +2,6 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
-//
-// Copyright (c) NickAc. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-//
 using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Translation;
@@ -161,7 +157,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                         if (ee.KeyCode == Keys.Escape && !ee.Control && !ee.Alt && !ee.Shift) {
                             form.InvokeIfRequired(form.Close);
                             ee.Handled = ee.SuppressKeyPress = true;
-                            
+
                         }
                     };
                     Label mainLabel = new Label
@@ -215,26 +211,28 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                         if (!string.IsNullOrWhiteSpace(textBox.Text)) {
                             if (usr.CheckPassword(textBox.Text)) {
                                 //Close our smal login-form
+                                form.FormClosed += (sss, eee) => {
+                                    Thread th = new Thread(() => {
+                                        //Start a new application loop.
+                                        GlobalStorage.CurrentUser = usr;
+                                        //Log user login
+                                        Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.Login, ""));
+                                        //Run main form
+                                        Application.Run(new MainMenuForm());
+                                        //Log user logout
+                                        Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.LogOut, ""));
+                                        GlobalStorage.CurrentUser = null;
+                                        this.InvokeIfRequired(Show);
+                                        this.InvokeIfRequired(Activate);
+                                        OnLoad(EventArgs.Empty);
+                                    });
+                                    //Setting the apartment state is needed.
+                                    th.SetApartmentState(ApartmentState.STA);
+                                    //Then we can start the thread and and hide this form
+                                    Hide();
+                                    th.Start();
+                                };
                                 form.Close();
-                                Thread th = new Thread(() => {
-                                    //Start a new application loop.
-                                    GlobalStorage.CurrentUser = usr;
-                                    //Log user login
-                                    Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.Login, ""));
-                                    //Run main form
-                                    Application.Run(new MainMenuForm());
-                                    //Log user logout
-                                    Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.LogOut, ""));
-                                    GlobalStorage.CurrentUser = null;
-                                    this.InvokeIfRequired(Show);
-                                    this.InvokeIfRequired(Activate);
-                                    OnLoad(EventArgs.Empty);
-                                });
-                                //Setting the apartment state is needed.
-                                th.SetApartmentState(ApartmentState.STA);
-                                //Then we can start the thread and and hide this form
-                                Hide();
-                                th.Start();
                             } else {
                                 //Password doesn't work
                                 //Clear the textbox

@@ -16,12 +16,12 @@ namespace NickAc.LightPOS.Backend.Utils
             th.Start();
         }
 
-        //Code taken from StackOverflow (https://stackoverflow.com/questions/2367718/automating-the-invokerequired-code-pattern)
+        //Code taken and adapted from StackOverflow (https://stackoverflow.com/questions/2367718/automating-the-invokerequired-code-pattern)
         //All credits go to Olivier Jacot-Descombes (https://stackoverflow.com/users/880990/olivier-jacot-descombes)
         public static void InvokeIfRequired(this Control control, MethodInvoker action)
         {
-            if (control.InvokeRequired) {
-                if (!control.IsDisposed && !control.Disposing) control.Invoke(action);
+            if (!control.IsDisposed && !control.Disposing && control.InvokeRequired) {
+                control.Invoke(action);
             } else {
                 action();
             }
