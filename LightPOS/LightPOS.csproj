@@ -38,6 +38,15 @@
   <PropertyGroup>
     <ApplicationIcon>..\SharedResources\lightpos.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-NoDB|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ModernUIDoneRight">
       <HintPath>..\..\ModernUIDoneRight\ModernUIDoneRight\bin\Debug\ModernUIDoneRight.dll</HintPath>
@@ -143,6 +152,9 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>IF "$(ConfigurationName)" EQU "Debug" goto :eof
+IF "$(ConfigurationName)" EQU "Debug-NoDB" del POS.db
+IF "$(ConfigurationName)" EQU "Debug-NoDB" del nh.config
+IF "$(ConfigurationName)" EQU "Debug-NoDB" goto :eof
 
 del dependencies.libz
 libz add -l dependencies.libz --move --safe-load -i *.dll
