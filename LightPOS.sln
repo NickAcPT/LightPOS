@@ -16,15 +16,20 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug-NoDB|Any CPU = Debug-NoDB|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3938CE2B-99B5-4878-8A03-53993E4CF390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3938CE2B-99B5-4878-8A03-53993E4CF390}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3938CE2B-99B5-4878-8A03-53993E4CF390}.Debug-NoDB|Any CPU.ActiveCfg = Debug-NoDB|Any CPU
+		{3938CE2B-99B5-4878-8A03-53993E4CF390}.Debug-NoDB|Any CPU.Build.0 = Debug-NoDB|Any CPU
 		{3938CE2B-99B5-4878-8A03-53993E4CF390}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3938CE2B-99B5-4878-8A03-53993E4CF390}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82BEE664-3DBB-40A5-9D4C-C6DB457428DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{82BEE664-3DBB-40A5-9D4C-C6DB457428DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82BEE664-3DBB-40A5-9D4C-C6DB457428DF}.Debug-NoDB|Any CPU.ActiveCfg = Debug-NoDB|Any CPU
+		{82BEE664-3DBB-40A5-9D4C-C6DB457428DF}.Debug-NoDB|Any CPU.Build.0 = Debug-NoDB|Any CPU
 		{82BEE664-3DBB-40A5-9D4C-C6DB457428DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82BEE664-3DBB-40A5-9D4C-C6DB457428DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
