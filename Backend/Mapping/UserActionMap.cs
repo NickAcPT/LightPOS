@@ -17,7 +17,6 @@ namespace NickAc.LightPOS.Backend.Mapping
             Id(x => x.ID).GeneratedBy.Native();
             Map(x => x.Event);
             Map(x => x.Description);
-            References(x => x.User);
             Map(x => x.Time).CustomType<LocalDateTimeType>();
         }
     }

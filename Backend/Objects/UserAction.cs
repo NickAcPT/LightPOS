@@ -29,7 +29,6 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual int ID { get; set; }
         public virtual Action Event { get; set; }
         public virtual String Description { get; set; }
-        public virtual User User { get; set; }
         public virtual DateTime Time { get; set; }
     }
 }

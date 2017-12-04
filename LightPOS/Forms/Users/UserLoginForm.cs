@@ -70,6 +70,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         public void Recenter(Control c, bool horizontal = true, bool vertical = true)
         {
+            if (c == null) return;
             if (horizontal)
                 c.Left = (c.Parent.ClientSize.Width - c.Width) / 2;
             if (vertical)

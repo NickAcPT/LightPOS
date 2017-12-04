@@ -222,23 +222,22 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void LogAction(User user, UserAction.Action eventAction, string info)
         {
-            User withActions = GetUserWithActions(user.UserID);
+            User freshUser = GetUser(user.UserID);
             UserAction action = new UserAction()
             {
-                User = withActions,
                 Time = DateTime.Now,
                 Event = eventAction,
                 Description = info
             };
-            withActions.Actions.Add(action);
+            freshUser.Actions.Add(action);
 
             using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     using (var trans = session.BeginTransaction()) {
                         session.SaveOrUpdate(action);
-                        if (!NHibernateUtil.IsInitialized(withActions.Actions))
-                            NHibernateUtil.Initialize(withActions.Actions);
-                        session.SaveOrUpdate(withActions);
+                        if (!NHibernateUtil.IsInitialized(freshUser.Actions))
+                            NHibernateUtil.Initialize(freshUser.Actions);
+                        session.SaveOrUpdate(freshUser);
                         trans.Commit();
                     }
                 }
