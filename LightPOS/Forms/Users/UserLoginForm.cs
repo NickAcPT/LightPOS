@@ -131,7 +131,9 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     };
                     KeyEventHandler escapeKey = (Object s, KeyEventArgs ee) => {
                         if (ee.KeyCode == Keys.Escape && !ee.Control && !ee.Alt && !ee.Shift) {
-                            form.Close();
+                            ee.Handled = true;
+                            ee.SuppressKeyPress = true;
+                            form.InvokeIfRequired(form.Close);
                         }
                     };
                     Label mainLabel = new Label
@@ -191,11 +193,15 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                                 Thread th = new Thread(() => {
                                     //Start a new application loop.
                                     GlobalStorage.CurrentUser = usr;
+                                    //Log user login 
                                     Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.Login, ""));
+                                    //Run main form
                                     Application.Run(new MainMenuForm());
+                                    //Log user logout 
                                     Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.LogOut, ""));
                                     GlobalStorage.CurrentUser = null;
                                     this.InvokeIfRequired(Show);
+                                    this.InvokeIfRequired(Activate);
                                 });
                                 //Setting the apartment state is needed.
                                 th.SetApartmentState(ApartmentState.STA);
@@ -215,16 +221,16 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     textBox.KeyUp += escapeKey;
                     form.KeyUp += escapeKey;
                     form.Load += (ss, ee) => {
-                        var anim = new Animation().WithLimit(20).WithAction((a) => form.InvokeIfRequired(() => form.Opacity += 0.05f));
+                        var anim = new Animation().WithLimit(10).WithAction((a) => form.InvokeIfRequired(() => form.Opacity += 0.1f));
                         anim.Start();
                     };
                     bool canCloseForm = false;
-                    MethodInvoker reduceOpacity = () => form.Opacity -= 0.05f;
+                    MethodInvoker reduceOpacity = () => form.Opacity -= 0.1f;
 
                     form.FormClosing += (ss, ee) => {
                         ee.Cancel = !canCloseForm;
                         Debug.WriteLine(ee.CloseReason);
-                        var anim = new Animation().WithLimit(20).WithAction((a) => {
+                        var anim = new Animation().WithLimit(10).WithAction((a) => {
                             form.InvokeIfRequired(reduceOpacity);
                             if (Math.Abs(form.Opacity) < float.Epsilon) {
                                 canCloseForm = true;
