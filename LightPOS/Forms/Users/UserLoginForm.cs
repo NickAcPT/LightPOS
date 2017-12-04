@@ -159,9 +159,9 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     };
                     KeyEventHandler escapeKey = (Object s, KeyEventArgs ee) => {
                         if (ee.KeyCode == Keys.Escape && !ee.Control && !ee.Alt && !ee.Shift) {
-                            ee.Handled = true;
-                            ee.SuppressKeyPress = true;
                             form.InvokeIfRequired(form.Close);
+                            ee.Handled = ee.SuppressKeyPress = true;
+                            
                         }
                     };
                     Label mainLabel = new Label
