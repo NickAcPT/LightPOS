@@ -1,4 +1,12 @@
-﻿using NickAc.LightPOS.Backend.Data;
+﻿//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
+//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
+using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Translation;
 using NickAc.LightPOS.Backend.Utils;
@@ -16,16 +24,61 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 {
     public partial class UserLoginForm : TemplateForm
     {
-        public override Size MaximumSize { get => Size.Empty; set => base.MaximumSize = value; }
+        #region Fields
 
+        private const int MaxTilesPerRow = 3;
         private const int TileSize = 145;
-        IList<User> users;
+        private IList<User> users;
+        const int ControlPadding = 8;
+
+        #endregion
+
+        #region Constructors
 
         public UserLoginForm()
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
             translationHelper1.Translate(this);
+        }
+
+        #endregion
+
+        #region Properties
+
+        public override Size MaximumSize { get => Size.Empty; set => base.MaximumSize = value; }
+
+        #endregion
+
+        #region Methods
+
+
+        public void Recenter(Control c, bool horizontal = true, bool vertical = true)
+        {
+            if (c == null) return;
+            if (horizontal)
+                c.Left = (c.Parent.ClientSize.Width - c.Width) / 2;
+            if (vertical)
+                c.Top = (c.Parent.ClientSize.Height - c.Height) / 2;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            label1.Show();
+            foreach (Control control in panel1.Controls) {
+                control.Dispose();
+            }
+            panel1.Controls.Clear();
+            Recenter(label1);
+            panel1.Hide();
+            base.OnLoad(e);
+            Thread th = new Thread(() => {
+                InitEverything();
+
+                users = DataManager.GetUsers();
+                SetupUsers(users);
+            });
+            th.Start();
         }
 
         private void InitEverything()
@@ -52,39 +105,17 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 return;
             }
         }
-
-        protected override void OnLoad(EventArgs e)
-        {
-            Recenter(label1);
-            panel1.Hide();
-            base.OnLoad(e);
-            Thread th = new Thread(() => {
-                InitEverything();
-
-                users = DataManager.GetUsers();
-                SetupUsers(users);
-            });
-            th.Start();
-        }
-
-
-        public void Recenter(Control c, bool horizontal = true, bool vertical = true)
-        {
-            if (c == null) return;
-            if (horizontal)
-                c.Left = (c.Parent.ClientSize.Width - c.Width) / 2;
-            if (vertical)
-                c.Top = (c.Parent.ClientSize.Height - c.Height) / 2;
-        }
-
         private void SetupUsers(IList<User> usr)
         {
+            Size tileSz = new Size(TileSize, TileSize);
+            int numberOfColumns = Math.Min(MaxTilesPerRow, usr.Count);
+            int numberOfRows = usr.Count / numberOfColumns + (usr.Count % numberOfColumns > 0 ? 1 : 0);
+
             panel1.InvokeIfRequired(() => {
-                panel1.AutoSize = true;
-                panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                panel1.Width = ControlPadding + Math.Min(MaxTilesPerRow, numberOfColumns) * (ControlPadding + tileSz.Width);
+                panel1.Height = ControlPadding + numberOfRows * (ControlPadding + tileSz.Height);
             });
 
-            Size tileSz = new Size(TileSize, TileSize);
             foreach (var user in usr) {
                 TilePanelReborn rb = new TilePanelReborn
                 {
@@ -99,7 +130,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     Flat = true
                 };
 
-
                 panel1.InvokeIfRequired(() => panel1.Controls.Add(rb));
 
                 rb.InvokeIfRequired(() => {
@@ -112,12 +142,10 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             });
             label1.InvokeIfRequired(label1.Hide);
         }
-
         private void UserTile_Click(object sender, EventArgs e)
         {
             if (sender is TilePanelReborn tile) {
                 if (tile.Tag is User usr) {
-                    const int formPadding = 8;
                     const float percentage = 0.25f;
                     const float userNamePercentage = 0.25f;
                     const float textBoxPercentage = 0.65f;
@@ -142,12 +170,11 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                         BackColor = Color.Transparent,
                         Text = translationHelper1.GetTranslation("user_login_simple_title"),
                         Font = new Font(base.Font.FontFamily, 16),
-                        Location = new Point(0, formPadding)
+                        Location = new Point(0, ControlPadding)
                     };
 
                     form.Controls.Add(mainLabel);
                     Recenter(mainLabel, vertical: false);
-
 
                     Label userNameLabel = new Label
                     {
@@ -165,9 +192,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     {
                         Text = translationHelper1.GetTranslation("user_login_okbutton"),
                         Size = new Size((int)(form.Width * percentage), (int)(form.Height * percentage)),
-
                     };
-                    btn.Location = new Point(0 /* Will be centered later */, form.Bottom - formPadding - btn.Height);
+                    btn.Location = new Point(0 /* Will be centered later */, form.Bottom - ControlPadding - btn.Height);
 
                     Point point = new Point(0, (int)(form.Height * textBoxPercentage));
                     point.Offset(0, -8);
@@ -193,15 +219,16 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                                 Thread th = new Thread(() => {
                                     //Start a new application loop.
                                     GlobalStorage.CurrentUser = usr;
-                                    //Log user login 
+                                    //Log user login
                                     Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.Login, ""));
                                     //Run main form
                                     Application.Run(new MainMenuForm());
-                                    //Log user logout 
+                                    //Log user logout
                                     Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.LogOut, ""));
                                     GlobalStorage.CurrentUser = null;
                                     this.InvokeIfRequired(Show);
                                     this.InvokeIfRequired(Activate);
+                                    OnLoad(EventArgs.Empty);
                                 });
                                 //Setting the apartment state is needed.
                                 th.SetApartmentState(ApartmentState.STA);
@@ -242,7 +269,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     form.ShowDialog();
                 }
             }
-
         }
+
+        #endregion
     }
 }

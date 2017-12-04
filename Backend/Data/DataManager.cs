@@ -281,13 +281,13 @@ namespace NickAc.LightPOS.Backend.Data
         public static void Initialize(FileInfo file)
         {
             TimeMeasurer.MeasureTime("new DataFactory();", () => {
-                DataFactory = new DataFactory(file, false);
+                if (DataFactory == null)DataFactory = new DataFactory(file, false);
             });
             TimeMeasurer.MeasureTime("DataFactory.Create();", () => {
-                DataFactory.Create();
+                if (DataFactory != null) DataFactory.Create();
             });
 
-            SessionFactory = DataFactory.CreateSessionFactory();
+            if (SessionFactory == null) SessionFactory = DataFactory.CreateSessionFactory();
         }
         /// <summary>
         /// Never called! Exists just to tell Visual Studio to copy the assemblies to the build directory
