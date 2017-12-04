@@ -36,7 +36,7 @@ namespace NickAc.LightPOS.Frontend.Controls
                 return true;
             }
             else {
-                return base.ProcessCmdKey(ref msg, keyData);
+                return keyData == Keys.Escape || base.ProcessCmdKey(ref msg, keyData);
             }
         }
     }
