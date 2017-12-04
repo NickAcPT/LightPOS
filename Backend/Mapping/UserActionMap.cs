@@ -1,4 +1,6 @@
 ﻿using FluentNHibernate.Mapping;
+using NHibernate;
+using NHibernate.Type;
 using NickAc.LightPOS.Backend.Objects;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,8 @@ namespace NickAc.LightPOS.Backend.Mapping
             Id(x => x.ID).GeneratedBy.Native();
             Map(x => x.Event);
             Map(x => x.Description);
+            References(x => x.User);
+            Map(x => x.Time).CustomType<LocalDateTimeType>();
         }
     }
 }

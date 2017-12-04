@@ -189,7 +189,11 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                                 form.Close();
                                 Thread th = new Thread(() => {
                                     //Start a new application loop.
+                                    GlobalStorage.CurrentUser = usr;
+                                    Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.Login, ""));
                                     Application.Run(new MainMenuForm());
+                                    Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.LogOut, ""));
+                                    GlobalStorage.CurrentUser = null;
                                     this.InvokeIfRequired(Show);
                                 });
                                 //Setting the apartment state is needed.

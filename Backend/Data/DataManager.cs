@@ -5,6 +5,7 @@
 using NHibernate;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -63,12 +64,13 @@ namespace NickAc.LightPOS.Backend.Data
             }
         }
 
-
         public static void AddUser(User user)
         {
             using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     using (var trans = session.BeginTransaction()) {
+                        if (!NHibernateUtil.IsInitialized(user.Actions))
+                            NHibernateUtil.Initialize(user.Actions);
                         if (!NHibernateUtil.IsInitialized(user.Sales))
                             NHibernateUtil.Initialize(user.Sales);
                         session.SaveOrUpdate(user);
@@ -107,6 +109,7 @@ namespace NickAc.LightPOS.Backend.Data
             return finalSale;
         }
 
+
         public static Customer GetCustomer(int id)
         {
             Customer customer;
@@ -134,8 +137,7 @@ namespace NickAc.LightPOS.Backend.Data
             IList<User> list;
             using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
-                    list = session.QueryOver<User>().Fetch(u => u.Actions)
-                  .Eager.List();
+                    list = session.QueryOver<User>().List();
                 }
             }
             return list;
@@ -159,22 +161,89 @@ namespace NickAc.LightPOS.Backend.Data
             User user;
             using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
-                    user = session.QueryOver<User>().Fetch(u => u.Sales).Eager.Where(u => u.UserID == ID).List().FirstOrDefault();
+                    user = session
+                        .QueryOver<User>()
+                        .Fetch(u => u.Sales).Eager
+                        .Where(u => u.UserID == ID)
+                        .List()
+                        .FirstOrDefault();
                 }
             }
             return user;
         }
 
 
-        public static User GetUserWithSales()
+        public static IList<User> GetUsersWithSales()
+        {
+            IList<User> users;
+            using (var sf = SessionFactory) {
+                using (var session = sf.OpenSession()) {
+                    users = session
+                        .QueryOver<User>()
+                        .Fetch(u => u.Sales).Eager
+                        .List();
+                }
+            }
+            return users;
+        }
+
+
+
+        public static User GetUserWithActions(int ID)
         {
             User user;
             using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
-                    user = session.QueryOver<User>().Fetch(u => u.Sales).Eager.List().FirstOrDefault();
+                    user = session
+                        .QueryOver<User>()
+                        .Fetch(u => u.Actions).Eager
+                        .Where(u => u.UserID == ID)
+                        .List()
+                        .FirstOrDefault();
                 }
             }
             return user;
+        }
+
+
+        public static IList<User> GetUsersWithActions()
+        {
+            IList<User> users;
+            using (var sf = SessionFactory) {
+                using (var session = sf.OpenSession()) {
+                    users = session
+                        .QueryOver<User>()
+                        .Fetch(u => u.Actions).Eager
+                        .List();
+                }
+            }
+            return users;
+        }
+
+        public static void LogAction(User user, UserAction.Action eventAction, string info)
+        {
+            User withActions = GetUserWithActions(user.UserID);
+            UserAction action = new UserAction()
+            {
+                User = withActions,
+                Time = DateTime.Now,
+                Event = eventAction,
+                Description = info
+            };
+            withActions.Actions.Add(action);
+
+            using (var sf = SessionFactory) {
+                using (var session = sf.OpenSession()) {
+                    using (var trans = session.BeginTransaction()) {
+                        session.SaveOrUpdate(action);
+                        if (!NHibernateUtil.IsInitialized(withActions.Actions))
+                            NHibernateUtil.Initialize(withActions.Actions);
+                        session.SaveOrUpdate(withActions);
+                        trans.Commit();
+                    }
+                }
+            }
+
         }
 
         public static Product GetProduct(int id)
