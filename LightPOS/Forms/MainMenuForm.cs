@@ -67,7 +67,6 @@ namespace NickAc.LightPOS.Frontend.Forms
                             return;
                         }
                         a.Stop();
-                        canCloseForm = true;
                         form.Controls.Add(layoutPanel);
                     });
 
