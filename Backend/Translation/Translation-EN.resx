@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="add_prod_name" xml:space="preserve">
-    <value>Product Name:</value>
+    <value>Product name:</value>
   </data>
   <data name="add_prod_price" xml:space="preserve">
-    <value>Product Price:</value>
+    <value>Product price:</value>
   </data>
   <data name="add_prod_title" xml:space="preserve">
     <value>$prefix - Add Product</value>
@@ -130,13 +130,13 @@
     <value>Administrator</value>
   </data>
   <data name="create_user_okbutton" xml:space="preserve">
-    <value>Create User</value>
+    <value>Create user</value>
   </data>
   <data name="edit_user_name" xml:space="preserve">
     <value>Username:</value>
   </data>
   <data name="edit_user_okbutton" xml:space="preserve">
-    <value>Modify User</value>
+    <value>Modify user</value>
   </data>
   <data name="edit_user_password" xml:space="preserve">
     <value>Password:</value>
@@ -146,6 +146,9 @@
   </data>
   <data name="edit_user_title" xml:space="preserve">
     <value>$prefix - User Management</value>
+  </data>
+  <data name="main_menu_add_user" xml:space="preserve">
+    <value>Add user</value>
   </data>
   <data name="main_menu_labelMain" xml:space="preserve">
     <value>Main</value>

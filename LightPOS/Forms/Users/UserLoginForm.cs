@@ -224,7 +224,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                                         GlobalStorage.CurrentUser = null;
                                         this.InvokeIfRequired(Show);
                                         this.InvokeIfRequired(Activate);
-                                        OnLoad(EventArgs.Empty);
+                                        this.InvokeIfRequired(() => OnLoad(EventArgs.Empty));
                                     });
                                     //Setting the apartment state is needed.
                                     th.SetApartmentState(ApartmentState.STA);
@@ -246,7 +246,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     textBox.KeyUp += escapeKey;
                     form.KeyUp += escapeKey;
                     form.Load += (ss, ee) => {
-                        var anim = new Animation().WithLimit(10).WithAction((a) => form.InvokeIfRequired(() => form.Opacity += 0.1f));
+                        var anim = new Animation().WithLimit(10).WithAction((a) => form.InvokeIfRequired(() => form.Opacity += 0.1f)).WithDisposal(form);
                         anim.Start();
                     };
                     bool canCloseForm = false;
@@ -254,14 +254,14 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
                     form.FormClosing += (ss, ee) => {
                         ee.Cancel = !canCloseForm;
-                        Debug.WriteLine(ee.CloseReason);
                         var anim = new Animation().WithLimit(10).WithAction((a) => {
-                            form.InvokeIfRequired(reduceOpacity);
                             if (Math.Abs(form.Opacity) < float.Epsilon) {
                                 canCloseForm = true;
-                                form.InvokeIfRequired(form.Close);
+                                form.InvokeIfRequired(form.Dispose);
+                                return;
                             }
-                        });
+                            form.InvokeIfRequired(reduceOpacity);
+                        }).WithDisposal(form);
                         anim.Start();
                     };
                     form.ShowDialog();

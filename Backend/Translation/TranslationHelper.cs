@@ -100,7 +100,7 @@ namespace NickAc.LightPOS.Backend.Translation
         private string GetTranslation(ResourceManager lang, string loc)
         {
             string final = "";
-            string original = lang.GetString(loc);
+            var original = lang.GetString(loc);
             if (original.Contains(' ')) {
                 var split = original.Split(' ');
                 split.All((s) => {

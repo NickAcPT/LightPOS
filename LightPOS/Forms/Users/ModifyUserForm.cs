@@ -29,7 +29,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             translationHelper1.Translate(this);
             InitializePermissions(checkedListBox1);
             checkedListBox1.CheckOnClick = true;
-            Focus();
+            //Focus();
         }
 
         public ModifyUserForm WithAction(UserAction.Action action)
