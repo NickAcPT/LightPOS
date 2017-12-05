@@ -6,7 +6,7 @@ using System.Timers;
 
 namespace NickAc.LightPOS.Backend.Utils
 {
-    public class Animation
+    public class Animation : IDisposable
     {
         internal int hitCount;
         internal int executionLimit;
@@ -31,6 +31,14 @@ namespace NickAc.LightPOS.Backend.Utils
             };
         }
 
+        public Animation WithDisposal(System.Windows.Forms.Control disposable)
+        {
+            disposable.Disposed += (s, e) => Dispose();
+            
+            return this;
+        }
+
+
         public Animation WithAction(Action<Animation> action)
         {
             timerAction = action;
@@ -54,9 +62,18 @@ namespace NickAc.LightPOS.Backend.Utils
             internalTimer.Stop();
             return this;
         }
+
+        public void Dispose()
+        {
+            timerAction = null;
+            internalTimer.Stop();
+            internalTimer.Dispose();
+
+        }
+
         ~Animation()
         {
-            internalTimer.Dispose();
+            Dispose();
         }
     }
 }
