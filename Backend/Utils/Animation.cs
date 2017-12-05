@@ -31,10 +31,11 @@ namespace NickAc.LightPOS.Backend.Utils
             };
         }
 
-        public Animation WithDisposal(System.Windows.Forms.Control disposable)
+        public Animation WithDisposal(System.Windows.Forms.Form disposable)
         {
+            disposable.FormClosing += (s, e) => Dispose();
             disposable.Disposed += (s, e) => Dispose();
-            
+
             return this;
         }
 

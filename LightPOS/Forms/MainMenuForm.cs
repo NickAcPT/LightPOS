@@ -58,19 +58,16 @@ namespace NickAc.LightPOS.Frontend.Forms
 
             form.Location = tilePanelReborn2.PointToScreen(new Point(-FormPadding, -FormPadding));
 
-            int wIncrement = finalWidth % 2 == 0 ? 6 : 9;
+            int wIncrement = finalWidth % 2 == 0 ? 8 : 15;
             form.Load += (s, ee) => {
                 var anim = new Animation().WithAction((a) => {
                     form.InvokeIfRequired(() => {
                         if (form.Width < finalWidth) {
-
-                            try {
-                                form.Width += wIncrement;
-                            } catch (ObjectDisposedException) {
-                            }
+                            form.Width += wIncrement;
                             return;
                         }
                         a.Stop();
+                        canCloseForm = true;
                         form.Controls.Add(layoutPanel);
                     });
 
