@@ -76,8 +76,8 @@
             this.Text = "UserLoginForm";
             this.TitlebarVisible = false;
             this.translationHelper1.SetTranslationLocation(this, "user_login_title");
-            this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.appBar1, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.ResumeLayout(false);
             this.PerformLayout();

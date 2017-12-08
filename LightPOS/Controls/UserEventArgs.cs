@@ -1,4 +1,8 @@
-﻿using NickAc.LightPOS.Backend.Objects;
+﻿//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
+using NickAc.LightPOS.Backend.Objects;
 using System;
 
 namespace NickAc.LightPOS.Frontend.Controls
@@ -13,9 +17,6 @@ namespace NickAc.LightPOS.Frontend.Controls
             }
 
             public User User { get; set; }
-
         }
-
-
     }
 }

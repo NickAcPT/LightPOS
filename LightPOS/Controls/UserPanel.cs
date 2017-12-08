@@ -1,45 +1,51 @@
-﻿using NickAc.LightPOS.Backend.Objects;
+﻿//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
+using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.ModernUIDoneRight.Controls;
 using NickAc.ModernUIDoneRight.Objects;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace NickAc.LightPOS.Frontend.Controls
 {
     public partial class UserPanel : FlowLayoutPanel
     {
+        #region Fields
 
-        /// <summary>
-        /// Called to signal to subscribers that users' tiles have been created
-        /// </summary>
-        public event EventHandler UserTilesCreated;
-        protected virtual void OnUserTilesCreated(EventArgs e)
-        {
-            EventHandler eh = UserTilesCreated;
+        public const int ControlPadding = 8;
 
-            eh?.Invoke(this, e);
-        }
+        #endregion
+
+        #region Events
 
         /// <summary>
         /// Called to signal to subscribers that a user was clicked
         /// </summary>
         public event EventHandler<UserEventArgs> UserClick;
-        protected virtual void OnUserClick(User u)
-        {
-            EventHandler<UserEventArgs> eh = UserClick;
 
-            eh?.Invoke(this, new UserEventArgs(u));
-        }
+        /// <summary>
+        /// Called to signal to subscribers that users' tiles have been created
+        /// </summary>
+        public event EventHandler UserTilesCreated;
+
+        #endregion
+
+        #region Properties
 
         public ColorScheme ColorScheme { get; set; } = DefaultColorSchemes.Blue;
-        public int TileSize { get; set; } = 145;
+
         public int MaxTilesPerRow { get; set; } = 3;
-        public const int ControlPadding = 8;
+
+        public int TileSize { get; set; } = 145;
+
+        #endregion
+
+        #region Methods
 
         public void SetupUsers(IList<User> usr)
         {
@@ -78,6 +84,20 @@ namespace NickAc.LightPOS.Frontend.Controls
             OnUserTilesCreated(EventArgs.Empty);
         }
 
+        protected virtual void OnUserClick(User u)
+        {
+            EventHandler<UserEventArgs> eh = UserClick;
 
+            eh?.Invoke(this, new UserEventArgs(u));
+        }
+
+        protected virtual void OnUserTilesCreated(EventArgs e)
+        {
+            EventHandler eh = UserTilesCreated;
+
+            eh?.Invoke(this, e);
+        }
+
+        #endregion
     }
 }

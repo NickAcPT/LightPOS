@@ -94,8 +94,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             //A user was selected. We can now show a form and ask for a password
             User usr = e.User;
             const float percentage = 0.25f;
-            const float userNamePercentage = 0.25f;
-            const float textBoxPercentage = 0.65f;
+
             var form = new SecureUserPasswordRequestForm
             {
                 Size = new Size((int)(Width * percentage), (int)(Height * percentage)),

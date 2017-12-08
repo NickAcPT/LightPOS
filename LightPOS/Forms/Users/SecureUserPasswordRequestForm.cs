@@ -1,52 +1,55 @@
-﻿using NickAc.LightPOS.Backend.Objects;
+﻿//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
+using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Translation;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.LightPOS.Frontend.Controls;
 using NickAc.ModernUIDoneRight.Controls;
 using NickAc.ModernUIDoneRight.Forms;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using static NickAc.LightPOS.Frontend.Controls.UserPanel;
 
 namespace NickAc.LightPOS.Frontend.Forms.Users
 {
-    class SecureUserPasswordRequestForm : ModernForm
+    internal class SecureUserPasswordRequestForm : ModernForm
     {
-        public User User { get; set; }
+        #region Fields
 
-        const int ControlPadding = 8;
+        private const int ControlPadding = 8;
 
+        #endregion
 
-        /// <summary>
-        /// Called to signal to subscribers that login succeded
-        /// </summary>
-        public event EventHandler<UserEventArgs> LoginSucceded;
-        protected virtual void OnLoginSucceded(User e)
-        {
-            EventHandler<UserEventArgs> eh = LoginSucceded;
-
-            eh?.Invoke(this, new UserEventArgs(e));
-        }
+        #region Constructors
 
         public SecureUserPasswordRequestForm()
         {
             Sizable = false;
             TitlebarVisible = false;
             Opacity = 0;
-
         }
 
-        public void SecureRequest(User usr)
-        {
-            User = usr;
-            AddControls(this);
-            ShowDialog();
-        }
+        #endregion
 
+        #region Events
+
+        /// <summary>
+        /// Called to signal to subscribers that login succeded
+        /// </summary>
+        public event EventHandler<UserEventArgs> LoginSucceded;
+
+        #endregion
+
+        #region Properties
+
+        public User User { get; set; }
+
+        #endregion
+
+        #region Methods
 
         public void Recenter(Control c, bool horizontal = true, bool vertical = true)
         {
@@ -57,7 +60,19 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 c.Top = (c.Parent.ClientSize.Height - c.Height) / 2;
         }
 
+        public void SecureRequest(User usr)
+        {
+            User = usr;
+            AddControls(this);
+            ShowDialog();
+        }
 
+        protected virtual void OnLoginSucceded(User e)
+        {
+            EventHandler<UserEventArgs> eh = LoginSucceded;
+
+            eh?.Invoke(this, new UserEventArgs(e));
+        }
         private void AddControls(SecureUserPasswordRequestForm form)
         {
             TranslationHelper translationHelper = new TranslationHelper();
@@ -161,5 +176,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             };
             translationHelper.Dispose();
         }
+
+        #endregion
     }
 }
