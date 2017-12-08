@@ -17,12 +17,10 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual string HashedPassword { get; set; }
         public virtual string Salt { get; set; }
 
-        [NotLazy]
         public virtual IList<UserAction> Actions { get; set; }
 
         public virtual UserPermission Permissions { get; set; }
 
-        [NotLazy]
         public virtual IList<Sale> Sales { get; set; }
 
         public virtual bool HasPermission(UserPermission perm)
