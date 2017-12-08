@@ -43,14 +43,15 @@ namespace NickAc.LightPOS.Frontend.Forms
                 Size = new Size(0, tilePanelReborn2.Size.Height + FormPadding * 2),
                 TitlebarVisible = false,
             };
-            var layoutPanel = new FlowLayoutPanel
-            {
-                Dock = DockStyle.Fill,
-                Padding = new Padding(FormPadding, FormPadding / 2, FormPadding / 2, FormPadding / 2)
-            };
 
             var tileWidth = (tilePanelReborn2.Width / 2) - FormPadding;
             var tileHeight = tilePanelReborn2.Height;
+
+            var layoutPanel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                Padding = new Padding(FormPadding + (FormPadding / 4), FormPadding / 2, FormPadding / 2, FormPadding / 2)
+            };
 
             //Add tiles to animated form
 
@@ -97,6 +98,7 @@ namespace NickAc.LightPOS.Frontend.Forms
         {
             TilePanelReborn tile = new TilePanelReborn
             {
+                CanBeHovered = true,
                 Flat = true,
                 Text = text,
                 Size = new Size(tileWidth, tileHeight),
