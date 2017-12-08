@@ -148,6 +148,15 @@
   <ItemGroup>
     <None Include="Resources\ic_person_white_48dp_2x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\account-edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\account-plus.png" />
+  </ItemGroup>
   <Import Project="..\SharedResources\SharedResources.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

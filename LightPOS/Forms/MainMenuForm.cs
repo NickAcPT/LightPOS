@@ -3,6 +3,7 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
 using NickAc.LightPOS.Backend.Utils;
+using NickAc.LightPOS.Frontend.Properties;
 using NickAc.ModernUIDoneRight.Controls;
 using NickAc.ModernUIDoneRight.Forms;
 using System;
@@ -45,20 +46,32 @@ namespace NickAc.LightPOS.Frontend.Forms
             var layoutPanel = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
-                Padding = new Padding(FormPadding / 2)
+                Padding = new Padding(FormPadding, FormPadding / 2, FormPadding / 2, FormPadding / 2)
             };
 
             var tileWidth = (tilePanelReborn2.Width / 2) - FormPadding;
             var tileHeight = tilePanelReborn2.Height;
+
+            //Add tiles to animated form
+
             TilePanelReborn addUserTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_add_user"), () => {
                 Extensions.RunInAnotherThread(() => Application.Run(new Forms.Users.ModifyUserForm().WithAction(Backend.Objects.UserAction.Action.CreateUser)));
-            });
+            }, Resources.account_plus);
 
             layoutPanel.Controls.Add(addUserTile);
 
+            TilePanelReborn newUserTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_edit_user"), () => {
+                Extensions.RunInAnotherThread(() => Application.Run(new Forms.Users.ModifyUserForm().WithAction(Backend.Objects.UserAction.Action.ModifyUser)));
+            }, Resources.account_edit);
+
+            layoutPanel.Controls.Add(newUserTile);
+
+
             form.Location = tilePanelReborn2.PointToScreen(new Point(-FormPadding, -FormPadding));
 
-            int wIncrement = finalWidth % 2 == 0 ? 8 : 15;
+            const int formOpenSpeed = 4;
+
+            int wIncrement = finalWidth % 2 == 0 ? formOpenSpeed * 2 : formOpenSpeed * 3;
             form.Load += (s, ee) => {
                 var anim = new Animation().WithAction((a) => {
                     form.InvokeIfRequired(() => {
@@ -84,6 +97,7 @@ namespace NickAc.LightPOS.Frontend.Forms
         {
             TilePanelReborn tile = new TilePanelReborn
             {
+                Flat = true,
                 Text = text,
                 Size = new Size(tileWidth, tileHeight),
                 Image = img,

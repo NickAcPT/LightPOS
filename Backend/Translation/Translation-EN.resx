@@ -150,6 +150,9 @@
   <data name="main_menu_add_user" xml:space="preserve">
     <value>Add user</value>
   </data>
+  <data name="main_menu_edit_user" xml:space="preserve">
+    <value>Edit user</value>
+  </data>
   <data name="main_menu_labelMain" xml:space="preserve">
     <value>Main</value>
   </data>
