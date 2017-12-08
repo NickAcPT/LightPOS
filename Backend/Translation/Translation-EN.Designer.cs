@@ -106,6 +106,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current.
+        /// </summary>
+        public static string current_user {
+            get {
+                return ResourceManager.GetString("current_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username:.
         /// </summary>
         public static string edit_user_name {
@@ -264,6 +273,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         public static string prefix {
             get {
                 return ResourceManager.GetString("prefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $prefix - Select user.
+        /// </summary>
+        public static string select_user_title {
+            get {
+                return ResourceManager.GetString("select_user_title", resourceCulture);
             }
         }
         

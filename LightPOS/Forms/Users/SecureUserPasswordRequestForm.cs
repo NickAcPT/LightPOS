@@ -159,21 +159,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 var anim = new Animation().WithLimit(10).WithAction((a) => form.InvokeIfRequired(() => form.Opacity += 0.1f)).WithDisposal(form);
                 anim.Start();
             };
-            bool canCloseForm = false;
-            MethodInvoker reduceOpacity = () => form.Opacity -= 0.1f;
-
-            form.FormClosing += (ss, ee) => {
-                ee.Cancel = !canCloseForm;
-                var anim = new Animation().WithLimit(10).WithAction((a) => {
-                    if (Math.Abs(form.Opacity) < float.Epsilon) {
-                        canCloseForm = true;
-                        form.InvokeIfRequired(form.Dispose);
-                        return;
-                    }
-                    form.InvokeIfRequired(reduceOpacity);
-                }).WithDisposal(form);
-                anim.Start();
-            };
+            MethodInvoker reduceOpacity = () => form.InvokeIfRequired(() => form.Opacity -= 0.1f);
             translationHelper.Dispose();
         }
 

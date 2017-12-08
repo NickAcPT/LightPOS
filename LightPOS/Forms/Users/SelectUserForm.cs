@@ -18,23 +18,23 @@ using System.Windows.Forms;
 
 namespace NickAc.LightPOS.Frontend.Forms.Users
 {
-    public partial class UserLoginForm : TemplateForm
+    public partial class SelectUserForm : TemplateForm
     {
+
         #region Fields
 
+        const int ControlPadding = 8;
         private const int MaxTilesPerRow = 3;
         private const int TileSize = 145;
         private IList<User> users;
-        const int ControlPadding = 8;
 
         #endregion
 
         #region Constructors
 
-        public UserLoginForm()
+        public SelectUserForm()
         {
             InitializeComponent();
-            WindowState = FormWindowState.Maximized;
             translationHelper1.Translate(this);
         }
 
@@ -42,12 +42,24 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         #region Properties
 
-        public override Size MaximumSize { get => Size.Empty; set => base.MaximumSize = value; }
+        public User SelectedUser { get; set; }
 
         #endregion
 
         #region Methods
 
+        public static User ShowUserSelectionDialog(bool canSelectCurrent = true)
+        {
+            SelectUserForm form = new SelectUserForm();
+            form.CanSelectCurrentUser(canSelectCurrent).ShowDialog();
+            return form.SelectedUser;
+        }
+
+        public SelectUserForm CanSelectCurrentUser(bool value)
+        {
+            panel1.CanSelectCurrentUser = value;
+            return this;
+        }
 
         public void Recenter(Control c, bool horizontal = true, bool vertical = true)
         {
@@ -79,59 +91,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             panel1.UserTilesCreated += Panel1_UserTilesCreated;
 
         }
-
-        private void Panel1_UserTilesCreated(object sender, EventArgs e)
-        {
-            panel1.InvokeIfRequired(() => {
-                panel1.Show();
-                Recenter(panel1);
-            });
-            label1.InvokeIfRequired(label1.Hide);
-        }
-
-        private void Panel1_UserClick(object sender, UserPanel.UserEventArgs e)
-        {
-            //Ignore "ghost" click if user is logged in
-            if (GlobalStorage.CurrentUser != null) return;
-            //A user was selected. We can now show a form and ask for a password
-            User usr = e.User;
-            const float percentage = 0.25f;
-
-            var form = new SecureUserPasswordRequestForm
-            {
-                Size = new Size((int)(Width * percentage), (int)(Height * percentage)),
-                Text = Text,
-            };
-            form.LoginSucceded += Form_LoginSucceded;
-            form.SecureRequest(usr);
-            
-        }
-
-        private void Form_LoginSucceded(object sender, UserPanel.UserEventArgs e)
-        {
-            ((IDisposable)sender).Dispose();
-            User usr = e.User;
-            Thread th = new Thread(() => {
-                //Start a new application loop.
-                GlobalStorage.CurrentUser = usr;
-                //Log user login
-                Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.Login, ""));
-                //Run main form
-                Application.Run(new MainMenuForm());
-                //Log user logout
-                Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.LogOut, ""));
-                GlobalStorage.CurrentUser = null;
-                this.InvokeIfRequired(Show);
-                this.InvokeIfRequired(Activate);
-                this.InvokeIfRequired(() => OnLoad(EventArgs.Empty));
-            });
-            //Setting the apartment state is needed.
-            th.SetApartmentState(ApartmentState.STA);
-            //Then we can start the thread and and hide this form
-            Hide();
-            th.Start();
-        }
-
         private void InitEverything()
         {
             Program.InitializeDatabase();
@@ -157,6 +116,24 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             }
         }
 
+        private void Panel1_UserClick(object sender, UserPanel.UserEventArgs e)
+        {
+            //A user was selected. We can now close the form
+            User usr = e.User;
+            SelectedUser = usr;
+            Close();
+        }
+
+        private void Panel1_UserTilesCreated(object sender, EventArgs e)
+        {
+            panel1.InvokeIfRequired(() => {
+                panel1.Show();
+                Recenter(panel1);
+            });
+            label1.InvokeIfRequired(label1.Hide);
+        }
+        
         #endregion
+
     }
 }

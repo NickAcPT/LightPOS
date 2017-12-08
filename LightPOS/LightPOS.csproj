@@ -99,6 +99,12 @@
     <Compile Include="Forms\Users\SecureUserPasswordRequestForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Users\SelectUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Users\SelectUserForm.Designer.cs">
+      <DependentUpon>SelectUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Users\UserLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Users\ModifyUserForm.resx">
       <DependentUpon>ModifyUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users\SelectUserForm.resx">
+      <DependentUpon>SelectUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Users\UserLoginForm.resx">
       <DependentUpon>UserLoginForm.cs</DependentUpon>

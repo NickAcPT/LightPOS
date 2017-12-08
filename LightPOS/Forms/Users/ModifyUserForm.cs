@@ -1,27 +1,27 @@
-﻿using NickAc.LightPOS.Backend.Data;
+﻿//
+// Copyright (c) NickAc. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
+using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
-using NickAc.ModernUIDoneRight.Forms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Dynamic;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace NickAc.LightPOS.Frontend.Forms.Users
 {
     public partial class ModifyUserForm : TemplateForm
     {
-        public UserAction.Action UserAction { get; set; } = Backend.Objects.UserAction.Action.CreateUser;
+        #region Constructors
 
-        public ModifyUserForm()
+        public ModifyUserForm(UserAction.Action action = Backend.Objects.UserAction.Action.CreateUser)
         {
             InitializeComponent();
-            switch (UserAction) {
+            UserAction = action;
+            switch (action) {
                 case Backend.Objects.UserAction.Action.ModifyUser:
                     translationHelper1.SetTranslationLocation(metroButton1, "edit_user_okbutton");
                     break;
@@ -29,8 +29,18 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             translationHelper1.Translate(this);
             InitializePermissions(checkedListBox1);
             checkedListBox1.CheckOnClick = true;
-            //Focus();
         }
+
+        #endregion
+
+        #region Properties
+
+        public User BaseUser { get; set; }
+        public UserAction.Action UserAction { get; set; } = Backend.Objects.UserAction.Action.CreateUser;
+
+        #endregion
+
+        #region Methods
 
         public ModifyUserForm WithAction(UserAction.Action action)
         {
@@ -58,6 +68,25 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             return this;
         }
 
+        public ModifyUserForm WithUser(User usr)
+        {
+            BaseUser = usr;
+            return WithName(usr.UserName).WithPermissions(usr.Permissions);
+        }
+        private UserPermission GetPermissions(IEnumerable<object> enumerable)
+        {
+            Enum final = UserPermission.None;
+            foreach (var i in enumerable) {
+                dynamic expandoObject = i as ExpandoObject;
+                if (expandoObject != null) {
+                    if ((expandoObject.EnumValue is UserPermission value)) {
+                        final = final.Or(value);
+                    }
+                }
+            }
+            return (UserPermission)final;
+        }
+
         private void InitializePermissions(ListBox listBox)
         {
             listBox.Format += (s, e) => {
@@ -72,16 +101,14 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                     obj.Description = translationHelper1.GetTranslation(e.GetDescription());
                     listBox.Items.Add(obj);
                 }
-
             }
         }
-
 
         private void MetroButton1_Click(object sender, EventArgs e)
         {
             UserPermission perm = GetPermissions(checkedListBox1.CheckedItems.OfType<object>());
-            if (!string.IsNullOrWhiteSpace(textBox1.Text) && !string.IsNullOrWhiteSpace(textBoxEx1.Text)) {
-                User user = User.CreateUser(textBox1.Text.Trim(), textBoxEx1.Text.Trim(), perm);
+            if (!string.IsNullOrWhiteSpace(textBox1.Text) && (UserAction == Backend.Objects.UserAction.Action.ModifyUser || !string.IsNullOrWhiteSpace(textBoxEx1.Text))) {
+                User user = BaseUser != null ? ModifyUser(BaseUser, perm) : User.CreateUser(textBox1.Text.Trim(), textBoxEx1.Text.Trim(), perm);
                 switch (UserAction) {
                     case Backend.Objects.UserAction.Action.CreateUser:
                     case Backend.Objects.UserAction.Action.ModifyUser:
@@ -93,18 +120,23 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             }
         }
 
-        private UserPermission GetPermissions(IEnumerable<object> enumerable)
+        private User ModifyUser(User baseUser, UserPermission perm)
         {
-            Enum final = UserPermission.None;
-            foreach (var i in enumerable) {
-                dynamic expandoObject = i as ExpandoObject;
-                if (expandoObject != null) {
-                    if ((expandoObject.EnumValue is UserPermission value)) {
-                        final = final.Or(value);
-                    }
-                }
+            const float sizePercentage = 0.65f;
+            baseUser.UserName = textBox1.Text;
+            baseUser.Permissions = perm;
+            if (!string.IsNullOrWhiteSpace(textBoxEx1.Text)) {
+                var loginForm = new SecureUserPasswordRequestForm();
+                loginForm.Size = new System.Drawing.Size((int)(Width * sizePercentage), (int)(Height * sizePercentage));
+                loginForm.LoginSucceded += (s, e) => {
+                    baseUser.ChangePassword(textBoxEx1.Text);
+                };
+                loginForm.SecureRequest(baseUser);
             }
-            return (UserPermission)final;
+
+            return baseUser;
         }
+
+        #endregion
     }
 }

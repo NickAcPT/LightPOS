@@ -69,10 +69,14 @@ namespace NickAc.LightPOS.Backend.Data
             using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     using (var trans = session.BeginTransaction()) {
-                        if (!NHibernateUtil.IsInitialized(user.Actions))
-                            NHibernateUtil.Initialize(user.Actions);
-                        if (!NHibernateUtil.IsInitialized(user.Sales))
-                            NHibernateUtil.Initialize(user.Sales);
+                        try {
+                            if (!NHibernateUtil.IsInitialized(user.Actions))
+                                NHibernateUtil.Initialize(user.Actions);
+                            if (!NHibernateUtil.IsInitialized(user.Sales))
+                                NHibernateUtil.Initialize(user.Sales);
+                        } catch (HibernateException) {
+                            //Do nothing
+                        }
                         session.SaveOrUpdate(user);
                         trans.Commit();
                     }
@@ -281,7 +285,7 @@ namespace NickAc.LightPOS.Backend.Data
         public static void Initialize(FileInfo file)
         {
             TimeMeasurer.MeasureTime("new DataFactory();", () => {
-                if (DataFactory == null)DataFactory = new DataFactory(file, false);
+                if (DataFactory == null) DataFactory = new DataFactory(file, false);
             });
             TimeMeasurer.MeasureTime("DataFactory.Create();", () => {
                 if (DataFactory != null) DataFactory.Create();

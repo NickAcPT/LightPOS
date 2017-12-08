@@ -3,6 +3,7 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
 using NickAc.LightPOS.Backend.Objects;
+using NickAc.LightPOS.Backend.Translation;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.ModernUIDoneRight.Controls;
 using NickAc.ModernUIDoneRight.Objects;
@@ -15,6 +16,9 @@ namespace NickAc.LightPOS.Frontend.Controls
 {
     public partial class UserPanel : FlowLayoutPanel
     {
+
+        public bool CanSelectCurrentUser { get; set; } = true;
+
         #region Fields
 
         public const int ControlPadding = 8;
@@ -49,6 +53,7 @@ namespace NickAc.LightPOS.Frontend.Controls
 
         public void SetupUsers(IList<User> usr)
         {
+            TranslationHelper helper = new TranslationHelper();
             Size tileSz = new Size(TileSize, TileSize);
             int numberOfColumns = Math.Min(MaxTilesPerRow, usr.Count);
             int numberOfRows = usr.Count / numberOfColumns + (usr.Count % numberOfColumns > 0 ? 1 : 0);
@@ -58,12 +63,14 @@ namespace NickAc.LightPOS.Frontend.Controls
                 Height = ControlPadding + numberOfRows * (ControlPadding + tileSz.Height);
             });
 
+            String currentExtra = $" ({helper.GetTranslation("current_user")})";
+
             foreach (var user in usr) {
                 TilePanelReborn rb = new TilePanelReborn
                 {
                     Tag = user,
                     Size = tileSz,
-                    Text = user.UserName,
+                    Text = user.UserName + (GlobalStorage.CurrentUser != null ? (GlobalStorage.CurrentUser.UserID == user.UserID ? currentExtra : "") : ""),
                     Image = Properties.Resources.ic_person_white_48dp_2x,
 
                     CanBeHovered = true,
@@ -73,14 +80,17 @@ namespace NickAc.LightPOS.Frontend.Controls
                 };
 
                 this.InvokeIfRequired(() => Controls.Add(rb));
-
                 rb.Click += (s, e) => {
                     rb.InvokeIfRequired(() => {
                         //Invoke click
+                        if (GlobalStorage.CurrentUser != null)
+                            if (user.UserID == GlobalStorage.CurrentUser.UserID && !CanSelectCurrentUser)
+                                return;
                         OnUserClick(user);
                     });
                 };
             }
+            helper.Dispose();
             OnUserTilesCreated(EventArgs.Empty);
         }
 

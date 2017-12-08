@@ -2,6 +2,7 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
+using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.LightPOS.Frontend.Properties;
 using NickAc.ModernUIDoneRight.Controls;
@@ -15,6 +16,7 @@ namespace NickAc.LightPOS.Frontend.Forms
     public partial class MainMenuForm : TemplateForm
     {
         private const int FormPadding = 8;
+
         #region Constructors
 
         public MainMenuForm()
@@ -56,13 +58,21 @@ namespace NickAc.LightPOS.Frontend.Forms
             //Add tiles to animated form
 
             TilePanelReborn addUserTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_add_user"), () => {
+                if (!GlobalStorage.CurrentUser.CanCreateUsers()) return;
                 Extensions.RunInAnotherThread(() => Application.Run(new Forms.Users.ModifyUserForm().WithAction(Backend.Objects.UserAction.Action.CreateUser)));
             }, Resources.account_plus);
 
             layoutPanel.Controls.Add(addUserTile);
 
             TilePanelReborn newUserTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_edit_user"), () => {
-                Extensions.RunInAnotherThread(() => Application.Run(new Forms.Users.ModifyUserForm().WithAction(Backend.Objects.UserAction.Action.ModifyUser)));
+                Extensions.RunInAnotherThread(() => {
+                    if (!GlobalStorage.CurrentUser.CanCreateUsers() && !GlobalStorage.CurrentUser.CanRemoveUsers())
+                        return;
+                    User final = Users.SelectUserForm.ShowUserSelectionDialog(false);
+                    if (final != null) {
+                        Application.Run(new Forms.Users.ModifyUserForm().WithUser(final).WithAction(Backend.Objects.UserAction.Action.ModifyUser));
+                    }
+                });
             }, Resources.account_edit);
 
             layoutPanel.Controls.Add(newUserTile);

@@ -52,6 +52,11 @@ namespace NickAc.LightPOS.Backend.Objects
             return Sha256(salt + password);
         }
 
+        public virtual void ChangePassword(string newPassword)
+        {
+            HashedPassword = HashWithSalt(newPassword, Salt);
+        }
+
         private static string Sha256(string randomString)
         {
             SHA256Managed crypt = new SHA256Managed();
@@ -62,5 +67,16 @@ namespace NickAc.LightPOS.Backend.Objects
             }
             return hash;
         }
+
+        public virtual bool CanDoSale() => Permissions.HasFlag(UserPermission.DoSale);
+
+        public virtual bool CanCreateUsers() => Permissions.HasFlag(UserPermission.CreateUser);
+
+        public virtual bool CanRemoveUsers() => Permissions.HasFlag(UserPermission.RemoveUser);
+
+        public virtual bool CanApplyDiscounts() => Permissions.HasFlag(UserPermission.ApplyDiscount);
+
+        public virtual bool CanPrintReceipts() => Permissions.HasFlag(UserPermission.PrintReceipt);
+
     }
 }
