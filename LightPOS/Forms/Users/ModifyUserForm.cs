@@ -5,6 +5,7 @@
 using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
+using NickAc.ModernUIDoneRight.Objects.MenuItems;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -23,6 +24,18 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             UserAction = action;
             switch (action) {
                 case Backend.Objects.UserAction.Action.ModifyUser:
+                    if (GlobalStorage.CurrentUser.CanRemoveUsers()) {
+                        //Remove user menu item
+                        AppBarMenuTextItem removeUserItem = new AppBarMenuTextItem(translationHelper1.GetTranslation("edit_user_delete"));
+                        removeUserItem.Click += (s, e) => {
+                            if (BaseUser != null)
+                                Extensions.RunInAnotherThread(() => {
+                                    DataManager.RemoveUser(BaseUser.UserID);
+                                    this.InvokeIfRequired(Close);
+                                });
+                        };
+                        appBar1.MenuItems.Add(removeUserItem);
+                    }
                     translationHelper1.SetTranslationLocation(metroButton1, "edit_user_okbutton");
                     break;
             }

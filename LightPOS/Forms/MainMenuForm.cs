@@ -59,7 +59,7 @@ namespace NickAc.LightPOS.Frontend.Forms
 
             TilePanelReborn addUserTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_add_user"), () => {
                 if (!GlobalStorage.CurrentUser.CanCreateUsers()) return;
-                Extensions.RunInAnotherThread(() => Application.Run(new Forms.Users.ModifyUserForm().WithAction(Backend.Objects.UserAction.Action.CreateUser)));
+                Extensions.RunInAnotherThread(() => Application.Run(new Forms.Users.ModifyUserForm()));
             }, Resources.account_plus);
 
             layoutPanel.Controls.Add(addUserTile);
@@ -70,7 +70,7 @@ namespace NickAc.LightPOS.Frontend.Forms
                         return;
                     User final = Users.SelectUserForm.ShowUserSelectionDialog(false);
                     if (final != null) {
-                        Application.Run(new Forms.Users.ModifyUserForm().WithUser(final).WithAction(Backend.Objects.UserAction.Action.ModifyUser));
+                        Application.Run(new Forms.Users.ModifyUserForm(UserAction.Action.ModifyUser).WithUser(final));
                     }
                 });
             }, Resources.account_edit);

@@ -77,7 +77,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             th.Start();
             panel1.UserClick += Panel1_UserClick;
             panel1.UserTilesCreated += Panel1_UserTilesCreated;
-
         }
 
         private void Panel1_UserTilesCreated(object sender, EventArgs e)
