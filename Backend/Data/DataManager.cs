@@ -160,7 +160,7 @@ namespace NickAc.LightPOS.Backend.Data
         }
 
 
-        public static User GetUserWithSales(int ID)
+        public static User GetUserComplete(int ID)
         {
             User user;
             using (var sf = SessionFactory) {
@@ -168,6 +168,7 @@ namespace NickAc.LightPOS.Backend.Data
                     user = session
                         .QueryOver<User>()
                         .Fetch(u => u.Sales).Eager
+                        .Fetch(u => u.Actions).Eager
                         .Where(u => u.UserID == ID)
                         .List()
                         .FirstOrDefault();
@@ -201,6 +202,23 @@ namespace NickAc.LightPOS.Backend.Data
                     user = session
                         .QueryOver<User>()
                         .Fetch(u => u.Actions).Eager
+                        .Where(u => u.UserID == ID)
+                        .List()
+                        .FirstOrDefault();
+                }
+            }
+            return user;
+        }
+
+
+        public static User GetUserWithSales(int ID)
+        {
+            User user;
+            using (var sf = SessionFactory) {
+                using (var session = sf.OpenSession()) {
+                    user = session
+                        .QueryOver<User>()
+                        .Fetch(u => u.Sales).Eager
                         .Where(u => u.UserID == ID)
                         .List()
                         .FirstOrDefault();
@@ -324,6 +342,59 @@ namespace NickAc.LightPOS.Backend.Data
                 }
             }
         }
+
+
+        public static void RemoveUser(User u)
+        {
+            using (var sf = SessionFactory) {
+                using (var session = sf.OpenSession()) {
+                    using (var trans = session.BeginTransaction()) {
+                        session.Delete(u);
+                        trans.Commit();
+                    }
+                }
+            }
+        }
+
+        public static void RemoveUserSales(User u)
+        {
+            if (u.Sales.Count == 0) return;
+            using (var sf = SessionFactory) {
+                using (var session = sf.OpenSession()) {
+                    using (var trans = session.BeginTransaction()) {
+                        u.Sales.All((x) => {
+                            session.Delete(x);
+                            return true;
+                        });
+                        trans.Commit();
+                    }
+                }
+            }
+        }
+        public static void RemoveUserActions(User u)
+        {
+            if (u.Actions.Count == 0) return;
+            using (var sf = SessionFactory) {
+                using (var session = sf.OpenSession()) {
+                    using (var trans = session.BeginTransaction()) {
+                        u.Actions.All((x) => {
+                            session.Delete(x);
+                            return true;
+                        });
+                        trans.Commit();
+                    }
+                }
+            }
+        }
+
+
+        public static void RemoveUser(int userID)
+        {
+            User finalUser1 = GetUserWithActions(userID);
+            User finalUser2 = GetUserWithSales(userID);
+            RemoveUser(finalUser1);
+        }
+
         public static void RemoveProduct(int productID)
         {
             using (var sf = SessionFactory) {

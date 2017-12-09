@@ -74,6 +74,8 @@ namespace NickAc.LightPOS.Backend.Objects
 
         public virtual bool CanRemoveUsers() => Permissions.HasFlag(UserPermission.RemoveUser);
 
+        public virtual bool CanModifyUsers() => Permissions.HasFlag(UserPermission.ModifyUser);
+
         public virtual bool CanApplyDiscounts() => Permissions.HasFlag(UserPermission.ApplyDiscount);
 
         public virtual bool CanPrintReceipts() => Permissions.HasFlag(UserPermission.PrintReceipt);

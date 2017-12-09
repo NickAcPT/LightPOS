@@ -115,6 +115,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete user.
+        /// </summary>
+        public static string edit_user_delete {
+            get {
+                return ResourceManager.GetString("edit_user_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username:.
         /// </summary>
         public static string edit_user_name {
@@ -246,6 +255,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         public static string permissions_do_sale {
             get {
                 return ResourceManager.GetString("permissions_do_sale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify users.
+        /// </summary>
+        public static string permissions_modify_user {
+            get {
+                return ResourceManager.GetString("permissions_modify_user", resourceCulture);
             }
         }
         
