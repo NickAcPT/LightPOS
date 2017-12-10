@@ -15,7 +15,7 @@ using static NickAc.LightPOS.Frontend.Controls.UserPanel;
 
 namespace NickAc.LightPOS.Frontend.Forms.Users
 {
-    internal class SecureUserPasswordRequestForm : ModernForm
+    internal class SecureUserLoginForm : ModernForm
     {
         #region Fields
 
@@ -25,7 +25,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         #region Constructors
 
-        public SecureUserPasswordRequestForm()
+        public SecureUserLoginForm()
         {
             Sizable = false;
             TitlebarVisible = false;
@@ -73,7 +73,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
             eh?.Invoke(this, new UserEventArgs(e));
         }
-        private void AddControls(SecureUserPasswordRequestForm form)
+        private void AddControls(SecureUserLoginForm form)
         {
             TranslationHelper translationHelper = new TranslationHelper();
             User usr = User;
