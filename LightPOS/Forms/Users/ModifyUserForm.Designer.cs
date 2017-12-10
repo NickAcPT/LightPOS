@@ -47,7 +47,7 @@
             // 
             this.metroButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.metroButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroButton1.Location = new System.Drawing.Point(224, 285);
+            this.metroButton1.Location = new System.Drawing.Point(224, 305);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(197, 47);
             this.metroButton1.TabIndex = 7;
@@ -88,7 +88,7 @@
             this.checkedListBox1.IntegralHeight = false;
             this.checkedListBox1.Location = new System.Drawing.Point(136, 165);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(496, 110);
+            this.checkedListBox1.Size = new System.Drawing.Size(496, 130);
             this.checkedListBox1.TabIndex = 6;
             this.translationHelper1.SetTranslationLocation(this.checkedListBox1, "");
             // 
@@ -124,7 +124,7 @@
             // 
             this.AcceptButton = this.metroButton1;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(645, 345);
+            this.ClientSize = new System.Drawing.Size(645, 365);
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
             this.Controls.Add(this.textBox1);
@@ -135,7 +135,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.metroButton1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.MinimumSize = new System.Drawing.Size(645, 345);
+            this.MinimumSize = new System.Drawing.Size(645, 365);
             this.Name = "ModifyUserForm";
             this.Text = "ModifyUserForm";
             this.translationHelper1.SetTranslationLocation(this, "edit_user_title");
