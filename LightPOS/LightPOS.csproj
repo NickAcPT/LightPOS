@@ -96,7 +96,7 @@
     <Compile Include="Forms\Users\ModifyUserForm.Designer.cs">
       <DependentUpon>ModifyUserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Users\SecureUserPasswordRequestForm.cs">
+    <Compile Include="Forms\Users\SecureUserLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Users\SelectUserForm.cs">

@@ -96,7 +96,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             User usr = e.User;
             const float percentage = 0.25f;
 
-            var form = new SecureUserPasswordRequestForm
+            var form = new SecureUserLoginForm
             {
                 Size = new Size((int)(Width * percentage), (int)(Height * percentage)),
                 Text = Text,
