@@ -21,6 +21,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         public ModifyUserForm(UserAction.Action action = Backend.Objects.UserAction.Action.CreateUser)
         {
             InitializeComponent();
+            
             UserAction = action;
             switch (action) {
                 case Backend.Objects.UserAction.Action.ModifyUser:
@@ -47,7 +48,11 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         #endregion
 
         #region Properties
-
+        public bool IsCurrentUser {
+            get {
+                return BaseUser != null && BaseUser.UserID == GlobalStorage.CurrentUser.UserID;
+            }
+        }
         public User BaseUser { get; set; }
         public UserAction.Action UserAction { get; set; } = Backend.Objects.UserAction.Action.CreateUser;
 
@@ -131,6 +136,17 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
                 Close();
             }
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            
+            textBox1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers() && !IsCurrentUser;
+            textBoxEx1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
+            checkedListBox1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers() && !IsCurrentUser;
+            metroButton1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
+
         }
 
         private User ModifyUser(User baseUser, UserPermission perm)

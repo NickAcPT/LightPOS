@@ -66,7 +66,7 @@ namespace NickAc.LightPOS.Frontend.Forms
 
             TilePanelReborn newUserTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_edit_user"), () => {
                 Extensions.RunInAnotherThread(() => {
-                    if (!GlobalStorage.CurrentUser.CanCreateUsers() && !GlobalStorage.CurrentUser.CanRemoveUsers())
+                    if (!GlobalStorage.CurrentUser.CanModifyUsers() || !GlobalStorage.CurrentUser.CanRemoveUsers())
                         return;
                     User final = Users.SelectUserForm.ShowUserSelectionDialog(false);
                     if (final != null) {
