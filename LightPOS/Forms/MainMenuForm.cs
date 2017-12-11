@@ -59,23 +59,29 @@ namespace NickAc.LightPOS.Frontend.Forms
 
             TilePanelReborn addUserTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_add_user"), () => {
                 if (!GlobalStorage.CurrentUser.CanCreateUsers()) return;
-                Extensions.RunInAnotherThread(() => Application.Run(new Forms.Users.ModifyUserForm()));
+                this.InvokeIfRequired(Hide);
+                new Users.ModifyUserForm().RunInAnotherApplication();
+                this.InvokeIfRequired(Show);
             }, Resources.account_plus);
 
             layoutPanel.Controls.Add(addUserTile);
 
-            TilePanelReborn newUserTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_edit_user"), () => {
+            TilePanelReborn modifyUserTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_edit_user"), () => {
                 Extensions.RunInAnotherThread(() => {
                     if (!GlobalStorage.CurrentUser.CanModifyUsers() || !GlobalStorage.CurrentUser.CanRemoveUsers())
                         return;
-                    User final = Users.SelectUserForm.ShowUserSelectionDialog(false);
+                    this.InvokeIfRequired(Hide);
+                    User final = Users.SelectUserForm.ShowUserSelectionDialog(true);
+                    this.InvokeIfRequired(Show);
                     if (final != null) {
-                        Application.Run(new Forms.Users.ModifyUserForm(UserAction.Action.ModifyUser).WithUser(final));
+                        this.InvokeIfRequired(Hide);
+                        Application.Run(new Users.ModifyUserForm(UserAction.Action.ModifyUser).WithUser(final));
+                        this.InvokeIfRequired(Show);
                     }
                 });
             }, Resources.account_edit);
 
-            layoutPanel.Controls.Add(newUserTile);
+            layoutPanel.Controls.Add(modifyUserTile);
 
 
             form.Location = tilePanelReborn2.PointToScreen(new Point(-FormPadding, -FormPadding));
