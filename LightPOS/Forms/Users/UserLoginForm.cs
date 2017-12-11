@@ -115,6 +115,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 GlobalStorage.CurrentUser = usr;
                 //Log user login
                 Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.Login, ""));
+                this.InvokeIfRequired(Hide);
                 //Run main form
                 Application.Run(new MainMenuForm());
                 //Log user logout
@@ -122,7 +123,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 GlobalStorage.CurrentUser = null;
                 this.InvokeIfRequired(Show);
                 this.InvokeIfRequired(Activate);
-                this.InvokeIfRequired(() => OnLoad(EventArgs.Empty));
+                if (ModifierKeys.HasFlag(Keys.Shift))
+                    this.InvokeIfRequired(() => OnLoad(EventArgs.Empty));
             });
             //Setting the apartment state is needed.
             th.SetApartmentState(ApartmentState.STA);
@@ -145,7 +147,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             numberOfUsers = DataManager.GetNumberOfUsers();
             if (numberOfUsers < 1) {
                 //Create an administrator account
-                Application.Run(new Forms.Users.ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All));
+                var modify = new Forms.Users.ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All);
+                modify.RunInAnotherApplication();
             }
             //The person might've not created a user
             //Check if it was created
