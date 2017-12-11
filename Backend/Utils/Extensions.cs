@@ -10,6 +10,11 @@ namespace NickAc.LightPOS.Backend.Utils
 {
     public static class Extensions
     {
+        public static void RunInAnotherApplication(this Form form)
+        {
+            RunInAnotherThread(() => Application.Run(form));
+        }
+
         public static void RunInAnotherThread(MethodInvoker inv)
         {
             var th = new Thread(() => inv?.Invoke());
