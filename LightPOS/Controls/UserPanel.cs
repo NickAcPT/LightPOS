@@ -55,7 +55,7 @@ namespace NickAc.LightPOS.Frontend.Controls
         {
             TranslationHelper helper = new TranslationHelper();
             Size tileSz = new Size(TileSize, TileSize);
-            int numberOfColumns = Math.Min(MaxTilesPerRow, usr.Count);
+            int numberOfColumns = usr.Count > 0 ? Math.Min(MaxTilesPerRow, usr.Count) : MaxTilesPerRow;
             int numberOfRows = usr.Count / numberOfColumns + (usr.Count % numberOfColumns > 0 ? 1 : 0);
 
             this.InvokeIfRequired(() => {

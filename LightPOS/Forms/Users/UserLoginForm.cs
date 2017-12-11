@@ -148,7 +148,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             if (numberOfUsers < 1) {
                 //Create an administrator account
                 var modify = new Forms.Users.ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All);
-                modify.RunInAnotherApplication();
+                Application.Run(new Forms.Users.ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All));
             }
             //The person might've not created a user
             //Check if it was created

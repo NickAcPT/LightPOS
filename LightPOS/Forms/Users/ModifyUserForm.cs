@@ -141,12 +141,12 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
-            textBox1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
-            textBoxEx1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
-            checkedListBox1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers() && !IsCurrentUser;
-            metroButton1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
-
+            if (GlobalStorage.CurrentUser != null) {
+                textBox1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
+                textBoxEx1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
+                checkedListBox1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers() && !IsCurrentUser;
+                metroButton1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
+            }
         }
 
         private User ModifyUser(User baseUser, UserPermission perm)
