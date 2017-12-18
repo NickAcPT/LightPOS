@@ -42,7 +42,7 @@ namespace NickAc.LightPOS.Frontend.Forms
             {
                 Sizable = false,
                 MinimumSize = new Size(3, 3),
-                Size = new Size(0, tilePanelReborn2.Size.Height + FormPadding * 2),
+                Size = new Size(0, tilePanelReborn2.Size.Height * 2 + FormPadding * 2),
                 TitlebarVisible = false,
             };
 
@@ -67,6 +67,24 @@ namespace NickAc.LightPOS.Frontend.Forms
             layoutPanel.Controls.Add(addUserTile);
 
             TilePanelReborn modifyUserTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_edit_user"), () => {
+                Extensions.RunInAnotherThread(() => {
+                    if (!GlobalStorage.CurrentUser.CanModifyUsers() || !GlobalStorage.CurrentUser.CanRemoveUsers())
+                        return;
+                    this.InvokeIfRequired(Hide);
+                    User final = Users.SelectUserForm.ShowUserSelectionDialog(true);
+                    this.InvokeIfRequired(Show);
+                    if (final != null) {
+                        this.InvokeIfRequired(Hide);
+                        Application.Run(new Users.ModifyUserForm(UserAction.Action.ModifyUser).WithUser(final));
+                        this.InvokeIfRequired(Show);
+                    }
+                });
+            }, Resources.account_edit);
+
+            layoutPanel.Controls.Add(modifyUserTile);
+
+
+            TilePanelReborn addProductTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_add_prod"), () => {
                 Extensions.RunInAnotherThread(() => {
                     if (!GlobalStorage.CurrentUser.CanModifyUsers() || !GlobalStorage.CurrentUser.CanRemoveUsers())
                         return;

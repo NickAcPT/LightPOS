@@ -39,13 +39,13 @@
             // 
             // appBar1
             // 
-            this.appBar1.Location = new System.Drawing.Point(1, 0);
+            this.appBar1.Location = new System.Drawing.Point(1, 1);
             this.appBar1.Size = new System.Drawing.Size(784, 50);
             this.translationHelper1.SetTranslationLocation(this.appBar1, "");
             // 
             // panel1
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.Controls.Add(this.tilePanelReborn2);
             this.panel1.Controls.Add(this.label2);
@@ -118,7 +118,7 @@
             // 
             // MainMenuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(786, 478);

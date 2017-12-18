@@ -135,6 +135,9 @@
   <data name="current_user" xml:space="preserve">
     <value>Current</value>
   </data>
+  <data name="edit_prod_title" xml:space="preserve">
+    <value>$prefix - Product Management</value>
+  </data>
   <data name="edit_user_delete" xml:space="preserve">
     <value>Delete user</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="edit_user_title" xml:space="preserve">
     <value>$prefix - User Management</value>
+  </data>
+  <data name="main_menu_add_prod" xml:space="preserve">
+    <value>Add Product</value>
   </data>
   <data name="main_menu_add_user" xml:space="preserve">
     <value>Add user</value>

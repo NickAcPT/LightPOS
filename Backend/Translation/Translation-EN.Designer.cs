@@ -115,6 +115,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to $prefix - Product Management.
+        /// </summary>
+        public static string edit_prod_title {
+            get {
+                return ResourceManager.GetString("edit_prod_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete user.
         /// </summary>
         public static string edit_user_delete {
@@ -165,6 +174,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         public static string edit_user_title {
             get {
                 return ResourceManager.GetString("edit_user_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Product.
+        /// </summary>
+        public static string main_menu_add_prod {
+            get {
+                return ResourceManager.GetString("main_menu_add_prod", resourceCulture);
             }
         }
         

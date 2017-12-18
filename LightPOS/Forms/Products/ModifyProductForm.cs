@@ -4,11 +4,12 @@
 //
 namespace NickAc.LightPOS.Frontend.Forms
 {
-    public partial class AddProductForm : TemplateForm
+    public partial class ModifyProductForm : TemplateForm
     {
-        public AddProductForm()
+        public ModifyProductForm()
         {
             InitializeComponent();
+            translationHelper1.Translate(this);
         }
     }
 }

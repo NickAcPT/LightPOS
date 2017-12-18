@@ -72,11 +72,11 @@
     <Compile Include="Controls\UserPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\AddProductForm.cs">
+    <Compile Include="Forms\Products\ModifyProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddProductForm.Designer.cs">
-      <DependentUpon>AddProductForm.cs</DependentUpon>
+    <Compile Include="Forms\Products\ModifyProductForm.Designer.cs">
+      <DependentUpon>ModifyProductForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainMenuForm.cs">
       <SubType>Form</SubType>
@@ -119,8 +119,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\AddProductForm.resx">
-      <DependentUpon>AddProductForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Products\ModifyProductForm.resx">
+      <DependentUpon>ModifyProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
