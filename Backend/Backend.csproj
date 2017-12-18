@@ -103,6 +103,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\SettingsManager.cs" />
     <Compile Include="Mapping\CategoryMap.cs" />
     <Compile Include="Mapping\Other\ColorUserType.cs" />
     <Compile Include="Data\DataFactory.cs" />
@@ -111,12 +112,14 @@
     <Compile Include="Mapping\ProductMap.cs" />
     <Compile Include="Mapping\Other\ReferenceConvention.cs" />
     <Compile Include="Mapping\SaleMap.cs" />
+    <Compile Include="Mapping\StoredSettingMap.cs" />
     <Compile Include="Mapping\UserActionMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Objects\Category.cs" />
     <Compile Include="Objects\Customer.cs" />
     <Compile Include="Objects\Product.cs" />
     <Compile Include="Objects\Sale.cs" />
+    <Compile Include="Objects\StoredSetting.cs" />
     <Compile Include="Objects\User.cs" />
     <Compile Include="Objects\UserAction.cs" />
     <Compile Include="Objects\UserPermission.cs" />

@@ -27,13 +27,13 @@ namespace NickAc.LightPOS.Frontend
             //Do winforms stuff
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             Application.Run(new Forms.Users.UserLoginForm());
         }
 
         public static void InitializeDatabase()
         {
             DataManager.Initialize(new System.IO.FileInfo("POS.db"));
+            SettingsManager.Initialize();
         }
     }
 }
