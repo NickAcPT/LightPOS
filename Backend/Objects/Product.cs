@@ -14,6 +14,7 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual String Name { get; set; }
         [NotLazy]
         public virtual Category Category { get; set; }
+        public bool RequiresQuantity { get; set; }
 
         public virtual int Quantity { get; set; }
         public virtual float UnitPrice { get; set; }
@@ -21,7 +22,7 @@ namespace NickAc.LightPOS.Backend.Objects
 
         public override string ToString()
         {
-            return string.Format("Product[ID={0}, Barcode={1}, Name={2}, Category={3}, Quantity={4}, Price={5}]", ID, Barcode, Name, Category, Quantity, Price);
+            return string.Format("Product[ID={0}, Barcode={1}, Name={2}, Category={3}, RequiresQuantity={4}, Quantity={5}, Price={6}]", ID, Barcode, Name, Category, RequiresQuantity, Quantity, Price);
         }
     }
 }
