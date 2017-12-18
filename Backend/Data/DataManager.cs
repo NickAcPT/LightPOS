@@ -74,8 +74,7 @@ namespace NickAc.LightPOS.Backend.Data
                                 NHibernateUtil.Initialize(user.Actions);
                             if (!NHibernateUtil.IsInitialized(user.Sales))
                                 NHibernateUtil.Initialize(user.Sales);
-                        } catch (HibernateException) {
-                            //Do nothing
+                        } catch (Exception ex) {
                         }
                         session.SaveOrUpdate(user);
                         trans.Commit();

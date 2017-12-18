@@ -17,7 +17,7 @@ namespace NickAc.LightPOS.Backend.Mapping
             Map(x => x.PhoneNumber);
             Map(x => x.Street);
 
-            HasManyToMany(x => x.Sales).Not.LazyLoad();
+            HasManyToMany(x => x.Sales);
         }
     }
 }
