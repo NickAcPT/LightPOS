@@ -14,7 +14,7 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual String Name { get; set; }
         [NotLazy]
         public virtual Category Category { get; set; }
-        public bool RequiresQuantity { get; set; }
+        public virtual bool RequiresQuantity { get; set; }
 
         public virtual int Quantity { get; set; }
         public virtual float UnitPrice { get; set; }
