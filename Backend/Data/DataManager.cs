@@ -17,11 +17,11 @@ namespace NickAc.LightPOS.Backend.Data
         #region Properties
 
         public static DataFactory DataFactory { get; set; }
+        public static ISessionFactory SessionFactory { get; set; }
 
         #endregion
 
         #region Methods
-        public static ISessionFactory SessionFactory { get; set; }
         public static void AddCategory(Category c)
         {
             using (var sf = SessionFactory) {
@@ -157,25 +157,6 @@ namespace NickAc.LightPOS.Backend.Data
             }
             return user;
         }
-
-
-        public static User GetUserComplete(int ID)
-        {
-            User user;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    user = session
-                        .QueryOver<User>()
-                        .Fetch(u => u.Sales).Eager
-                        .Fetch(u => u.Actions).Eager
-                        .Where(u => u.UserID == ID)
-                        .List()
-                        .FirstOrDefault();
-                }
-            }
-            return user;
-        }
-
 
         public static IList<User> GetUsersWithSales()
         {
