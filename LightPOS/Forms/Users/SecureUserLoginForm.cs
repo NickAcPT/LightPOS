@@ -78,16 +78,18 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             TranslationHelper translationHelper = new TranslationHelper();
             User usr = User;
 
+            const float btnLoginPercentage = 0.20f;
             const float percentage = 0.25f;
             const float userNamePercentage = 0.25f;
-            const float textBoxPercentage = 0.65f;
+            const float textBoxPercentage = 0.70f;
 
-            KeyEventHandler escapeKeyHandler = (Object s, KeyEventArgs ee) => {
+            void escapeKeyHandler(Object s, KeyEventArgs ee)
+            {
                 if (ee.KeyCode == Keys.Escape && !ee.Control && !ee.Alt && !ee.Shift) {
                     this.InvokeIfRequired(form.Close);
                     ee.Handled = ee.SuppressKeyPress = true;
                 }
-            };
+            }
             Label mainLabel = new Label
             {
                 AutoSize = true,
@@ -115,7 +117,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             ModernButton btn = new ModernButton
             {
                 Text = translationHelper.GetTranslation("user_login_okbutton"),
-                Size = new Size((int)(form.Width * percentage), (int)(form.Height * percentage)),
+                Size = new Size((int)(form.Width * percentage), (int)(form.Height * btnLoginPercentage)),
             };
             btn.Location = new Point(0 /* Will be centered later */, form.Bottom - ControlPadding - btn.Height);
 
@@ -159,7 +161,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 var anim = new Animation().WithLimit(10).WithAction((a) => form.InvokeIfRequired(() => form.Opacity += 0.1f)).WithDisposal(form);
                 anim.Start();
             };
-            MethodInvoker reduceOpacity = () => form.InvokeIfRequired(() => form.Opacity -= 0.1f);
             translationHelper.Dispose();
         }
 

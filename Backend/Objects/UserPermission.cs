@@ -24,6 +24,8 @@ namespace NickAc.LightPOS.Backend.Objects
         ModifyUser = 16,
         [Description("permissions_apply_discounts")]
         ApplyDiscount = 32,
-        All = DoSale | PrintReceipt | CreateUser | RemoveUser | ModifyUser | ApplyDiscount
+        [Description("permissions_create_product")]
+        CreateProducts = 64,
+        All = DoSale | PrintReceipt | CreateUser | RemoveUser | ModifyUser | ApplyDiscount | CreateProducts
     }
 }

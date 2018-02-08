@@ -42,7 +42,7 @@
             // 
             // appBar1
             // 
-            this.appBar1.Size = new System.Drawing.Size(653, 50);
+            this.appBar1.Size = new System.Drawing.Size(661, 50);
             this.translationHelper1.SetTranslationLocation(this.appBar1, "");
             // 
             // textBox1
@@ -51,7 +51,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(136, 101);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(500, 23);
+            this.textBox1.Size = new System.Drawing.Size(508, 23);
             this.textBox1.TabIndex = 10;
             this.translationHelper1.SetTranslationLocation(this.textBox1, "");
             // 
@@ -81,7 +81,7 @@
             // 
             this.metroButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.metroButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroButton1.Location = new System.Drawing.Point(229, 195);
+            this.metroButton1.Location = new System.Drawing.Point(233, 195);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(197, 47);
             this.metroButton1.TabIndex = 14;
@@ -93,7 +93,7 @@
             // 
             this.modernButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.modernButton2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modernButton2.Location = new System.Drawing.Point(613, 159);
+            this.modernButton2.Location = new System.Drawing.Point(621, 159);
             this.modernButton2.Name = "modernButton2";
             this.modernButton2.Size = new System.Drawing.Size(23, 23);
             this.modernButton2.TabIndex = 14;
@@ -116,10 +116,11 @@
             // 
             this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(136, 159);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(471, 23);
+            this.comboBox2.Size = new System.Drawing.Size(479, 23);
             this.comboBox2.TabIndex = 15;
             this.translationHelper1.SetTranslationLocation(this.comboBox2, "");
             // 
@@ -129,7 +130,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxEx1.Location = new System.Drawing.Point(136, 130);
             this.textBoxEx1.Name = "textBoxEx1";
-            this.textBoxEx1.Size = new System.Drawing.Size(178, 23);
+            this.textBoxEx1.Size = new System.Drawing.Size(186, 23);
             this.textBoxEx1.TabIndex = 10;
             this.translationHelper1.SetTranslationLocation(this.textBoxEx1, "");
             // 
@@ -137,7 +138,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.label4.Location = new System.Drawing.Point(320, 130);
+            this.label4.Location = new System.Drawing.Point(328, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(117, 27);
             this.label4.TabIndex = 9;
@@ -148,7 +149,7 @@
             // textBoxEx2
             // 
             this.textBoxEx2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxEx2.Location = new System.Drawing.Point(443, 130);
+            this.textBoxEx2.Location = new System.Drawing.Point(451, 130);
             this.textBoxEx2.Name = "textBoxEx2";
             this.textBoxEx2.Size = new System.Drawing.Size(193, 23);
             this.textBoxEx2.TabIndex = 10;
@@ -158,7 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 255);
+            this.ClientSize = new System.Drawing.Size(663, 255);
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
             this.Controls.Add(this.comboBox2);

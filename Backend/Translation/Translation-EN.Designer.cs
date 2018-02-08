@@ -259,6 +259,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create products.
+        /// </summary>
+        public static string permissions_create_product {
+            get {
+                return ResourceManager.GetString("permissions_create_product", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create users.
         /// </summary>
         public static string permissions_create_user {

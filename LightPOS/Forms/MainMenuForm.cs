@@ -42,7 +42,7 @@ namespace NickAc.LightPOS.Frontend.Forms
             {
                 Sizable = false,
                 MinimumSize = new Size(3, 3),
-                Size = new Size(0, tilePanelReborn2.Size.Height * 2 + FormPadding * 2),
+                Size = new Size(0, tilePanelReborn2.Size.Height + FormPadding * 2),
                 TitlebarVisible = false,
             };
 
@@ -104,7 +104,7 @@ namespace NickAc.LightPOS.Frontend.Forms
 
             form.Location = tilePanelReborn2.PointToScreen(new Point(-FormPadding, -FormPadding));
 
-            const int formOpenSpeed = 4;
+            const int formOpenSpeed = 6;
 
             int wIncrement = finalWidth % 2 == 0 ? formOpenSpeed * 2 : formOpenSpeed * 3;
             form.Load += (s, ee) => {

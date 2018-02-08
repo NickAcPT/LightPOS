@@ -183,6 +183,9 @@
   <data name="permissions_apply_discounts" xml:space="preserve">
     <value>Apply discounts</value>
   </data>
+  <data name="permissions_create_product" xml:space="preserve">
+    <value>Create products</value>
+  </data>
   <data name="permissions_create_user" xml:space="preserve">
     <value>Create users</value>
   </data>

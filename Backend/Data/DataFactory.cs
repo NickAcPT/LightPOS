@@ -39,7 +39,7 @@ namespace NickAc.LightPOS.Backend.Data
         public ISessionFactory CreateSessionFactory()
         {
             return GetConfiguration()
-                .BuildSessionFactory();
+            .BuildSessionFactory();
         }
 
         private FluentConfiguration GetConfiguration()
@@ -51,20 +51,19 @@ namespace NickAc.LightPOS.Backend.Data
                         return Fluently.Configure(bf.Deserialize(file) as Configuration);
                     }
                 }
-            }
-            catch (SerializationException ex) {
+            } catch (SerializationException ex) {
                 Ignore(ex);
                 //Ignore errors deserialization errors and delete the existent file
                 File.Delete(fileConfig);
             }
             FluentConfiguration fluentConfiguration = Fluently.Configure()
-                            .Database(
-                                SQLiteConfiguration.Standard
-                                    .UsingFile(_dbFile.FullName)
-                            )
-                            .Mappings(m => m.FluentMappings.AddFromAssemblyOf<DataFactory>()
-                            .Conventions.Add(new ReferenceConvention()))
-                            .ExposeConfiguration(BuildSchema);
+            .Database(
+            SQLiteConfiguration.Standard
+            .UsingFile(_dbFile.FullName)
+            )
+            .Mappings(m => m.FluentMappings.AddFromAssemblyOf<DataFactory>()
+            .Conventions.Add(new ReferenceConvention()))
+            .ExposeConfiguration(BuildSchema);
             using (var file = File.Open(fileConfig, FileMode.Create)) {
                 var bf = new BinaryFormatter();
                 bf.Serialize(file, fluentConfiguration.BuildConfiguration());

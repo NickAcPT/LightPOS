@@ -25,7 +25,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             UserAction = action;
             switch (action) {
                 case Backend.Objects.UserAction.Action.ModifyUser:
-                    if (GlobalStorage.CurrentUser.CanRemoveUsers()) {
+                    if (GlobalStorage.CurrentUser.CanRemoveUsers() && BaseUser != null && BaseUser.UserID != GlobalStorage.CurrentUser.UserID) {
                         //Remove user menu item
                         AppBarMenuTextItem removeUserItem = new AppBarMenuTextItem(translationHelper1.GetTranslation("edit_user_delete"));
                         removeUserItem.Click += (s, e) => {
