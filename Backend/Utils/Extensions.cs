@@ -10,6 +10,13 @@ namespace NickAc.LightPOS.Backend.Utils
 {
     public static class Extensions
     {
+        public static void HideAndStart<T>(this Form owner, params object[] constructor) where T : Form
+        {
+            owner.Hide();
+            ((Form)Activator.CreateInstance(typeof(T), constructor)).ShowDialog(owner);
+            owner.Show();
+        }
+
         public static void RunInAnotherApplication(this Form form)
         {
             RunInAnotherThread(() => Application.Run(form));

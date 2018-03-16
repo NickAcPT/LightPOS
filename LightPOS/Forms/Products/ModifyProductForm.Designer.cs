@@ -1,4 +1,4 @@
-﻿namespace NickAc.LightPOS.Frontend.Forms
+﻿namespace NickAc.LightPOS.Frontend.Forms.Products
 {
     partial class ModifyProductForm
     {

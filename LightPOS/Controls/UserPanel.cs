@@ -70,7 +70,7 @@ namespace NickAc.LightPOS.Frontend.Controls
                 {
                     Tag = user,
                     Size = tileSz,
-                    Text = user.UserName + (GlobalStorage.CurrentUser != null ? (GlobalStorage.CurrentUser.UserID == user.UserID ? currentExtra : "") : ""),
+                    Text = user.UserName + (GlobalStorage.CurrentUser != null ? (GlobalStorage.CurrentUser.UserId == user.UserId ? currentExtra : "") : ""),
                     Image = Properties.Resources.ic_person_white_48dp_2x,
 
                     CanBeHovered = true,
@@ -84,7 +84,7 @@ namespace NickAc.LightPOS.Frontend.Controls
                     rb.InvokeIfRequired(() => {
                         //Invoke click
                         if (GlobalStorage.CurrentUser != null)
-                            if (user.UserID == GlobalStorage.CurrentUser.UserID && !CanSelectCurrentUser)
+                            if (user.UserId == GlobalStorage.CurrentUser.UserId && !CanSelectCurrentUser)
                                 return;
                         OnUserClick(user);
                     });

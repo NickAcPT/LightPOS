@@ -20,9 +20,13 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 {
     public partial class SelectUserForm : TemplateForm
     {
+        public override Size MaximumSize
+        {
+            get => Size.Empty;
+            set => base.MaximumSize = value;
+        }
 
         #region Fields
-
         const int ControlPadding = 8;
         private const int MaxTilesPerRow = 3;
         private const int TileSize = 145;
@@ -35,6 +39,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         public SelectUserForm()
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
             translationHelper1.Translate(this);
         }
 

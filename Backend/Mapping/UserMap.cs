@@ -12,7 +12,7 @@ namespace NickAc.LightPOS.Backend.Mapping
         public UserMap()
         {
             Table("Users");
-            Id(x => x.UserID).GeneratedBy.Native().Unique();
+            Id(x => x.UserId).GeneratedBy.Native().Unique();
             Map(x => x.UserName);
             Map(x => x.HashedPassword);
             Map(x => x.Salt);

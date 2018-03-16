@@ -152,7 +152,7 @@ namespace NickAc.LightPOS.Backend.Data
             using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
                     user = session.QueryOver<User>().Fetch(u => u.Actions)
-                  .Eager.Where(u => u.UserID == ID).List().FirstOrDefault();
+                  .Eager.Where(u => u.UserId == ID).List().FirstOrDefault();
                 }
             }
             return user;
@@ -182,7 +182,7 @@ namespace NickAc.LightPOS.Backend.Data
                     user = session
                         .QueryOver<User>()
                         .Fetch(u => u.Actions).Eager
-                        .Where(u => u.UserID == ID)
+                        .Where(u => u.UserId == ID)
                         .List()
                         .FirstOrDefault();
                 }
@@ -199,7 +199,7 @@ namespace NickAc.LightPOS.Backend.Data
                     user = session
                         .QueryOver<User>()
                         .Fetch(u => u.Sales).Eager
-                        .Where(u => u.UserID == ID)
+                        .Where(u => u.UserId == ID)
                         .List()
                         .FirstOrDefault();
                 }
@@ -224,7 +224,7 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void LogAction(User user, UserAction.Action eventAction, string info)
         {
-            User freshUser = GetUser(user.UserID);
+            User freshUser = GetUser(user.UserId);
             UserAction action = new UserAction()
             {
                 Time = DateTime.Now,

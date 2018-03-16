@@ -117,7 +117,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.Login, ""));
                 this.InvokeIfRequired(Hide);
                 //Run main form
-                Application.Run(new MainMenuForm());
+                var mainForm = new MainMenuForm {Owner = this};
+                Application.Run(mainForm);
                 //Log user logout
                 Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.LogOut, ""));
                 GlobalStorage.CurrentUser = null;

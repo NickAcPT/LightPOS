@@ -165,5 +165,21 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         }
 
         #endregion
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // SecureUserLoginForm
+            // 
+            this.ClientSize = new System.Drawing.Size(302, 300);
+            this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
+            this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
+            this.Location = new System.Drawing.Point(0, 0);
+            this.Name = "SecureUserLoginForm";
+            this.TitlebarVisible = false;
+            this.ResumeLayout(false);
+
+        }
     }
 }

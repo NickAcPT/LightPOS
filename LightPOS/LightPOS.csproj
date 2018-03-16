@@ -143,6 +143,9 @@
     <EmbeddedResource Include="Forms\Users\ModifyUserForm.resx">
       <DependentUpon>ModifyUserForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users\SecureUserLoginForm.resx">
+      <DependentUpon>SecureUserLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Users\SelectUserForm.resx">
       <DependentUpon>SelectUserForm.cs</DependentUpon>
     </EmbeddedResource>

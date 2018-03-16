@@ -61,20 +61,11 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product name:.
+        ///   Looks up a localized string similar to Add Product.
         /// </summary>
-        public static string add_prod_name {
+        public static string add_prod_okbutton {
             get {
-                return ResourceManager.GetString("add_prod_name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Product price:.
-        /// </summary>
-        public static string add_prod_price {
-            get {
-                return ResourceManager.GetString("add_prod_price", resourceCulture);
+                return ResourceManager.GetString("add_prod_okbutton", resourceCulture);
             }
         }
         
@@ -111,6 +102,24 @@ namespace NickAc.LightPOS.Backend.Translation {
         public static string current_user {
             get {
                 return ResourceManager.GetString("current_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product name:.
+        /// </summary>
+        public static string edit_prod_name {
+            get {
+                return ResourceManager.GetString("edit_prod_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product price:.
+        /// </summary>
+        public static string edit_prod_price {
+            get {
+                return ResourceManager.GetString("edit_prod_price", resourceCulture);
             }
         }
         

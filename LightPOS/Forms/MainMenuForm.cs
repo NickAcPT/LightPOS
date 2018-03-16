@@ -35,10 +35,8 @@ namespace NickAc.LightPOS.Frontend.Forms
 
         private void tilePanelReborn2_Click_1(object sender, EventArgs e)
         {
-            var form = new ManagementForm();
-            Hide();
-            form.ShowDialog(this);
-            Show();
+            if (GlobalStorage.CurrentUser.CanOpenManagement())
+            this.HideAndStart<ManagementForm>();
         }
     }
 }

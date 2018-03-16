@@ -5,6 +5,7 @@
 using NickAc.LightPOS.Backend.Mapping;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -12,7 +13,7 @@ namespace NickAc.LightPOS.Backend.Objects
 {
     public class User
     {
-        public virtual int UserID { get; set; }
+        public virtual int UserId { get; set; }
         public virtual string UserName { get; set; }
         public virtual string HashedPassword { get; set; }
         public virtual string Salt { get; set; }
@@ -30,7 +31,7 @@ namespace NickAc.LightPOS.Backend.Objects
 
         public static User CreateUser(string userName, string password, UserPermission permissions)
         {
-            User u = new User
+            var u = new User
             {
                 UserName = userName,
                 Salt = Guid.NewGuid().ToString().Replace("-", "")
@@ -59,13 +60,10 @@ namespace NickAc.LightPOS.Backend.Objects
 
         private static string Sha256(string randomString)
         {
-            SHA256Managed crypt = new SHA256Managed();
-            string hash = String.Empty;
-            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(randomString), 0, Encoding.UTF8.GetByteCount(randomString));
-            foreach (byte theByte in crypto) {
-                hash += theByte.ToString("x2");
-            }
-            return hash;
+            var crypt = new SHA256Managed();
+            var hash = string.Empty;
+            var crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(randomString), 0, Encoding.UTF8.GetByteCount(randomString));
+            return crypto.Aggregate(hash, (current, theByte) => current + theByte.ToString("x2"));
         }
 
         public virtual bool CanDoSale() => Permissions.HasFlag(UserPermission.DoSale);
@@ -79,6 +77,8 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual bool CanApplyDiscounts() => Permissions.HasFlag(UserPermission.ApplyDiscount);
 
         public virtual bool CanPrintReceipts() => Permissions.HasFlag(UserPermission.PrintReceipt);
+
+        public virtual bool CanOpenManagement() => CanCreateUsers() || CanRemoveUsers() || CanModifyUsers();
 
     }
 }

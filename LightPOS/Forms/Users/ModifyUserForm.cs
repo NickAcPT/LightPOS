@@ -25,13 +25,13 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             UserAction = action;
             switch (action) {
                 case Backend.Objects.UserAction.Action.ModifyUser:
-                    if (GlobalStorage.CurrentUser.CanRemoveUsers() && BaseUser != null && BaseUser.UserID != GlobalStorage.CurrentUser.UserID) {
+                    if (GlobalStorage.CurrentUser.CanRemoveUsers() && BaseUser != null && BaseUser.UserId != GlobalStorage.CurrentUser.UserId) {
                         //Remove user menu item
                         AppBarMenuTextItem removeUserItem = new AppBarMenuTextItem(translationHelper1.GetTranslation("edit_user_delete"));
                         removeUserItem.Click += (s, e) => {
                             if (BaseUser != null)
                                 Extensions.RunInAnotherThread(() => {
-                                    DataManager.RemoveUser(BaseUser.UserID);
+                                    DataManager.RemoveUser(BaseUser.UserId);
                                     this.InvokeIfRequired(Close);
                                 });
                         };
@@ -50,7 +50,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         #region Properties
         public bool IsCurrentUser {
             get {
-                return BaseUser != null && BaseUser.UserID == GlobalStorage.CurrentUser.UserID;
+                return BaseUser != null && BaseUser.UserId == GlobalStorage.CurrentUser.UserId;
             }
         }
         public User BaseUser { get; set; }
@@ -165,7 +165,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 loginForm.SecureRequest(baseUser);
             }
 
-            if (baseUser.UserID == GlobalStorage.CurrentUser.UserID)
+            if (baseUser.UserId == GlobalStorage.CurrentUser.UserId)
                 GlobalStorage.CurrentUser = baseUser;
             return baseUser;
         }
