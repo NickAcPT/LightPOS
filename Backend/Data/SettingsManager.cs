@@ -26,14 +26,14 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static byte[] GetSettingRaw(string id)
         {
-            StoredSetting user;
+            StoredSetting setting;
             using (var sf = SessionFactory) {
                 using (var session = sf.OpenSession()) {
-                    user = session.QueryOver<StoredSetting>()
+                    setting = session.QueryOver<StoredSetting>()
                     .Where(s => s.ID == id).List().FirstOrDefault();
                 }
             }
-            return user.Data;
+            return setting.Data;
         }
 
         public static void SaveSetting(StoredSetting setting)

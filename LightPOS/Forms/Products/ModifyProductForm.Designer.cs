@@ -81,9 +81,9 @@
             // 
             this.metroButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.metroButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroButton1.Location = new System.Drawing.Point(233, 195);
+            this.metroButton1.Location = new System.Drawing.Point(233, 205);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(197, 47);
+            this.metroButton1.Size = new System.Drawing.Size(197, 37);
             this.metroButton1.TabIndex = 14;
             this.metroButton1.Text = "edit_prod_okbutton";
             this.translationHelper1.SetTranslationLocation(this.metroButton1, "edit_prod_okbutton");

@@ -155,8 +155,10 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             baseUser.UserName = textBox1.Text;
             baseUser.Permissions = perm;
             if (!string.IsNullOrWhiteSpace(textBoxEx1.Text)) {
-                var loginForm = new SecureUserLoginForm();
-                loginForm.Size = new System.Drawing.Size((int)(Width * sizePercentage), (int)(Height * sizePercentage));
+                var loginForm = new SecureUserLoginForm
+                {
+                    Size = new System.Drawing.Size((int)(Width * sizePercentage), (int)(Height * sizePercentage))
+                };
                 loginForm.LoginSucceded += (s, e) => {
                     baseUser.ChangePassword(textBoxEx1.Text);
                 };

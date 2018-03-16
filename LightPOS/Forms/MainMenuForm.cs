@@ -33,116 +33,12 @@ namespace NickAc.LightPOS.Frontend.Forms
 
         #endregion
 
-        private void TilePanelReborn2_Click(object sender, System.EventArgs e)
+        private void tilePanelReborn2_Click_1(object sender, EventArgs e)
         {
-            //POS Management tile
-
-            int finalWidth = tilePanelReborn2.Size.Width + FormPadding * 2;
-            ModernForm form = new ModernForm
-            {
-                Sizable = false,
-                MinimumSize = new Size(3, 3),
-                Size = new Size(0, tilePanelReborn2.Size.Height + FormPadding * 2),
-                TitlebarVisible = false,
-            };
-
-            var tileWidth = (tilePanelReborn2.Width / 2) - FormPadding;
-            var tileHeight = tilePanelReborn2.Height;
-
-            var layoutPanel = new FlowLayoutPanel
-            {
-                Dock = DockStyle.Fill,
-                Padding = new Padding(FormPadding + (FormPadding / 4), FormPadding / 2, FormPadding / 2, FormPadding / 2)
-            };
-
-            //Add tiles to animated form
-
-            TilePanelReborn addUserTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_add_user"), () => {
-                if (!GlobalStorage.CurrentUser.CanCreateUsers()) return;
-                this.InvokeIfRequired(Hide);
-                new Users.ModifyUserForm().RunInAnotherApplication();
-                this.InvokeIfRequired(Show);
-            }, Resources.account_plus);
-
-            layoutPanel.Controls.Add(addUserTile);
-
-            TilePanelReborn modifyUserTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_edit_user"), () => {
-                Extensions.RunInAnotherThread(() => {
-                    if (!GlobalStorage.CurrentUser.CanModifyUsers() || !GlobalStorage.CurrentUser.CanRemoveUsers())
-                        return;
-                    this.InvokeIfRequired(Hide);
-                    User final = Users.SelectUserForm.ShowUserSelectionDialog(true);
-                    this.InvokeIfRequired(Show);
-                    if (final != null) {
-                        this.InvokeIfRequired(Hide);
-                        Application.Run(new Users.ModifyUserForm(UserAction.Action.ModifyUser).WithUser(final));
-                        this.InvokeIfRequired(Show);
-                    }
-                });
-            }, Resources.account_edit);
-
-            layoutPanel.Controls.Add(modifyUserTile);
-
-
-            TilePanelReborn addProductTile = GenerateActionTile(tileWidth, tileHeight, translationHelper1.GetTranslation("main_menu_add_prod"), () => {
-                Extensions.RunInAnotherThread(() => {
-                    if (!GlobalStorage.CurrentUser.CanModifyUsers() || !GlobalStorage.CurrentUser.CanRemoveUsers())
-                        return;
-                    this.InvokeIfRequired(Hide);
-                    User final = Users.SelectUserForm.ShowUserSelectionDialog(true);
-                    this.InvokeIfRequired(Show);
-                    if (final != null) {
-                        this.InvokeIfRequired(Hide);
-                        Application.Run(new Users.ModifyUserForm(UserAction.Action.ModifyUser).WithUser(final));
-                        this.InvokeIfRequired(Show);
-                    }
-                });
-            }, Resources.account_edit);
-
-            layoutPanel.Controls.Add(modifyUserTile);
-
-
-            form.Location = tilePanelReborn2.PointToScreen(new Point(-FormPadding, -FormPadding));
-
-            const int formOpenSpeed = 6;
-
-            int wIncrement = finalWidth % 2 == 0 ? formOpenSpeed * 2 : formOpenSpeed * 3;
-            form.Load += (s, ee) => {
-                var anim = new Animation().WithAction((a) => {
-                    form.InvokeIfRequired(() => {
-                        if (form.Width < finalWidth) {
-                            form.Width += wIncrement;
-                            return;
-                        }
-                        a.Stop();
-                        form.Controls.Add(layoutPanel);
-                    });
-
-                }).WithDisposal(form);
-                anim.Start();
-            };
-
-            form.Deactivate += (s, ee) => {
-                form.Dispose();
-            };
-            form.Show();
-        }
-
-        private TilePanelReborn GenerateActionTile(int tileWidth, int tileHeight, string text, Action clickAction, Image img = null)
-        {
-            TilePanelReborn tile = new TilePanelReborn
-            {
-                CanBeHovered = true,
-                Flat = true,
-                Text = text,
-                Size = new Size(tileWidth, tileHeight),
-                Image = img,
-                BackColor = ColorScheme.PrimaryColor,
-                ForeColor = ColorScheme.ForegroundColor,
-            };
-            tile.Click += (s, e) => tile.InvokeIfRequired(() => clickAction?.Invoke());
-            return tile;
-
+            var form = new ManagementForm();
+            Hide();
+            form.ShowDialog(this);
+            Show();
         }
     }
 }
