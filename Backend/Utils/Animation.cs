@@ -1,37 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Timers;
+using System.Windows.Forms;
+using Timer = System.Timers.Timer;
 
 namespace NickAc.LightPOS.Backend.Utils
 {
     public class Animation : IDisposable
     {
-        internal int hitCount;
-        internal int executionLimit;
-        internal Action<Animation> timerAction;
         internal readonly Timer internalTimer;
+        internal int executionLimit;
+        internal int hitCount;
+        internal Action<Animation> timerAction;
+
         public Animation()
         {
             internalTimer = new Timer(5)
             {
                 AutoReset = true
             };
-            internalTimer.Elapsed += (s, e) => {
-                if (executionLimit > 0) {
-                    if (hitCount > executionLimit) {
+            internalTimer.Elapsed += (s, e) =>
+            {
+                if (executionLimit > 0)
+                {
+                    if (hitCount > executionLimit)
+                    {
                         Stop();
                         return;
                     }
+
                     hitCount++;
                 }
-                timerAction?.Invoke(this);
 
+                timerAction?.Invoke(this);
             };
         }
 
-        public Animation WithDisposal(System.Windows.Forms.Form disposable)
+        public void Dispose()
+        {
+            timerAction = null;
+            internalTimer.Stop();
+            internalTimer.Dispose();
+        }
+
+        public Animation WithDisposal(Form disposable)
         {
             disposable.FormClosing += (s, e) => Dispose();
             disposable.Disposed += (s, e) => Dispose();
@@ -62,14 +72,6 @@ namespace NickAc.LightPOS.Backend.Utils
         {
             internalTimer.Stop();
             return this;
-        }
-
-        public void Dispose()
-        {
-            timerAction = null;
-            internalTimer.Stop();
-            internalTimer.Dispose();
-
         }
 
         ~Animation()

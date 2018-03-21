@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.LightPOS.Frontend.Forms.Users;
+using NickAc.ModernUIDoneRight.Objects;
 
 namespace NickAc.LightPOS.Frontend.Forms
 {
@@ -44,6 +45,23 @@ namespace NickAc.LightPOS.Frontend.Forms
             if (!GlobalStorage.CurrentUser.CanCreateUsers()) return;
             this.InvokeIfRequired(Hide);
             new Users.ModifyUserForm().RunInAnotherApplication();
+            this.InvokeIfRequired(Show);
+        }
+
+        private void tilePanelReborn1_Click(object sender, EventArgs e)
+        {
+            if (!GlobalStorage.CurrentUser.CanManageProducts()) return;
+            this.InvokeIfRequired(Hide);
+            Extensions.RunInAnotherApplication<Products.ModifyProductForm>();
+
+            this.InvokeIfRequired(Show);
+        }
+
+        private void tilePanelReborn4_Click(object sender, EventArgs e)
+        {
+            if (!GlobalStorage.CurrentUser.CanManageProducts()) return;
+            this.InvokeIfRequired(Hide);
+            Extensions.RunInAnotherApplication<Products.ModifyCategoryForm>(true);
             this.InvokeIfRequired(Show);
         }
     }

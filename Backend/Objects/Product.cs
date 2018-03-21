@@ -2,18 +2,19 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
+
 using NickAc.LightPOS.Backend.Mapping;
-using System;
 
 namespace NickAc.LightPOS.Backend.Objects
 {
     public class Product
     {
-        public virtual Int32 ID { get; set; }
-        public virtual String Barcode { get; set; }
-        public virtual String Name { get; set; }
-        [NotLazy]
+        public virtual int Id { get; set; }
+        public virtual string Barcode { get; set; }
+        public virtual string Name { get; set; }
+
         public virtual Category Category { get; set; }
+
         public virtual bool RequiresQuantity { get; set; }
 
         public virtual int Quantity { get; set; }
@@ -22,7 +23,8 @@ namespace NickAc.LightPOS.Backend.Objects
 
         public override string ToString()
         {
-            return string.Format("Product[ID={0}, Barcode={1}, Name={2}, Category={3}, RequiresQuantity={4}, Quantity={5}, Price={6}]", ID, Barcode, Name, Category, RequiresQuantity, Quantity, Price);
+            return
+                $"Product[ID={Id}, Barcode={Barcode}, Name={Name}, Category={Category}, RequiresQuantity={RequiresQuantity}, Quantity={Quantity}, Price={Price}]";
         }
     }
 }

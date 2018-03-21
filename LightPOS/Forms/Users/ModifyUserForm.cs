@@ -8,6 +8,7 @@ using NickAc.LightPOS.Backend.Utils;
 using NickAc.ModernUIDoneRight.Objects.MenuItems;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Dynamic;
 using System.Linq;
 using System.Windows.Forms;
@@ -21,13 +22,14 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         public ModifyUserForm(UserAction.Action action = Backend.Objects.UserAction.Action.CreateUser)
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
 
             UserAction = action;
             switch (action) {
                 case Backend.Objects.UserAction.Action.ModifyUser:
                     if (GlobalStorage.CurrentUser.CanRemoveUsers() && BaseUser != null && BaseUser.UserId != GlobalStorage.CurrentUser.UserId) {
                         //Remove user menu item
-                        AppBarMenuTextItem removeUserItem = new AppBarMenuTextItem(translationHelper1.GetTranslation("edit_user_delete"));
+                        var removeUserItem = new AppBarMenuTextItem(translationHelper1.GetTranslation("edit_user_delete"));
                         removeUserItem.Click += (s, e) => {
                             if (BaseUser != null)
                                 Extensions.RunInAnotherThread(() => {
@@ -48,14 +50,10 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         #endregion
 
         #region Properties
-        public bool IsCurrentUser {
-            get {
-                return BaseUser != null && BaseUser.UserId == GlobalStorage.CurrentUser.UserId;
-            }
-        }
+        public bool IsCurrentUser => BaseUser != null && BaseUser.UserId == GlobalStorage.CurrentUser.UserId;
         public User BaseUser { get; set; }
-        public UserAction.Action UserAction { get; set; } = Backend.Objects.UserAction.Action.CreateUser;
-
+        public UserAction.Action UserAction { get; set; }
+        public override Size MaximumSize { get => Size.Empty; set => base.MaximumSize = value; }
         #endregion
 
         #region Methods
@@ -75,7 +73,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         public ModifyUserForm WithPermissions(UserPermission perms)
         {
             var flags = perms.SplitFlags<UserPermission>();
-            for (int i = 0; i < checkedListBox1.Items.Count; i++) {
+            for (var i = 0; i < checkedListBox1.Items.Count; i++) {
                 dynamic item = checkedListBox1.Items[i];
                 if (item is ExpandoObject) {
                     if (flags.Contains(item.EnumValue)) {
@@ -91,15 +89,14 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             BaseUser = usr;
             return WithName(usr.UserName).WithPermissions(usr.Permissions);
         }
-        private UserPermission GetPermissions(IEnumerable<object> enumerable)
+        private static UserPermission GetPermissions(IEnumerable<object> enumerable)
         {
             Enum final = UserPermission.None;
             foreach (var i in enumerable) {
                 dynamic expandoObject = i as ExpandoObject;
-                if (expandoObject != null) {
-                    if ((expandoObject.EnumValue is UserPermission value)) {
-                        final = final.Or(value);
-                    }
+                if (expandoObject == null) continue;
+                if ((expandoObject.EnumValue is UserPermission value)) {
+                    final = final.Or(value);
                 }
             }
             return (UserPermission)final;
@@ -113,20 +110,19 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             };
 
             foreach (Enum e in Enum.GetValues(typeof(UserPermission))) {
-                if (e.HasDescription()) {
-                    dynamic obj = new ExpandoObject();
-                    obj.EnumValue = e;
-                    obj.Description = translationHelper1.GetTranslation(e.GetDescription());
-                    listBox.Items.Add(obj);
-                }
+                if (!e.HasDescription()) continue;
+                dynamic obj = new ExpandoObject();
+                obj.EnumValue = e;
+                obj.Description = translationHelper1.GetTranslation(e.GetDescription());
+                listBox.Items.Add(obj);
             }
         }
 
         private void MetroButton1_Click(object sender, EventArgs e)
         {
-            UserPermission perm = GetPermissions(checkedListBox1.CheckedItems.OfType<object>());
+            var perm = GetPermissions(checkedListBox1.CheckedItems.OfType<object>());
             if (!string.IsNullOrWhiteSpace(textBox1.Text) && (UserAction == Backend.Objects.UserAction.Action.ModifyUser || !string.IsNullOrWhiteSpace(textBoxEx1.Text))) {
-                User user = BaseUser != null ? ModifyUser(BaseUser, perm) : User.CreateUser(textBox1.Text.Trim(), textBoxEx1.Text.Trim(), perm);
+                var user = BaseUser != null ? ModifyUser(BaseUser, perm) : User.CreateUser(textBox1.Text.Trim(), textBoxEx1.Text.Trim(), perm);
                 switch (UserAction) {
                     case Backend.Objects.UserAction.Action.CreateUser:
                     case Backend.Objects.UserAction.Action.ModifyUser:
@@ -141,24 +137,19 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            if (GlobalStorage.CurrentUser != null) {
-                textBox1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
-                textBoxEx1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
-                checkedListBox1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers() && !IsCurrentUser;
-                metroButton1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
-            }
+            if (GlobalStorage.CurrentUser == null) return;
+            textBox1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
+            textBoxEx1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
+            checkedListBox1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers() && !IsCurrentUser;
+            metroButton1.Enabled = GlobalStorage.CurrentUser.CanModifyUsers();
         }
 
         private User ModifyUser(User baseUser, UserPermission perm)
         {
-            const float sizePercentage = 0.65f;
             baseUser.UserName = textBox1.Text;
             baseUser.Permissions = perm;
             if (!string.IsNullOrWhiteSpace(textBoxEx1.Text)) {
-                var loginForm = new SecureUserLoginForm
-                {
-                    Size = new System.Drawing.Size((int)(Width * sizePercentage), (int)(Height * sizePercentage))
-                };
+                var loginForm = new SecureUserLoginForm();
                 loginForm.LoginSucceded += (s, e) => {
                     baseUser.ChangePassword(textBoxEx1.Text);
                 };

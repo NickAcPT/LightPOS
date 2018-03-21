@@ -1,9 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
 using NickAc.LightPOS.Backend.Objects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace NickAc.LightPOS.Backend.Mapping
 {
@@ -11,7 +7,7 @@ namespace NickAc.LightPOS.Backend.Mapping
     {
         public StoredSettingMap()
         {
-            Id(x => x.ID).Unique();
+            Id(x => x.Id).Unique();
             Map(x => x.Data);
         }
     }

@@ -2,13 +2,15 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
+
+using System;
+using System.Collections.Generic;
+using System.Data.SQLite;
+using System.IO;
+using System.Linq;
 using NHibernate;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace NickAc.LightPOS.Backend.Data
 {
@@ -22,11 +24,15 @@ namespace NickAc.LightPOS.Backend.Data
         #endregion
 
         #region Methods
+
         public static void AddCategory(Category c)
         {
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    using (var trans = session.BeginTransaction()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    using (var trans = session.BeginTransaction())
+                    {
                         session.SaveOrUpdate(c);
                         trans.Commit();
                     }
@@ -36,9 +42,12 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void AddProduct(Product p)
         {
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    using (var trans = session.BeginTransaction()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    using (var trans = session.BeginTransaction())
+                    {
                         session.SaveOrUpdate(p.Category);
                         session.SaveOrUpdate(p);
                         trans.Commit();
@@ -49,9 +58,12 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void AddSale(Sale s)
         {
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    using (var trans = session.BeginTransaction()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    using (var trans = session.BeginTransaction())
+                    {
                         if (!NHibernateUtil.IsInitialized(s.Customer.Sales))
                             NHibernateUtil.Initialize(s.Customer.Sales);
                         s.Customer.Sales.Add(s);
@@ -66,16 +78,23 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void AddUser(User user)
         {
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    using (var trans = session.BeginTransaction()) {
-                        try {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    using (var trans = session.BeginTransaction())
+                    {
+                        try
+                        {
                             if (!NHibernateUtil.IsInitialized(user.Actions))
                                 NHibernateUtil.Initialize(user.Actions);
                             if (!NHibernateUtil.IsInitialized(user.Sales))
                                 NHibernateUtil.Initialize(user.Sales);
-                        } catch (HibernateException) {
                         }
+                        catch (HibernateException)
+                        {
+                        }
+
                         session.SaveOrUpdate(user);
                         trans.Commit();
                     }
@@ -86,8 +105,9 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static float CalculateTotal(IList<Product> products)
         {
-            float total = 0.0f;
-            products.All(p => {
+            var total = 0.0f;
+            products.All(p =>
+            {
                 total += p.Price;
                 return true;
             });
@@ -96,7 +116,7 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static Sale CreateSale(Customer customer, User user, float paidPrice, params Product[] prods)
         {
-            float total = CalculateTotal(prods);
+            var total = CalculateTotal(prods);
             var finalSale = new Sale
             {
                 TotalPrice = total,
@@ -116,9 +136,11 @@ namespace NickAc.LightPOS.Backend.Data
         public static Customer GetCustomer(int id)
         {
             Customer customer;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    customer = session.QueryOver<Customer>().Where(x => x.ID == id).List().FirstOrDefault();
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    customer = session.QueryOver<Customer>().Where(x => x.Id == id).List().FirstOrDefault();
                     return customer;
                 }
             }
@@ -127,58 +149,71 @@ namespace NickAc.LightPOS.Backend.Data
         public static int GetNumberOfUsers()
         {
             int userNumber;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
                     userNumber = session.QueryOver<User>().ToRowCountQuery().FutureValue<int>().Value;
                 }
             }
+
             return userNumber;
         }
 
         public static IList<User> GetUsers()
         {
             IList<User> list;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
                     list = session.QueryOver<User>().List();
                 }
             }
+
             return list;
         }
 
         public static User GetUser(int ID)
         {
             User user;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
                     user = session.QueryOver<User>().Fetch(u => u.Actions)
-                  .Eager.Where(u => u.UserId == ID).List().FirstOrDefault();
+                        .Eager.Where(u => u.UserId == ID).List().FirstOrDefault();
                 }
             }
+
             return user;
         }
 
         public static IList<User> GetUsersWithSales()
         {
             IList<User> users;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
                     users = session
                         .QueryOver<User>()
                         .Fetch(u => u.Sales).Eager
                         .List();
                 }
             }
+
             return users;
         }
-
 
 
         public static User GetUserWithActions(int ID)
         {
             User user;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
                     user = session
                         .QueryOver<User>()
                         .Fetch(u => u.Actions).Eager
@@ -187,6 +222,7 @@ namespace NickAc.LightPOS.Backend.Data
                         .FirstOrDefault();
                 }
             }
+
             return user;
         }
 
@@ -194,8 +230,10 @@ namespace NickAc.LightPOS.Backend.Data
         public static User GetUserWithSales(int ID)
         {
             User user;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
                     user = session
                         .QueryOver<User>()
                         .Fetch(u => u.Sales).Eager
@@ -204,6 +242,7 @@ namespace NickAc.LightPOS.Backend.Data
                         .FirstOrDefault();
                 }
             }
+
             return user;
         }
 
@@ -211,21 +250,24 @@ namespace NickAc.LightPOS.Backend.Data
         public static IList<User> GetUsersWithActions()
         {
             IList<User> users;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
                     users = session
                         .QueryOver<User>()
                         .Fetch(u => u.Actions).Eager
                         .List();
                 }
             }
+
             return users;
         }
 
         public static void LogAction(User user, UserAction.Action eventAction, string info)
         {
-            User freshUser = GetUser(user.UserId);
-            UserAction action = new UserAction()
+            var freshUser = GetUser(user.UserId);
+            var action = new UserAction
             {
                 Time = DateTime.Now,
                 Event = eventAction,
@@ -233,9 +275,12 @@ namespace NickAc.LightPOS.Backend.Data
             };
             freshUser.Actions.Add(action);
 
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    using (var trans = session.BeginTransaction()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    using (var trans = session.BeginTransaction())
+                    {
                         session.SaveOrUpdate(action);
                         if (!NHibernateUtil.IsInitialized(freshUser.Actions))
                             NHibernateUtil.Initialize(freshUser.Actions);
@@ -244,15 +289,16 @@ namespace NickAc.LightPOS.Backend.Data
                     }
                 }
             }
-
         }
 
         public static Product GetProduct(int id)
         {
             Product product;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    product = session.QueryOver<Product>().Where(x => x.ID == id).List().FirstOrDefault();
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    product = session.QueryOver<Product>().Where(x => x.Id == id).List().FirstOrDefault();
                     return product;
                 }
             }
@@ -261,8 +307,10 @@ namespace NickAc.LightPOS.Backend.Data
         public static Product GetProduct(string barcode)
         {
             Product product;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
                     product = session.QueryOver<Product>().Where(x => x.Barcode == barcode).List().FirstOrDefault();
                     return product;
                 }
@@ -272,50 +320,63 @@ namespace NickAc.LightPOS.Backend.Data
         public static IList<Product> GetProducts()
         {
             IList<Product> list;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
                     list = session.QueryOver<Product>().List();
                 }
             }
+
             return list;
         }
 
         public static void Initialize(FileInfo file)
         {
-            TimeMeasurer.MeasureTime("new DataFactory();", () => {
+            TimeMeasurer.MeasureTime("new DataFactory();", () =>
+            {
                 if (DataFactory == null) DataFactory = new DataFactory(file, false);
             });
-            TimeMeasurer.MeasureTime("DataFactory.Create();", () => {
+            TimeMeasurer.MeasureTime("DataFactory.Create();", () =>
+            {
                 if (DataFactory != null) DataFactory.Create();
             });
 
             if (SessionFactory == null) SessionFactory = DataFactory.CreateSessionFactory();
         }
+
         /// <summary>
-        /// Never called! Exists just to tell Visual Studio to copy the assemblies to the build directory
+        ///     Never called! Exists just to tell Visual Studio to copy the assemblies to the build directory
         /// </summary>
         public static void InitStuff()
         {
-            System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand();
+            var cmd = new SQLiteCommand();
             cmd.Dispose();
         }
 
         public static void RemoveCategory(Category c)
         {
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    using (var trans = session.BeginTransaction()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    using (var trans = session.BeginTransaction())
+                    {
                         session.Delete(c);
                         trans.Commit();
                     }
                 }
             }
         }
+
         public static void RemoveProduct(Product p)
         {
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    using (var trans = session.BeginTransaction()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    using (var trans = session.BeginTransaction())
+                    {
                         session.Delete(p);
                         trans.Commit();
                     }
@@ -326,9 +387,12 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void RemoveUser(User u)
         {
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    using (var trans = session.BeginTransaction()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    using (var trans = session.BeginTransaction())
+                    {
                         session.Delete(u);
                         trans.Commit();
                     }
@@ -339,10 +403,14 @@ namespace NickAc.LightPOS.Backend.Data
         public static void RemoveUserSales(User u)
         {
             if (u.Sales.Count == 0) return;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    using (var trans = session.BeginTransaction()) {
-                        u.Sales.All((x) => {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    using (var trans = session.BeginTransaction())
+                    {
+                        u.Sales.All(x =>
+                        {
                             session.Delete(x);
                             return true;
                         });
@@ -351,13 +419,18 @@ namespace NickAc.LightPOS.Backend.Data
                 }
             }
         }
+
         public static void RemoveUserActions(User u)
         {
             if (u.Actions.Count == 0) return;
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    using (var trans = session.BeginTransaction()) {
-                        u.Actions.All((x) => {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    using (var trans = session.BeginTransaction())
+                    {
+                        u.Actions.All(x =>
+                        {
                             session.Delete(x);
                             return true;
                         });
@@ -370,16 +443,19 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static void RemoveUser(int userID)
         {
-            User finalUser1 = GetUserWithActions(userID);
-            User finalUser2 = GetUserWithSales(userID);
+            var finalUser1 = GetUserWithActions(userID);
+            var finalUser2 = GetUserWithSales(userID);
             RemoveUser(finalUser1);
         }
 
         public static void RemoveProduct(int productID)
         {
-            using (var sf = SessionFactory) {
-                using (var session = sf.OpenSession()) {
-                    using (var trans = session.BeginTransaction()) {
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    using (var trans = session.BeginTransaction())
+                    {
                         session.Delete("from Product p where p.ID = ?", productID, NHibernateUtil.Int32);
                         trans.Commit();
                     }

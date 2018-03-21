@@ -48,6 +48,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cyotek.Windows.Forms.ColorPicker.1.7.2\lib\net35\Cyotek.Windows.Forms.ColorPicker.dll</HintPath>
+    </Reference>
     <Reference Include="ModernUIDoneRight">
       <HintPath>..\..\ModernUIDoneRight\ModernUIDoneRight\bin\Debug\ModernUIDoneRight.dll</HintPath>
     </Reference>
@@ -63,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\PercentageUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SimpleSelectionControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\TextBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -77,6 +86,12 @@
     </Compile>
     <Compile Include="Forms\ManagementForm.Designer.cs">
       <DependentUpon>ManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Products\ModifyCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Products\ModifyCategoryForm.Designer.cs">
+      <DependentUpon>ModifyCategoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Products\ModifyProductForm.cs">
       <SubType>Form</SubType>
@@ -128,6 +143,9 @@
     <EmbeddedResource Include="Forms\ManagementForm.resx">
       <DependentUpon>ManagementForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Products\ModifyCategoryForm.resx">
+      <DependentUpon>ModifyCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Products\ModifyProductForm.resx">
       <DependentUpon>ModifyProductForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +180,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

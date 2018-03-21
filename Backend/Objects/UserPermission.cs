@@ -2,7 +2,7 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
-using NickAc.LightPOS.Backend.Utils;
+
 using System;
 using static NickAc.LightPOS.Backend.Utils.EnumUtils;
 
@@ -12,20 +12,34 @@ namespace NickAc.LightPOS.Backend.Objects
     public enum UserPermission
     {
         None = 0,
+
         [Description("permissions_do_sale")]
-        DoSale = 1,
+        DoSale = 1 << 0,
+
         [Description("permissions_print_receipt")]
-        PrintReceipt = 2,
+        PrintReceipt = 1 << 1,
+
         [Description("permissions_create_user")]
-        CreateUser = 4,
+        CreateUser = 1 << 2,
+
         [Description("permissions_remove_user")]
-        RemoveUser = 8,
+        RemoveUser = 1 << 3,
+
         [Description("permissions_modify_user")]
-        ModifyUser = 16,
+        ModifyUser = 1 << 4,
+
         [Description("permissions_apply_discounts")]
-        ApplyDiscount = 32,
+        ApplyDiscount = 1 << 5,
+        
         [Description("permissions_create_product")]
-        CreateProducts = 64,
-        All = DoSale | PrintReceipt | CreateUser | RemoveUser | ModifyUser | ApplyDiscount | CreateProducts
+        CreateProducts = 1 << 6,
+        
+        [Description("permissions_modify_product")]
+        ModifyProducts = 1 << 7,
+
+        [Description("permissions_remove_product")]
+        RemoveProducts = 1 << 8,
+
+        All = DoSale | PrintReceipt | CreateUser | RemoveUser | ModifyUser | ApplyDiscount | CreateProducts | ModifyProducts | RemoveProducts
     }
 }

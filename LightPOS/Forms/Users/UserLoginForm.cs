@@ -51,7 +51,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         public void Recenter(Control c, bool horizontal = true, bool vertical = true)
         {
-            if (c == null || c.Parent == null) return;
+            if (c?.Parent == null) return;
             if (horizontal)
                 c.Left = (c.Parent.ClientSize.Width - c.Width) / 2;
             if (vertical)
@@ -68,7 +68,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             Recenter(label1);
             panel1.Hide();
             base.OnLoad(e);
-            Thread th = new Thread(() => {
+            var th = new Thread(() => {
                 InitEverything();
 
                 users = DataManager.GetUsers();
@@ -93,7 +93,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             //Ignore "ghost" click if user is logged in
             if (GlobalStorage.CurrentUser != null) return;
             //A user was selected. We can now show a form and ask for a password
-            User usr = e.User;
+            var usr = e.User;
             const float percentage = 0.25f;
 
             var form = new SecureUserLoginForm
@@ -109,15 +109,15 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         private void Form_LoginSucceded(object sender, UserPanel.UserEventArgs e)
         {
             ((IDisposable)sender).Dispose();
-            User usr = e.User;
-            Thread th = new Thread(() => {
+            var usr = e.User;
+            var th = new Thread(() => {
                 //Start a new application loop.
                 GlobalStorage.CurrentUser = usr;
                 //Log user login
                 Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.Login, ""));
                 this.InvokeIfRequired(Hide);
                 //Run main form
-                var mainForm = new MainMenuForm {Owner = this};
+                MainMenuForm mainForm = new MainMenuForm();
                 Application.Run(mainForm);
                 //Log user logout
                 Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.LogOut, ""));
@@ -139,12 +139,12 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             Program.InitializeDatabase();
 
             //Get the translated administrator account username
-            string adminUserName = "";
+            var adminUserName = "";
             using (var helper = new TranslationHelper()) {
                 adminUserName = helper.GetTranslation("create_user_admin");
             }
 
-            int numberOfUsers = 0;
+            var numberOfUsers = 0;
             numberOfUsers = DataManager.GetNumberOfUsers();
             if (numberOfUsers < 1) {
                 //Create an administrator account

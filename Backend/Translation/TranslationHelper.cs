@@ -2,6 +2,7 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,33 +15,33 @@ namespace NickAc.LightPOS.Backend.Translation
     [ProvideProperty("TranslationLocation", typeof(Control))]
     public class TranslationHelper : Component, IExtenderProvider
     {
-        public static Language CurrentLanguage { get; set; } = Language.English;
-
         public enum Language
         {
-            English,
+            English
         }
-        private class TranslationProvider
+
+        private readonly Dictionary<object, TranslationProvider> translations =
+            new Dictionary<object, TranslationProvider>();
+
+        public static Language CurrentLanguage { get; set; } = Language.English;
+
+        public bool CanExtend(object extendee)
         {
-            public string TranslationLocation;
-
-            public TranslationProvider()
-            {
-                TranslationLocation = "";
-            }
+            var control = extendee as Control;
+            return control != null;
         }
-
-        private Dictionary<object, TranslationProvider> translations = new Dictionary<object, TranslationProvider>();
 
         private TranslationProvider EnsureProviderExists(object key)
         {
             TranslationProvider p;
 
-            if (!translations.ContainsKey(key)) {
+            if (!translations.ContainsKey(key))
+            {
                 p = new TranslationProvider();
                 translations.Add(key, p);
             }
-            else {
+            else
+            {
                 p = translations[key];
             }
 
@@ -59,22 +60,17 @@ namespace NickAc.LightPOS.Backend.Translation
             EnsureProviderExists(c).TranslationLocation = value;
         }
 
-        public bool CanExtend(object extendee)
-        {
-            var control = extendee as Control;
-            return control != null;
-        }
-
         public void Translate(Form c)
         {
             TranslateControl(c);
-            c.Controls.Cast<Control>().All((p) => {
+            c.Controls.Cast<Control>().All(p =>
+            {
                 TranslateControl(p);
                 return true;
             });
         }
 
-        public String GetTranslation(string loc)
+        public string GetTranslation(string loc)
         {
             return GetTranslation(GetLanguage(CurrentLanguage), loc);
         }
@@ -82,49 +78,65 @@ namespace NickAc.LightPOS.Backend.Translation
         public void TranslateControl(Control c)
         {
             var lang = GetLanguage(CurrentLanguage);
-            if (lang != null) {
-                string loc = GetTranslationLocation(c);
-                if (!loc.Equals(string.Empty)) {
+            if (lang != null)
+            {
+                var loc = GetTranslationLocation(c);
+                if (!loc.Equals(string.Empty))
+                {
                     c.Text = GetTranslation(lang, loc);
                     c.Refresh();
                 }
             }
-            if (c is Panel panel) {
-                panel.Controls.Cast<Control>().All(cc => {
+
+            if (c is Panel panel)
+                panel.Controls.Cast<Control>().All(cc =>
+                {
                     TranslateControl(cc);
                     return true;
                 });
-            }
         }
 
         private string GetTranslation(ResourceManager lang, string loc)
         {
-            string final = "";
+            var final = "";
             var original = lang.GetString(loc);
-            if (original.Contains(' ')) {
+            if (original.Contains(' '))
+            {
                 var split = original.Split(' ');
-                split.All((s) => {
-                    if (s.StartsWith("$", StringComparison.Ordinal)) {
+                split.All(s =>
+                {
+                    if (s.StartsWith("$", StringComparison.Ordinal))
                         final += GetTranslation(lang, s.TrimStart('$')) + " ";
-                    }
-                    else {
+                    else
                         final += s + " ";
-                    }
                     return true;
                 });
             }
+
             if (final == string.Empty)
                 final = original;
             return final.Trim();
         }
 
-        public System.Resources.ResourceManager GetLanguage(Language lang)
+        public ResourceManager GetLanguage(Language lang)
         {
-            switch (lang) {
+            switch (lang)
+            {
                 case Language.English:
                     return Translation_EN.ResourceManager;
             }
+
             return null;
+        }
+
+        private class TranslationProvider
+        {
+            public string TranslationLocation;
+
+            public TranslationProvider()
+            {
+                TranslationLocation = "";
+            }
         }
     }
 }

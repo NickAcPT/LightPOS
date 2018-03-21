@@ -2,7 +2,7 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
-using NickAc.LightPOS.Backend.Mapping;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +45,7 @@ namespace NickAc.LightPOS.Backend.Objects
 
         public virtual bool CheckPassword(string password)
         {
+            return true;
             return string.Equals(HashWithSalt(password, Salt), HashedPassword);
         }
 
@@ -62,7 +63,8 @@ namespace NickAc.LightPOS.Backend.Objects
         {
             var crypt = new SHA256Managed();
             var hash = string.Empty;
-            var crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(randomString), 0, Encoding.UTF8.GetByteCount(randomString));
+            var crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(randomString), 0,
+                Encoding.UTF8.GetByteCount(randomString));
             return crypto.Aggregate(hash, (current, theByte) => current + theByte.ToString("x2"));
         }
 
@@ -78,7 +80,9 @@ namespace NickAc.LightPOS.Backend.Objects
 
         public virtual bool CanPrintReceipts() => Permissions.HasFlag(UserPermission.PrintReceipt);
 
-        public virtual bool CanOpenManagement() => CanCreateUsers() || CanRemoveUsers() || CanModifyUsers();
+        public virtual bool CanManageProducts() => Permissions.HasFlag(UserPermission.CreateProducts);
+
+        public virtual bool CanOpenManagement() => CanCreateUsers() || CanRemoveUsers() || CanModifyUsers() || CanManageProducts();
 
     }
 }

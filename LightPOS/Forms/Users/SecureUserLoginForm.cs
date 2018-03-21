@@ -20,6 +20,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         #region Fields
 
         private const int ControlPadding = 8;
+        private const float SizePercentage = 0.65f;
 
         #endregion
 
@@ -27,6 +28,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         public SecureUserLoginForm()
         {
+            var screenSize = Screen.FromControl(this).Bounds.Size;
+            Size = new Size((int) (screenSize.Width * SizePercentage), (int) (screenSize.Height * SizePercentage));
             Sizable = false;
             TitlebarVisible = false;
             Opacity = 0;
@@ -64,33 +67,34 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         {
             User = usr;
             AddControls(this);
+            CenterToScreen();
             ShowDialog();
         }
 
         protected virtual void OnLoginSucceded(User e)
         {
-            EventHandler<UserEventArgs> eh = LoginSucceded;
+            var eh = LoginSucceded;
 
             eh?.Invoke(this, new UserEventArgs(e));
         }
         private void AddControls(SecureUserLoginForm form)
         {
-            TranslationHelper translationHelper = new TranslationHelper();
-            User usr = User;
+            var translationHelper = new TranslationHelper();
+            var usr = User;
 
             const float btnLoginPercentage = 0.20f;
             const float percentage = 0.25f;
             const float userNamePercentage = 0.25f;
             const float textBoxPercentage = 0.70f;
 
-            void escapeKeyHandler(Object s, KeyEventArgs ee)
+            void EscapeKeyHandler(Object s, KeyEventArgs ee)
             {
                 if (ee.KeyCode == Keys.Escape && !ee.Control && !ee.Alt && !ee.Shift) {
                     this.InvokeIfRequired(form.Close);
                     ee.Handled = ee.SuppressKeyPress = true;
                 }
             }
-            Label mainLabel = new Label
+            var mainLabel = new Label
             {
                 AutoSize = true,
                 BackColor = Color.Transparent,
@@ -102,7 +106,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             form.Controls.Add(mainLabel);
             Recenter(mainLabel, vertical: false);
 
-            Label userNameLabel = new Label
+            var userNameLabel = new Label
             {
                 AutoSize = true,
                 BackColor = Color.Transparent,
@@ -114,17 +118,17 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             form.Controls.Add(userNameLabel);
             Recenter(userNameLabel, vertical: false);
 
-            ModernButton btn = new ModernButton
+            var btn = new ModernButton
             {
                 Text = translationHelper.GetTranslation("user_login_okbutton"),
                 Size = new Size((int)(form.Width * percentage), (int)(form.Height * btnLoginPercentage)),
             };
-            btn.Location = new Point(0 /* Will be centered later */, form.Bottom - ControlPadding - btn.Height);
+            btn.Location = new Point(0 /* Will be centered later */, form.Height - ControlPadding - btn.Height);
 
-            Point point = new Point(0, (int)(form.Height * textBoxPercentage));
+            var point = new Point(0, (int)(form.Height * textBoxPercentage));
             point.Offset(0, -8);
 
-            TextBoxEx textBox = new TextBoxEx
+            var textBox = new TextBoxEx
             {
                 Font = userNameLabel.Font,
                 UseSystemPasswordChar = true,
@@ -155,13 +159,14 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             form.Controls.Add(btn);
             Recenter(btn, vertical: false);
             form.AcceptButton = btn;
-            textBox.KeyUp += escapeKeyHandler;
-            form.KeyUp += escapeKeyHandler;
+            textBox.KeyUp += EscapeKeyHandler;
+            form.KeyUp += EscapeKeyHandler;
             form.Load += (ss, ee) => {
                 var anim = new Animation().WithLimit(10).WithAction((a) => form.InvokeIfRequired(() => form.Opacity += 0.1f)).WithDisposal(form);
                 anim.Start();
             };
             translationHelper.Dispose();
+            form.TopMost = true;
         }
 
         #endregion

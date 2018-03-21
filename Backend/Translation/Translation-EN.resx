@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="add_cat_okbutton" xml:space="preserve">
+    <value>Add category</value>
+  </data>
+  <data name="add_cat_title" xml:space="preserve">
+    <value>Add category</value>
+  </data>
   <data name="add_prod_okbutton" xml:space="preserve">
     <value>Add Product</value>
   </data>
@@ -132,14 +138,38 @@
   <data name="current_user" xml:space="preserve">
     <value>Current</value>
   </data>
-  <data name="edit_prod_name" xml:space="preserve">
-    <value>Product name:</value>
+  <data name="edit_cat_color" xml:space="preserve">
+    <value>Color</value>
   </data>
-  <data name="edit_prod_price" xml:space="preserve">
-    <value>Product price:</value>
+  <data name="edit_cat_name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="edit_cat_okbutton" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="edit_cat_tax" xml:space="preserve">
+    <value>Tax</value>
+  </data>
+  <data name="edit_cat_title" xml:space="preserve">
+    <value>Modify category</value>
+  </data>
+  <data name="edit_prod_barcode" xml:space="preserve">
+    <value>Barcode</value>
+  </data>
+  <data name="edit_prod_category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="edit_prod_name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="edit_prod_okbutton" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="edit_prod_title" xml:space="preserve">
-    <value>$prefix - Product Management</value>
+    <value>$prefix - Modify Product</value>
+  </data>
+  <data name="edit_prod_unitprice" xml:space="preserve">
+    <value>Unit Price</value>
   </data>
   <data name="edit_user_delete" xml:space="preserve">
     <value>Delete user</value>
@@ -159,6 +189,9 @@
   <data name="edit_user_title" xml:space="preserve">
     <value>$prefix - User Management</value>
   </data>
+  <data name="main_menu_add_category" xml:space="preserve">
+    <value>Add category</value>
+  </data>
   <data name="main_menu_add_prod" xml:space="preserve">
     <value>Add Product</value>
   </data>
@@ -174,14 +207,23 @@
   <data name="main_menu_labelManagement" xml:space="preserve">
     <value>Management</value>
   </data>
+  <data name="main_menu_labelManagement_prods" xml:space="preserve">
+    <value>Products $main_menu_labelManagement</value>
+  </data>
+  <data name="main_menu_labelManagement_users" xml:space="preserve">
+    <value>User $main_menu_labelManagement</value>
+  </data>
   <data name="main_menu_openLightPOSTile" xml:space="preserve">
     <value>Open $prefix</value>
   </data>
   <data name="main_menu_pos_management" xml:space="preserve">
-    <value>$prefix Management</value>
+    <value>$prefix $main_menu_labelManagement</value>
   </data>
   <data name="main_menu_title" xml:space="preserve">
     <value>$prefix - Menu</value>
+  </data>
+  <data name="modify_product_title" xml:space="preserve">
+    <value>Modify product</value>
   </data>
   <data name="permissions_apply_discounts" xml:space="preserve">
     <value>Apply discounts</value>
@@ -195,11 +237,17 @@
   <data name="permissions_do_sale" xml:space="preserve">
     <value>Do sales</value>
   </data>
+  <data name="permissions_modify_product" xml:space="preserve">
+    <value>Modify products</value>
+  </data>
   <data name="permissions_modify_user" xml:space="preserve">
     <value>Modify users</value>
   </data>
   <data name="permissions_print_receipt" xml:space="preserve">
     <value>Print receipts</value>
+  </data>
+  <data name="permissions_remove_product" xml:space="preserve">
+    <value>Remove products</value>
   </data>
   <data name="permissions_remove_user" xml:space="preserve">
     <value>Remove users</value>

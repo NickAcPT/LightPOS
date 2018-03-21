@@ -29,7 +29,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         #region Fields
         const int ControlPadding = 8;
         private const int MaxTilesPerRow = 3;
-        private const int TileSize = 145;
+        private const int TileSize = 150;
         private IList<User> users;
 
         #endregion
@@ -39,6 +39,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         public SelectUserForm()
         {
             InitializeComponent();
+            panel1.TileSize = TileSize;
             WindowState = FormWindowState.Maximized;
             translationHelper1.Translate(this);
         }

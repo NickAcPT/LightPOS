@@ -2,6 +2,7 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
+
 using FluentNHibernate.Mapping;
 using NickAc.LightPOS.Backend.Objects;
 
@@ -12,7 +13,7 @@ namespace NickAc.LightPOS.Backend.Mapping
         public SaleMap()
         {
             Table("Sales");
-            Id(x => x.ID).GeneratedBy.Native();
+            Id(x => x.Id).GeneratedBy.Native();
             HasMany(x => x.Products);
             Map(x => x.TotalPrice);
             Map(x => x.PaidPrice);

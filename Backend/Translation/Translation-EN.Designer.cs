@@ -61,6 +61,24 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add category.
+        /// </summary>
+        public static string add_cat_okbutton {
+            get {
+                return ResourceManager.GetString("add_cat_okbutton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add category.
+        /// </summary>
+        public static string add_cat_title {
+            get {
+                return ResourceManager.GetString("add_cat_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Product.
         /// </summary>
         public static string add_prod_okbutton {
@@ -106,7 +124,70 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product name:.
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string edit_cat_color {
+            get {
+                return ResourceManager.GetString("edit_cat_color", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string edit_cat_name {
+            get {
+                return ResourceManager.GetString("edit_cat_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save changes.
+        /// </summary>
+        public static string edit_cat_okbutton {
+            get {
+                return ResourceManager.GetString("edit_cat_okbutton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tax.
+        /// </summary>
+        public static string edit_cat_tax {
+            get {
+                return ResourceManager.GetString("edit_cat_tax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify category.
+        /// </summary>
+        public static string edit_cat_title {
+            get {
+                return ResourceManager.GetString("edit_cat_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barcode.
+        /// </summary>
+        public static string edit_prod_barcode {
+            get {
+                return ResourceManager.GetString("edit_prod_barcode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category.
+        /// </summary>
+        public static string edit_prod_category {
+            get {
+                return ResourceManager.GetString("edit_prod_category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string edit_prod_name {
             get {
@@ -115,20 +196,29 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product price:.
+        ///   Looks up a localized string similar to Save.
         /// </summary>
-        public static string edit_prod_price {
+        public static string edit_prod_okbutton {
             get {
-                return ResourceManager.GetString("edit_prod_price", resourceCulture);
+                return ResourceManager.GetString("edit_prod_okbutton", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $prefix - Product Management.
+        ///   Looks up a localized string similar to $prefix - Modify Product.
         /// </summary>
         public static string edit_prod_title {
             get {
                 return ResourceManager.GetString("edit_prod_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Price.
+        /// </summary>
+        public static string edit_prod_unitprice {
+            get {
+                return ResourceManager.GetString("edit_prod_unitprice", resourceCulture);
             }
         }
         
@@ -187,6 +277,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add category.
+        /// </summary>
+        public static string main_menu_add_category {
+            get {
+                return ResourceManager.GetString("main_menu_add_category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Product.
         /// </summary>
         public static string main_menu_add_prod {
@@ -232,6 +331,24 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Products $main_menu_labelManagement.
+        /// </summary>
+        public static string main_menu_labelManagement_prods {
+            get {
+                return ResourceManager.GetString("main_menu_labelManagement_prods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User $main_menu_labelManagement.
+        /// </summary>
+        public static string main_menu_labelManagement_users {
+            get {
+                return ResourceManager.GetString("main_menu_labelManagement_users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open $prefix.
         /// </summary>
         public static string main_menu_openLightPOSTile {
@@ -241,7 +358,7 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $prefix Management.
+        ///   Looks up a localized string similar to $prefix $main_menu_labelManagement.
         /// </summary>
         public static string main_menu_pos_management {
             get {
@@ -255,6 +372,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         public static string main_menu_title {
             get {
                 return ResourceManager.GetString("main_menu_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify product.
+        /// </summary>
+        public static string modify_product_title {
+            get {
+                return ResourceManager.GetString("modify_product_title", resourceCulture);
             }
         }
         
@@ -295,6 +421,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Modify products.
+        /// </summary>
+        public static string permissions_modify_product {
+            get {
+                return ResourceManager.GetString("permissions_modify_product", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modify users.
         /// </summary>
         public static string permissions_modify_user {
@@ -309,6 +444,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         public static string permissions_print_receipt {
             get {
                 return ResourceManager.GetString("permissions_print_receipt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove products.
+        /// </summary>
+        public static string permissions_remove_product {
+            get {
+                return ResourceManager.GetString("permissions_remove_product", resourceCulture);
             }
         }
         
