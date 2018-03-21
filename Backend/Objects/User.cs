@@ -45,7 +45,6 @@ namespace NickAc.LightPOS.Backend.Objects
 
         public virtual bool CheckPassword(string password)
         {
-            return true;
             return string.Equals(HashWithSalt(password, Salt), HashedPassword);
         }
 
