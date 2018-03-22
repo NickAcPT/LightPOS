@@ -3,8 +3,12 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
 
+using System;
 using System.Drawing;
+using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
+using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
 
@@ -26,12 +30,44 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             get => Size.Empty;
             set => base.MaximumSize = value;
         }
-        
+
         public ModifyProductForm(bool translate = true)
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
             if (translate) translationHelper1.Translate(this);
+
+            comboBox2.Items.AddRange(DataManager.GetCategories().ToArray<object>());
+            comboBox2.DrawMode = DrawMode.OwnerDrawVariable;
+            comboBox2.DrawItem += ComboBox2_DrawItem;
+        }
+
+
+        private void ComboBox2_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            const int sideOffset = 8;
+            int colorRectSize = e.Bounds.Height - 2;
+
+            if (!(sender is ComboBox combo) || combo.Items.Count <= 0) return;
+            if (!(combo.Items.Cast<object>().ElementAtOrDefault(e.Index) is Category category)) return;
+            e.DrawBackground();
+            using (var sb = new SolidBrush(combo.ForeColor))
+            {
+                using (var borderBrush = new SolidBrush(Color.FromArgb(95, 95, 95)))
+                {
+                    using (var colorBrush = new SolidBrush(category.Color))
+                    {
+                        var rect = new Rectangle(e.Bounds.X + 2, e.Bounds.Y + 2, colorRectSize - 2, colorRectSize - 2);
+                        e.Graphics.FillRectangle(borderBrush, rect);
+                        e.Graphics.FillRectangle(colorBrush, Rectangle.Inflate(rect, -1, -1));
+                    }
+                }
+
+                var textRect = Rectangle.FromLTRB(e.Bounds.Left + colorRectSize + sideOffset, e.Bounds.Top, e.Bounds.Right,
+                    e.Bounds.Bottom);
+                e.Graphics.DrawString(category.Name, combo.Font, sb,
+                    textRect);
+            }
         }
 
         public ModifyProductForm(Product toEdit) : this(false)
@@ -39,19 +75,47 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             _toEdit = toEdit;
             textBox1.Text = toEdit.Name;
             textBoxEx1.Text = toEdit.Barcode;
-            textBox1.Text = toEdit.Name;
+            textBoxEx2.Text = toEdit.UnitPrice.ToString(CultureInfo.InvariantCulture);
             translationHelper1.SetTranslationLocation(metroButton1, "edit_prod_okbutton");
             translationHelper1.SetTranslationLocation(this, "edit_prod_title");
-
             translationHelper1.Translate(this);
         }
 
 
-        private void modernButton2_Click(object sender, System.EventArgs e)
+        private void ModernButton2_Click(object sender, EventArgs e)
         {
             this.InvokeIfRequired(Hide);
-            Extensions.RunInAnotherApplication<Products.ModifyCategoryForm>(true);
+            Extensions.RunInAnotherApplication<ModifyCategoryForm>(true);
             this.InvokeIfRequired(Show);
+        }
+
+        private void MetroButton1_Click(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedIndex < 0 || textBoxEx2.Text.Trim() == string.Empty) return;
+            if (_toEdit != null)
+            {
+                var price = float.Parse(textBoxEx2.Text, NumberStyles.Currency);
+                _toEdit.Name = textBox1.Text;
+                _toEdit.Barcode = textBoxEx1.Text;
+                _toEdit.Price = _toEdit.UnitPrice = price;
+                _toEdit.Category = comboBox2.SelectedItem as Category;
+
+                DataManager.AddProduct(_toEdit);
+            }
+            else
+            {
+                var price = float.Parse(textBoxEx2.Text, NumberStyles.Currency);
+                var product = new Product
+                {
+                    Name = textBox1.Text,
+                    Barcode = textBoxEx1.Text,
+                    Price = price,
+                    UnitPrice = price,
+                    Category = comboBox2.SelectedItem as Category,
+                    RequiresQuantity = false,
+                };
+                DataManager.AddProduct(product);
+            }
         }
     }
 }

@@ -212,6 +212,12 @@
   <ItemGroup>
     <None Include="Resources\account-plus.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alert-circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alert-circle %281%29.png" />
+  </ItemGroup>
   <Import Project="..\SharedResources\SharedResources.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

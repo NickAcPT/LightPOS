@@ -1,11 +1,17 @@
-﻿namespace NickAc.LightPOS.Frontend.Forms.Products
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using NickAc.LightPOS.Backend.Translation;
+using NickAc.LightPOS.Frontend.Controls;
+using NickAc.ModernUIDoneRight.Controls;
+
+namespace NickAc.LightPOS.Frontend.Forms.Products
 {
     partial class ModifyProductForm
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -46,6 +52,7 @@
             // 
             this.appBar1.Location = new System.Drawing.Point(1, 1);
             this.appBar1.Size = new System.Drawing.Size(755, 50);
+            this.appBar1.TabStop = false;
             this.translationHelper1.SetTranslationLocation(this.appBar1, "");
             // 
             // textBox1
@@ -56,7 +63,7 @@
             this.textBox1.Location = new System.Drawing.Point(10, 31);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(542, 29);
-            this.textBox1.TabIndex = 10;
+            this.textBox1.TabIndex = 1;
             this.translationHelper1.SetTranslationLocation(this.textBox1, "");
             // 
             // label3
@@ -66,7 +73,7 @@
             this.label3.Location = new System.Drawing.Point(7, 67);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(139, 21);
-            this.label3.TabIndex = 9;
+            this.label3.TabIndex = 2;
             this.label3.Text = "edit_prod_barcode";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.translationHelper1.SetTranslationLocation(this.label3, "edit_prod_barcode");
@@ -78,7 +85,7 @@
             this.label1.Location = new System.Drawing.Point(7, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 21);
-            this.label1.TabIndex = 8;
+            this.label1.TabIndex = 0;
             this.label1.Text = "edit_prod_name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.translationHelper1.SetTranslationLocation(this.label1, "edit_prod_name");
@@ -90,10 +97,11 @@
             this.metroButton1.Location = new System.Drawing.Point(177, 192);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(210, 42);
-            this.metroButton1.TabIndex = 14;
+            this.metroButton1.TabIndex = 9;
             this.metroButton1.Text = "add_prod_okbutton";
             this.translationHelper1.SetTranslationLocation(this.metroButton1, "edit_prod_okbutton");
             this.metroButton1.UseVisualStyleBackColor = true;
+            this.metroButton1.Click += new System.EventHandler(this.MetroButton1_Click);
             // 
             // modernButton2
             // 
@@ -102,11 +110,11 @@
             this.modernButton2.Location = new System.Drawing.Point(524, 150);
             this.modernButton2.Name = "modernButton2";
             this.modernButton2.Size = new System.Drawing.Size(28, 29);
-            this.modernButton2.TabIndex = 14;
+            this.modernButton2.TabIndex = 8;
             this.modernButton2.Text = "+";
             this.translationHelper1.SetTranslationLocation(this.modernButton2, "");
             this.modernButton2.UseVisualStyleBackColor = true;
-            this.modernButton2.Click += new System.EventHandler(this.modernButton2_Click);
+            this.modernButton2.Click += new System.EventHandler(this.ModernButton2_Click);
             // 
             // label2
             // 
@@ -115,7 +123,7 @@
             this.label2.Location = new System.Drawing.Point(7, 128);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(143, 21);
-            this.label2.TabIndex = 9;
+            this.label2.TabIndex = 6;
             this.label2.Text = "edit_prod_category";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.translationHelper1.SetTranslationLocation(this.label2, "edit_prod_category");
@@ -130,7 +138,7 @@
             this.comboBox2.Location = new System.Drawing.Point(10, 150);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(508, 29);
-            this.comboBox2.TabIndex = 15;
+            this.comboBox2.TabIndex = 7;
             this.translationHelper1.SetTranslationLocation(this.comboBox2, "");
             // 
             // textBoxEx1
@@ -141,7 +149,7 @@
             this.textBoxEx1.Location = new System.Drawing.Point(11, 89);
             this.textBoxEx1.Name = "textBoxEx1";
             this.textBoxEx1.Size = new System.Drawing.Size(285, 29);
-            this.textBoxEx1.TabIndex = 10;
+            this.textBoxEx1.TabIndex = 3;
             this.translationHelper1.SetTranslationLocation(this.textBoxEx1, "");
             // 
             // label4
@@ -152,7 +160,7 @@
             this.label4.Location = new System.Drawing.Point(314, 67);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(144, 21);
-            this.label4.TabIndex = 9;
+            this.label4.TabIndex = 4;
             this.label4.Text = "edit_prod_unitprice";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.translationHelper1.SetTranslationLocation(this.label4, "edit_prod_unitprice");
@@ -164,7 +172,7 @@
             this.textBoxEx2.Location = new System.Drawing.Point(317, 89);
             this.textBoxEx2.Name = "textBoxEx2";
             this.textBoxEx2.Size = new System.Drawing.Size(235, 29);
-            this.textBoxEx2.TabIndex = 10;
+            this.textBoxEx2.TabIndex = 5;
             this.translationHelper1.SetTranslationLocation(this.textBoxEx2, "");
             // 
             // panel1
@@ -184,7 +192,7 @@
             this.panel1.Location = new System.Drawing.Point(96, 121);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(565, 242);
-            this.panel1.TabIndex = 16;
+            this.panel1.TabIndex = 1;
             this.translationHelper1.SetTranslationLocation(this.panel1, "");
             // 
             // ModifyProductForm
@@ -199,9 +207,9 @@
             this.Name = "ModifyProductForm";
             this.Text = "FormModifyProduct";
             this.TitlebarVisible = false;
-            this.translationHelper1.SetTranslationLocation(this, "add_product_title");
-            this.Controls.SetChildIndex(this.panel1, 0);
+            this.translationHelper1.SetTranslationLocation(this, "add_prod_title");
             this.Controls.SetChildIndex(this.appBar1, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -210,17 +218,17 @@
 
         #endregion
 
-        private Backend.Translation.TranslationHelper translationHelper1;
-        private Controls.TextBoxEx textBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private ModernUIDoneRight.Controls.ModernButton metroButton1;
-        private ModernUIDoneRight.Controls.ModernButton modernButton2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private Controls.TextBoxEx textBoxEx1;
-        private System.Windows.Forms.Label label4;
-        private Controls.TextBoxEx textBoxEx2;
-        private System.Windows.Forms.Panel panel1;
+        private TranslationHelper translationHelper1;
+        private TextBoxEx textBox1;
+        private Label label3;
+        private Label label1;
+        private ModernButton metroButton1;
+        private ModernButton modernButton2;
+        private Label label2;
+        private ComboBox comboBox2;
+        private TextBoxEx textBoxEx1;
+        private Label label4;
+        private TextBoxEx textBoxEx2;
+        private Panel panel1;
     }
 }

@@ -1,11 +1,17 @@
-﻿namespace NickAc.LightPOS.Frontend.Forms.Products
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using NickAc.LightPOS.Backend.Translation;
+using NickAc.LightPOS.Frontend.Controls;
+using NickAc.ModernUIDoneRight.Controls;
+
+namespace NickAc.LightPOS.Frontend.Forms.Products
 {
     partial class ModifyCategoryForm
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -27,8 +33,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModifyCategoryForm));
             this.metroButton1 = new NickAc.ModernUIDoneRight.Controls.ModernButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.errorImage = new System.Windows.Forms.PictureBox();
             this.simpleSelectionControl1 = new NickAc.LightPOS.Frontend.Controls.SimpleSelectionControl();
             this.percentageUpDown1 = new NickAc.LightPOS.Frontend.Controls.PercentageUpDown();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -38,6 +46,7 @@
             this.textBox1 = new NickAc.LightPOS.Frontend.Controls.TextBoxEx();
             this.translationHelper1 = new NickAc.LightPOS.Backend.Translation.TranslationHelper();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.percentageUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,6 +54,7 @@
             // 
             this.appBar1.Location = new System.Drawing.Point(1, 1);
             this.appBar1.Size = new System.Drawing.Size(759, 50);
+            this.appBar1.TabStop = false;
             this.translationHelper1.SetTranslationLocation(this.appBar1, "");
             // 
             // metroButton1
@@ -54,7 +64,7 @@
             this.metroButton1.Location = new System.Drawing.Point(177, 192);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(210, 42);
-            this.metroButton1.TabIndex = 17;
+            this.metroButton1.TabIndex = 1;
             this.metroButton1.Text = "add_cat_okbutton";
             this.translationHelper1.SetTranslationLocation(this.metroButton1, "add_cat_okbutton");
             this.metroButton1.UseVisualStyleBackColor = true;
@@ -63,6 +73,7 @@
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.Controls.Add(this.errorImage);
             this.panel1.Controls.Add(this.simpleSelectionControl1);
             this.panel1.Controls.Add(this.metroButton1);
             this.panel1.Controls.Add(this.percentageUpDown1);
@@ -75,8 +86,20 @@
             this.panel1.Location = new System.Drawing.Point(98, 124);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(565, 236);
-            this.panel1.TabIndex = 18;
+            this.panel1.TabIndex = 1;
             this.translationHelper1.SetTranslationLocation(this.panel1, "");
+            // 
+            // errorImage
+            // 
+            this.errorImage.Image = ((System.Drawing.Image)(resources.GetObject("errorImage.Image")));
+            this.errorImage.Location = new System.Drawing.Point(525, 31);
+            this.errorImage.Name = "errorImage";
+            this.errorImage.Size = new System.Drawing.Size(29, 29);
+            this.errorImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.errorImage.TabIndex = 20;
+            this.errorImage.TabStop = false;
+            this.translationHelper1.SetTranslationLocation(this.errorImage, "");
+            this.errorImage.Visible = false;
             // 
             // simpleSelectionControl1
             // 
@@ -86,8 +109,8 @@
             this.simpleSelectionControl1.OptionEnum = null;
             this.simpleSelectionControl1.SelectedEnumValue = null;
             this.simpleSelectionControl1.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.simpleSelectionControl1.Size = new System.Drawing.Size(267, 34);
-            this.simpleSelectionControl1.TabIndex = 19;
+            this.simpleSelectionControl1.Size = new System.Drawing.Size(280, 34);
+            this.simpleSelectionControl1.TabIndex = 5;
             this.simpleSelectionControl1.Text = "simpleSelectionControl1";
             this.translationHelper1.SetTranslationLocation(this.simpleSelectionControl1, "");
             // 
@@ -95,8 +118,8 @@
             // 
             this.percentageUpDown1.Location = new System.Drawing.Point(11, 136);
             this.percentageUpDown1.Name = "percentageUpDown1";
-            this.percentageUpDown1.Size = new System.Drawing.Size(265, 29);
-            this.percentageUpDown1.TabIndex = 18;
+            this.percentageUpDown1.Size = new System.Drawing.Size(278, 29);
+            this.percentageUpDown1.TabIndex = 6;
             this.translationHelper1.SetTranslationLocation(this.percentageUpDown1, "");
             this.percentageUpDown1.Value = 0.23D;
             this.percentageUpDown1.Visible = false;
@@ -107,7 +130,7 @@
             this.panel2.Location = new System.Drawing.Point(358, 96);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(29, 29);
-            this.panel2.TabIndex = 17;
+            this.panel2.TabIndex = 0;
             this.translationHelper1.SetTranslationLocation(this.panel2, "");
             // 
             // label4
@@ -117,7 +140,7 @@
             this.label4.Location = new System.Drawing.Point(354, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 21);
-            this.label4.TabIndex = 8;
+            this.label4.TabIndex = 7;
             this.label4.Text = "edit_cat_color";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.translationHelper1.SetTranslationLocation(this.label4, "edit_cat_color");
@@ -129,7 +152,7 @@
             this.label3.Location = new System.Drawing.Point(7, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 21);
-            this.label3.TabIndex = 8;
+            this.label3.TabIndex = 4;
             this.label3.Text = "edit_cat_tax";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.translationHelper1.SetTranslationLocation(this.label3, "edit_cat_tax");
@@ -141,7 +164,7 @@
             this.label1.Location = new System.Drawing.Point(7, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 21);
-            this.label1.TabIndex = 8;
+            this.label1.TabIndex = 2;
             this.label1.Text = "edit_cat_name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.translationHelper1.SetTranslationLocation(this.label1, "edit_cat_name");
@@ -153,8 +176,8 @@
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBox1.Location = new System.Drawing.Point(10, 31);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(542, 29);
-            this.textBox1.TabIndex = 10;
+            this.textBox1.Size = new System.Drawing.Size(509, 29);
+            this.textBox1.TabIndex = 3;
             this.translationHelper1.SetTranslationLocation(this.textBox1, "");
             // 
             // ModifyCategoryForm
@@ -173,6 +196,7 @@
             this.Controls.SetChildIndex(this.panel1, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.percentageUpDown1)).EndInit();
             this.ResumeLayout(false);
 
@@ -180,15 +204,16 @@
 
         #endregion
 
-        private ModernUIDoneRight.Controls.ModernButton metroButton1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private Controls.TextBoxEx textBox1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private Controls.PercentageUpDown percentageUpDown1;
-        private Backend.Translation.TranslationHelper translationHelper1;
-        private Controls.SimpleSelectionControl simpleSelectionControl1;
+        private ModernButton metroButton1;
+        private Panel panel1;
+        private Label label1;
+        private TextBoxEx textBox1;
+        private Panel panel2;
+        private Label label4;
+        private Label label3;
+        private PercentageUpDown percentageUpDown1;
+        private TranslationHelper translationHelper1;
+        private SimpleSelectionControl simpleSelectionControl1;
+        private PictureBox errorImage;
     }
 }

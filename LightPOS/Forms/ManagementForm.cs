@@ -52,7 +52,7 @@ namespace NickAc.LightPOS.Frontend.Forms
         {
             if (!GlobalStorage.CurrentUser.CanManageProducts()) return;
             this.InvokeIfRequired(Hide);
-            Extensions.RunInAnotherApplication<Products.ModifyProductForm>();
+            Extensions.RunInAnotherApplication<Products.ModifyProductForm>(true);
 
             this.InvokeIfRequired(Show);
         }

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using Cyotek.Windows.Forms;
 using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
@@ -14,7 +12,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
 {
     public partial class ModifyCategoryForm : TemplateForm
     {
-        enum PortugueseTax
+        private enum PortugueseTax
         {
             [Description("6%")] Six,
             [Description("13%")] Thirteen,
@@ -33,7 +31,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
         public ModifyCategoryForm(bool translate = true)
         {
             InitializeComponent();
-
+            var categories = DataManager.GetCategories().Select(c => c.Name);
             simpleSelectionControl1.OptionEnum = typeof(PortugueseTax);
             simpleSelectionControl1.SelectedEnumValue = PortugueseTax.TwentyTree;
             simpleSelectionControl1.SelectionChanged += (s, e) =>
@@ -44,12 +42,13 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 });
             };
 
+            textBox1.TextChanged += (s, e) => { errorImage.Visible = categories.Any(c => textBox1.Text == c); };
 
             WindowState = FormWindowState.Maximized;
             panel2.BackColor = Color.Transparent;
             panel2.Click += (s, e) =>
             {
-                using (var dlg = new Cyotek.Windows.Forms.ColorPickerDialog())
+                using (var dlg = new ColorPickerDialog())
                 {
                     var result = dlg.ShowDialog();
                     if (result == DialogResult.OK)
@@ -91,7 +90,10 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 {
                     Color = panel2.BackColor,
                     Name = textBox1.Text,
-                    Tax = !percentageUpDown1.Visible ? int.Parse(string.Join("", simpleSelectionControl1.SelectedEnumValue.GetDescription().Where(char.IsDigit))) / 100d : percentageUpDown1.Value
+                    Tax = !percentageUpDown1.Visible
+                        ? int.Parse(string.Join("",
+                              simpleSelectionControl1.SelectedEnumValue.GetDescription().Where(char.IsDigit))) / 100d
+                        : percentageUpDown1.Value
                 };
                 DataManager.AddCategory(finalCategory);
             }

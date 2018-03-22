@@ -91,8 +91,8 @@
             this.tilePanelReborn1.Name = "tilePanelReborn1";
             this.tilePanelReborn1.Size = new System.Drawing.Size(145, 145);
             this.tilePanelReborn1.TabIndex = 8;
-            this.tilePanelReborn1.Text = "main_menu_add_user";
-            this.translationHelper1.SetTranslationLocation(this.tilePanelReborn1, "main_menu_add_user");
+            this.tilePanelReborn1.Text = "main_menu_add_prod";
+            this.translationHelper1.SetTranslationLocation(this.tilePanelReborn1, "main_menu_add_prod");
             this.tilePanelReborn1.Click += new System.EventHandler(this.TilePanelReborn1_Click);
             // 
             // label1

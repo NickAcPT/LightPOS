@@ -70,7 +70,8 @@ namespace NickAc.LightPOS.Frontend.Controls
             for (var i = 0; i < enumValues.Length; i++)
             {
                 var value = (Enum) enumValues.GetValue(i);
-                var rect = new Rectangle(cellSize * i, ContentRectangle.Y, cellSize, ContentRectangle.Height + 1);
+                var rect = new Rectangle(ContentRectangle.X  + cellSize * i, ContentRectangle.Y, cellSize,
+                    ContentRectangle.Height + 1);
                 if (i + 1 == enumValues.Length) rect.Width += ContentRectangle.Right - rect.Right + 1;
                 if (rect.Contains(location))
                     return value;
@@ -119,7 +120,7 @@ namespace NickAc.LightPOS.Frontend.Controls
                             for (var i = 0; i < enumValues.Length; i++)
                             {
                                 var value = (Enum) enumValues.GetValue(i);
-                                var rect = new Rectangle(cellSize * i, containerRect.Y, cellSize,
+                                var rect = new Rectangle(containerRect.X  + cellSize * i, containerRect.Y, cellSize,
                                     containerRect.Height + 1);
                                 if (i + 1 == enumValues.Length) rect.Width += ContentRectangle.Right - rect.Right + 1;
                                 var isSelected = SelectedEnumValue != null &&

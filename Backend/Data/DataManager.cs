@@ -174,6 +174,21 @@ namespace NickAc.LightPOS.Backend.Data
             return list;
         }
 
+        
+
+        public static IList<Category> GetCategories()
+        {
+            IList<Category> list;
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    list = session.QueryOver<Category>().List();
+                }
+            }
+            return list;
+        }
+
         public static User GetUser(int ID)
         {
             User user;
