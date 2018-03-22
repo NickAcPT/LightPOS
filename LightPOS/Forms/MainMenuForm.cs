@@ -33,7 +33,7 @@ namespace NickAc.LightPOS.Frontend.Forms
 
         #endregion
 
-        private void tilePanelReborn2_Click_1(object sender, EventArgs e)
+        private void TilePanelReborn2_Click_1(object sender, EventArgs e)
         {
             if (GlobalStorage.CurrentUser.CanOpenManagement())
             this.HideAndStart<ManagementForm>();

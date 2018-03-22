@@ -4,6 +4,7 @@
 //
 
 using System;
+using System.ComponentModel;
 using static NickAc.LightPOS.Backend.Utils.EnumUtils;
 
 namespace NickAc.LightPOS.Backend.Objects

@@ -5,38 +5,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace NickAc.LightPOS.Backend.Utils
 {
     public static class EnumUtils
     {
-        #region Classes
-
-        [AttributeUsage(AttributeTargets.Field)]
-        public class DescriptionAttribute : Attribute
-        {
-            #region Constructors
-
-            public DescriptionAttribute(string description)
-            {
-                Description = description;
-            }
-
-            #endregion
-
-            #region Properties
-
-            public string Description { get; set; }
-
-            #endregion
-        }
-
-        #endregion
-
         #region Methods
 
         public static string GetDescription(this Enum value)
         {
+            if (!HasDescription(value))
+                return value.ToString();
             var fi = value.GetType().GetField(value.ToString());
 
             var attributes =

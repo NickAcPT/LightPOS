@@ -55,7 +55,7 @@
             this.tilePanelReborn1.Image = ((System.Drawing.Image)(resources.GetObject("tilePanelReborn1.Image")));
             this.tilePanelReborn1.Location = new System.Drawing.Point(7, 36);
             this.tilePanelReborn1.Name = "tilePanelReborn1";
-            this.tilePanelReborn1.Size = new System.Drawing.Size(273, 122);
+            this.tilePanelReborn1.Size = new System.Drawing.Size(298, 145);
             this.tilePanelReborn1.TabIndex = 1;
             this.tilePanelReborn1.Text = "openLightPOSTile";
             this.translationHelper1.SetTranslationLocation(this.tilePanelReborn1, "main_menu_openLightPOSTile");
@@ -79,9 +79,9 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.tilePanelReborn1);
-            this.panel2.Location = new System.Drawing.Point(37, 156);
+            this.panel2.Location = new System.Drawing.Point(24, 156);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(713, 167);
+            this.panel2.Size = new System.Drawing.Size(739, 190);
             this.panel2.TabIndex = 2;
             this.translationHelper1.SetTranslationLocation(this.panel2, "");
             // 
@@ -97,11 +97,11 @@
             this.tilePanelReborn2.Image = global::NickAc.LightPOS.Frontend.Properties.Resources.ic_person_white_48dp_2x;
             this.tilePanelReborn2.Location = new System.Drawing.Point(432, 36);
             this.tilePanelReborn2.Name = "tilePanelReborn2";
-            this.tilePanelReborn2.Size = new System.Drawing.Size(273, 122);
+            this.tilePanelReborn2.Size = new System.Drawing.Size(298, 145);
             this.tilePanelReborn2.TabIndex = 5;
             this.tilePanelReborn2.Text = "posManagementTile";
             this.translationHelper1.SetTranslationLocation(this.tilePanelReborn2, "main_menu_pos_management");
-            this.tilePanelReborn2.Click += new System.EventHandler(this.tilePanelReborn2_Click_1);
+            this.tilePanelReborn2.Click += new System.EventHandler(this.TilePanelReborn2_Click_1);
             // 
             // label2
             // 

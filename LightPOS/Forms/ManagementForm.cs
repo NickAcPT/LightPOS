@@ -27,7 +27,7 @@ namespace NickAc.LightPOS.Frontend.Forms
             translationHelper1.Translate(this);
         }
 
-        private void tilePanelReborn2_Click(object sender, EventArgs e)
+        private void TilePanelReborn2_Click(object sender, EventArgs e)
         {
             if (!GlobalStorage.CurrentUser.CanModifyUsers() || !GlobalStorage.CurrentUser.CanRemoveUsers())
                 return;
@@ -40,7 +40,7 @@ namespace NickAc.LightPOS.Frontend.Forms
             this.InvokeIfRequired(Show);
         }
 
-        private void tilePanelReborn3_Click(object sender, EventArgs e)
+        private void TilePanelReborn3_Click(object sender, EventArgs e)
         {
             if (!GlobalStorage.CurrentUser.CanCreateUsers()) return;
             this.InvokeIfRequired(Hide);
@@ -48,7 +48,7 @@ namespace NickAc.LightPOS.Frontend.Forms
             this.InvokeIfRequired(Show);
         }
 
-        private void tilePanelReborn1_Click(object sender, EventArgs e)
+        private void TilePanelReborn1_Click(object sender, EventArgs e)
         {
             if (!GlobalStorage.CurrentUser.CanManageProducts()) return;
             this.InvokeIfRequired(Hide);
@@ -57,7 +57,7 @@ namespace NickAc.LightPOS.Frontend.Forms
             this.InvokeIfRequired(Show);
         }
 
-        private void tilePanelReborn4_Click(object sender, EventArgs e)
+        private void TilePanelReborn4_Click(object sender, EventArgs e)
         {
             if (!GlobalStorage.CurrentUser.CanManageProducts()) return;
             this.InvokeIfRequired(Hide);

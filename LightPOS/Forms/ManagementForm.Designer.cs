@@ -75,7 +75,7 @@
             this.tilePanelReborn4.TabIndex = 8;
             this.tilePanelReborn4.Text = "main_menu_add_category";
             this.translationHelper1.SetTranslationLocation(this.tilePanelReborn4, "main_menu_add_category");
-            this.tilePanelReborn4.Click += new System.EventHandler(this.tilePanelReborn4_Click);
+            this.tilePanelReborn4.Click += new System.EventHandler(this.TilePanelReborn4_Click);
             // 
             // tilePanelReborn1
             // 
@@ -93,7 +93,7 @@
             this.tilePanelReborn1.TabIndex = 8;
             this.tilePanelReborn1.Text = "main_menu_add_user";
             this.translationHelper1.SetTranslationLocation(this.tilePanelReborn1, "main_menu_add_user");
-            this.tilePanelReborn1.Click += new System.EventHandler(this.tilePanelReborn1_Click);
+            this.tilePanelReborn1.Click += new System.EventHandler(this.TilePanelReborn1_Click);
             // 
             // label1
             // 
@@ -123,7 +123,7 @@
             this.tilePanelReborn3.TabIndex = 5;
             this.tilePanelReborn3.Text = "main_menu_add_user";
             this.translationHelper1.SetTranslationLocation(this.tilePanelReborn3, "main_menu_add_user");
-            this.tilePanelReborn3.Click += new System.EventHandler(this.tilePanelReborn3_Click);
+            this.tilePanelReborn3.Click += new System.EventHandler(this.TilePanelReborn3_Click);
             // 
             // tilePanelReborn2
             // 
@@ -141,7 +141,7 @@
             this.tilePanelReborn2.TabIndex = 5;
             this.tilePanelReborn2.Text = "main_menu_edit_user";
             this.translationHelper1.SetTranslationLocation(this.tilePanelReborn2, "main_menu_edit_user");
-            this.tilePanelReborn2.Click += new System.EventHandler(this.tilePanelReborn2_Click);
+            this.tilePanelReborn2.Click += new System.EventHandler(this.TilePanelReborn2_Click);
             // 
             // label2
             // 

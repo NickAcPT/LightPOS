@@ -12,7 +12,7 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual int Id { get; set; }
         public virtual string Name { get; set; }
         public virtual Color Color { get; set; }
-        public virtual float Tax { get; set; }
+        public virtual double Tax { get; set; }
 
         public override string ToString()
         {

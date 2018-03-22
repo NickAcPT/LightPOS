@@ -29,6 +29,7 @@
         {
             this.metroButton1 = new NickAc.ModernUIDoneRight.Controls.ModernButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.simpleSelectionControl1 = new NickAc.LightPOS.Frontend.Controls.SimpleSelectionControl();
             this.percentageUpDown1 = new NickAc.LightPOS.Frontend.Controls.PercentageUpDown();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,18 +51,19 @@
             // 
             this.metroButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.metroButton1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.metroButton1.Location = new System.Drawing.Point(177, 157);
+            this.metroButton1.Location = new System.Drawing.Point(177, 192);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(210, 42);
             this.metroButton1.TabIndex = 17;
             this.metroButton1.Text = "add_cat_okbutton";
             this.translationHelper1.SetTranslationLocation(this.metroButton1, "add_cat_okbutton");
             this.metroButton1.UseVisualStyleBackColor = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.metroButton1.Click += new System.EventHandler(this.MetroButton1_Click);
             // 
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.Controls.Add(this.simpleSelectionControl1);
             this.panel1.Controls.Add(this.metroButton1);
             this.panel1.Controls.Add(this.percentageUpDown1);
             this.panel1.Controls.Add(this.panel2);
@@ -72,23 +74,37 @@
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.panel1.Location = new System.Drawing.Point(98, 124);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(565, 215);
+            this.panel1.Size = new System.Drawing.Size(565, 236);
             this.panel1.TabIndex = 18;
             this.translationHelper1.SetTranslationLocation(this.panel1, "");
             // 
+            // simpleSelectionControl1
+            // 
+            this.simpleSelectionControl1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.simpleSelectionControl1.Location = new System.Drawing.Point(9, 93);
+            this.simpleSelectionControl1.Name = "simpleSelectionControl1";
+            this.simpleSelectionControl1.OptionEnum = null;
+            this.simpleSelectionControl1.SelectedEnumValue = null;
+            this.simpleSelectionControl1.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.simpleSelectionControl1.Size = new System.Drawing.Size(267, 34);
+            this.simpleSelectionControl1.TabIndex = 19;
+            this.simpleSelectionControl1.Text = "simpleSelectionControl1";
+            this.translationHelper1.SetTranslationLocation(this.simpleSelectionControl1, "");
+            // 
             // percentageUpDown1
             // 
-            this.percentageUpDown1.Location = new System.Drawing.Point(11, 96);
+            this.percentageUpDown1.Location = new System.Drawing.Point(11, 136);
             this.percentageUpDown1.Name = "percentageUpDown1";
-            this.percentageUpDown1.Size = new System.Drawing.Size(120, 29);
+            this.percentageUpDown1.Size = new System.Drawing.Size(265, 29);
             this.percentageUpDown1.TabIndex = 18;
             this.translationHelper1.SetTranslationLocation(this.percentageUpDown1, "");
             this.percentageUpDown1.Value = 0.23D;
+            this.percentageUpDown1.Visible = false;
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Location = new System.Drawing.Point(186, 96);
+            this.panel2.Location = new System.Drawing.Point(358, 96);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(29, 29);
             this.panel2.TabIndex = 17;
@@ -98,7 +114,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(182, 72);
+            this.label4.Location = new System.Drawing.Point(354, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 21);
             this.label4.TabIndex = 8;
@@ -173,5 +189,6 @@
         private System.Windows.Forms.Label label3;
         private Controls.PercentageUpDown percentageUpDown1;
         private Backend.Translation.TranslationHelper translationHelper1;
+        private Controls.SimpleSelectionControl simpleSelectionControl1;
     }
 }
