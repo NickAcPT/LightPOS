@@ -83,11 +83,14 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
         {
             if (_toEdit != null)
             {
+                var oldName = _toEdit.Name;
                 _toEdit.Name = textBox1.Text;
                 _toEdit.Tax = (float) percentageUpDown1.Value;
                 _toEdit.Color = panel2.BackColor;
-                DataManager.AddCategory(_toEdit);
-                textBox1.Clear();
+                Extensions.RunInAnotherThread(() =>{
+                    DataManager.AddCategory(_toEdit);
+                    DataManager.LogAction(GlobalStorage.CurrentUser, UserAction.Action.EditCategory, oldName);
+                });
             }
             else
             {
@@ -101,9 +104,13 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                               simpleSelectionControl1.SelectedEnumValue.GetDescription().Where(char.IsDigit))) / 100d
                         : percentageUpDown1.Value
                 };
-                DataManager.AddCategory(finalCategory);
-                textBox1.Clear();
+                Extensions.RunInAnotherThread(() =>
+                {
+                    DataManager.AddCategory(finalCategory);
+                    DataManager.LogAction(GlobalStorage.CurrentUser, UserAction.Action.CreateCategory, textBox1.Text);
+                });
             }
+            textBox1.Clear();
         }
     }
 }

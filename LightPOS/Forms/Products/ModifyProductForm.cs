@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
+using static NickAc.LightPOS.Backend.Utils.GlobalStorage;
 using Animation = NickAc.ModernUIDoneRight.Utils.Animation;
 
 namespace NickAc.LightPOS.Frontend.Forms.Products
@@ -47,6 +48,15 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             textBoxEx1.TextChanged += (sender, args) =>
             {
                 pictureBox1.Visible = existingProducts.Any(c => c == textBoxEx1.Text);
+            };
+            modernButton2.Click += (s, e) =>
+            {
+                pictureBox1.Hide();
+                existingProducts = DataManager.GetProducts().Select(p => p.Barcode);
+            };
+            textBoxEx2.TextChanged += (sender, args) =>
+            {
+                pictureBox2.Visible = !float.TryParse(textBoxEx2.Text, NumberStyles.Currency, CultureInfo.InvariantCulture, out _);
             };
         }
 
@@ -103,17 +113,22 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             if (comboBox2.SelectedIndex < 0 || textBoxEx2.Text.Trim() == string.Empty) return;
             if (_toEdit != null)
             {
-                var price = float.Parse(textBoxEx2.Text, NumberStyles.Currency);
+                var price = float.Parse(textBoxEx2.Text, NumberStyles.Currency, CultureInfo.InvariantCulture);
+                var oldName = _toEdit.Name;
                 _toEdit.Name = textBox1.Text;
                 _toEdit.Barcode = textBoxEx1.Text;
                 _toEdit.Price = _toEdit.UnitPrice = price;
                 _toEdit.Category = comboBox2.SelectedItem as Category;
-
-                DataManager.AddProduct(_toEdit);
+                
+                Extensions.RunInAnotherThread(() =>
+                {
+                    DataManager.AddProduct(_toEdit);
+                    DataManager.LogAction(CurrentUser, UserAction.Action.EditProduct, oldName);
+                });
             }
             else
             {
-                var price = float.Parse(textBoxEx2.Text, NumberStyles.Currency);
+                var price = float.Parse(textBoxEx2.Text, NumberStyles.Currency, CultureInfo.InvariantCulture);
                 var product = new Product
                 {
                     Name = textBox1.Text,
@@ -123,7 +138,11 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                     Category = comboBox2.SelectedItem as Category,
                     RequiresQuantity = false,
                 };
-                DataManager.AddProduct(product);
+                Extensions.RunInAnotherThread(() =>
+                {
+                    DataManager.AddProduct(product);
+                    DataManager.LogAction(CurrentUser, UserAction.Action.CreateProduct, textBox1.Text);
+                });
             }
         }
     }

@@ -46,8 +46,10 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.textBoxEx2 = new NickAc.LightPOS.Frontend.Controls.TextBoxEx();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // appBar1
@@ -173,13 +175,14 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.textBoxEx2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxEx2.Location = new System.Drawing.Point(317, 89);
             this.textBoxEx2.Name = "textBoxEx2";
-            this.textBoxEx2.Size = new System.Drawing.Size(235, 29);
+            this.textBoxEx2.Size = new System.Drawing.Size(202, 29);
             this.textBoxEx2.TabIndex = 5;
             this.translationHelper1.SetTranslationLocation(this.textBoxEx2, "");
             // 
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.metroButton1);
@@ -210,6 +213,18 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.translationHelper1.SetTranslationLocation(this.pictureBox1, "");
             this.pictureBox1.Visible = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::NickAc.LightPOS.Frontend.Properties.Resources.alert_circle;
+            this.pictureBox2.Location = new System.Drawing.Point(523, 89);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(29, 29);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
+            this.translationHelper1.SetTranslationLocation(this.pictureBox2, "");
+            this.pictureBox2.Visible = false;
+            // 
             // ModifyProductForm
             // 
             this.AcceptButton = this.metroButton1;
@@ -228,6 +243,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -247,5 +263,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
         private TextBoxEx textBoxEx2;
         private Panel panel1;
         private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
     }
 }

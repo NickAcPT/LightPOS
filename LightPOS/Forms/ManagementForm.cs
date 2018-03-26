@@ -6,10 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.LightPOS.Frontend.Forms.Users;
 using NickAc.ModernUIDoneRight.Objects;
+using static NickAc.LightPOS.Backend.Utils.GlobalStorage;
 
 namespace NickAc.LightPOS.Frontend.Forms
 {
@@ -29,7 +31,7 @@ namespace NickAc.LightPOS.Frontend.Forms
 
         private void TilePanelReborn2_Click(object sender, EventArgs e)
         {
-            if (!GlobalStorage.CurrentUser.CanModifyUsers() || !GlobalStorage.CurrentUser.CanRemoveUsers())
+            if (!CurrentUser.CanModifyUsers() || !CurrentUser.CanRemoveUsers())
                 return;
             this.InvokeIfRequired(Hide);
             var final = SelectUserForm.ShowUserSelectionDialog(true);
@@ -42,7 +44,7 @@ namespace NickAc.LightPOS.Frontend.Forms
 
         private void TilePanelReborn3_Click(object sender, EventArgs e)
         {
-            if (!GlobalStorage.CurrentUser.CanCreateUsers()) return;
+            if (!CurrentUser.CanCreateUsers()) return;
             this.InvokeIfRequired(Hide);
             new Users.ModifyUserForm().RunInAnotherApplication();
             this.InvokeIfRequired(Show);
@@ -50,7 +52,7 @@ namespace NickAc.LightPOS.Frontend.Forms
 
         private void TilePanelReborn1_Click(object sender, EventArgs e)
         {
-            if (!GlobalStorage.CurrentUser.CanManageProducts()) return;
+            if (!CurrentUser.CanManageProducts()) return;
             this.InvokeIfRequired(Hide);
             Extensions.RunInAnotherApplication<Products.ModifyProductForm>(true, true);
 
@@ -59,7 +61,7 @@ namespace NickAc.LightPOS.Frontend.Forms
 
         private void TilePanelReborn4_Click(object sender, EventArgs e)
         {
-            if (!GlobalStorage.CurrentUser.CanManageProducts()) return;
+            if (!CurrentUser.CanManageProducts()) return;
             this.InvokeIfRequired(Hide);
             Extensions.RunInAnotherApplication<Products.ModifyCategoryForm>(true, true);
             this.InvokeIfRequired(Show);

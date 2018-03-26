@@ -2,19 +2,17 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
+
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Threading;
+using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Translation;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.LightPOS.Frontend.Controls;
-using NickAc.ModernUIDoneRight.Controls;
-using NickAc.ModernUIDoneRight.Forms;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Threading;
-using System.Windows.Forms;
 
 namespace NickAc.LightPOS.Frontend.Forms.Users
 {
@@ -99,7 +97,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             var form = new SecureUserLoginForm
             {
                 Size = new Size((int)(Width * percentage), (int)(Height * percentage)),
-                Text = Text,
+                Text = Text
             };
             form.LoginSucceded += Form_LoginSucceded;
             form.SecureRequest(usr);
@@ -148,15 +146,13 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             numberOfUsers = DataManager.GetNumberOfUsers();
             if (numberOfUsers < 1) {
                 //Create an administrator account
-                var modify = new Forms.Users.ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All);
-                Application.Run(new Forms.Users.ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All));
+                Application.Run(new ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All));
             }
             //The person might've not created a user
             //Check if it was created
             if (DataManager.GetNumberOfUsers() < 1) {
                 //A new user wasn't created, so we'll exit the app.
                 this.InvokeIfRequired(Close);
-                return;
             }
         }
 
