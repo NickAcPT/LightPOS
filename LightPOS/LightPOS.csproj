@@ -69,6 +69,9 @@
     <Compile Include="Controls\PercentageUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\OuterShadowPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\SimpleSelectionControl.cs">
       <SubType>Component</SubType>
     </Compile>

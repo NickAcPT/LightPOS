@@ -24,9 +24,9 @@ namespace NickAc.LightPOS.Backend.Utils
         }
 
         
-        public static void RunInAnotherApplication<T>(params object[] constructorArgs) where T: Form
+        public static void RunInAnotherApplication<T>(bool join = true, params object[] constructorArgs) where T: Form
         {
-            RunInAnotherThread(() => Application.Run((Form) Activator.CreateInstance(typeof(T), constructorArgs)), true);
+            RunInAnotherThread(() => Application.Run((Form) Activator.CreateInstance(typeof(T), constructorArgs)), join);
         }
 
         public static void RunInAnotherThread(MethodInvoker inv, bool join = false)

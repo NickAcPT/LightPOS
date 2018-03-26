@@ -7,10 +7,12 @@ using System;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
+using Animation = NickAc.ModernUIDoneRight.Utils.Animation;
 
 namespace NickAc.LightPOS.Frontend.Forms.Products
 {
@@ -40,6 +42,12 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             comboBox2.Items.AddRange(DataManager.GetCategories().ToArray<object>());
             comboBox2.DrawMode = DrawMode.OwnerDrawVariable;
             comboBox2.DrawItem += ComboBox2_DrawItem;
+
+            var existingProducts = DataManager.GetProducts().Select(p => p.Barcode);
+            textBoxEx1.TextChanged += (sender, args) =>
+            {
+                pictureBox1.Visible = existingProducts.Any(c => c == textBoxEx1.Text);
+            };
         }
 
 
@@ -63,7 +71,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                     }
                 }
 
-                var textRect = Rectangle.FromLTRB(e.Bounds.Left + colorRectSize + sideOffset, e.Bounds.Top, e.Bounds.Right,
+                var textRect = Rectangle.FromLTRB(e.Bounds.Left + colorRectSize + sideOffset, e.Bounds.Top,
+                    e.Bounds.Right,
                     e.Bounds.Bottom);
                 e.Graphics.DrawString(category.Name, combo.Font, sb,
                     textRect);

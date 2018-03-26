@@ -34,7 +34,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tilePanelReborn2 = new NickAc.ModernUIDoneRight.Controls.TilePanelReborn();
             this.label2 = new System.Windows.Forms.Label();
+            this.shadedPanel1 = new NickAc.LightPOS.Frontend.Controls.OuterShadowPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
+            this.shadedPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // appBar1
@@ -59,6 +64,7 @@
             this.tilePanelReborn1.TabIndex = 1;
             this.tilePanelReborn1.Text = "openLightPOSTile";
             this.translationHelper1.SetTranslationLocation(this.tilePanelReborn1, "main_menu_openLightPOSTile");
+            this.tilePanelReborn1.Click += new System.EventHandler(this.tilePanelReborn1_Click);
             // 
             // label1
             // 
@@ -115,6 +121,38 @@
             this.label2.Text = "labelManagement";
             this.translationHelper1.SetTranslationLocation(this.label2, "main_menu_labelManagement");
             // 
+            // shadedPanel1
+            // 
+            this.shadedPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.shadedPanel1.Controls.Add(this.pictureBox1);
+            this.shadedPanel1.Controls.Add(this.label3);
+            this.shadedPanel1.Location = new System.Drawing.Point(558, 67);
+            this.shadedPanel1.Name = "shadedPanel1";
+            this.shadedPanel1.Size = new System.Drawing.Size(215, 50);
+            this.shadedPanel1.TabIndex = 3;
+            this.translationHelper1.SetTranslationLocation(this.shadedPanel1, "");
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::NickAc.LightPOS.Frontend.Properties.Resources.alert_circle;
+            this.pictureBox1.Location = new System.Drawing.Point(11, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.translationHelper1.SetTranslationLocation(this.pictureBox1, "");
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(38, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(165, 15);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Beta version. Use with caution";
+            this.translationHelper1.SetTranslationLocation(this.label3, "main_menu_warning");
+            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -123,16 +161,22 @@
             this.ClientSize = new System.Drawing.Size(786, 478);
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
+            this.Controls.Add(this.shadedPanel1);
             this.Controls.Add(this.panel2);
             this.Name = "MainMenuForm";
             this.Text = "MainMenuForm";
             this.TitlebarVisible = false;
             this.translationHelper1.SetTranslationLocation(this, "main_menu_title");
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainMenuForm_Load);
             this.Controls.SetChildIndex(this.appBar1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
+            this.Controls.SetChildIndex(this.shadedPanel1, 0);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.shadedPanel1.ResumeLayout(false);
+            this.shadedPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -145,5 +189,8 @@
         private System.Windows.Forms.Panel panel2;
         private ModernUIDoneRight.Controls.TilePanelReborn tilePanelReborn2;
         private System.Windows.Forms.Label label2;
+        private Controls.OuterShadowPanel shadedPanel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

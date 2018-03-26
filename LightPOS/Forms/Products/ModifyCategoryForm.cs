@@ -32,6 +32,11 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
         {
             InitializeComponent();
             var categories = DataManager.GetCategories().Select(c => c.Name);
+            metroButton1.Click += (s, e) =>
+            {
+                categories = DataManager.GetCategories().Select(c => c.Name);
+                errorImage.Hide();
+            };
             simpleSelectionControl1.OptionEnum = typeof(PortugueseTax);
             simpleSelectionControl1.SelectedEnumValue = PortugueseTax.TwentyTree;
             simpleSelectionControl1.SelectionChanged += (s, e) =>
@@ -82,6 +87,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 _toEdit.Tax = (float) percentageUpDown1.Value;
                 _toEdit.Color = panel2.BackColor;
                 DataManager.AddCategory(_toEdit);
+                textBox1.Clear();
             }
             else
             {
@@ -96,6 +102,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                         : percentageUpDown1.Value
                 };
                 DataManager.AddCategory(finalCategory);
+                textBox1.Clear();
             }
         }
     }

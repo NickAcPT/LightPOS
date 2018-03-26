@@ -376,6 +376,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Beta version - Use with caution..
+        /// </summary>
+        public static string main_menu_warning {
+            get {
+                return ResourceManager.GetString("main_menu_warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modify product.
         /// </summary>
         public static string modify_product_title {
@@ -462,6 +471,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         public static string permissions_remove_user {
             get {
                 return ResourceManager.GetString("permissions_remove_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $prefix.
+        /// </summary>
+        public static string pos_screen_title {
+            get {
+                return ResourceManager.GetString("pos_screen_title", resourceCulture);
             }
         }
         

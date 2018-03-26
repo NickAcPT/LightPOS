@@ -11,9 +11,21 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
 {
     public partial class PointOfSaleForm : TemplateForm
     {
+        public override Size MaximumSize
+        {
+            get => Size.Empty;
+            set => base.MaximumSize = value;
+        }
+
         public PointOfSaleForm()
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
+        }
+
+        private void modernButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

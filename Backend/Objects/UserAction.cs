@@ -18,7 +18,14 @@ namespace NickAc.LightPOS.Backend.Objects
             [Description("Perform Sale")] UserSale,
             [Description("Create User")] CreateUser,
             [Description("Modify User")] ModifyUser,
-            [Description("Delete User")] DeleteUser
+            [Description("Delete User")] DeleteUser,
+            [Description("Create Category")] CreateCategory,
+            [Description("Edit Category")] EditCategory,
+            [Description("Remove Category")] RemoveCategory,
+            [Description("Create Product")] CreateProduct,
+            [Description("Edit Product")] EditProduct,
+            [Description("Remove Product")] RemoveProduct,
+
         }
 
         public virtual int Id { get; set; }

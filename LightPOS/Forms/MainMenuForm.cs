@@ -38,5 +38,15 @@ namespace NickAc.LightPOS.Frontend.Forms
             if (GlobalStorage.CurrentUser.CanOpenManagement())
             this.HideAndStart<ManagementForm>();
         }
+
+        private void MainMenuForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tilePanelReborn1_Click(object sender, EventArgs e)
+        {
+            Extensions.RunInAnotherApplication<POS.PointOfSaleForm>();
+        }
     }
 }
