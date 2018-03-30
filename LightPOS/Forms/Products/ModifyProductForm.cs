@@ -37,17 +37,24 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
         public ModifyProductForm(bool translate = true)
         {
             InitializeComponent();
-            WindowState = FormWindowState.Maximized;
+            CenterToScreen();
+            TitlebarVisible = true;
+            //WindowState = FormWindowState.Maximized;
+
+            AdaptToErrorImage(textBoxEx1, pictureBox1);
+            AdaptToErrorImage(textBoxEx2, pictureBox2);
+
             if (translate) translationHelper1.Translate(this);
 
             comboBox2.Items.AddRange(DataManager.GetCategories().ToArray<object>());
             comboBox2.DrawMode = DrawMode.OwnerDrawVariable;
-            comboBox2.DrawItem += ComboBox2_DrawItem;
+            comboBox2.DrawItem += ComboBox2_DrawItem;   
 
             var existingProducts = DataManager.GetProducts().Select(p => p.Barcode);
             textBoxEx1.TextChanged += (sender, args) =>
             {
                 pictureBox1.Visible = existingProducts.Any(c => c == textBoxEx1.Text);
+                AdaptToErrorImage((Control) sender, pictureBox1);
             };
             modernButton2.Click += (s, e) =>
             {
@@ -56,7 +63,9 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             };
             textBoxEx2.TextChanged += (sender, args) =>
             {
-                pictureBox2.Visible = !float.TryParse(textBoxEx2.Text, NumberStyles.Currency, CultureInfo.InvariantCulture, out _);
+                pictureBox2.Visible = !float.TryParse(textBoxEx2.Text, NumberStyles.Currency, CultureInfo.InvariantCulture, out _) && textBoxEx2
+                    .Text != "";
+                AdaptToErrorImage((Control) sender, pictureBox2);
             };
         }
 
@@ -100,6 +109,10 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             translationHelper1.Translate(this);
         }
 
+        private static void AdaptToErrorImage(Control target, Control errorImage)
+        {
+            target.Width = (errorImage.Visible ? errorImage.Left - 8 : errorImage.Right) - target.Left;
+        }
 
         private void ModernButton2_Click(object sender, EventArgs e)
         {
