@@ -111,6 +111,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                     DataManager.LogAction(GlobalStorage.CurrentUser, UserAction.Action.CreateCategory, textBox1.Text);
                 });
             }
+            simpleSelectionControl1.SelectedEnumValue = PortugueseTax.TwentyTree;
+            panel2.BackColor = Color.Transparent;
             textBox1.Clear();
         }
     }
