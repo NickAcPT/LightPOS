@@ -2,6 +2,7 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
+
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.LightPOS.Frontend.Properties;
@@ -23,30 +24,33 @@ namespace NickAc.LightPOS.Frontend.Forms
         {
             InitializeComponent();
             translationHelper1.Translate(this);
-
         }
+
         #endregion
 
         #region Properties
 
-        public override Size MaximumSize { get => Size.Empty; set => base.MaximumSize = value; }
+        public override Size MaximumSize
+        {
+            get => Size.Empty;
+            set => base.MaximumSize = value;
+        }
 
         #endregion
 
         private void TilePanelReborn2_Click_1(object sender, EventArgs e)
         {
             if (GlobalStorage.CurrentUser.CanOpenManagement())
-            this.HideAndStart<ManagementForm>();
+                this.HideAndStart<ManagementForm>();
         }
 
         private void MainMenuForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void tilePanelReborn1_Click(object sender, EventArgs e)
         {
-            Extensions.RunInAnotherApplication<POS.PointOfSaleForm>();
+            this.HideAndRunInAnotherApplication<POS.PointOfSaleForm>(join: false);
         }
     }
 }

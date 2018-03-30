@@ -174,7 +174,6 @@ namespace NickAc.LightPOS.Backend.Data
             return list;
         }
 
-        
 
         public static IList<Category> GetCategories()
         {
@@ -186,6 +185,7 @@ namespace NickAc.LightPOS.Backend.Data
                     list = session.QueryOver<Category>().List();
                 }
             }
+
             return list;
         }
 
@@ -313,7 +313,9 @@ namespace NickAc.LightPOS.Backend.Data
             {
                 using (var session = sf.OpenSession())
                 {
-                    product = session.QueryOver<Product>().Where(x => x.Id == id).List().FirstOrDefault();
+                    product = session.QueryOver<Product>()
+                        .Fetch(p => p.Category).Eager
+                        .Where(x => x.Id == id).List().FirstOrDefault();
                     return product;
                 }
             }
@@ -321,12 +323,11 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static Product GetProduct(string barcode)
         {
-            Product product;
             using (var sf = SessionFactory)
             {
                 using (var session = sf.OpenSession())
                 {
-                    product = session.QueryOver<Product>().Where(x => x.Barcode == barcode).List().FirstOrDefault();
+                    var product = session.QueryOver<Product>().Where(x => x.Barcode == barcode).List().FirstOrDefault();
                     return product;
                 }
             }
@@ -339,7 +340,7 @@ namespace NickAc.LightPOS.Backend.Data
             {
                 using (var session = sf.OpenSession())
                 {
-                    list = session.QueryOver<Product>().List();
+                    list = session.QueryOver<Product>().Fetch(p => p.Category).Eager.List();
                 }
             }
 
@@ -459,7 +460,6 @@ namespace NickAc.LightPOS.Backend.Data
         public static void RemoveUser(int userID)
         {
             var finalUser1 = GetUserWithActions(userID);
-            var finalUser2 = GetUserWithSales(userID);
             RemoveUser(finalUser1);
         }
 

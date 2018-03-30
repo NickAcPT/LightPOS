@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Cyotek.Windows.Forms;
+using JetBrains.Annotations;
 using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
@@ -14,8 +15,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
     {
         private enum PortugueseTax
         {
-            [Description("6%")] Six,
-            [Description("13%")] Thirteen,
+            [UsedImplicitly] [Description("6%")] Six,
+            [UsedImplicitly] [Description("13%")] Thirteen,
             [Description("23%")] TwentyTree,
             Custom
         }

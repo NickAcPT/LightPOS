@@ -28,6 +28,16 @@ namespace NickAc.LightPOS.Backend.Utils
         {
             RunInAnotherThread(() => Application.Run((Form) Activator.CreateInstance(typeof(T), constructorArgs)), join);
         }
+        public static void HideAndRunInAnotherApplication<T>(this Form form, bool join = true, params object[] constructorArgs) where T: Form
+        {
+            
+            form.InvokeIfRequired(form.Hide);
+            RunInAnotherThread(() =>
+            {
+                Application.Run((Form) Activator.CreateInstance(typeof(T), constructorArgs));
+                form.InvokeIfRequired(form.Show);
+            }, join);
+        }
 
         public static void RunInAnotherThread(MethodInvoker inv, bool join = false)
         {

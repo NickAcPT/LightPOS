@@ -51,6 +51,9 @@
     <Reference Include="Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221, processorArchitecture=MSIL">
       <HintPath>..\packages\Cyotek.Windows.Forms.ColorPicker.1.7.2\lib\net35\Cyotek.Windows.Forms.ColorPicker.dll</HintPath>
     </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="ModernUIDoneRight">
       <HintPath>..\..\ModernUIDoneRight\ModernUIDoneRight\bin\Debug\ModernUIDoneRight.dll</HintPath>
     </Reference>
@@ -66,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\HeaderlessTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ModernProductButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\PercentageUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
