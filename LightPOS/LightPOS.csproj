@@ -69,12 +69,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\HeaderlessTabControl.cs">
+    <Compile Include="Controls\NickCustomTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\ModernProductButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\ModernTabDrawHandler.cs" />
     <Compile Include="Controls\PercentageUpDown.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -23,11 +23,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
 
         private readonly Category _toEdit;
 
-        public override Size MaximumSize
-        {
-            get => Size.Empty;
-            set => base.MaximumSize = value;
-        }
 
         public ModifyCategoryForm(bool translate = true)
         {
@@ -50,7 +45,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
 
             textBox1.TextChanged += (s, e) => { errorImage.Visible = categories.Any(c => textBox1.Text == c); };
 
-            WindowState = FormWindowState.Maximized;
             panel2.BackColor = Color.Transparent;
             panel2.Click += (s, e) =>
             {
@@ -88,7 +82,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 _toEdit.Name = textBox1.Text;
                 _toEdit.Tax = (float) percentageUpDown1.Value;
                 _toEdit.Color = panel2.BackColor;
-                Extensions.RunInAnotherThread(() =>{
+                Extensions.RunInAnotherThread(() =>
+                {
                     DataManager.AddCategory(_toEdit);
                     DataManager.LogAction(GlobalStorage.CurrentUser, UserAction.Action.EditCategory, oldName);
                 });
@@ -111,6 +106,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                     DataManager.LogAction(GlobalStorage.CurrentUser, UserAction.Action.CreateCategory, textBox1.Text);
                 });
             }
+
             simpleSelectionControl1.SelectedEnumValue = PortugueseTax.TwentyTree;
             panel2.BackColor = Color.Transparent;
             textBox1.Clear();

@@ -28,12 +28,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.headerlessTabControl1 = new NickAc.LightPOS.Frontend.Controls.HeaderlessTabControl();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this._nickCustomTabControl1 = new NickAc.LightPOS.Frontend.Controls.NickCustomTabControl();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.translationHelper1 = new NickAc.LightPOS.Backend.Translation.TranslationHelper();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.modernButton1 = new NickAc.ModernUIDoneRight.Controls.ModernButton();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // appBar1
@@ -48,7 +55,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.headerlessTabControl1);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(13, 66);
             this.panel1.Name = "panel1";
@@ -56,25 +63,70 @@
             this.panel1.TabIndex = 1;
             this.translationHelper1.SetTranslationLocation(this.panel1, "");
             // 
-            // headerlessTabControl1
+            // panel3
             // 
-            this.headerlessTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.headerlessTabControl1.Location = new System.Drawing.Point(327, 0);
-            this.headerlessTabControl1.Name = "headerlessTabControl1";
-            this.headerlessTabControl1.SelectedIndex = 0;
-            this.headerlessTabControl1.Size = new System.Drawing.Size(527, 429);
-            this.headerlessTabControl1.TabIndex = 3;
-            this.translationHelper1.SetTranslationLocation(this.headerlessTabControl1, "");
+            this.panel3.Controls.Add(this._nickCustomTabControl1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(327, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.panel3.Size = new System.Drawing.Size(527, 429);
+            this.panel3.TabIndex = 3;
+            this.translationHelper1.SetTranslationLocation(this.panel3, "");
+            // 
+            // _nickCustomTabControl1
+            // 
+            this._nickCustomTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._nickCustomTabControl1.DrawHandler = null;
+            this._nickCustomTabControl1.Location = new System.Drawing.Point(8, 0);
+            this._nickCustomTabControl1.Name = "_nickCustomTabControl1";
+            this._nickCustomTabControl1.SelectedIndex = 0;
+            this._nickCustomTabControl1.Size = new System.Drawing.Size(519, 429);
+            this._nickCustomTabControl1.TabIndex = 4;
+            this.translationHelper1.SetTranslationLocation(this._nickCustomTabControl1, "");
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.listBox1);
+            this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(327, 429);
             this.panel2.TabIndex = 2;
             this.translationHelper1.SetTranslationLocation(this.panel2, "");
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Controls.Add(this.modernButton1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(327, 429);
+            this.panel4.TabIndex = 0;
+            this.translationHelper1.SetTranslationLocation(this.panel4, "");
+            // 
+            // modernButton1
+            // 
+            this.modernButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.modernButton1.Location = new System.Drawing.Point(0, 372);
+            this.modernButton1.Name = "modernButton1";
+            this.modernButton1.Size = new System.Drawing.Size(327, 57);
+            this.modernButton1.TabIndex = 0;
+            this.modernButton1.Text = "modernButton1";
+            this.translationHelper1.SetTranslationLocation(this.modernButton1, "");
+            this.modernButton1.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.listBox1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Padding = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this.panel5.Size = new System.Drawing.Size(327, 372);
+            this.panel5.TabIndex = 1;
+            this.translationHelper1.SetTranslationLocation(this.panel5, "");
             // 
             // listBox1
             // 
@@ -84,8 +136,8 @@
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(327, 429);
-            this.listBox1.TabIndex = 0;
+            this.listBox1.Size = new System.Drawing.Size(327, 364);
+            this.listBox1.TabIndex = 1;
             this.translationHelper1.SetTranslationLocation(this.listBox1, "");
             // 
             // PointOfSaleForm
@@ -104,7 +156,10 @@
             this.Controls.SetChildIndex(this.appBar1, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -114,7 +169,11 @@
         private Backend.Translation.TranslationHelper translationHelper1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private Controls.NickCustomTabControl _nickCustomTabControl1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.ListBox listBox1;
-        private Controls.HeaderlessTabControl headerlessTabControl1;
+        private ModernUIDoneRight.Controls.ModernButton modernButton1;
     }
 }

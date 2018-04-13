@@ -52,8 +52,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             // 
             // appBar1
             // 
-            this.appBar1.Location = new System.Drawing.Point(1, 1);
-            this.appBar1.Size = new System.Drawing.Size(759, 50);
+            this.appBar1.Size = new System.Drawing.Size(760, 50);
             this.appBar1.TabStop = false;
             this.translationHelper1.SetTranslationLocation(this.appBar1, "");
             // 
@@ -83,7 +82,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.panel1.Location = new System.Drawing.Point(98, 124);
+            this.panel1.Location = new System.Drawing.Point(99, 140);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(565, 236);
             this.panel1.TabIndex = 1;
@@ -184,13 +183,12 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 441);
+            this.ClientSize = new System.Drawing.Size(762, 441);
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
             this.Controls.Add(this.panel1);
             this.Name = "ModifyCategoryForm";
             this.Text = "add_cat_title";
-            this.TitlebarVisible = false;
             this.translationHelper1.SetTranslationLocation(this, "add_cat_title");
             this.Controls.SetChildIndex(this.appBar1, 0);
             this.Controls.SetChildIndex(this.panel1, 0);

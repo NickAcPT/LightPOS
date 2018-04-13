@@ -70,7 +70,7 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add category.
+        ///   Looks up a localized string similar to $prefix - Add category.
         /// </summary>
         public static string add_cat_title {
             get {
@@ -160,7 +160,7 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modify category.
+        ///   Looks up a localized string similar to $prefix - Modify category.
         /// </summary>
         public static string edit_cat_title {
             get {
@@ -381,6 +381,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         public static string main_menu_warning {
             get {
                 return ResourceManager.GetString("main_menu_warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $prefix - $main_menu_labelManagement.
+        /// </summary>
+        public static string management_title {
+            get {
+                return ResourceManager.GetString("management_title", resourceCulture);
             }
         }
         

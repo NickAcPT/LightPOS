@@ -121,7 +121,7 @@
     <value>Add category</value>
   </data>
   <data name="add_cat_title" xml:space="preserve">
-    <value>Add category</value>
+    <value>$prefix - Add category</value>
   </data>
   <data name="add_prod_okbutton" xml:space="preserve">
     <value>Add Product</value>
@@ -151,7 +151,7 @@
     <value>Tax</value>
   </data>
   <data name="edit_cat_title" xml:space="preserve">
-    <value>Modify category</value>
+    <value>$prefix - Modify category</value>
   </data>
   <data name="edit_prod_barcode" xml:space="preserve">
     <value>Barcode</value>
@@ -224,6 +224,9 @@
   </data>
   <data name="main_menu_warning" xml:space="preserve">
     <value>Beta version - Use with caution.</value>
+  </data>
+  <data name="management_title" xml:space="preserve">
+    <value>$prefix - $main_menu_labelManagement</value>
   </data>
   <data name="modify_product_title" xml:space="preserve">
     <value>Modify product</value>

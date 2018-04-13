@@ -157,6 +157,10 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                     DataManager.LogAction(CurrentUser, UserAction.Action.CreateProduct, textBox1.Text);
                 });
             }
+            
+            textBox1.Text = textBoxEx1.Text = textBoxEx2.Text = string.Empty;
+            comboBox2.SelectedIndex = -1;
+
         }
     }
 }

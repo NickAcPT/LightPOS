@@ -20,6 +20,7 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
         public PointOfSaleForm()
         {
             InitializeComponent();
+            _nickCustomTabControl1.DrawHandler = new ModernTabDrawHandler();
             WindowState = FormWindowState.Maximized;
             Extensions.RunInAnotherThread(() =>
             {
@@ -27,7 +28,7 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
                 var splitProducts = allProds.GroupBy(c => c.Category);
                 foreach (var prods in splitProducts)
                 {
-                    var page = new TabPage(prods.Key.Name);
+                    var page = new TabPage(prods.Key.Name) {Tag = prods.Key.Color};
                     var pnl = new FlowLayoutPanel
                     {
                         Dock = DockStyle.Fill,
@@ -46,7 +47,7 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
                     }
 
 
-                    this.InvokeIfRequired(() => headerlessTabControl1.TabPages.Add(page));
+                    this.InvokeIfRequired(() => _nickCustomTabControl1.TabPages.Add(page));
                 }
             });
         }
