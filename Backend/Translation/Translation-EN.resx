@@ -136,7 +136,7 @@
     <value>Create user</value>
   </data>
   <data name="current_user" xml:space="preserve">
-    <value>Current</value>
+    <value>You</value>
   </data>
   <data name="edit_cat_color" xml:space="preserve">
     <value>Color</value>
@@ -257,6 +257,24 @@
   </data>
   <data name="permissions_remove_user" xml:space="preserve">
     <value>Remove users</value>
+  </data>
+  <data name="pos_list_prodCategory" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="pos_list_prodName" xml:space="preserve">
+    <value>Name: </value>
+  </data>
+  <data name="pos_list_prodPrice" xml:space="preserve">
+    <value>Price:</value>
+  </data>
+  <data name="pos_list_prodQuantity" xml:space="preserve">
+    <value>Quantity:</value>
+  </data>
+  <data name="pos_list_prodUnitPrice" xml:space="preserve">
+    <value>Unit Price:</value>
+  </data>
+  <data name="pos_screen_perform_sale" xml:space="preserve">
+    <value>Efetuar pagamento</value>
   </data>
   <data name="pos_screen_title" xml:space="preserve">
     <value>$prefix</value>

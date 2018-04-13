@@ -115,7 +115,7 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current.
+        ///   Looks up a localized string similar to You.
         /// </summary>
         public static string current_user {
             get {
@@ -480,6 +480,60 @@ namespace NickAc.LightPOS.Backend.Translation {
         public static string permissions_remove_user {
             get {
                 return ResourceManager.GetString("permissions_remove_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category:.
+        /// </summary>
+        public static string pos_list_prodCategory {
+            get {
+                return ResourceManager.GetString("pos_list_prodCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: .
+        /// </summary>
+        public static string pos_list_prodName {
+            get {
+                return ResourceManager.GetString("pos_list_prodName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price:.
+        /// </summary>
+        public static string pos_list_prodPrice {
+            get {
+                return ResourceManager.GetString("pos_list_prodPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantity:.
+        /// </summary>
+        public static string pos_list_prodQuantity {
+            get {
+                return ResourceManager.GetString("pos_list_prodQuantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Price:.
+        /// </summary>
+        public static string pos_list_prodUnitPrice {
+            get {
+                return ResourceManager.GetString("pos_list_prodUnitPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Efetuar pagamento.
+        /// </summary>
+        public static string pos_screen_perform_sale {
+            get {
+                return ResourceManager.GetString("pos_screen_perform_sale", resourceCulture);
             }
         }
         

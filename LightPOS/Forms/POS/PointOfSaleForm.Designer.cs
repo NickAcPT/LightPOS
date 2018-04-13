@@ -31,11 +31,11 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this._nickCustomTabControl1 = new NickAc.LightPOS.Frontend.Controls.NickCustomTabControl();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.translationHelper1 = new NickAc.LightPOS.Backend.Translation.TranslationHelper();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.modernButton1 = new NickAc.ModernUIDoneRight.Controls.ModernButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.modernButton1 = new NickAc.ModernUIDoneRight.Controls.ModernButton();
+            this.translationHelper1 = new NickAc.LightPOS.Backend.Translation.TranslationHelper();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -106,17 +106,6 @@
             this.panel4.TabIndex = 0;
             this.translationHelper1.SetTranslationLocation(this.panel4, "");
             // 
-            // modernButton1
-            // 
-            this.modernButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.modernButton1.Location = new System.Drawing.Point(0, 372);
-            this.modernButton1.Name = "modernButton1";
-            this.modernButton1.Size = new System.Drawing.Size(327, 57);
-            this.modernButton1.TabIndex = 0;
-            this.modernButton1.Text = "modernButton1";
-            this.translationHelper1.SetTranslationLocation(this.modernButton1, "");
-            this.modernButton1.UseVisualStyleBackColor = true;
-            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.listBox1);
@@ -139,6 +128,17 @@
             this.listBox1.Size = new System.Drawing.Size(327, 364);
             this.listBox1.TabIndex = 1;
             this.translationHelper1.SetTranslationLocation(this.listBox1, "");
+            // 
+            // modernButton1
+            // 
+            this.modernButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.modernButton1.Location = new System.Drawing.Point(0, 372);
+            this.modernButton1.Name = "modernButton1";
+            this.modernButton1.Size = new System.Drawing.Size(327, 57);
+            this.modernButton1.TabIndex = 0;
+            this.modernButton1.Text = "modernButton1";
+            this.translationHelper1.SetTranslationLocation(this.modernButton1, "pos_screen_perform_sale");
+            this.modernButton1.UseVisualStyleBackColor = true;
             // 
             // PointOfSaleForm
             // 

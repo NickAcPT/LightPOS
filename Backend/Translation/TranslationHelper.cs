@@ -27,8 +27,7 @@ namespace NickAc.LightPOS.Backend.Translation
 
         public bool CanExtend(object extendee)
         {
-            var control = extendee as Control;
-            return control != null;
+            return extendee is Control;
         }
 
         private TranslationProvider EnsureProviderExists(object key)
@@ -63,6 +62,7 @@ namespace NickAc.LightPOS.Backend.Translation
         public void Translate(Form c)
         {
             TranslateControl(c);
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             c.Controls.Cast<Control>().All(p =>
             {
                 TranslateControl(p);
@@ -98,20 +98,24 @@ namespace NickAc.LightPOS.Backend.Translation
 
         private string GetTranslation(ResourceManager lang, string loc)
         {
-            var final = "";
             var original = lang.GetString(loc);
-            if (original.Contains(' '))
+            return
+                original == null ? $"-= No Translation: {loc} =-" : TranslateResult(original);
+        }
+
+        public string TranslateResult(string original)
+        {
+            var lang = GetLanguage(CurrentLanguage);
+            var final = "";
+            var split = (original.IndexOf(' ') < 0 ? original + ' ' : original).Split(' ');
+            var all = split.All(s =>
             {
-                var split = original.Split(' ');
-                split.All(s =>
-                {
-                    if (s.StartsWith("$", StringComparison.Ordinal))
-                        final += GetTranslation(lang, s.TrimStart('$')) + " ";
-                    else
-                        final += s + " ";
-                    return true;
-                });
-            }
+                if (s.StartsWith("$", StringComparison.Ordinal))
+                    final += GetTranslation(lang, s.TrimStart('$')) + " ";
+                else
+                    final += s + " ";
+                return true;
+            });
 
             if (final == string.Empty)
                 final = original;

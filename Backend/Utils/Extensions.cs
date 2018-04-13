@@ -11,6 +11,11 @@ namespace NickAc.LightPOS.Backend.Utils
 {
     public static class Extensions
     {
+        public static string AppendLine(this string original, string otherLine)
+        {
+            return original + Environment.NewLine + otherLine;
+        }
+
         public static void HideAndStart<T>(this Form owner, params object[] constructor) where T : Form
         {
             owner.Hide();
