@@ -274,7 +274,7 @@
     <value>Unit Price:</value>
   </data>
   <data name="pos_screen_perform_sale" xml:space="preserve">
-    <value>Efetuar pagamento</value>
+    <value>Perform Sale</value>
   </data>
   <data name="pos_screen_title" xml:space="preserve">
     <value>$prefix</value>

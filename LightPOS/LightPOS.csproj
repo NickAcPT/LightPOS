@@ -69,17 +69,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\NickCustomTabControl.cs">
+    <Compile Include="Controls\DrawHandler\IListBoxDrawHandler.cs" />
+    <Compile Include="Controls\DrawHandler\ProductListBoxDrawHandler.cs" />
+    <Compile Include="Controls\ListBoxNoFlicker.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\ModernProductButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\ModernTabDrawHandler.cs" />
-    <Compile Include="Controls\PercentageUpDown.cs">
+    <Compile Include="Controls\NickCustomTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\OuterShadowPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\PercentageUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\SimpleSelectionControl.cs">

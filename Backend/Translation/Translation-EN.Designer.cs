@@ -529,7 +529,7 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Efetuar pagamento.
+        ///   Looks up a localized string similar to Perform Sale.
         /// </summary>
         public static string pos_screen_perform_sale {
             get {

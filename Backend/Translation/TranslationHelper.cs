@@ -103,6 +103,15 @@ namespace NickAc.LightPOS.Backend.Translation
                 original == null ? $"-= No Translation: {loc} =-" : TranslateResult(original);
         }
 
+
+        public string TranslateMultilineResult(string original)
+        {
+            return string.Join(Environment.NewLine, original.Split(new[]
+            {
+                Environment.NewLine
+            }, StringSplitOptions.None).Select(TranslateResult));
+        }
+
         public string TranslateResult(string original)
         {
             var lang = GetLanguage(CurrentLanguage);
