@@ -13,38 +13,6 @@ namespace NickAc.LightPOS.Backend.Utils
 {
     public static class Extensions
     {
-        public static void LoadProducts(this TabControl tab)
-        {
-            Extensions.RunInAnotherThread(() =>
-            {
-                var allProds = DataManager.GetProducts();
-                var splitProducts = allProds.GroupBy(c => c.Category);
-                foreach (var prods in splitProducts)
-                {
-                    var page = new TabPage(prods.Key.Name) {Tag = prods.Key.Color};
-                    var pnl = new FlowLayoutPanel
-                    {
-                        Dock = DockStyle.Fill,
-                        FlowDirection = FlowDirection.LeftToRight
-                    };
-                    page.Controls.Add(pnl);
-
-                    foreach (var product in prods)
-                    {
-                        var btn = new ModernProductButton(product)
-                        {
-                            Text = product.Name,
-                            Size = ButtonSize,
-                        };
-                        btn.Click += ProductButton_Click;
-                        pnl.Controls.Add(btn);
-                    }
-
-                    this.InvokeIfRequired(() => _nickCustomTabControl1.TabPages.Add(page));
-                }
-            });
-        }
-
         public static string AppendLine(this string original, string otherLine)
         {
             return original + Environment.NewLine + otherLine;

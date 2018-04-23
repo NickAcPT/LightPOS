@@ -7,22 +7,16 @@ using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Translation;
 using NickAc.LightPOS.Frontend.Forms.POS;
-using NickAc.ModernUIDoneRight.Forms;
-using NickAc.ModernUIDoneRight.Objects;
-using NickAc.ModernUIDoneRight.Utils;
 
 namespace NickAc.LightPOS.Frontend.Controls.DrawHandler
 {
-    public class ProductListBoxDrawHandler : ListBoxDrawHandler
+    class ProductListBoxDrawHandler : ListBoxDrawHandler
     {
-        private readonly TranslationHelper _translation;
-        private readonly ColorScheme _colorScheme = DefaultColorSchemes.Blue;
-
-        public ColorScheme ColorScheme => this.Control?.FindForm() is ModernForm frm ? frm.ColorScheme : _colorScheme; 
+        private TranslationHelper translation;
 
         public ProductListBoxDrawHandler(ListBox control) : base(control)
         {
-            _translation = new TranslationHelper();
+            translation = new TranslationHelper();
         }
 
         public override void DrawItem(DrawItemEventArgs e)
@@ -30,17 +24,14 @@ namespace NickAc.LightPOS.Frontend.Controls.DrawHandler
             var item = Control.Items.Cast<PointOfSaleForm.ProductListBoxItem>().ElementAtOrDefault(e.Index);
 
             e.Graphics.SetClip(e.Bounds);
-            var backColor = e.State.HasFlag(DrawItemState.Selected) ? ControlPaint.Light(ColorScheme.PrimaryColor, 0.05f) : e.BackColor;
-            using (var brush =
-                new SolidBrush(backColor))
+            using (var brush = new SolidBrush(e.BackColor))
             {
                 e.Graphics.FillRectangle(brush, e.Bounds);
             }
 
-
-            using (var sb = new SolidBrush(GraphicUtils.ForegroundColorForBackground(backColor)))
+            using (var sb = new SolidBrush(Control.ForeColor))
             {
-                e.Graphics.DrawString(_translation.TranslateMultilineResult(item.TextValue), Control.Font, sb, e.Bounds);
+                e.Graphics.DrawString(translation.TranslateMultilineResult(item.TextValue), Control.Font, sb, e.Bounds);
             }
 
             e.Graphics.SetClip(Rectangle.Empty);

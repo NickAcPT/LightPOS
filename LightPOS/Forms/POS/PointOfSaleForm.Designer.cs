@@ -27,13 +27,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PointOfSaleForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this._nickCustomTabControl1 = new NickAc.LightPOS.Frontend.Controls.NickCustomTabControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.listBox1 = new NickAc.LightPOS.Frontend.Controls.ListBoxNoFlicker();
             this.modernButton1 = new NickAc.ModernUIDoneRight.Controls.ModernButton();
@@ -42,7 +40,6 @@
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +97,6 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Controls.Add(this.modernButton1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -109,18 +105,6 @@
             this.panel4.Size = new System.Drawing.Size(327, 429);
             this.panel4.TabIndex = 0;
             this.translationHelper1.SetTranslationLocation(this.panel4, "");
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(104, 279);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 150);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.translationHelper1.SetTranslationLocation(this.pictureBox1, "");
             // 
             // panel5
             // 
@@ -175,8 +159,6 @@
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -193,6 +175,5 @@
         private System.Windows.Forms.Panel panel5;
         private NickAc.LightPOS.Frontend.Controls.ListBoxNoFlicker listBox1;
         private ModernUIDoneRight.Controls.ModernButton modernButton1;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

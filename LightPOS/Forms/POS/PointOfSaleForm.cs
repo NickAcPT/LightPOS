@@ -7,6 +7,7 @@ using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.LightPOS.Frontend.Controls;
 using NickAc.LightPOS.Frontend.Controls.DrawHandler;
+using NickAc.LightPOS.Frontend.Utils;
 
 namespace NickAc.LightPOS.Frontend.Forms.POS
 {
@@ -41,7 +42,6 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
             set => base.MaximumSize = value;
         }
 
-        private static readonly Size ButtonSize = new Size(100, 100);
 
         public PointOfSaleForm()
         {
@@ -49,8 +49,9 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
             var drawHandler = new ProductListBoxDrawHandler(listBox1);
 
             translationHelper1.Translate(this);
-            _nickCustomTabControl1.DrawHandler = new ModernTabDrawHandler();
             WindowState = FormWindowState.Maximized;
+
+            _nickCustomTabControl1.LoadProducts(ProductButton_Click);
             
         }
 
