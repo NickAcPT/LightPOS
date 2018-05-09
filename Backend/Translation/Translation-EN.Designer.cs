@@ -385,6 +385,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string manage_category_title {
+            get {
+                return ResourceManager.GetString("manage_category_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to $prefix - $main_menu_labelManagement.
         /// </summary>
         public static string management_title {
@@ -525,6 +534,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         public static string pos_list_prodUnitPrice {
             get {
                 return ResourceManager.GetString("pos_list_prodUnitPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $prefix.
+        /// </summary>
+        public static string pos_process_title {
+            get {
+                return ResourceManager.GetString("pos_process_title", resourceCulture);
             }
         }
         

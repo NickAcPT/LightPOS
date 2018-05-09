@@ -139,6 +139,7 @@
             this.modernButton1.Text = "modernButton1";
             this.translationHelper1.SetTranslationLocation(this.modernButton1, "pos_screen_perform_sale");
             this.modernButton1.UseVisualStyleBackColor = true;
+            this.modernButton1.Click += new System.EventHandler(this.modernButton1_Click);
             // 
             // PointOfSaleForm
             // 

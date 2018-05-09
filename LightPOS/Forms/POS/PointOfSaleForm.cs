@@ -61,5 +61,10 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
 
             listBox1.Items.Add((ProductListBoxItem)productButton.Product);
         }
+
+        private void modernButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

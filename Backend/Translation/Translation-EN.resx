@@ -228,6 +228,9 @@
   <data name="management_title" xml:space="preserve">
     <value>$prefix - $main_menu_labelManagement</value>
   </data>
+  <data name="manage_category_title" xml:space="preserve">
+    <value />
+  </data>
   <data name="modify_product_title" xml:space="preserve">
     <value>Modify product</value>
   </data>
@@ -296,5 +299,8 @@
   </data>
   <data name="user_login_title" xml:space="preserve">
     <value>$prefix - $user_login_simple_title</value>
+  </data>
+  <data name="pos_process_title" xml:space="preserve">
+    <value>$prefix</value>
   </data>
 </root>

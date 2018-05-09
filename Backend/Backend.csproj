@@ -87,6 +87,7 @@
       <HintPath>..\packages\NHibernate.Mapping.Attributes.5.0.0\lib\net40\NHibernate.Mapping.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.106.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -103,6 +104,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Currency\CurrencyManager.cs" />
+    <Compile Include="Currency\ICurrency.cs" />
+    <Compile Include="Currency\TransactionResult.cs" />
+    <Compile Include="Currency\TransactionState.cs" />
     <Compile Include="Data\SettingsManager.cs" />
     <Compile Include="Mapping\CategoryMap.cs" />
     <Compile Include="Mapping\Other\ColorUserType.cs" />
