@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NickAc.LightPOS.Frontend.Properties {
+namespace NickAc.LightPOS.Backend {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace NickAc.LightPOS.Frontend.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class CurrencyResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal CurrencyResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace NickAc.LightPOS.Frontend.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NickAc.LightPOS.Frontend.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NickAc.LightPOS.Backend.CurrencyResources", typeof(CurrencyResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,36 +63,6 @@ namespace NickAc.LightPOS.Frontend.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap account_edit {
-            get {
-                object obj = ResourceManager.GetObject("account_edit", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap account_plus {
-            get {
-                object obj = ResourceManager.GetObject("account_plus", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap alert_circle {
-            get {
-                object obj = ResourceManager.GetObject("alert_circle", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap cash_usd {
             get {
                 object obj = ResourceManager.GetObject("cash_usd", resourceCulture);
@@ -103,19 +73,9 @@ namespace NickAc.LightPOS.Frontend.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ic_person_white_48dp_2x {
+        internal static System.Drawing.Bitmap credit_card {
             get {
-                object obj = ResourceManager.GetObject("ic_person_white_48dp_2x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap lightpos {
-            get {
-                object obj = ResourceManager.GetObject("lightpos", resourceCulture);
+                object obj = ResourceManager.GetObject("credit_card", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

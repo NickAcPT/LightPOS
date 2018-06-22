@@ -117,7 +117,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
         private void ModernButton2_Click(object sender, EventArgs e)
         {
             this.InvokeIfRequired(Hide);
-            Extensions.RunInAnotherApplication<ModifyCategoryForm>(true);
+            Extensions.RunInAnotherApplication<ModifyCategoryForm>(constructorArgs: true);
             this.InvokeIfRequired(Show);
         }
 

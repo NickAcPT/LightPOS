@@ -28,6 +28,7 @@ namespace NickAc.LightPOS.Frontend
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Forms.Users.UserLoginForm());
+            GlobalStorage.CurrencyManager?.Currencies?.ForEach(c => c.Dispose());
         }
 
         public static void InitializeDatabase()
