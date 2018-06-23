@@ -52,7 +52,16 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
             WindowState = FormWindowState.Maximized;
 
             _nickCustomTabControl1.LoadProducts(ProductButton_Click);
-            
+            _nickCustomTabControl1.ControlAdded += TabControl_Load;
+
+        }
+
+        private void TabControl_Load(object sender, ControlEventArgs e)
+        {
+            _nickCustomTabControl1.ControlAdded -= TabControl_Load;
+            topBarPanel.Visible = true;
+            topBarPanel.BackColor = ColorScheme.PrimaryColor;
+            topBarPanel.Height = _nickCustomTabControl1.GetTabRect(0).Height - 2;
         }
 
         private void ProductButton_Click(object sender, EventArgs e)
@@ -63,6 +72,11 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
         }
 
         private void modernButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

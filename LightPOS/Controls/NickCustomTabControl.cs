@@ -89,8 +89,6 @@ namespace NickAc.LightPOS.Frontend.Controls
         }
 
         #region Shadow
-
-        
         
         private const int ShadowOffset = 3;
 
