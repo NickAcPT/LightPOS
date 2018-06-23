@@ -46,8 +46,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
 
             if (translate) translationHelper1.Translate(this);
 
-            comboBox2.Items.AddRange(DataManager.GetCategories().ToArray<object>());
-            comboBox2.DisplayMember = nameof(Category.Name);
+            LoadCategories();
 
             var existingProducts = DataManager.GetProducts().Select(p => p.Barcode);
             textBoxEx1.TextChanged += (sender, args) =>
@@ -55,9 +54,13 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 pictureBox1.Visible = existingProducts.Any(c => c == textBoxEx1.Text);
                 AdaptToErrorImage((Control) sender, pictureBox1);
             };
-            modernButton2.Click += (s, e) =>
+            metroButton1.Click += (s, e) =>
             {
                 pictureBox1.Hide();
+                existingProducts = DataManager.GetProducts().Select(p => p.Barcode);
+            };
+            modernButton2.Click += (s, e) =>
+            {
                 existingProducts = DataManager.GetProducts().Select(p => p.Barcode);
             };
             textBoxEx2.TextChanged += (sender, args) =>
@@ -67,7 +70,14 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 AdaptToErrorImage((Control) sender, pictureBox2);
             };
         }
-        
+
+        private void LoadCategories()
+        {
+            comboBox2.Items.Clear();
+            comboBox2.Items.AddRange(DataManager.GetCategories().ToArray<object>());
+            comboBox2.DisplayMember = nameof(Category.Name);
+        }
+
 
         public ModifyProductForm(Product toEdit) : this(false)
         {
@@ -90,6 +100,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.InvokeIfRequired(Hide);
             Extensions.RunInAnotherApplication<ModifyCategoryForm>(constructorArgs: true);
             this.InvokeIfRequired(Show);
+            LoadCategories();
         }
 
         private void MetroButton1_Click(object sender, EventArgs e)

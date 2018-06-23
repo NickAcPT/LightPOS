@@ -140,8 +140,8 @@ namespace NickAc.LightPOS.Frontend.Controls
                                 HALF_SHADOW_OFFSET, HALF_SHADOW_OFFSET));
                     }
 
-                    var gaussian = new GaussianBlur(img);
-                    var result = SetImageOpacity(gaussian.Process(SHADOW_OFFSET), 0.65f);
+                    StackBlur.StackBlur.Process(img, SHADOW_OFFSET * 2);
+                    var result = SetImageOpacity(img, 0.65f);
                     
                     g.DrawImageUnscaled(result, bounds.OffsetAndReturn(-(bounds.Width / 2), -(bounds.Height / 2)));
                     FrozenImage = result;

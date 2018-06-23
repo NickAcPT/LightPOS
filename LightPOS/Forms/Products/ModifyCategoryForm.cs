@@ -40,7 +40,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 });
             };
 
-            textBox1.TextChanged += (s, e) => { errorImage.Visible = categories.Any(c => textBox1.Text == c); };
+            textBox1.TextChanged += (s, e) => { errorImage.Visible = categories.Any(c => textBox1.Text == c) && (_toEdit == null || _toEdit.Name != textBox1.Text); };
             if (translate)
                 translationHelper1.Translate(this);
         }
@@ -72,7 +72,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             }
             else
             {
-                if (string.IsNullOrEmpty(textBox1.Text.Trim())) return;
+                if (string.IsNullOrEmpty(textBox1.Text.Trim()) || errorImage.Visible) return;
                 var finalCategory = new Category
                 {
                     Name = textBox1.Text,

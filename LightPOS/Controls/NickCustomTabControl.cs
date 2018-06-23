@@ -113,16 +113,13 @@ namespace NickAc.LightPOS.Frontend.Controls
                 pevent.Graphics.FillRectangle(sb, new Rectangle(Point.Empty, Size));
             }
 
-            var tabHeight = TabCount > 0 ? GetTabRect(0).Height : Height;
-            if (TabCount > 0)
-            {
-                DrawControlShadow(pevent.Graphics,
-                    GetHeaderRectangle());
+            var tabHeight = TabCount > 0 ? GetTabRect(0).Height : ActionBarHeight;
+            DrawControlShadow(pevent.Graphics,
+                GetHeaderRectangle());
 
-                using (var sb = new SolidBrush(ColorScheme.PrimaryColor))
-                {
-                    pevent.Graphics.FillRectangle(sb, new Rectangle(Point.Empty, new Size(Width, tabHeight)));
-                }
+            using (var sb = new SolidBrush(ColorScheme.PrimaryColor))
+            {
+                pevent.Graphics.FillRectangle(sb, new Rectangle(Point.Empty, new Size(Width, tabHeight)));
             }
 
             for (var id = 0; id < TabCount; id++)
@@ -131,8 +128,8 @@ namespace NickAc.LightPOS.Frontend.Controls
 
         private Rectangle GetHeaderRectangle()
         {
-            Rectangle tabRect = GetTabRect(0);
-            return Rectangle.FromLTRB(0, tabRect.Top, Width, tabRect.Bottom - 2);
+            var tabRect = TabCount > 0 ? GetTabRect(0) : Rectangle.FromLTRB(0, 0, Width, ActionBarHeight);
+            return TabCount > 0 ? Rectangle.FromLTRB(0, tabRect.Top, Width, tabRect.Bottom - 2) : tabRect;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -385,6 +382,7 @@ namespace NickAc.LightPOS.Frontend.Controls
         private const int TcmFirst = 0x1300;
         private const int TcmHittest = TcmFirst + 13;
         private const int TcmSetpadding = TcmFirst + 43;
+        private const int ActionBarHeight = 50;
 
         #endregion
     }
