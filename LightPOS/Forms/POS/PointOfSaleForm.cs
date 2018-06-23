@@ -29,7 +29,7 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
 
             private Product Product { get; }
 
-            public string TextValue => $"$pos_list_prodName {Product.Name}"
+            public string TextValue => Product == null ? "" : $"$pos_list_prodName {Product.Name}"
                 .AppendLine($"$pos_list_prodCategory {Product.Category.Name}")
                 .AppendLine($"$pos_list_prodQuantity {Product.Quantity}")
                 .AppendLine("$pos_list_prodPrice //TODO")

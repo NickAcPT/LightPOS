@@ -1,17 +1,29 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using NickAc.ModernUIDoneRight.Controls;
 using NickAc.ModernUIDoneRight.Forms;
 using NickAc.ModernUIDoneRight.Objects;
 using NickAc.ModernUIDoneRight.Utils;
+using Transitions;
 
 namespace NickAc.LightPOS.Frontend.Controls
 {
     public class NickCustomTabControl : TabControl
     {
+        private CustomTabDrawHandler _drawHandler;
+
+        private int _hotTabIndex = -1;
+        
+
+        public NickCustomTabControl()
+        {
+            SetStyle(
+                ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw |
+                ControlStyles.UserPaint, true);
+        }
+
         public abstract class CustomTabDrawHandler
         {
             public NickCustomTabControl Parent { get; set; }
@@ -21,16 +33,6 @@ namespace NickAc.LightPOS.Frontend.Controls
 
             public abstract void DrawTabContent(int id, Graphics g, Rectangle rect, bool isHot, bool isSelected);
             public abstract bool HandleTabClick(int id, Rectangle rect);
-        }
-
-        private int _hotTabIndex = -1;
-        private CustomTabDrawHandler _drawHandler;
-
-        public NickCustomTabControl()
-        {
-            SetStyle(
-                ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw |
-                ControlStyles.UserPaint, true);
         }
 
         #region Properties
@@ -91,24 +93,11 @@ namespace NickAc.LightPOS.Frontend.Controls
         }
 
         #region Shadow
-        
+
         private const int ShadowOffset = 3;
 
         private void DrawControlShadow(Graphics g, Rectangle rect)
-        {/*
-            using (var brush = new SolidBrush(Color.FromArgb(150, Color.Black)))
-            {
-                var img = new Bitmap(Width, Height);
-                {
-                    using (var gp = Graphics.FromImage(img)) {
-                            gp.FillRectangle(brush, rect);
-                    }
-
-                    StackBlur.StackBlur.Process(img, ShadowOffset * 2);
-                    var result = _topBarShadow = img;
-                    g?.DrawImageUnscaled(result, Point.Empty);
-                }
-            }*/
+        {
             ShadowUtils.DrawShadow(g, Color.Black, rect, 7, DockStyle.Top);
         }
 
@@ -123,13 +112,13 @@ namespace NickAc.LightPOS.Frontend.Controls
             {
                 pevent.Graphics.FillRectangle(sb, new Rectangle(Point.Empty, Size));
             }
+
             var tabHeight = TabCount > 0 ? GetTabRect(0).Height : Height;
-            var tabRect = TabCount > 0 ? GetTabRect(0) : new Rectangle(Point.Empty, Size);
             if (TabCount > 0)
             {
                 DrawControlShadow(pevent.Graphics,
-                    Rectangle.FromLTRB(0, tabRect.Top, Width, tabRect.Bottom - 2));
-            
+                    GetHeaderRectangle());
+
                 using (var sb = new SolidBrush(ColorScheme.PrimaryColor))
                 {
                     pevent.Graphics.FillRectangle(sb, new Rectangle(Point.Empty, new Size(Width, tabHeight)));
@@ -138,7 +127,12 @@ namespace NickAc.LightPOS.Frontend.Controls
 
             for (var id = 0; id < TabCount; id++)
                 DrawTabBackground(pevent.Graphics, id);
-            
+        }
+
+        private Rectangle GetHeaderRectangle()
+        {
+            Rectangle tabRect = GetTabRect(0);
+            return Rectangle.FromLTRB(0, tabRect.Top, Width, tabRect.Bottom - 2);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -187,10 +181,54 @@ namespace NickAc.LightPOS.Frontend.Controls
         private ColorScheme _scheme;
         private Rectangle _hotRectangle = Rectangle.Empty;
 
+        
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Rectangle HotRectangle
         {
-            get => _hotRectangle.IsEmpty ? HotRectangleFromTabRect(GetTabRect(0)) : _hotRectangle;
-            set => _hotRectangle = value;
+            get {
+                try
+                {
+                    return _hotRectangle.IsEmpty ? HotRectangleFromTabRect(GetTabRect(0)) : _hotRectangle;
+                }
+                catch (Exception e)
+                {
+                    return Rectangle.Empty;
+                }
+            }
+            set
+            {
+                _hotRectangle = value;
+                if (TabCount > 0)
+                    Invalidate(GetHeaderRectangle());
+                else
+                    Invalidate();
+            }
+        }
+        
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public int HotRectangleX
+        {
+            get => HotRectangle.X;
+            set
+            {
+                var rect = HotRectangle;
+                rect.X = value;
+                _hotRectangle = rect;
+            }
+        }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public int HotRectangleWidth
+        {
+            get => HotRectangle.Width;
+            set
+            {
+                var rect = HotRectangle;
+                rect.Width = value;
+                HotRectangle = rect;
+            }
         }
 
         public int HotRectangleHeight { get; set; } = 7;
@@ -211,10 +249,23 @@ namespace NickAc.LightPOS.Frontend.Controls
             return tabRect;
         }
 
+        protected override void OnSelectedIndexChanged(EventArgs e)
+        {
+            base.OnSelectedIndexChanged(e);
+            var tabRect = GetTabRect(SelectedIndex);
+            var t = new Transition(new TransitionType_EaseInEaseOut(350));
+            t.add(this, nameof(HotRectangleX), tabRect.X);
+            t.add(this, nameof(HotRectangleWidth), tabRect.Width);
+            t.run();
+
+        }
+
+        private Color _hotRectColor = ColorTranslator.FromHtml("#f5f5f5");
+
         private void DrawTabBackground(Graphics graphics, int id)
         {
             DrawHandler?.DrawCustomTabBackground(id, graphics, GetTabRect(id), id == HotTabIndex, id == SelectedIndex);
-            using (var cSchemeFore = new SolidBrush(ColorScheme.ForegroundColor))
+            using (var cSchemeFore = new SolidBrush(_hotRectColor))
             {
                 graphics.FillRectangle(cSchemeFore, HotRectangle);
             }

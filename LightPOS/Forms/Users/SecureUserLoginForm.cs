@@ -2,15 +2,17 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
+
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Translation;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.LightPOS.Frontend.Controls;
 using NickAc.ModernUIDoneRight.Controls;
 using NickAc.ModernUIDoneRight.Forms;
-using System;
-using System.Drawing;
-using System.Windows.Forms;
+using Transitions;
 using static NickAc.LightPOS.Frontend.Controls.UserPanel;
 
 namespace NickAc.LightPOS.Frontend.Forms.Users
@@ -99,7 +101,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 AutoSize = true,
                 BackColor = Color.Transparent,
                 Text = translationHelper.GetTranslation("user_login_simple_title"),
-                Font = new Font(base.Font.FontFamily, 16),
+                Font = new Font(Font.FontFamily, 16),
                 Location = new Point(0, ControlPadding)
             };
 
@@ -111,7 +113,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 AutoSize = true,
                 BackColor = Color.Transparent,
                 Text = usr.UserName,
-                Font = new Font(base.Font.FontFamily, 12),
+                Font = new Font(Font.FontFamily, 12),
                 Location = new Point(0, (int)(form.Height * userNamePercentage))
             };
 
@@ -121,7 +123,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             var btn = new ModernButton
             {
                 Text = translationHelper.GetTranslation("user_login_okbutton"),
-                Size = new Size((int)(form.Width * percentage), (int)(form.Height * btnLoginPercentage)),
+                Size = new Size((int)(form.Width * percentage), (int)(form.Height * btnLoginPercentage))
             };
             btn.Location = new Point(0 /* Will be centered later */, form.Height - ControlPadding - btn.Height);
 
@@ -132,7 +134,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             {
                 Font = userNameLabel.Font,
                 UseSystemPasswordChar = true,
-                Size = new Size((int)(form.Width * textBoxPercentage), 0 /* The textbox sizes automatically */),
+                Size = new Size((int)(form.Width * textBoxPercentage), 0 /* The textbox sizes automatically */)
             };
             point.Offset(0, -textBox.Height);
             textBox.Location = point;
@@ -161,10 +163,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             form.AcceptButton = btn;
             textBox.KeyUp += EscapeKeyHandler;
             form.KeyUp += EscapeKeyHandler;
-            form.Load += (ss, ee) => {
-                var anim = new Animation().WithLimit(10).WithAction((a) => form.InvokeIfRequired(() => form.Opacity += 0.1f)).WithDisposal(form);
-                anim.Start();
-            };
+            form.Load += (ss, ee) => Transition.run(form, "Opacity", 1d, new TransitionType_EaseInEaseOut(400));
             translationHelper.Dispose();
             form.TopMost = true;
         }
@@ -173,18 +172,17 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            SuspendLayout();
             // 
             // SecureUserLoginForm
             // 
-            this.ClientSize = new System.Drawing.Size(302, 300);
-            this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
-            this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
-            this.Location = new System.Drawing.Point(0, 0);
-            this.Name = "SecureUserLoginForm";
-            this.TitlebarVisible = false;
-            this.ResumeLayout(false);
-
+            ClientSize = new Size(302, 300);
+            ColorScheme.PrimaryColor = Color.FromArgb(2, 119, 189);
+            ColorScheme.SecondaryColor = Color.FromArgb(1, 75, 120);
+            Location = new Point(0, 0);
+            Name = "SecureUserLoginForm";
+            TitlebarVisible = false;
+            ResumeLayout(false);
         }
     }
 }
