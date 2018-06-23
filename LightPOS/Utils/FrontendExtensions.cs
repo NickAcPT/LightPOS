@@ -26,7 +26,6 @@ namespace NickAc.LightPOS.Frontend.Utils
                     var page = new TabPage(prods.Key.Name) {BackColor = Color.Transparent};
                     var pnl = new FlowLayoutPanel
                     {
-                        Padding = new Padding(8),
                         Dock = DockStyle.Fill,
                         FlowDirection = FlowDirection.LeftToRight,
                         BackColor = Color.Transparent

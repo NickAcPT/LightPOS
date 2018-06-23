@@ -3,8 +3,10 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NickAc.ModernUIDoneRight.Controls;
 using NickAc.ModernUIDoneRight.Forms;
 using NickAc.ModernUIDoneRight.Objects;
+using NickAc.ModernUIDoneRight.Utils;
 
 namespace NickAc.LightPOS.Frontend.Controls
 {
@@ -93,7 +95,7 @@ namespace NickAc.LightPOS.Frontend.Controls
         private const int ShadowOffset = 3;
 
         private void DrawControlShadow(Graphics g, Rectangle rect)
-        {
+        {/*
             using (var brush = new SolidBrush(Color.FromArgb(150, Color.Black)))
             {
                 var img = new Bitmap(Width, Height);
@@ -106,39 +108,28 @@ namespace NickAc.LightPOS.Frontend.Controls
                     var result = _topBarShadow = img;
                     g?.DrawImageUnscaled(result, Point.Empty);
                 }
-            }
+            }*/
+            ShadowUtils.DrawShadow(g, Color.Black, rect, 7, DockStyle.Top);
         }
 
         #endregion
 
-        private Bitmap _topBarShadow;
-        private bool _hasStartedRenderingShadow;
-
+        public Color BackgroundColor { get; set; } = SystemColors.Control;
 
         protected override void OnPaintBackground(PaintEventArgs pevent)
         {
             base.OnPaintBackground(pevent);
+            using (var sb = new SolidBrush(BackgroundColor))
+            {
+                pevent.Graphics.FillRectangle(sb, new Rectangle(Point.Empty, Size));
+            }
             var tabHeight = TabCount > 0 ? GetTabRect(0).Height : Height;
             var tabRect = TabCount > 0 ? GetTabRect(0) : new Rectangle(Point.Empty, Size);
             if (TabCount > 0)
             {
-                if (_topBarShadow == null)
-                {
-                    if (!_hasStartedRenderingShadow)
-                    {
-                        _hasStartedRenderingShadow = true;
-                        Task.Run(() =>
-                            DrawControlShadow(null,
-                                Rectangle.FromLTRB(0, tabRect.Bottom - 4, Width, tabRect.Bottom))).ContinueWith(t=> Invalidate());
-                    }
-                }   
-                else 
-                    pevent.Graphics.DrawImageUnscaled(_topBarShadow, Point.Empty);
-
-            }
-                
-            if (TabCount > 0)
-            {
+                DrawControlShadow(pevent.Graphics,
+                    Rectangle.FromLTRB(0, tabRect.Top, Width, tabRect.Bottom - 2));
+            
                 using (var sb = new SolidBrush(ColorScheme.PrimaryColor))
                 {
                     pevent.Graphics.FillRectangle(sb, new Rectangle(Point.Empty, new Size(Width, tabHeight)));
@@ -160,7 +151,7 @@ namespace NickAc.LightPOS.Frontend.Controls
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == TcmSetpadding)
-                m.LParam = Makelparam(Padding.X + 10, Padding.Y + 10);
+                m.LParam = Makelparam(Padding.X + 10, Padding.Y + 16);
 
             if (m.Msg == WmMousedown && !DesignMode)
             {
