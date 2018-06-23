@@ -23,11 +23,13 @@ namespace NickAc.LightPOS.Frontend.Utils
                 var splitProducts = allProds.GroupBy(c => c.Category);
                 foreach (var prods in splitProducts)
                 {
-                    var page = new TabPage(prods.Key.Name) {Tag = prods.Key.Color};
+                    var page = new TabPage(prods.Key.Name) {BackColor = Color.Transparent};
                     var pnl = new FlowLayoutPanel
                     {
+                        Padding = new Padding(8),
                         Dock = DockStyle.Fill,
-                        FlowDirection = FlowDirection.LeftToRight
+                        FlowDirection = FlowDirection.LeftToRight,
+                        BackColor = Color.Transparent
                     };
                     page.Controls.Add(pnl);
 

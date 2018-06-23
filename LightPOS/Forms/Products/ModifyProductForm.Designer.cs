@@ -57,6 +57,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.appBar1.Location = new System.Drawing.Point(1, 1);
             this.appBar1.Size = new System.Drawing.Size(755, 50);
             this.appBar1.TabStop = false;
+            this.appBar1.Text = "FormModifyProduct";
             this.translationHelper1.SetTranslationLocation(this.appBar1, "");
             // 
             // textBox1
@@ -97,6 +98,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             // metroButton1
             // 
             this.metroButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.metroButton1.CustomColorScheme = false;
             this.metroButton1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.metroButton1.Location = new System.Drawing.Point(177, 192);
             this.metroButton1.Name = "metroButton1";
@@ -110,6 +112,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             // modernButton2
             // 
             this.modernButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.modernButton2.CustomColorScheme = false;
             this.modernButton2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.modernButton2.Location = new System.Drawing.Point(524, 150);
             this.modernButton2.Name = "modernButton2";
@@ -136,7 +139,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             // 
             this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(10, 150);
@@ -231,6 +233,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(757, 451);
+            this.ColorScheme.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(64)))), ((int)(((byte)(101)))));
+            this.ColorScheme.MouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(100)))), ((int)(((byte)(158)))));
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
             this.Controls.Add(this.panel1);

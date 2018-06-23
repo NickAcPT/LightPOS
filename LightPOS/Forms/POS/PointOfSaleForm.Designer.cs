@@ -48,18 +48,18 @@
             this.appBar1.ColorScheme = this.ColorScheme;
             this.appBar1.Location = new System.Drawing.Point(1, 1);
             this.appBar1.Size = new System.Drawing.Size(878, 50);
+            this.appBar1.Text = "PointOfSaleForm";
             this.translationHelper1.SetTranslationLocation(this.appBar1, "");
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(13, 66);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(1, 51);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(854, 429);
+            this.panel1.Padding = new System.Windows.Forms.Padding(5, 10, 5, 5);
+            this.panel1.Size = new System.Drawing.Size(878, 456);
             this.panel1.TabIndex = 1;
             this.translationHelper1.SetTranslationLocation(this.panel1, "");
             // 
@@ -67,10 +67,10 @@
             // 
             this.panel3.Controls.Add(this._nickCustomTabControl1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(327, 0);
+            this.panel3.Location = new System.Drawing.Point(332, 10);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.panel3.Size = new System.Drawing.Size(527, 429);
+            this.panel3.Size = new System.Drawing.Size(541, 441);
             this.panel3.TabIndex = 3;
             this.translationHelper1.SetTranslationLocation(this.panel3, "");
             // 
@@ -81,7 +81,7 @@
             this._nickCustomTabControl1.Location = new System.Drawing.Point(8, 0);
             this._nickCustomTabControl1.Name = "_nickCustomTabControl1";
             this._nickCustomTabControl1.SelectedIndex = 0;
-            this._nickCustomTabControl1.Size = new System.Drawing.Size(519, 429);
+            this._nickCustomTabControl1.Size = new System.Drawing.Size(533, 441);
             this._nickCustomTabControl1.TabIndex = 4;
             this.translationHelper1.SetTranslationLocation(this._nickCustomTabControl1, "");
             // 
@@ -89,9 +89,9 @@
             // 
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(5, 10);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(327, 429);
+            this.panel2.Size = new System.Drawing.Size(327, 441);
             this.panel2.TabIndex = 2;
             this.translationHelper1.SetTranslationLocation(this.panel2, "");
             // 
@@ -102,7 +102,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(327, 429);
+            this.panel4.Size = new System.Drawing.Size(327, 441);
             this.panel4.TabIndex = 0;
             this.translationHelper1.SetTranslationLocation(this.panel4, "");
             // 
@@ -113,7 +113,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(0, 0, 0, 8);
-            this.panel5.Size = new System.Drawing.Size(327, 372);
+            this.panel5.Size = new System.Drawing.Size(327, 384);
             this.panel5.TabIndex = 1;
             this.translationHelper1.SetTranslationLocation(this.panel5, "");
             // 
@@ -125,14 +125,16 @@
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(327, 364);
+            this.listBox1.Size = new System.Drawing.Size(327, 376);
             this.listBox1.TabIndex = 1;
             this.translationHelper1.SetTranslationLocation(this.listBox1, "");
             // 
             // modernButton1
             // 
+            this.modernButton1.ColorScheme = this.ColorScheme;
+            this.modernButton1.CustomColorScheme = false;
             this.modernButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.modernButton1.Location = new System.Drawing.Point(0, 372);
+            this.modernButton1.Location = new System.Drawing.Point(0, 384);
             this.modernButton1.Name = "modernButton1";
             this.modernButton1.Size = new System.Drawing.Size(327, 57);
             this.modernButton1.TabIndex = 0;
@@ -147,6 +149,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(880, 508);
+            this.ColorScheme.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(64)))), ((int)(((byte)(101)))));
+            this.ColorScheme.MouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(100)))), ((int)(((byte)(158)))));
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
             this.Controls.Add(this.panel1);

@@ -10,7 +10,7 @@ using NHibernate;
 using NHibernate.SqlTypes;
 using NHibernate.UserTypes;
 
-namespace NickAc.LightPOS.Backend.Mapping
+namespace NickAc.LightPOS.Backend.Mapping.Other
 {
     /// <summary>
     ///     Taken from https://stackoverflow.com/questions/1063933/nhibernate-mapping-to-system-drawing-color

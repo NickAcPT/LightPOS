@@ -12,19 +12,11 @@ namespace NickAc.LightPOS.Frontend.Controls
     {
         public override void DrawCustomTabBackground(int id, Graphics g, Rectangle rect, bool isHot, bool isSelected)
         {
-            var color = this.Parent.TabPages[id]?.Tag;
-            if (!(color is Color backColor)) return;
-            using (var solidBrush = new SolidBrush(backColor))
-            {
-                g.FillRectangle(solidBrush, rect);
-            }
         }
 
         public override void DrawTabContent(int id, Graphics g, Rectangle rect, bool isHot, bool isSelected)
         {
-            var color = this.Parent.TabPages[id]?.Tag;
-            if (!(color is Color backColor)) return;
-            using (var sb = new SolidBrush(GraphicUtils.ForegroundColorForBackground(backColor)))
+            using (var sb = new SolidBrush(Parent.ColorScheme.ForegroundColor))
             {
                 using (var sF = new StringFormat {Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center})
                 {

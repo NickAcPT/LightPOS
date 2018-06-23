@@ -11,12 +11,11 @@ namespace NickAc.LightPOS.Backend.Objects
     {
         public virtual int Id { get; set; }
         public virtual string Name { get; set; }
-        public virtual Color Color { get; set; }
         public virtual double Tax { get; set; }
 
         public override string ToString()
         {
-            return $"Category[ID={Id}, Name={Name}, Color={Color}, Tax={Tax}]";
+            return $"Category[ID={Id}, Name={Name}, Tax={Tax}]";
         }
     }
 }

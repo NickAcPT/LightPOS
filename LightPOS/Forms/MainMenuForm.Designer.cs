@@ -46,6 +46,7 @@
             // 
             this.appBar1.Location = new System.Drawing.Point(1, 1);
             this.appBar1.Size = new System.Drawing.Size(784, 50);
+            this.appBar1.Text = "MainMenuForm";
             this.translationHelper1.SetTranslationLocation(this.appBar1, "");
             // 
             // tilePanelReborn1
@@ -128,6 +129,7 @@
             this.shadedPanel1.Controls.Add(this.label3);
             this.shadedPanel1.Location = new System.Drawing.Point(558, 67);
             this.shadedPanel1.Name = "shadedPanel1";
+            this.shadedPanel1.OldEngine = false;
             this.shadedPanel1.Size = new System.Drawing.Size(215, 50);
             this.shadedPanel1.TabIndex = 3;
             this.translationHelper1.SetTranslationLocation(this.shadedPanel1, "");
@@ -159,6 +161,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(786, 478);
+            this.ColorScheme.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(64)))), ((int)(((byte)(101)))));
+            this.ColorScheme.MouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(100)))), ((int)(((byte)(158)))));
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
             this.Controls.Add(this.shadedPanel1);

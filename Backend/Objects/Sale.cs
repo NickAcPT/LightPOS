@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using NickAc.LightPOS.Backend.Mapping;
+using NickAc.LightPOS.Backend.Mapping.Other;
 
 namespace NickAc.LightPOS.Backend.Objects
 {

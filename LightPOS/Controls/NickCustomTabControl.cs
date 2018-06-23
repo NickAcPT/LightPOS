@@ -1,21 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using NickAc.ModernUIDoneRight.Forms;
+using NickAc.ModernUIDoneRight.Objects;
 
 namespace NickAc.LightPOS.Frontend.Controls
 {
-    public class NickCustomTabControl : System.Windows.Forms.TabControl
+    public class NickCustomTabControl : TabControl
     {
-        
-
         public abstract class CustomTabDrawHandler
         {
             public NickCustomTabControl Parent { get; set; }
-            public abstract void DrawCustomTabBackground(int id, Graphics g, Rectangle rect, bool isHot, bool isSelected);
+
+            public abstract void DrawCustomTabBackground(int id, Graphics g, Rectangle rect, bool isHot,
+                bool isSelected);
+
             public abstract void DrawTabContent(int id, Graphics g, Rectangle rect, bool isHot, bool isSelected);
             public abstract bool HandleTabClick(int id, Rectangle rect);
         }
@@ -24,9 +25,8 @@ namespace NickAc.LightPOS.Frontend.Controls
         private CustomTabDrawHandler _drawHandler;
 
         public NickCustomTabControl()
-            : base()
         {
-            this.SetStyle(
+            SetStyle(
                 ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw |
                 ControlStyles.UserPaint, true);
         }
@@ -43,20 +43,15 @@ namespace NickAc.LightPOS.Frontend.Controls
             }
         }
 
-        private int CloseButtonHeight
-        {
-            get { return FontHeight; }
-        }
-
         private int HotTabIndex
         {
-            get { return _hotTabIndex; }
+            get => _hotTabIndex;
             set
             {
                 if (_hotTabIndex != value)
                 {
                     _hotTabIndex = value;
-                    this.Invalidate();
+                    Invalidate();
                 }
             }
         }
@@ -68,23 +63,23 @@ namespace NickAc.LightPOS.Frontend.Controls
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            this.OnFontChanged(EventArgs.Empty);
+            OnFontChanged(EventArgs.Empty);
         }
 
         protected override void OnFontChanged(EventArgs e)
         {
             base.OnFontChanged(e);
-            var hFont = this.Font.ToHfont();
-            SendMessage(this.Handle, WmSetfont, hFont, new IntPtr(-1));
-            SendMessage(this.Handle, WmFontchange, IntPtr.Zero, IntPtr.Zero);
-            this.UpdateStyles();
+            var hFont = Font.ToHfont();
+            SendMessage(Handle, WmSetfont, hFont, new IntPtr(-1));
+            SendMessage(Handle, WmFontchange, IntPtr.Zero, IntPtr.Zero);
+            UpdateStyles();
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
             var hti = new Tchittestinfo(e.X, e.Y);
-            HotTabIndex = SendMessage(this.Handle, TcmHittest, IntPtr.Zero, ref hti);
+            HotTabIndex = SendMessage(Handle, TcmHittest, IntPtr.Zero, ref hti);
         }
 
         protected override void OnMouseLeave(EventArgs e)
@@ -93,29 +88,85 @@ namespace NickAc.LightPOS.Frontend.Controls
             HotTabIndex = -1;
         }
 
+        #region Shadow
+
+        
+        
+        private const int ShadowOffset = 3;
+
+        private void DrawControlShadow(Graphics g, Rectangle rect)
+        {
+            using (var brush = new SolidBrush(Color.FromArgb(150, Color.Black)))
+            {
+                var img = new Bitmap(Width, Height);
+                {
+                    using (var gp = Graphics.FromImage(img)) {
+                            gp.FillRectangle(brush, rect);
+                    }
+
+                    StackBlur.StackBlur.Process(img, ShadowOffset * 2);
+                    var result = _topBarShadow = img;
+                    g?.DrawImageUnscaled(result, Point.Empty);
+                }
+            }
+        }
+
+        #endregion
+
+        private Bitmap _topBarShadow;
+        private bool _hasStartedRenderingShadow;
+
+
         protected override void OnPaintBackground(PaintEventArgs pevent)
         {
             base.OnPaintBackground(pevent);
+            var tabHeight = TabCount > 0 ? GetTabRect(0).Height : Height;
+            var tabRect = TabCount > 0 ? GetTabRect(0) : new Rectangle(Point.Empty, Size);
+            if (TabCount > 0)
+            {
+                if (_topBarShadow == null)
+                {
+                    if (!_hasStartedRenderingShadow)
+                    {
+                        _hasStartedRenderingShadow = true;
+                        Task.Run(() =>
+                            DrawControlShadow(null,
+                                Rectangle.FromLTRB(0, tabRect.Bottom - 4, Width, tabRect.Bottom))).ContinueWith(t=> Invalidate());
+                    }
+                }   
+                else 
+                    pevent.Graphics.DrawImageUnscaled(_topBarShadow, Point.Empty);
 
-            for (var id = 0; id < this.TabCount; id++)
+            }
+                
+            if (TabCount > 0)
+            {
+                using (var sb = new SolidBrush(ColorScheme.PrimaryColor))
+                {
+                    pevent.Graphics.FillRectangle(sb, new Rectangle(Point.Empty, new Size(Width, tabHeight)));
+                }
+            }
+
+            for (var id = 0; id < TabCount; id++)
                 DrawTabBackground(pevent.Graphics, id);
+            
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            for (var id = 0; id < this.TabCount; id++)
+            for (var id = 0; id < TabCount; id++)
                 DrawTabContent(e.Graphics, id);
         }
 
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == TcmSetpadding)
-                m.LParam = Makelparam(this.Padding.X + 10, this.Padding.Y + 10);
+                m.LParam = Makelparam(Padding.X + 10, Padding.Y + 10);
 
-            if (m.Msg == WmMousedown && !this.DesignMode)
+            if (m.Msg == WmMousedown && !DesignMode)
             {
-                var pt = this.PointToClient(Cursor.Position);
+                var pt = PointToClient(Cursor.Position);
                 var tabRect = Rectangle.Empty;
                 var tabId = 0;
                 for (var i = 0; i < TabCount; i++)
@@ -127,6 +178,7 @@ namespace NickAc.LightPOS.Frontend.Controls
                         tabRect = rect;
                     }
                 }
+
                 if (DrawHandler?.HandleTabClick(tabId, tabRect) ?? false)
                     m.Msg = WmNull;
             }
@@ -143,11 +195,42 @@ namespace NickAc.LightPOS.Frontend.Controls
             return new IntPtr((hi << 16) | (lo & 0xFFFF));
         }
 
+        private ColorScheme _scheme;
+        private Rectangle _hotRectangle = Rectangle.Empty;
+
+        public Rectangle HotRectangle
+        {
+            get => _hotRectangle.IsEmpty ? HotRectangleFromTabRect(GetTabRect(0)) : _hotRectangle;
+            set => _hotRectangle = value;
+        }
+
+        public int HotRectangleHeight { get; set; } = 7;
+
+
+        private Rectangle HotRectangleFromTabRect(Rectangle rect)
+        {
+            return Rectangle.FromLTRB(rect.Left, rect.Bottom - HotRectangleHeight, rect.Right, rect.Bottom - 2);
+        }
+
+        public ColorScheme ColorScheme =>
+            _scheme ?? (_scheme = FindForm() is ModernForm mdrF ? mdrF.ColorScheme : DefaultColorSchemes.Blue);
+
+        protected new Rectangle GetTabRect(int id)
+        {
+            var tabRect = base.GetTabRect(id);
+            tabRect.Height -= 2;
+            return tabRect;
+        }
+
         private void DrawTabBackground(Graphics graphics, int id)
         {
             DrawHandler?.DrawCustomTabBackground(id, graphics, GetTabRect(id), id == HotTabIndex, id == SelectedIndex);
-            /*if (id == SelectedIndex)
-                graphics.FillRectangle(Brushes.DarkGray, GetTabRect(id));
+            using (var cSchemeFore = new SolidBrush(ColorScheme.ForegroundColor))
+            {
+                graphics.FillRectangle(cSchemeFore, HotRectangle);
+            }
+
+            /*
             else if (id == HotTabIndex)
             {
                 var rc = GetTabRect(id);
@@ -158,71 +241,72 @@ namespace NickAc.LightPOS.Frontend.Controls
         }
 
         private void DrawTabContent(Graphics graphics, int id)
-        {/*
-            var selectedOrHot = id == this.SelectedIndex || id == this.HotTabIndex;
-            var vertical = this.Alignment >= TabAlignment.Left;
-
-            Image tabImage = null;
-
-            if (this.ImageList != null)
-            {
-                var page = this.TabPages[id];
-                if (page.ImageIndex > -1 && page.ImageIndex < this.ImageList.Images.Count)
-                    tabImage = this.ImageList.Images[page.ImageIndex];
-
-                if (page.ImageKey.Length > 0 && this.ImageList.Images.ContainsKey(page.ImageKey))
-                    tabImage = this.ImageList.Images[page.ImageKey];
-            }
-
-            var tabRect = GetTabRect(id);
-            var contentRect = vertical
-                ? new Rectangle(0, 0, tabRect.Height, tabRect.Width)
-                : new Rectangle(Point.Empty, tabRect.Size);
-            var textrect = contentRect;
-            textrect.Width -= FontHeight;
-
-            if (tabImage != null)
-            {
-                textrect.Width -= tabImage.Width;
-                textrect.X += tabImage.Width;
-            }
-
-            var frColor = id == SelectedIndex ? Color.White : this.ForeColor;
-            var bkColor = id == SelectedIndex ? Color.DarkGray : this.BackColor;
-
-            using (var bm = new Bitmap(contentRect.Width, contentRect.Height))
-            {
-                using (var bmGraphics = Graphics.FromImage(bm))
-                {
-                    TextRenderer.DrawText(bmGraphics, this.TabPages[id].Text, this.Font, textrect, frColor, bkColor);
-                    if (selectedOrHot)
-                    {
-                        var closeRect = new Rectangle(contentRect.Right - CloseButtonHeight, 0, CloseButtonHeight,
-                            CloseButtonHeight);
-                        closeRect.Offset(-2, (contentRect.Height - closeRect.Height) / 2);
-                        DrawCloseButton(bmGraphics, closeRect);
-                    }
-
-                    if (tabImage != null)
-                    {
-                        var imageRect = new Rectangle(Padding.X, 0, tabImage.Width, tabImage.Height);
-                        imageRect.Offset(0, (contentRect.Height - imageRect.Height) / 2);
-                        bmGraphics.DrawImage(tabImage, imageRect);
-                    }
-                }
-
-                if (vertical)
-                {
-                    if (this.Alignment == TabAlignment.Left)
-                        bm.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                    else
-                        bm.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                }
-
-                graphics.DrawImage(bm, tabRect);
-            }*/
-            DrawHandler?.DrawTabContent(id, graphics, GetTabRect(id), id == this.HotTabIndex, id == this.SelectedIndex);
-        }        
+        {
+            /*
+                        var selectedOrHot = id == this.SelectedIndex || id == this.HotTabIndex;
+                        var vertical = this.Alignment >= TabAlignment.Left;
+            
+                        Image tabImage = null;
+            
+                        if (this.ImageList != null)
+                        {
+                            var page = this.TabPages[id];
+                            if (page.ImageIndex > -1 && page.ImageIndex < this.ImageList.Images.Count)
+                                tabImage = this.ImageList.Images[page.ImageIndex];
+            
+                            if (page.ImageKey.Length > 0 && this.ImageList.Images.ContainsKey(page.ImageKey))
+                                tabImage = this.ImageList.Images[page.ImageKey];
+                        }
+            
+                        var tabRect = GetTabRect(id);
+                        var contentRect = vertical
+                            ? new Rectangle(0, 0, tabRect.Height, tabRect.Width)
+                            : new Rectangle(Point.Empty, tabRect.Size);
+                        var textrect = contentRect;
+                        textrect.Width -= FontHeight;
+            
+                        if (tabImage != null)
+                        {
+                            textrect.Width -= tabImage.Width;
+                            textrect.X += tabImage.Width;
+                        }
+            
+                        var frColor = id == SelectedIndex ? Color.White : this.ForeColor;
+                        var bkColor = id == SelectedIndex ? Color.DarkGray : this.BackColor;
+            
+                        using (var bm = new Bitmap(contentRect.Width, contentRect.Height))
+                        {
+                            using (var bmGraphics = Graphics.FromImage(bm))
+                            {
+                                TextRenderer.DrawText(bmGraphics, this.TabPages[id].Text, this.Font, textrect, frColor, bkColor);
+                                if (selectedOrHot)
+                                {
+                                    var closeRect = new Rectangle(contentRect.Right - CloseButtonHeight, 0, CloseButtonHeight,
+                                        CloseButtonHeight);
+                                    closeRect.Offset(-2, (contentRect.Height - closeRect.Height) / 2);
+                                    DrawCloseButton(bmGraphics, closeRect);
+                                }
+            
+                                if (tabImage != null)
+                                {
+                                    var imageRect = new Rectangle(Padding.X, 0, tabImage.Width, tabImage.Height);
+                                    imageRect.Offset(0, (contentRect.Height - imageRect.Height) / 2);
+                                    bmGraphics.DrawImage(tabImage, imageRect);
+                                }
+                            }
+            
+                            if (vertical)
+                            {
+                                if (this.Alignment == TabAlignment.Left)
+                                    bm.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                                else
+                                    bm.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                            }
+            
+                            graphics.DrawImage(bm, tabRect);
+                        }*/
+            DrawHandler?.DrawTabContent(id, graphics, GetTabRect(id), id == HotTabIndex, id == SelectedIndex);
+        }
 
         #endregion
 
@@ -237,8 +321,8 @@ namespace NickAc.LightPOS.Frontend.Controls
         [StructLayout(LayoutKind.Sequential)]
         private struct Tchittestinfo
         {
-            public Point pt;
-            public Tchittestflags flags;
+            private readonly Point pt;
+            private readonly Tchittestflags flags;
 
             public Tchittestinfo(int x, int y)
             {
@@ -247,13 +331,10 @@ namespace NickAc.LightPOS.Frontend.Controls
             }
         }
 
-        [Flags()]
+        [Flags]
         private enum Tchittestflags
         {
-            TchtNowhere = 1,
-            TchtOnitemicon = 2,
-            TchtOnitemlabel = 4,
-            TchtOnitem = TchtOnitemicon | TchtOnitemlabel
+            TchtNowhere = 1
         }
 
         private const int WmNull = 0x0;

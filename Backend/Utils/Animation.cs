@@ -49,7 +49,6 @@ namespace NickAc.LightPOS.Backend.Utils
             return this;
         }
 
-
         public Animation WithAction(Action<Animation> action)
         {
             timerAction = action;
@@ -73,6 +72,7 @@ namespace NickAc.LightPOS.Backend.Utils
             internalTimer.Stop();
             return this;
         }
+        
 
         ~Animation()
         {

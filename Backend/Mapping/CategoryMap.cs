@@ -4,6 +4,7 @@
 //
 
 using FluentNHibernate.Mapping;
+using NickAc.LightPOS.Backend.Mapping.Other;
 using NickAc.LightPOS.Backend.Objects;
 
 namespace NickAc.LightPOS.Backend.Mapping
@@ -15,7 +16,6 @@ namespace NickAc.LightPOS.Backend.Mapping
             Table("Categories");
             Id(x => x.Id).GeneratedBy.Native();
             Map(x => x.Name);
-            Map(x => x.Color).CustomType<ColorUserType>();
             Map(x => x.Tax);
         }
     }

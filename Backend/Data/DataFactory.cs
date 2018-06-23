@@ -12,12 +12,13 @@ using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using NickAc.LightPOS.Backend.Mapping;
+using NickAc.LightPOS.Backend.Mapping.Other;
 
 namespace NickAc.LightPOS.Backend.Data
 {
     public class DataFactory
     {
-        private const string fileConfig = "nh.config";
+        private const string FileConfig = "nh.config";
         private readonly FileInfo _dbFile;
         private readonly bool _overwriteExisting;
 
@@ -47,8 +48,8 @@ namespace NickAc.LightPOS.Backend.Data
         {
             try
             {
-                if (File.Exists(fileConfig))
-                    using (var file = File.Open(fileConfig, FileMode.Open, FileAccess.Read))
+                if (File.Exists(FileConfig))
+                    using (var file = File.Open(FileConfig, FileMode.Open, FileAccess.Read))
                     {
                         var bf = new BinaryFormatter();
                         return Fluently.Configure(bf.Deserialize(file) as Configuration);
@@ -58,7 +59,7 @@ namespace NickAc.LightPOS.Backend.Data
             {
                 Ignore(ex);
                 //Ignore errors deserialization errors and delete the existent file
-                File.Delete(fileConfig);
+                File.Delete(FileConfig);
             }
 
             var fluentConfiguration = Fluently.Configure()
@@ -69,7 +70,7 @@ namespace NickAc.LightPOS.Backend.Data
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<DataFactory>()
                     .Conventions.Add(new ReferenceConvention()))
                 .ExposeConfiguration(BuildSchema);
-            using (var file = File.Open(fileConfig, FileMode.Create))
+            using (var file = File.Open(FileConfig, FileMode.Create))
             {
                 var bf = new BinaryFormatter();
                 bf.Serialize(file, fluentConfiguration.BuildConfiguration());

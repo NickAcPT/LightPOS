@@ -10,7 +10,7 @@ using FluentNHibernate.Conventions.AcceptanceCriteria;
 using FluentNHibernate.Conventions.Inspections;
 using FluentNHibernate.Conventions.Instances;
 
-namespace NickAc.LightPOS.Backend.Mapping
+namespace NickAc.LightPOS.Backend.Mapping.Other
 {
     //Class taken from StackOverflow (https://stackoverflow.com/a/38870091).
     //All credits go to mdameer(https://stackoverflow.com/users/6327884/mdameer)

@@ -18,7 +18,6 @@ namespace NickAc.LightPOS.Backend.Mapping
             Map(x => x.Barcode).Unique();
             Map(x => x.Price);
             Map(x => x.UnitPrice);
-            Map(x => x.Quantity);
 
             References(x => x.Category);
         }

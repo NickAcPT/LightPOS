@@ -39,8 +39,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.errorImage = new System.Windows.Forms.PictureBox();
             this.simpleSelectionControl1 = new NickAc.LightPOS.Frontend.Controls.SimpleSelectionControl();
             this.percentageUpDown1 = new NickAc.LightPOS.Frontend.Controls.PercentageUpDown();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new NickAc.LightPOS.Frontend.Controls.TextBoxEx();
@@ -54,11 +52,13 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             // 
             this.appBar1.Size = new System.Drawing.Size(760, 50);
             this.appBar1.TabStop = false;
+            this.appBar1.Text = "add_cat_title";
             this.translationHelper1.SetTranslationLocation(this.appBar1, "");
             // 
             // metroButton1
             // 
             this.metroButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.metroButton1.CustomColorScheme = false;
             this.metroButton1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.metroButton1.Location = new System.Drawing.Point(177, 192);
             this.metroButton1.Name = "metroButton1";
@@ -76,8 +76,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.panel1.Controls.Add(this.simpleSelectionControl1);
             this.panel1.Controls.Add(this.metroButton1);
             this.panel1.Controls.Add(this.percentageUpDown1);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.textBox1);
@@ -123,27 +121,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.percentageUpDown1.Value = 0.23D;
             this.percentageUpDown1.Visible = false;
             // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Location = new System.Drawing.Point(358, 96);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(29, 29);
-            this.panel2.TabIndex = 0;
-            this.translationHelper1.SetTranslationLocation(this.panel2, "");
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(354, 72);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 21);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "edit_cat_color";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.translationHelper1.SetTranslationLocation(this.label4, "edit_cat_color");
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -184,6 +161,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(762, 441);
+            this.ColorScheme.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(64)))), ((int)(((byte)(101)))));
+            this.ColorScheme.MouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(100)))), ((int)(((byte)(158)))));
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
             this.Controls.Add(this.panel1);
@@ -206,8 +185,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
         private Panel panel1;
         private Label label1;
         private TextBoxEx textBox1;
-        private Panel panel2;
-        private Label label4;
         private Label label3;
         private PercentageUpDown percentageUpDown1;
         private TranslationHelper translationHelper1;

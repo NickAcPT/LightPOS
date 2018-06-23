@@ -47,8 +47,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             if (translate) translationHelper1.Translate(this);
 
             comboBox2.Items.AddRange(DataManager.GetCategories().ToArray<object>());
-            comboBox2.DrawMode = DrawMode.OwnerDrawVariable;
-            comboBox2.DrawItem += ComboBox2_DrawItem;   
+            comboBox2.DisplayMember = nameof(Category.Name);
 
             var existingProducts = DataManager.GetProducts().Select(p => p.Barcode);
             textBoxEx1.TextChanged += (sender, args) =>
@@ -68,35 +67,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 AdaptToErrorImage((Control) sender, pictureBox2);
             };
         }
-
-
-        private void ComboBox2_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            const int sideOffset = 8;
-            int colorRectSize = e.Bounds.Height - 2;
-
-            if (!(sender is ComboBox combo) || combo.Items.Count <= 0) return;
-            if (!(combo.Items.Cast<object>().ElementAtOrDefault(e.Index) is Category category)) return;
-            e.DrawBackground();
-            using (var sb = new SolidBrush(combo.ForeColor))
-            {
-                using (var borderBrush = new SolidBrush(Color.FromArgb(95, 95, 95)))
-                {
-                    using (var colorBrush = new SolidBrush(category.Color))
-                    {
-                        var rect = new Rectangle(e.Bounds.X + 2, e.Bounds.Y + 2, colorRectSize - 2, colorRectSize - 2);
-                        e.Graphics.FillRectangle(borderBrush, rect);
-                        e.Graphics.FillRectangle(colorBrush, Rectangle.Inflate(rect, -1, -1));
-                    }
-                }
-
-                var textRect = Rectangle.FromLTRB(e.Bounds.Left + colorRectSize + sideOffset, e.Bounds.Top,
-                    e.Bounds.Right,
-                    e.Bounds.Bottom);
-                e.Graphics.DrawString(category.Name, combo.Font, sb,
-                    textRect);
-            }
-        }
+        
 
         public ModifyProductForm(Product toEdit) : this(false)
         {

@@ -189,7 +189,7 @@ namespace NickAc.LightPOS.Backend.Data
             return list;
         }
 
-        public static User GetUser(int ID)
+        public static User GetUser(int id)
         {
             User user;
             using (var sf = SessionFactory)
@@ -197,7 +197,7 @@ namespace NickAc.LightPOS.Backend.Data
                 using (var session = sf.OpenSession())
                 {
                     user = session.QueryOver<User>().Fetch(u => u.Actions)
-                        .Eager.Where(u => u.UserId == ID).List().FirstOrDefault();
+                        .Eager.Where(u => u.UserId == id).List().FirstOrDefault();
                 }
             }
 
@@ -222,7 +222,7 @@ namespace NickAc.LightPOS.Backend.Data
         }
 
 
-        public static User GetUserWithActions(int ID)
+        public static User GetUserWithActions(int id)
         {
             User user;
             using (var sf = SessionFactory)
@@ -232,7 +232,7 @@ namespace NickAc.LightPOS.Backend.Data
                     user = session
                         .QueryOver<User>()
                         .Fetch(u => u.Actions).Eager
-                        .Where(u => u.UserId == ID)
+                        .Where(u => u.UserId == id)
                         .List()
                         .FirstOrDefault();
                 }
@@ -242,7 +242,7 @@ namespace NickAc.LightPOS.Backend.Data
         }
 
 
-        public static User GetUserWithSales(int ID)
+        public static User GetUserWithSales(int id)
         {
             User user;
             using (var sf = SessionFactory)
@@ -252,7 +252,7 @@ namespace NickAc.LightPOS.Backend.Data
                     user = session
                         .QueryOver<User>()
                         .Fetch(u => u.Sales).Eager
-                        .Where(u => u.UserId == ID)
+                        .Where(u => u.UserId == id)
                         .List()
                         .FirstOrDefault();
                 }
@@ -457,13 +457,13 @@ namespace NickAc.LightPOS.Backend.Data
         }
 
 
-        public static void RemoveUser(int userID)
+        public static void RemoveUser(int userId)
         {
-            var finalUser1 = GetUserWithActions(userID);
+            var finalUser1 = GetUserWithActions(userId);
             RemoveUser(finalUser1);
         }
 
-        public static void RemoveProduct(int productID)
+        public static void RemoveProduct(int productId)
         {
             using (var sf = SessionFactory)
             {
@@ -471,7 +471,7 @@ namespace NickAc.LightPOS.Backend.Data
                 {
                     using (var trans = session.BeginTransaction())
                     {
-                        session.Delete("from Product p where p.ID = ?", productID, NHibernateUtil.Int32);
+                        session.Delete("from Product p where p.ID = ?", productId, NHibernateUtil.Int32);
                         trans.Commit();
                     }
                 }

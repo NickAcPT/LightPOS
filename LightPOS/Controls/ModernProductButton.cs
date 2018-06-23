@@ -23,7 +23,6 @@ namespace NickAc.LightPOS.Frontend.Controls
             set
             {
                 _product = value;
-                ColorScheme = ColorScheme.CreateSimpleColorScheme(value.Category.Color);
                 ForeColor = ColorScheme.ForegroundColor;
                 Refresh();
             }
