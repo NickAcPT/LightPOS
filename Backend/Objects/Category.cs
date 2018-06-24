@@ -11,7 +11,7 @@ namespace NickAc.LightPOS.Backend.Objects
     {
         public virtual int Id { get; set; }
         public virtual string Name { get; set; }
-        public virtual double Tax { get; set; }
+        public virtual decimal Tax { get; set; }
 
         public override string ToString()
         {

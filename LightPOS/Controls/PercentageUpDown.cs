@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace NickAc.LightPOS.Frontend.Controls
 {
@@ -13,10 +9,10 @@ namespace NickAc.LightPOS.Frontend.Controls
             get => base.Text.TrimEnd('%');
             set => base.Text = $@"{value}%";
         }
-        public new double Value
+        public new decimal Value
         {
-            get => (double) (base.Value / 100);
-            set => base.Value = (decimal) (value * 100);
+            get => base.Value / 100;
+            set => base.Value = value * 100;
         }
     }
 }

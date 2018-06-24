@@ -103,18 +103,19 @@ namespace NickAc.LightPOS.Backend.Data
         }
 
 
-        public static float CalculateTotal(IList<Product> products)
+        public static decimal CalculateTotal(IList<Product> products)
         {
-            var total = 0.0f;
+            var total = 0.0m;
             products.All(p =>
             {
+                p.CalculatePrice();
                 total += p.Price;
                 return true;
             });
             return total;
         }
 
-        public static Sale CreateSale(Customer customer, User user, float paidPrice, params Product[] prods)
+        public static Sale CreateSale(Customer customer, User user, decimal paidPrice, params Product[] prods)
         {
             var total = CalculateTotal(prods);
             var finalSale = new Sale
@@ -135,12 +136,11 @@ namespace NickAc.LightPOS.Backend.Data
 
         public static Customer GetCustomer(int id)
         {
-            Customer customer;
             using (var sf = SessionFactory)
             {
                 using (var session = sf.OpenSession())
                 {
-                    customer = session.QueryOver<Customer>().Where(x => x.Id == id).List().FirstOrDefault();
+                    var customer = session.QueryOver<Customer>().Where(x => x.Id == id).List().FirstOrDefault();
                     return customer;
                 }
             }

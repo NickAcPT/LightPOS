@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using JetBrains.Annotations;
@@ -21,13 +22,14 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
         private readonly Category _toEdit;
 
 
+        IEnumerable<string> _categories;
         public ModifyCategoryForm(bool translate = true)
         {
             InitializeComponent();
-            var categories = DataManager.GetCategories().Select(c => c.Name);
+            _categories = DataManager.GetCategories().Select(c => c.Name);
             metroButton1.Click += (s, e) =>
             {
-                categories = DataManager.GetCategories().Select(c => c.Name);
+                _categories = DataManager.GetCategories().Select(c => c.Name);
                 errorImage.Hide();
             };
             simpleSelectionControl1.OptionEnum = typeof(PortugueseTax);
@@ -40,7 +42,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 });
             };
 
-            textBox1.TextChanged += (s, e) => { errorImage.Visible = categories.Any(c => textBox1.Text == c) && (_toEdit == null || _toEdit.Name != textBox1.Text); };
+            textBox1.TextChanged += (s, e) => { errorImage.Visible = _categories.Any(c => textBox1.Text == c) && (_toEdit == null || _toEdit.Name != textBox1.Text); };
             if (translate)
                 translationHelper1.Translate(this);
         }
@@ -63,7 +65,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             {
                 var oldName = _toEdit.Name;
                 _toEdit.Name = textBox1.Text;
-                _toEdit.Tax = (float) percentageUpDown1.Value;
+                _toEdit.Tax = percentageUpDown1.Value;
                 Extensions.RunInAnotherThread(() =>
                 {
                     DataManager.AddCategory(_toEdit);
@@ -78,7 +80,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                     Name = textBox1.Text,
                     Tax = !percentageUpDown1.Visible
                         ? int.Parse(string.Join("",
-                              simpleSelectionControl1.SelectedEnumValue.GetDescription().Where(char.IsDigit))) / 100d
+                              simpleSelectionControl1.SelectedEnumValue.GetDescription().Where(char.IsDigit))) / 100m
                         : percentageUpDown1.Value
                 };
                 Extensions.RunInAnotherThread(() =>

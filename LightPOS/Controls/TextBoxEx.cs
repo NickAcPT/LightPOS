@@ -11,7 +11,7 @@ namespace NickAc.LightPOS.Frontend.Controls
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == (Keys.Back | Keys.Control)) {
-                for (int i = this.SelectionStart - 1; i > 0; i--) {
+                for (int i = SelectionStart - 1; i > 0; i--) {
                     string v = Text.Substring(i, 1);
                     switch (v) {    //set up any stopping points you want
                         case " ":

@@ -3,8 +3,6 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
 
-using NickAc.LightPOS.Backend.Mapping;
-
 namespace NickAc.LightPOS.Backend.Objects
 {
     public class Product
@@ -18,8 +16,15 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual bool RequiresQuantity { get; set; }
 
         public virtual int Quantity { get; set; }
-        public virtual float UnitPrice { get; set; }
-        public virtual float Price { get; set; }
+
+        public virtual decimal UnitPrice { get; set; }
+
+        public virtual decimal Price { get; set; }
+
+        public virtual void CalculatePrice()
+        {
+            Price = UnitPrice * Quantity * (1 + Category?.Tax) ?? 1m;
+        }
 
         public override string ToString()
         {

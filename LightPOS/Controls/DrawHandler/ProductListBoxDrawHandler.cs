@@ -18,7 +18,7 @@ namespace NickAc.LightPOS.Frontend.Controls.DrawHandler
         private readonly TranslationHelper _translation;
         private readonly ColorScheme _colorScheme = DefaultColorSchemes.Blue;
 
-        public ColorScheme ColorScheme => this.Control?.FindForm() is ModernForm frm ? frm.ColorScheme : _colorScheme; 
+        public ColorScheme ColorScheme => Control?.FindForm() is ModernForm frm ? frm.ColorScheme : _colorScheme; 
 
         public ProductListBoxDrawHandler(ListBox control) : base(control)
         {

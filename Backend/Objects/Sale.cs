@@ -13,14 +13,14 @@ namespace NickAc.LightPOS.Backend.Objects
     {
         public virtual int Id { get; set; }
 
-        [NotLazy] public virtual IList<Product> Products { get; set; }
+        public virtual IList<Product> Products { get; set; }
 
-        public virtual float TotalPrice { get; set; }
-        public virtual float PaidPrice { get; set; }
-        public virtual float ChangePrice { get; set; }
+        public virtual decimal TotalPrice { get; set; }
+        public virtual decimal PaidPrice { get; set; }
+        public virtual decimal ChangePrice { get; set; }
 
-        [NotLazy] public virtual Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
 
-        [NotLazy] public virtual User User { get; set; }
+        public virtual User User { get; set; }
     }
 }

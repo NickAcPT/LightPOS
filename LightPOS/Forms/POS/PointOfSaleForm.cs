@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Data;
@@ -19,6 +20,7 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
             {
                 prod.Quantity = 1;
                 prod.RequiresQuantity = true;
+                prod.CalculatePrice();
                 return new ProductListBoxItem(prod);
             }
 
@@ -32,8 +34,8 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
             public string TextValue => Product == null ? "" : $"$pos_list_prodName {Product.Name}"
                 .AppendLine($"$pos_list_prodCategory {Product.Category.Name}")
                 .AppendLine($"$pos_list_prodQuantity {Product.Quantity}")
-                .AppendLine("$pos_list_prodPrice //TODO")
-                .AppendLine("$pos_list_prodUnitPrice //TODO");
+                .AppendLine($"$pos_list_prodPrice {Product.Price.ToString("C", CultureInfo.CurrentCulture)}")
+                .AppendLine($"$pos_list_prodUnitPrice {Product.UnitPrice.ToString("C", CultureInfo.CurrentCulture)}");
         }
 
         public override Size MaximumSize

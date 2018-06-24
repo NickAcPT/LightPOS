@@ -118,7 +118,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             this.percentageUpDown1.Size = new System.Drawing.Size(278, 29);
             this.percentageUpDown1.TabIndex = 6;
             this.translationHelper1.SetTranslationLocation(this.percentageUpDown1, "");
-            this.percentageUpDown1.Value = 0.23D;
+            this.percentageUpDown1.Value = 0.23m;
             this.percentageUpDown1.Visible = false;
             // 
             // label3

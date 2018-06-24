@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using NHibernate;
+using NHibernate.Util;
 using NickAc.LightPOS.Backend.Objects;
 
 namespace NickAc.LightPOS.Backend.Data
@@ -26,7 +28,7 @@ namespace NickAc.LightPOS.Backend.Data
             }
             return setting;
         }
-
+        
         public static void SaveSetting(StoredSetting setting)
         {
             setting.Data = JsonConvert.SerializeObject(setting.Value);
@@ -43,13 +45,36 @@ namespace NickAc.LightPOS.Backend.Data
             }
         }
 
+        public static void SaveSettings(IEnumerable<StoredSetting> settings)
+        {
+            var storedSettings = settings as StoredSetting[] ?? settings.ToArray();
+            storedSettings.ForEach(s => s.Data = JsonConvert.SerializeObject(s.Value));
+            using (var sf = SessionFactory)
+            {
+                using (var session = sf.OpenSession())
+                {
+                    using (var trans = session.BeginTransaction())
+                    {
+                        storedSettings.ForEach(session.SaveOrUpdate);
+                        trans.Commit();
+                    }
+                }
+            }
+        }
+
+
         public static void SaveSetting<T>(string id, T value)
         {
-            SaveSetting(new StoredSetting
+            SaveSetting(GetSettingObject(id, value));
+        }
+
+        public static StoredSetting GetSettingObject<T>(string id, T value)
+        {
+            return new StoredSetting
             {
                 Id = id,
                 Value = value
-            });
+            };
         }
 
         public static T GetSetting<T>(string id)

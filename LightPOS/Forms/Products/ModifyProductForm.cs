@@ -7,26 +7,17 @@ using System;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
 using static NickAc.LightPOS.Backend.Utils.GlobalStorage;
-using Animation = NickAc.ModernUIDoneRight.Utils.Animation;
 
 namespace NickAc.LightPOS.Frontend.Forms.Products
 {
     public partial class ModifyProductForm : TemplateForm
     {
         private readonly Product _toEdit;
-
-        private enum ProductModifyState
-        {
-            Create,
-            Delete,
-            Modify
-        }
 
         public override Size MaximumSize
         {
@@ -73,6 +64,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
 
         private void LoadCategories()
         {
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.Items.Clear();
             comboBox2.Items.AddRange(DataManager.GetCategories().ToArray<object>());
             comboBox2.DisplayMember = nameof(Category.Name);
@@ -108,7 +100,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             if (comboBox2.SelectedIndex < 0 || textBoxEx2.Text.Trim() == string.Empty) return;
             if (_toEdit != null)
             {
-                var price = float.Parse(textBoxEx2.Text, NumberStyles.Currency, CultureInfo.InvariantCulture);
+                var price = decimal.Parse(textBoxEx2.Text, NumberStyles.Currency, CultureInfo.InvariantCulture);
                 var oldName = _toEdit.Name;
                 _toEdit.Name = textBox1.Text;
                 _toEdit.Barcode = textBoxEx1.Text;
@@ -123,7 +115,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             }
             else
             {
-                var price = float.Parse(textBoxEx2.Text, NumberStyles.Currency, CultureInfo.InvariantCulture);
+                var price = decimal.Parse(textBoxEx2.Text, NumberStyles.Currency, CultureInfo.InvariantCulture);
                 var product = new Product
                 {
                     Name = textBox1.Text,

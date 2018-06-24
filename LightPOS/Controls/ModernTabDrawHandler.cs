@@ -20,7 +20,7 @@ namespace NickAc.LightPOS.Frontend.Controls
             {
                 using (var sF = new StringFormat {Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center})
                 {
-                    g.DrawString(Parent.TabPages[id].Text, this.Parent.Font, sb, rect,
+                    g.DrawString(Parent.TabPages[id].Text, Parent.Font, sb, rect,
                         sF);
                 }
             }

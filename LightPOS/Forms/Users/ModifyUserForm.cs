@@ -57,10 +57,15 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         #endregion
 
         #region Methods
-
+        
         public ModifyUserForm WithAction(UserAction.Action action)
         {
             UserAction = action;
+            return this;
+        }
+        public ModifyUserForm WithReadOnlyPermissions()
+        {
+            checkedListBox1.Enabled = false;
             return this;
         }
 

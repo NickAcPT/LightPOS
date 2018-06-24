@@ -38,7 +38,7 @@ namespace NickAc.LightPOS.Frontend.Forms
             this.InvokeIfRequired(Show);
             if (final == null) return;
             this.InvokeIfRequired(Hide);
-            new Users.ModifyUserForm(UserAction.Action.ModifyUser).WithUser(final).RunInAnotherApplication();
+            new ModifyUserForm(UserAction.Action.ModifyUser).WithUser(final).RunInAnotherApplication();
             this.InvokeIfRequired(Show);
         }
 
@@ -46,7 +46,7 @@ namespace NickAc.LightPOS.Frontend.Forms
         {
             if (!CurrentUser.CanCreateUsers()) return;
             this.InvokeIfRequired(Hide);
-            new Users.ModifyUserForm().RunInAnotherApplication();
+            new ModifyUserForm().RunInAnotherApplication();
             this.InvokeIfRequired(Show);
         }
 
