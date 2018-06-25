@@ -25,9 +25,15 @@ namespace NickAc.LightPOS.Frontend.Controls.DrawHandler
             _translation = new TranslationHelper();
         }
 
+        private readonly StringFormat _centerVerticalStringFormat = new StringFormat
+        {
+            LineAlignment = StringAlignment.Center
+        };
         public override void DrawItem(DrawItemEventArgs e)
         {
             var item = Control.Items.Cast<PointOfSaleForm.ProductListBoxItem>().ElementAtOrDefault(e.Index);
+
+            if (item == null) return;
 
             e.Graphics.SetClip(e.Bounds);
             var backColor = e.State.HasFlag(DrawItemState.Selected) ? ControlPaint.Light(ColorScheme.PrimaryColor, 0.05f) : e.BackColor;
@@ -37,10 +43,9 @@ namespace NickAc.LightPOS.Frontend.Controls.DrawHandler
                 e.Graphics.FillRectangle(brush, e.Bounds);
             }
 
-
             using (var sb = new SolidBrush(GraphicUtils.ForegroundColorForBackground(backColor)))
             {
-                e.Graphics.DrawString(_translation.TranslateMultilineResult(item.TextValue), Control.Font, sb, e.Bounds);
+                e.Graphics.DrawString(_translation.TranslateMultilineResult(item.TextValue), Control.Font, sb, e.Bounds.OffsetAndReturn(5, 0), _centerVerticalStringFormat);
             }
 
             e.Graphics.SetClip(Rectangle.Empty);

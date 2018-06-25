@@ -65,7 +65,6 @@
             this.panel1.Size = new System.Drawing.Size(939, 531);
             this.panel1.TabIndex = 1;
             this.translationHelper1.SetTranslationLocation(this.panel1, "");
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel3
             // 

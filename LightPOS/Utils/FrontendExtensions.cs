@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Data;
+using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.LightPOS.Frontend.Controls;
 
@@ -12,6 +14,11 @@ namespace NickAc.LightPOS.Frontend.Utils
 {
     public static class FrontendExtensions
     {
+        public static string ToCurrency(this decimal price)
+        {
+            return price.ToString("C", CultureInfo.CurrentCulture);
+        }
+
         private static readonly Size ButtonSize = new Size(100, 100);
 
         public static void LoadProducts(this NickCustomTabControl tab, Action<object, EventArgs> evt)
@@ -36,7 +43,7 @@ namespace NickAc.LightPOS.Frontend.Utils
                     {
                         var btn = new ModernProductButton(product)
                         {
-                            Text = product.Name,
+                            Text = GetButtonTextForProduct(product),
                             Size = ButtonSize,
                         };
                         btn.Click += (s, e) => evt?.Invoke(s, e);
@@ -46,6 +53,11 @@ namespace NickAc.LightPOS.Frontend.Utils
                     tab.InvokeIfRequired(() => tab.TabPages.Add(page));
                 }
             });
+        }
+
+        private static string GetButtonTextForProduct(Product product)
+        {
+            return product.Name.AppendLine($"({product.UnitPrice.ToCurrency()})");
         }
     }
 }

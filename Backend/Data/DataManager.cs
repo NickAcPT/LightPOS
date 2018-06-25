@@ -103,13 +103,12 @@ namespace NickAc.LightPOS.Backend.Data
         }
 
 
-        public static decimal CalculateTotal(IList<Product> products)
+        public static decimal CalculateTotal(IEnumerable<Product> products)
         {
             var total = 0.0m;
             products.All(p =>
             {
-                p.CalculatePrice();
-                total += p.Price;
+                total += p.CalculatePrice();
                 return true;
             });
             return total;

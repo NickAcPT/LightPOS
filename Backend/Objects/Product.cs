@@ -20,10 +20,15 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual decimal UnitPrice { get; set; }
 
         public virtual decimal Price { get; set; }
-
-        public virtual void CalculatePrice()
+        
+        public virtual decimal CalculatePrice()
         {
-            Price = UnitPrice * Quantity * (1 + Category?.Tax) ?? 1m;
+            return UnitPrice * Quantity * (1 + Category?.Tax) ?? 1m;
+        }
+
+        public virtual decimal CalculateUnitPrice()
+        {
+            return UnitPrice * (1 + Category?.Tax) ?? 1m;
         }
 
         public override string ToString()

@@ -14,13 +14,12 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
 {
     public partial class PointOfSaleForm : TemplateForm
     {
-        public struct ProductListBoxItem
+        public class ProductListBoxItem
         {
             public static explicit operator ProductListBoxItem(Product prod)
             {
                 prod.Quantity = 1;
                 prod.RequiresQuantity = true;
-                prod.CalculatePrice();
                 return new ProductListBoxItem(prod);
             }
 
@@ -29,13 +28,14 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
                 Product = product;
             }
 
-            private Product Product { get; }
+
+            public Product Product { get; }
 
             public string TextValue => Product == null ? "" : $"$pos_list_prodName {Product.Name}"
                 .AppendLine($"$pos_list_prodCategory {Product.Category.Name}")
                 .AppendLine($"$pos_list_prodQuantity {Product.Quantity}")
-                .AppendLine($"$pos_list_prodPrice {Product.Price.ToString("C", CultureInfo.CurrentCulture)}")
-                .AppendLine($"$pos_list_prodUnitPrice {Product.UnitPrice.ToString("C", CultureInfo.CurrentCulture)}");
+                .AppendLine($"$pos_list_prodPrice {Product.CalculatePrice().ToCurrency()}")
+                .AppendLine($"$pos_list_prodUnitPrice {Product.CalculateUnitPrice().ToCurrency()}");
         }
 
         public override Size MaximumSize
@@ -51,24 +51,56 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
             var drawHandler = new ProductListBoxDrawHandler(listBox1);
 
             translationHelper1.Translate(this);
+            UpdateSaleButton();
             WindowState = FormWindowState.Maximized;
 
             _nickCustomTabControl1.LoadProducts(ProductButton_Click);
+            listBox1.LostFocus += (s, e) => listBox1.SelectedIndex = -1;
+
+            listBox1.MouseDoubleClick += (s, e) =>
+            {
+                var index = listBox1.IndexFromPoint(e.Location);
+                if (index == -1) return;
+                var item = listBox1.Items.OfType<ProductListBoxItem>().ElementAtOrDefault(index);
+                if (item == null) return;
+                item.Product.Quantity -= 1;
+                if (item.Product.Quantity < 1) 
+                    listBox1.Items.RemoveAt(index);
+                listBox1.Refresh();
+                UpdateSaleButton();
+            };
         }
 
         private void ProductButton_Click(object sender, EventArgs e)
         {
             if (!(sender is ModernProductButton productButton)) return;
+            var prod = productButton.Product;
 
-            listBox1.Items.Add((ProductListBoxItem)productButton.Product);
+            var existingItem = listBox1.Items.OfType<ProductListBoxItem>().FirstOrDefault(c => c.Product.Name == prod.Name && c.Product.Barcode == prod.Barcode);
+            if (existingItem == null)
+            {
+                listBox1.Items.Add((ProductListBoxItem)prod);
+            }
+            else
+            {
+                existingItem.Product.Quantity += 1;
+                listBox1.Refresh();
+            }
+
+            UpdateSaleButton();
+        }
+
+        private void UpdateSaleButton()
+        {
+            var loc = translationHelper1.GetTranslationLocation(modernButton1);
+            modernButton1.Text = translationHelper1.GetTranslation(loc).AppendLine($@"({
+                    DataManager.CalculateTotal(listBox1.Items.OfType<ProductListBoxItem>()
+                            .Select(c => c.Product))
+                        .ToCurrency()
+                })");
         }
 
         private void modernButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

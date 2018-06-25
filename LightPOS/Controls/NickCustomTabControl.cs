@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -94,9 +95,7 @@ namespace NickAc.LightPOS.Frontend.Controls
 
         #region Shadow
 
-        private const int ShadowOffset = 3;
-
-        private void DrawControlShadow(Graphics g, Rectangle rect)
+        private static void DrawControlShadow(Graphics g, Rectangle rect)
         {
             ShadowUtils.DrawShadow(g, Color.Black, rect, 7, DockStyle.Top);
         }
@@ -188,7 +187,7 @@ namespace NickAc.LightPOS.Frontend.Controls
                 {
                     return _hotRectangle.IsEmpty ? HotRectangleFromTabRect(GetTabRect(0)) : _hotRectangle;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return Rectangle.Empty;
                 }
@@ -356,6 +355,7 @@ namespace NickAc.LightPOS.Frontend.Controls
         private static extern int SendMessage(IntPtr hwnd, int msg, IntPtr wParam, ref Tchittestinfo lParam);
 
         [StructLayout(LayoutKind.Sequential)]
+        [SuppressMessage("ReSharper", "PrivateFieldCanBeConvertedToLocalVariable")]
         private struct Tchittestinfo
         {
             private readonly Point pt;
