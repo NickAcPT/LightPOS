@@ -20,6 +20,8 @@ namespace NickAc.LightPOS.Backend.Mapping
 
             Map(x => x.Permissions).CustomType(typeof(UserPermission)).Not.Nullable();
 
+            HasMany(x => x.Cards).Not.LazyLoad().Cascade.AllDeleteOrphan();
+
             HasMany(x => x.Actions).Cascade.AllDeleteOrphan();
             HasMany(x => x.Sales).Cascade.AllDeleteOrphan();
         }

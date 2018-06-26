@@ -21,8 +21,10 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual IList<UserAction> Actions { get; set; }
 
         public virtual UserPermission Permissions { get; set; }
-
+        
         public virtual IList<Sale> Sales { get; set; }
+        
+        public virtual IList<UserCard> Cards { get; set; }
 
         public virtual bool HasPermission(UserPermission perm)
         {
