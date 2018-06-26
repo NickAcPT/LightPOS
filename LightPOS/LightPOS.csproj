@@ -108,6 +108,12 @@
     <Compile Include="Controls\UserPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CurrencyImpl\MoneyCurrencyImpl.cs" />
+    <Compile Include="CurrencyResources.Designer.cs">
+      <DependentUpon>CurrencyResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Forms\ManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,10 @@
     <Compile Include="Settings\ISettingHolder.cs" />
     <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="Utils\FrontendExtensions.cs" />
+    <EmbeddedResource Include="CurrencyResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CurrencyResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ManagementForm.resx">
       <DependentUpon>ManagementForm.cs</DependentUpon>
     </EmbeddedResource>

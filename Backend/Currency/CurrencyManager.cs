@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using System.Reflection;
 using JetBrains.Annotations;
 
 namespace NickAc.LightPOS.Backend.Currency
@@ -20,7 +21,7 @@ namespace NickAc.LightPOS.Backend.Currency
 
         private void LoadCatalog()
         {
-            Catalog = new AggregateCatalog(new AssemblyCatalog(typeof(CurrencyManager).Assembly), new DirectoryCatalog(Environment.CurrentDirectory));
+            Catalog = new AggregateCatalog(new AssemblyCatalog(typeof(CurrencyManager).Assembly), new DirectoryCatalog(Environment.CurrentDirectory), new AssemblyCatalog(Assembly.GetExecutingAssembly()));
             Container = new CompositionContainer(Catalog);
         }
 

@@ -5,8 +5,10 @@
 using System;
 using System.Drawing;
 using System.Threading.Tasks;
+using NickAc.LightPOS.Backend;
+using NickAc.LightPOS.Backend.Currency;
 
-namespace NickAc.LightPOS.Backend.Currency.Impl
+namespace NickAc.LightPOS.Frontend.CurrencyImpl
 {
     public class MoneyCurrencyImpl : AbstractCurrency
     {
@@ -15,7 +17,7 @@ namespace NickAc.LightPOS.Backend.Currency.Impl
             Console.WriteLine(@"Loaded Money Currency!");
         }
 
-        public override string Name => "Money";
+        public override string Name => "curr_money";
         public override Image Image => CurrencyResources.cash_usd;
         public override async Task<TransactionResult> RequestTransaction(TransactionState state)
         {

@@ -115,6 +115,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Money.
+        /// </summary>
+        public static string curr_money {
+            get {
+                return ResourceManager.GetString("curr_money", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You.
         /// </summary>
         public static string current_user {

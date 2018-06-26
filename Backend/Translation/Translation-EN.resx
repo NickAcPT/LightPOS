@@ -303,4 +303,7 @@
   <data name="pos_process_title" xml:space="preserve">
     <value>$prefix</value>
   </data>
+  <data name="curr_money" xml:space="preserve">
+    <value>Money</value>
+  </data>
 </root>
