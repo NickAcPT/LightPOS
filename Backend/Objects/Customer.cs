@@ -16,8 +16,6 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual string Street { get; set; }
         public virtual string PhoneNumber { get; set; }
 
-        public virtual IList<UserCard> Cards { get; set; }
-
         public virtual IList<Sale> Sales { get; set; }
     }
 }

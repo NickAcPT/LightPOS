@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedResources", "SharedResources\SharedResources.shproj", "{5106580F-0783-475C-BCE2-10E885C9A432}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LightBank", "LightBank", "{3FC371CC-D8A4-47ED-9501-31E22E467BA4}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SharedResources\SharedResources.projitems*{3938ce2b-99b5-4878-8a03-53993e4cf390}*SharedItemsImports = 4

@@ -1,4 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/BLANK_LINES_AROUND_SINGLE_LINE_PROPERTY/@EntryValue">1</s:Int64>
 	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=5F5059E497ED27418EB7EABF24B2BD53/AbsolutePath/@EntryValue">C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\ReSharperSettings.DotSettings</s:String>
 	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=5F5059E497ED27418EB7EABF24B2BD53/RelativePath/@EntryValue">..\ReSharperSettings.DotSettings</s:String>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=5F5059E497ED27418EB7EABF24B2BD53/@KeyIndexDefined">True</s:Boolean>
