@@ -18,8 +18,6 @@ namespace NickAc.LightPOS.Backend.Mapping
             Map(x => x.PhoneNumber);
             Map(x => x.Street);
 
-            HasMany(x => x.Cards).Not.LazyLoad().Cascade.AllDeleteOrphan();
-
             HasManyToMany(x => x.Sales);
         }
     }
