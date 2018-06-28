@@ -19,6 +19,7 @@ namespace NickAc.LightPOS.Backend.Data
         #region Properties
 
         public static DataFactory DataFactory { get; set; }
+
         public static ISessionFactory SessionFactory { get; set; }
 
         #endregion

@@ -19,13 +19,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 {
     internal class SecureUserLoginForm : ModernForm
     {
-        #region Fields
-
-        private const int ControlPadding = 8;
-        private const float SizePercentage = 0.65f;
-
-        #endregion
-
         #region Constructors
 
         public SecureUserLoginForm()
@@ -39,18 +32,25 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         #endregion
 
+        #region Properties
+
+        public User User { get; set; }
+
+        #endregion
+
         #region Events
 
         /// <summary>
-        /// Called to signal to subscribers that login succeded
+        ///     Called to signal to subscribers that login succeded
         /// </summary>
         public event EventHandler<UserEventArgs> LoginSucceded;
 
         #endregion
 
-        #region Properties
+        #region Fields
 
-        public User User { get; set; }
+        private const int ControlPadding = 8;
+        private const float SizePercentage = 0.65f;
 
         #endregion
 
@@ -79,6 +79,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
             eh?.Invoke(this, new UserEventArgs(e));
         }
+
         private void AddControls(SecureUserLoginForm form)
         {
             var translationHelper = new TranslationHelper();
@@ -89,13 +90,15 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             const float userNamePercentage = 0.25f;
             const float textBoxPercentage = 0.70f;
 
-            void EscapeKeyHandler(Object s, KeyEventArgs ee)
+            void EscapeKeyHandler(object s, KeyEventArgs ee)
             {
-                if (ee.KeyCode == Keys.Escape && !ee.Control && !ee.Alt && !ee.Shift) {
+                if (ee.KeyCode == Keys.Escape && !ee.Control && !ee.Alt && !ee.Shift)
+                {
                     this.InvokeIfRequired(form.Close);
                     ee.Handled = ee.SuppressKeyPress = true;
                 }
             }
+
             var mainLabel = new Label
             {
                 AutoSize = true,
@@ -114,7 +117,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 BackColor = Color.Transparent,
                 Text = usr.UserName,
                 Font = new Font(Font.FontFamily, 12),
-                Location = new Point(0, (int)(form.Height * userNamePercentage))
+                Location = new Point(0, (int) (form.Height * userNamePercentage))
             };
 
             form.Controls.Add(userNameLabel);
@@ -123,18 +126,18 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             var btn = new ModernButton
             {
                 Text = translationHelper.GetTranslation("user_login_okbutton"),
-                Size = new Size((int)(form.Width * percentage), (int)(form.Height * btnLoginPercentage))
+                Size = new Size((int) (form.Width * percentage), (int) (form.Height * btnLoginPercentage))
             };
             btn.Location = new Point(0 /* Will be centered later */, form.Height - ControlPadding - btn.Height);
 
-            var point = new Point(0, (int)(form.Height * textBoxPercentage));
+            var point = new Point(0, (int) (form.Height * textBoxPercentage));
             point.Offset(0, -8);
 
             var textBox = new TextBoxEx
             {
                 Font = userNameLabel.Font,
                 UseSystemPasswordChar = true,
-                Size = new Size((int)(form.Width * textBoxPercentage), 0 /* The textbox sizes automatically */)
+                Size = new Size((int) (form.Width * textBoxPercentage), 0 /* The textbox sizes automatically */)
             };
             point.Offset(0, -textBox.Height);
             textBox.Location = point;
@@ -143,15 +146,18 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             Recenter(textBox, vertical: false);
 
             //Now we can add the button click
-            btn.Click += (s, ee) => {
-                if (!string.IsNullOrWhiteSpace(textBox.Text)) {
-                    if (usr.CheckPassword(textBox.Text)) {
+            btn.Click += (s, ee) =>
+            {
+                if (!string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    if (usr.CheckPassword(textBox.Text))
+                    {
                         //Close our smal login-form
-                        form.FormClosed += (sss, eee) => {
-                            OnLoginSucceded(usr);
-                        };
+                        form.FormClosed += (sss, eee) => { OnLoginSucceded(usr); };
                         form.Close();
-                    } else {
+                    }
+                    else
+                    {
                         //Password doesn't work
                         //Clear the textbox
                         textBox.Clear();

@@ -10,15 +10,6 @@ namespace NickAc.LightPOS.Frontend.Controls.DrawHandler
 {
     public abstract class ListBoxDrawHandler : IDisposable
     {
-        public void Dispose()
-        {
-            Control.DrawMode = DrawMode.Normal;
-            Control.MeasureItem -= MeasureItemEventHandler;
-            Control.DrawItem -= DrawItemEventHandler;
-        }
-
-        public ListBox Control { get; }
-
         protected ListBoxDrawHandler(ListBox control)
         {
             Control = control;
@@ -27,8 +18,24 @@ namespace NickAc.LightPOS.Frontend.Controls.DrawHandler
             control.DrawItem += DrawItemEventHandler;
         }
 
-        private void MeasureItemEventHandler(object s, MeasureItemEventArgs e) => MeasureItem(e);
-        private void DrawItemEventHandler(object s, DrawItemEventArgs e) => DrawItem(e);
+        public ListBox Control { get; }
+
+        public void Dispose()
+        {
+            Control.DrawMode = DrawMode.Normal;
+            Control.MeasureItem -= MeasureItemEventHandler;
+            Control.DrawItem -= DrawItemEventHandler;
+        }
+
+        private void MeasureItemEventHandler(object s, MeasureItemEventArgs e)
+        {
+            MeasureItem(e);
+        }
+
+        private void DrawItemEventHandler(object s, DrawItemEventArgs e)
+        {
+            DrawItem(e);
+        }
 
         public abstract void DrawItem(DrawItemEventArgs e);
         public abstract void MeasureItem(MeasureItemEventArgs e);

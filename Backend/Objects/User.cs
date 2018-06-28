@@ -14,14 +14,17 @@ namespace NickAc.LightPOS.Backend.Objects
     public class User
     {
         public virtual int UserId { get; set; }
+
         public virtual string UserName { get; set; }
+
         public virtual string HashedPassword { get; set; }
+
         public virtual string Salt { get; set; }
 
         public virtual IList<UserAction> Actions { get; set; }
 
         public virtual UserPermission Permissions { get; set; }
-        
+
         public virtual IList<Sale> Sales { get; set; }
 
         public virtual bool HasPermission(UserPermission perm)
@@ -67,21 +70,44 @@ namespace NickAc.LightPOS.Backend.Objects
             return crypto.Aggregate(hash, (current, theByte) => current + theByte.ToString("x2"));
         }
 
-        public virtual bool CanDoSale() => Permissions.HasFlag(UserPermission.DoSale);
+        public virtual bool CanDoSale()
+        {
+            return Permissions.HasFlag(UserPermission.DoSale);
+        }
 
-        public virtual bool CanCreateUsers() => Permissions.HasFlag(UserPermission.CreateUser);
+        public virtual bool CanCreateUsers()
+        {
+            return Permissions.HasFlag(UserPermission.CreateUser);
+        }
 
-        public virtual bool CanRemoveUsers() => Permissions.HasFlag(UserPermission.RemoveUser);
+        public virtual bool CanRemoveUsers()
+        {
+            return Permissions.HasFlag(UserPermission.RemoveUser);
+        }
 
-        public virtual bool CanModifyUsers() => Permissions.HasFlag(UserPermission.ModifyUser);
+        public virtual bool CanModifyUsers()
+        {
+            return Permissions.HasFlag(UserPermission.ModifyUser);
+        }
 
-        public virtual bool CanApplyDiscounts() => Permissions.HasFlag(UserPermission.ApplyDiscount);
+        public virtual bool CanApplyDiscounts()
+        {
+            return Permissions.HasFlag(UserPermission.ApplyDiscount);
+        }
 
-        public virtual bool CanPrintReceipts() => Permissions.HasFlag(UserPermission.PrintReceipt);
+        public virtual bool CanPrintReceipts()
+        {
+            return Permissions.HasFlag(UserPermission.PrintReceipt);
+        }
 
-        public virtual bool CanManageProducts() => Permissions.HasFlag(UserPermission.CreateProducts);
+        public virtual bool CanManageProducts()
+        {
+            return Permissions.HasFlag(UserPermission.CreateProducts);
+        }
 
-        public virtual bool CanOpenManagement() => CanCreateUsers() || CanRemoveUsers() || CanModifyUsers() || CanManageProducts();
-
+        public virtual bool CanOpenManagement()
+        {
+            return CanCreateUsers() || CanRemoveUsers() || CanModifyUsers() || CanManageProducts();
+        }
     }
 }

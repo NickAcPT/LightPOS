@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace NickAc.LightPOS.Frontend.Controls
 {
@@ -10,10 +6,14 @@ namespace NickAc.LightPOS.Frontend.Controls
     {
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.Back | Keys.Control)) {
-                for (int i = SelectionStart - 1; i > 0; i--) {
-                    string v = Text.Substring(i, 1);
-                    switch (v) {    //set up any stopping points you want
+            if (keyData == (Keys.Back | Keys.Control))
+            {
+                for (var i = SelectionStart - 1; i > 0; i--)
+                {
+                    var v = Text.Substring(i, 1);
+                    switch (v)
+                    {
+                        //set up any stopping points you want
                         case " ":
                         case ";":
                         case ",":
@@ -29,15 +29,15 @@ namespace NickAc.LightPOS.Frontend.Controls
                             return true;
                     }
                 }
+
                 //in case you never hit a stopping point, the whole textbox goes blank
                 Text = Text.Remove(0, SelectionStart);
                 SelectionStart = 0;
                 //Clear();
                 return true;
             }
-            else {
-                return keyData == Keys.Escape || base.ProcessCmdKey(ref msg, keyData);
-            }
+
+            return keyData == Keys.Escape || base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

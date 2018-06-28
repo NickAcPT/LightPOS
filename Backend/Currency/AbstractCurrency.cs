@@ -12,14 +12,13 @@ namespace NickAc.LightPOS.Backend.Currency
     [InheritedExport(typeof(AbstractCurrency))]
     public abstract class AbstractCurrency : IDisposable
     {
-        public abstract void Init();
-
         public abstract string Name { get; }
 
         public abstract Image Image { get; }
 
-        public abstract Task<TransactionResult> RequestTransaction(TransactionState state);
-
         public abstract void Dispose();
+        public abstract void Init();
+
+        public abstract Task<TransactionResult> RequestTransaction(TransactionState state);
     }
 }

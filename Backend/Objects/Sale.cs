@@ -4,8 +4,6 @@
 //
 
 using System.Collections.Generic;
-using NickAc.LightPOS.Backend.Mapping;
-using NickAc.LightPOS.Backend.Mapping.Other;
 
 namespace NickAc.LightPOS.Backend.Objects
 {
@@ -16,7 +14,9 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual IList<Product> Products { get; set; }
 
         public virtual decimal TotalPrice { get; set; }
+
         public virtual decimal PaidPrice { get; set; }
+
         public virtual decimal ChangePrice { get; set; }
 
         public virtual Customer Customer { get; set; }

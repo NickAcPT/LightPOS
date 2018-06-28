@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Utils;
-using Enum = System.Enum;
 
 namespace NickAc.LightPOS.Frontend.Controls
 {
@@ -14,31 +9,18 @@ namespace NickAc.LightPOS.Frontend.Controls
     {
         private Enum _selectedEnumValue;
 
-        public class EnumEventArgs : EventArgs
+        public SimpleSelectionControl()
         {
-            public EnumEventArgs(Enum newEnumItem)
-            {
-                NewEnumItem = newEnumItem;
-            }
-
-            public Enum NewEnumItem { get; set; }
-        }
-
-        /// <summary>
-        /// Called to signal to subscribers that the selection has been changed
-        /// </summary>
-        public event EventHandler<EnumEventArgs> SelectionChanged;
-
-        protected virtual void OnSelectionChanged(Enum newItem)
-        {
-            var eh = SelectionChanged;
-
-            eh?.Invoke(this, new EnumEventArgs(newItem));
+            SetStyle(
+                ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.UserPaint |
+                ControlStyles.UserMouse, true);
         }
 
 
         public Color BorderColor { get; set; } = Color.FromArgb(200, 200, 200);
+
         public Color SelectedItemBackColor { get; set; } = Color.FromArgb(200, 200, 200);
+
         public Type OptionEnum { get; set; }
 
         public Enum SelectedEnumValue
@@ -48,16 +30,22 @@ namespace NickAc.LightPOS.Frontend.Controls
             {
                 if (value != null && !Equals(value, _selectedEnumValue))
                     OnSelectionChanged(value);
-                _selectedEnumValue = value; 
-
+                _selectedEnumValue = value;
             }
         }
 
-        public SimpleSelectionControl()
+        public Rectangle ContentRectangle => Rectangle.Inflate(DisplayRectangle, -2, -3);
+
+        /// <summary>
+        ///     Called to signal to subscribers that the selection has been changed
+        /// </summary>
+        public event EventHandler<EnumEventArgs> SelectionChanged;
+
+        protected virtual void OnSelectionChanged(Enum newItem)
         {
-            SetStyle(
-                ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.UserPaint |
-                ControlStyles.UserMouse, true);
+            var eh = SelectionChanged;
+
+            eh?.Invoke(this, new EnumEventArgs(newItem));
         }
 
         private object GetEnumItemAtLocation(Point location)
@@ -70,7 +58,7 @@ namespace NickAc.LightPOS.Frontend.Controls
             for (var i = 0; i < enumValues.Length; i++)
             {
                 var value = (Enum) enumValues.GetValue(i);
-                var rect = new Rectangle(ContentRectangle.X  + cellSize * i, ContentRectangle.Y, cellSize,
+                var rect = new Rectangle(ContentRectangle.X + cellSize * i, ContentRectangle.Y, cellSize,
                     ContentRectangle.Height + 1);
                 if (i + 1 == enumValues.Length) rect.Width += ContentRectangle.Right - rect.Right + 1;
                 if (rect.Contains(location))
@@ -79,8 +67,6 @@ namespace NickAc.LightPOS.Frontend.Controls
 
             return SelectedEnumValue;
         }
-
-        public Rectangle ContentRectangle => Rectangle.Inflate(DisplayRectangle, -2, -3);
 
         protected override void OnMouseClick(MouseEventArgs e)
         {
@@ -120,18 +106,16 @@ namespace NickAc.LightPOS.Frontend.Controls
                             for (var i = 0; i < enumValues.Length; i++)
                             {
                                 var value = (Enum) enumValues.GetValue(i);
-                                var rect = new Rectangle(containerRect.X  + cellSize * i, containerRect.Y, cellSize,
+                                var rect = new Rectangle(containerRect.X + cellSize * i, containerRect.Y, cellSize,
                                     containerRect.Height + 1);
                                 if (i + 1 == enumValues.Length) rect.Width += ContentRectangle.Right - rect.Right + 1;
                                 var isSelected = SelectedEnumValue != null &&
                                                  Convert.ToInt32(SelectedEnumValue) == Convert.ToInt32(value);
                                 if (isSelected)
-                                {
                                     using (var backBrush = new SolidBrush(SelectedItemBackColor))
                                     {
                                         e.Graphics.FillRectangle(backBrush, Rectangle.Inflate(rect, -1, -1));
                                     }
-                                }
 
                                 e.Graphics.DrawString(value.GetDescription(), Font,
                                     isSelected ? altForeColorBrush : foreColorBrush, rect, sr);
@@ -142,6 +126,16 @@ namespace NickAc.LightPOS.Frontend.Controls
                     }
                 }
             }
+        }
+
+        public class EnumEventArgs : EventArgs
+        {
+            public EnumEventArgs(Enum newEnumItem)
+            {
+                NewEnumItem = newEnumItem;
+            }
+
+            public Enum NewEnumItem { get; set; }
         }
     }
 }

@@ -8,7 +8,9 @@ namespace NickAc.LightPOS.Backend.Objects
     public class Product
     {
         public virtual int Id { get; set; }
+
         public virtual string Barcode { get; set; }
+
         public virtual string Name { get; set; }
 
         public virtual Category Category { get; set; }
@@ -20,7 +22,7 @@ namespace NickAc.LightPOS.Backend.Objects
         public virtual decimal UnitPrice { get; set; }
 
         public virtual decimal Price { get; set; }
-        
+
         public virtual decimal CalculatePrice()
         {
             return UnitPrice * Quantity * (1 + Category?.Tax) ?? 1m;

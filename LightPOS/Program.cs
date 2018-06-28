@@ -2,18 +2,20 @@
 // Copyright (c) NickAc. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
+
+using System;
+using System.IO;
+using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Utils;
-using System;
-using System.Windows.Forms;
-using NickAc.LightPOS.Backend.Objects;
+using NickAc.LightPOS.Frontend.Forms.Users;
 
 namespace NickAc.LightPOS.Frontend
 {
     internal static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        ///     The main entry point for the application.
         /// </summary>
         [STAThread]
         private static void Main()
@@ -26,7 +28,7 @@ namespace NickAc.LightPOS.Frontend
             //Do winforms stuff
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.Users.UserLoginForm());
+            Application.Run(new UserLoginForm());
 
             //Dispose every currency and save settings
             GlobalStorage.CurrencyManager?.Currencies?.ForEach(c => c.Dispose());
@@ -68,7 +70,7 @@ namespace NickAc.LightPOS.Frontend
 
         public static void InitializeDatabase()
         {
-            DataManager.Initialize(new System.IO.FileInfo("POS.db"));
+            DataManager.Initialize(new FileInfo("POS.db"));
             CreateGenericProducts();
         }
     }

@@ -10,17 +10,17 @@ namespace NickAc.LightPOS.Frontend.Controls
 {
     public class ListBoxNoFlicker : ListBox
     {
-        protected override void OnMouseLeave(EventArgs e)
-        {
-            base.OnMouseLeave(e);
-            Capture = false;
-        }
-
         public ListBoxNoFlicker()
         {
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
 
             SetStyle(ControlStyles.EnableNotifyMessage, true);
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+            Capture = false;
         }
 
         protected override void OnNotifyMessage(Message m)

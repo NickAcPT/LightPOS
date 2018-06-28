@@ -11,7 +11,6 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
-using NickAc.LightPOS.Backend.Mapping;
 using NickAc.LightPOS.Backend.Mapping.Other;
 
 namespace NickAc.LightPOS.Backend.Data

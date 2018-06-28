@@ -10,6 +10,7 @@ namespace NickAc.LightPOS.Backend.Currency
     public struct TransactionState
     {
         public List<Product> Products { get; set; }
+
         public float TotalPrice { get; set; }
     }
 }

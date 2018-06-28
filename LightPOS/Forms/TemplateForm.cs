@@ -4,6 +4,7 @@
 //
 
 using System;
+using System.Windows.Forms;
 using NickAc.ModernUIDoneRight.Forms;
 using NickAc.ModernUIDoneRight.Objects;
 
@@ -19,7 +20,7 @@ namespace NickAc.LightPOS.Frontend.Forms
                 if (appBar1.TextRectangle.Contains(e.Location) && Owner != null)
                     Close();
             };
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            AutoScaleMode = AutoScaleMode.None;
         }
 
         protected override void OnLoad(EventArgs e)

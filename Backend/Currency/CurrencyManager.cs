@@ -11,8 +11,15 @@ using JetBrains.Annotations;
 
 namespace NickAc.LightPOS.Backend.Currency
 {
-    public class CurrencyManager {
+    public class CurrencyManager
+    {
+        public CurrencyManager()
+        {
+            LoadCatalog();
+        }
+
         private AggregateCatalog Catalog { get; set; }
+
         private CompositionContainer Container { get; set; }
 
         [UsedImplicitly]
@@ -21,21 +28,16 @@ namespace NickAc.LightPOS.Backend.Currency
 
         private void LoadCatalog()
         {
-            Catalog = new AggregateCatalog(new AssemblyCatalog(typeof(CurrencyManager).Assembly), new DirectoryCatalog(Environment.CurrentDirectory), new AssemblyCatalog(Assembly.GetExecutingAssembly()));
+            Catalog = new AggregateCatalog(new AssemblyCatalog(typeof(CurrencyManager).Assembly),
+                new DirectoryCatalog(Environment.CurrentDirectory),
+                new AssemblyCatalog(Assembly.GetExecutingAssembly()));
             Container = new CompositionContainer(Catalog);
         }
 
         public void LoadCurrencies()
         {
             Container?.SatisfyImportsOnce(this);
-            foreach (var currency in Currencies)
-            {
-                currency.Init();
-            }
-        }
-        public CurrencyManager()
-        {
-            LoadCatalog();
+            foreach (var currency in Currencies) currency.Init();
         }
     }
 }

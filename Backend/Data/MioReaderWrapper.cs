@@ -12,18 +12,9 @@ namespace NickAc.LightPOS.Backend.Data
 {
     public class MioReaderWrapper : IDisposable
     {
-        public event Action<string> CardRead;
-        internal SerialPort InternalSerial { get; set; }
-
-        //%00 04030201 01?
-        public char StartChar => '%';
-
-        public char EndChar => '?';
-
-        public Stack<char> CardId { get; set; } = new Stack<char>();
-
         public MioReaderWrapper(int id) : this("COM" + id)
-        {}
+        {
+        }
 
         public MioReaderWrapper(string portId)
         {
@@ -38,6 +29,22 @@ namespace NickAc.LightPOS.Backend.Data
                 // ignored
             }
         }
+
+        internal SerialPort InternalSerial { get; set; }
+
+        //%00 04030201 01?
+        public char StartChar => '%';
+
+        public char EndChar => '?';
+
+        public Stack<char> CardId { get; set; } = new Stack<char>();
+
+        public void Dispose()
+        {
+            InternalSerial.Dispose();
+        }
+
+        public event Action<string> CardRead;
 
         private void StartReadingPort(int blockLimit)
         {
@@ -56,7 +63,6 @@ namespace NickAc.LightPOS.Backend.Data
                             var received = new byte[actualLength];
                             Buffer.BlockCopy(buffer, 0, received, 0, actualLength);
                             for (var i = 0; i < blockLimit; i++)
-                            {
                                 if (buffer[i] == StartChar)
                                 {
                                     CardId.Clear();
@@ -72,7 +78,6 @@ namespace NickAc.LightPOS.Backend.Data
                                 {
                                     CardId.Push((char) buffer[i]);
                                 }
-                            }
                         }
                         catch (IOException)
                         {
@@ -89,11 +94,5 @@ namespace NickAc.LightPOS.Backend.Data
 
             StartReading();
         }
-
-        public void Dispose()
-        {
-            InternalSerial.Dispose();
-        }
-
     }
 }

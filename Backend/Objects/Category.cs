@@ -3,14 +3,14 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
 
-using System.Drawing;
-
 namespace NickAc.LightPOS.Backend.Objects
 {
     public class Category
     {
         public virtual int Id { get; set; }
+
         public virtual string Name { get; set; }
+
         public virtual decimal Tax { get; set; }
 
         public override string ToString()

@@ -5,7 +5,6 @@
 
 using System;
 using System.ComponentModel;
-using static NickAc.LightPOS.Backend.Utils.EnumUtils;
 
 namespace NickAc.LightPOS.Backend.Objects
 {
@@ -24,13 +23,15 @@ namespace NickAc.LightPOS.Backend.Objects
             [Description("Remove Category")] RemoveCategory,
             [Description("Create Product")] CreateProduct,
             [Description("Edit Product")] EditProduct,
-            [Description("Remove Product")] RemoveProduct,
-
+            [Description("Remove Product")] RemoveProduct
         }
 
         public virtual int Id { get; set; }
+
         public virtual Action Event { get; set; }
+
         public virtual string Description { get; set; }
+
         public virtual DateTime Time { get; set; }
     }
 }

@@ -3,14 +3,10 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
 
-using NickAc.LightPOS.Backend.Objects;
-using NickAc.LightPOS.Backend.Utils;
-using NickAc.LightPOS.Frontend.Properties;
-using NickAc.ModernUIDoneRight.Controls;
-using NickAc.ModernUIDoneRight.Forms;
 using System;
 using System.Drawing;
-using System.Windows.Forms;
+using NickAc.LightPOS.Backend.Utils;
+using NickAc.LightPOS.Frontend.Forms.POS;
 
 namespace NickAc.LightPOS.Frontend.Forms
 {
@@ -50,7 +46,7 @@ namespace NickAc.LightPOS.Frontend.Forms
 
         private void tilePanelReborn1_Click(object sender, EventArgs e)
         {
-            this.HideAndRunInAnotherApplication<POS.PointOfSaleForm>(join: false);
+            this.HideAndRunInAnotherApplication<PointOfSaleForm>(false);
         }
     }
 }

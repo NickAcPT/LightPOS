@@ -12,13 +12,15 @@ namespace NickAc.LightPOS.Frontend.CurrencyImpl
 {
     public class MoneyCurrencyImpl : AbstractCurrency
     {
+        public override string Name => "curr_money";
+
+        public override Image Image => CurrencyResources.cash_usd;
+
         public override void Init()
         {
             Console.WriteLine(@"Loaded Money Currency!");
         }
 
-        public override string Name => "curr_money";
-        public override Image Image => CurrencyResources.cash_usd;
         public override async Task<TransactionResult> RequestTransaction(TransactionState state)
         {
             return await Task.FromResult(TransactionResult.Canceled);
@@ -26,7 +28,6 @@ namespace NickAc.LightPOS.Frontend.CurrencyImpl
 
         public override void Dispose()
         {
-
         }
     }
 }

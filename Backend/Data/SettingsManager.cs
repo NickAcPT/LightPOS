@@ -26,9 +26,10 @@ namespace NickAc.LightPOS.Backend.Data
                         .Where(s => s.Id == id).List().FirstOrDefault();
                 }
             }
+
             return setting;
         }
-        
+
         public static void SaveSetting(StoredSetting setting)
         {
             setting.Data = JsonConvert.SerializeObject(setting.Value);
@@ -86,6 +87,7 @@ namespace NickAc.LightPOS.Backend.Data
         #region Properties
 
         public static DataFactory DataFactory { get; set; }
+
         public static ISessionFactory SessionFactory { get; set; }
 
         #endregion

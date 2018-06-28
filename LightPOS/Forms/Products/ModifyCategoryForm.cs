@@ -11,18 +11,11 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
 {
     public partial class ModifyCategoryForm : TemplateForm
     {
-        private enum PortugueseTax
-        {
-            [UsedImplicitly] [Description("6%")] Six,
-            [UsedImplicitly] [Description("13%")] Thirteen,
-            [Description("23%")] TwentyTree,
-            Custom
-        }
-
         private readonly Category _toEdit;
 
 
-        IEnumerable<string> _categories;
+        private IEnumerable<string> _categories;
+
         public ModifyCategoryForm(bool translate = true)
         {
             InitializeComponent();
@@ -42,7 +35,11 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 });
             };
 
-            textBox1.TextChanged += (s, e) => { errorImage.Visible = _categories.Any(c => textBox1.Text == c) && (_toEdit == null || _toEdit.Name != textBox1.Text); };
+            textBox1.TextChanged += (s, e) =>
+            {
+                errorImage.Visible = _categories.Any(c => textBox1.Text == c) &&
+                                     (_toEdit == null || _toEdit.Name != textBox1.Text);
+            };
             if (translate)
                 translationHelper1.Translate(this);
         }
@@ -92,6 +89,14 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
 
             simpleSelectionControl1.SelectedEnumValue = PortugueseTax.TwentyTree;
             textBox1.Clear();
+        }
+
+        private enum PortugueseTax
+        {
+            [UsedImplicitly] [Description("6%")] Six,
+            [UsedImplicitly] [Description("13%")] Thirteen,
+            [Description("23%")] TwentyTree,
+            Custom
         }
     }
 }

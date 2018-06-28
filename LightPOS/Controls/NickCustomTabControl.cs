@@ -16,7 +16,7 @@ namespace NickAc.LightPOS.Frontend.Controls
         private CustomTabDrawHandler _drawHandler;
 
         private int _hotTabIndex = -1;
-        
+
 
         public NickCustomTabControl()
         {
@@ -177,12 +177,13 @@ namespace NickAc.LightPOS.Frontend.Controls
         private ColorScheme _scheme;
         private Rectangle _hotRectangle = Rectangle.Empty;
 
-        
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Rectangle HotRectangle
         {
-            get {
+            get
+            {
                 try
                 {
                     return _hotRectangle.IsEmpty ? HotRectangleFromTabRect(GetTabRect(0)) : _hotRectangle;
@@ -201,7 +202,7 @@ namespace NickAc.LightPOS.Frontend.Controls
                     Invalidate();
             }
         }
-        
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public int HotRectangleX
@@ -214,6 +215,7 @@ namespace NickAc.LightPOS.Frontend.Controls
                 _hotRectangle = rect;
             }
         }
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public int HotRectangleWidth
@@ -253,10 +255,9 @@ namespace NickAc.LightPOS.Frontend.Controls
             t.add(this, nameof(HotRectangleX), tabRect.X);
             t.add(this, nameof(HotRectangleWidth), tabRect.Width);
             t.run();
-
         }
 
-        private Color _hotRectColor = ColorTranslator.FromHtml("#f5f5f5");
+        private readonly Color _hotRectColor = ColorTranslator.FromHtml("#f5f5f5");
 
         private void DrawTabBackground(Graphics graphics, int id)
         {

@@ -4,10 +4,8 @@
 //
 
 using System;
-using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using NickAc.LightPOS.Backend.Data;
 
 namespace NickAc.LightPOS.Backend.Utils
 {
@@ -24,20 +22,22 @@ namespace NickAc.LightPOS.Backend.Utils
             ((Form) Activator.CreateInstance(typeof(T), constructor)).ShowDialog(owner);
             owner.Show();
         }
-        
+
         public static void RunInAnotherApplication(this Form form)
         {
             RunInAnotherThread(() => Application.Run(form));
         }
 
-        
-        public static void RunInAnotherApplication<T>(bool join = true, params object[] constructorArgs) where T: Form
+
+        public static void RunInAnotherApplication<T>(bool join = true, params object[] constructorArgs) where T : Form
         {
-            RunInAnotherThread(() => Application.Run((Form) Activator.CreateInstance(typeof(T), constructorArgs)), join);
+            RunInAnotherThread(() => Application.Run((Form) Activator.CreateInstance(typeof(T), constructorArgs)),
+                join);
         }
-        public static void HideAndRunInAnotherApplication<T>(this Form form, bool join = true, params object[] constructorArgs) where T: Form
+
+        public static void HideAndRunInAnotherApplication<T>(this Form form, bool join = true,
+            params object[] constructorArgs) where T : Form
         {
-            
             form.InvokeIfRequired(form.Hide);
             RunInAnotherThread(() =>
             {

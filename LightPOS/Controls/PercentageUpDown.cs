@@ -9,6 +9,7 @@ namespace NickAc.LightPOS.Frontend.Controls
             get => base.Text.TrimEnd('%');
             set => base.Text = $@"{value}%";
         }
+
         public new decimal Value
         {
             get => base.Value / 100;

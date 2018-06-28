@@ -18,15 +18,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 {
     public partial class UserLoginForm : TemplateForm
     {
-        #region Fields
-
-        private const int MaxTilesPerRow = 3;
-        private const int TileSize = 145;
-        private IList<User> users;
-        const int ControlPadding = 8;
-
-        #endregion
-
         #region Constructors
 
         public UserLoginForm()
@@ -40,12 +31,24 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         #region Properties
 
-        public override Size MaximumSize { get => Size.Empty; set => base.MaximumSize = value; }
+        public override Size MaximumSize
+        {
+            get => Size.Empty;
+            set => base.MaximumSize = value;
+        }
+
+        #endregion
+
+        #region Fields
+
+        private const int MaxTilesPerRow = 3;
+        private const int TileSize = 145;
+        private IList<User> users;
+        private const int ControlPadding = 8;
 
         #endregion
 
         #region Methods
-
 
         public void Recenter(Control c, bool horizontal = true, bool vertical = true)
         {
@@ -59,14 +62,13 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
         protected override void OnLoad(EventArgs e)
         {
             label1.Show();
-            foreach (Control control in panel1.Controls) {
-                control.Dispose();
-            }
+            foreach (Control control in panel1.Controls) control.Dispose();
             panel1.Controls.Clear();
             Recenter(label1);
             panel1.Hide();
             base.OnLoad(e);
-            var th = new Thread(() => {
+            var th = new Thread(() =>
+            {
                 InitEverything();
 
                 users = DataManager.GetUsers();
@@ -79,7 +81,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         private void Panel1_UserTilesCreated(object sender, EventArgs e)
         {
-            panel1.InvokeIfRequired(() => {
+            panel1.InvokeIfRequired(() =>
+            {
                 panel1.Show();
                 Recenter(panel1);
             });
@@ -96,26 +99,26 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
             var form = new SecureUserLoginForm
             {
-                Size = new Size((int)(Width * percentage), (int)(Height * percentage)),
+                Size = new Size((int) (Width * percentage), (int) (Height * percentage)),
                 Text = Text
             };
             form.LoginSucceded += Form_LoginSucceded;
             form.SecureRequest(usr);
-            
         }
 
         private void Form_LoginSucceded(object sender, UserPanel.UserEventArgs e)
         {
-            ((IDisposable)sender).Dispose();
+            ((IDisposable) sender).Dispose();
             var usr = e.User;
-            var th = new Thread(() => {
+            var th = new Thread(() =>
+            {
                 //Start a new application loop.
                 GlobalStorage.CurrentUser = usr;
                 //Log user login
                 Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.Login, ""));
                 this.InvokeIfRequired(Hide);
                 //Run main form
-                MainMenuForm mainForm = new MainMenuForm();
+                var mainForm = new MainMenuForm();
                 Application.Run(mainForm);
                 //Log user logout
                 Extensions.RunInAnotherThread(() => DataManager.LogAction(usr, UserAction.Action.LogOut, ""));
@@ -138,22 +141,19 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
             //Get the translated administrator account username
             var adminUserName = "";
-            using (var helper = new TranslationHelper()) {
+            using (var helper = new TranslationHelper())
+            {
                 adminUserName = helper.GetTranslation("create_user_admin");
             }
 
             var numberOfUsers = 0;
             numberOfUsers = DataManager.GetNumberOfUsers();
-            if (numberOfUsers < 1) {
-                //Create an administrator account
-                Application.Run(new ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All).WithReadOnlyPermissions());
-            }
+            if (numberOfUsers < 1)
+                Application.Run(new ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All)
+                    .WithReadOnlyPermissions());
             //The person might've not created a user
             //Check if it was created
-            if (DataManager.GetNumberOfUsers() < 1) {
-                //A new user wasn't created, so we'll exit the app.
-                this.InvokeIfRequired(Close);
-            }
+            if (DataManager.GetNumberOfUsers() < 1) this.InvokeIfRequired(Close);
         }
 
         #endregion

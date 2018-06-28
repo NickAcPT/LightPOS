@@ -39,8 +39,8 @@ namespace StackBlur
         internal BlurStack Next { get; set; }
     }
 
-    /// <summary> 
-    /// Provides method for process stack blur.
+    /// <summary>
+    ///     Provides method for process stack blur.
     /// </summary>
     public static class StackBlur
     {
@@ -85,7 +85,7 @@ namespace StackBlur
         };
 
         /// <summary>
-        /// Process stack blur.
+        ///     Process stack blur.
         /// </summary>
         /// <param name="bitmap">The bitmap to process.</param>
         /// <param name="radius">Gaussian blur radius.</param>
@@ -107,14 +107,11 @@ namespace StackBlur
             for (var i = 1; i < div; i++)
             {
                 stack = stack.Next = new BlurStack();
-                if (i == radiusPlus1)
-                {
-                    stackEnd = stack;
-                }
+                if (i == radiusPlus1) stackEnd = stack;
             }
 
             stack.Next = stackStart;
-            
+
             Debug.Assert(stackEnd != null);
 
             var yw = 0;
@@ -184,7 +181,7 @@ namespace StackBlur
 
                         stack = stack.Next;
                     }
-                    
+
                     var stackIn = stackStart;
                     var stackOut = stackEnd;
 
@@ -246,7 +243,7 @@ namespace StackBlur
 
                     yw += width;
                 }
-                
+
                 for (var x = 0; x < width; x++)
                 {
                     var rInSum = 0;

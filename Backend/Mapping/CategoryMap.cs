@@ -4,7 +4,6 @@
 //
 
 using FluentNHibernate.Mapping;
-using NickAc.LightPOS.Backend.Mapping.Other;
 using NickAc.LightPOS.Backend.Objects;
 
 namespace NickAc.LightPOS.Backend.Mapping

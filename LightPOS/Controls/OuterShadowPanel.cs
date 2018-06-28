@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.ModernUIDoneRight.Utils;
@@ -10,39 +9,28 @@ namespace NickAc.LightPOS.Frontend.Controls
 {
     public class OuterShadowPanel : Panel
     {
-        public Bitmap SetImageOpacity(Image image, float opacity)  
-        {  
-            try  
-            {  
-                //create a Bitmap the size of the image provided  
-                var bmp = new Bitmap(image.Width, image.Height);  
-
-                //create a graphics object from the image  
-                using (var gfx = Graphics.FromImage(bmp)) {  
-
-                    //create a color matrix object  
-                    var matrix = new ColorMatrix {Matrix33 = opacity};
-
-                    //create image attributes  
-                    var attributes = new ImageAttributes();      
-
-                    //set the color(opacity) of the image  
-                    attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);    
-
-                    //now draw the image  
-                    gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
-                }
-                return bmp;
-            }  
-            catch (Exception ex)  
-            { 
-                MessageBox.Show(ex.Message);  
-                return null;  
-            }
-        } 
+        private const int SHADOW_OFFSET = 3;
+        private const int HALF_SHADOW_OFFSET = SHADOW_OFFSET / 2;
+        private const int HALF_HALF_SHADOW_OFFSET = HALF_SHADOW_OFFSET / 2;
 
 
         private bool _oldEngine;
+
+        public OuterShadowPanel() : this(false)
+        {
+        }
+
+        public OuterShadowPanel(bool oldEngine)
+        {
+            OldEngine = oldEngine;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            ParentChanged += (sender, args) => Parent.Paint += (o, eventArgs) =>
+            {
+                if (FrozenImage != null)
+                    eventArgs.Graphics.DrawImageUnscaled(FrozenImage,
+                        Bounds.OffsetAndReturn(-(Bounds.Width / 2), -(Bounds.Height / 2)));
+            };
+        }
 
         public bool OldEngine
         {
@@ -57,22 +45,37 @@ namespace NickAc.LightPOS.Frontend.Controls
 
         private Bitmap FrozenImage { get; set; }
 
-        public OuterShadowPanel() : this(false)
+        public Bitmap SetImageOpacity(Image image, float opacity)
         {
-        }
-
-        public OuterShadowPanel(bool oldEngine)
-        {
-            OldEngine = oldEngine;
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            ParentChanged += (sender, args) => Parent.Paint += (o, eventArgs) =>
+            try
             {
-                if (FrozenImage != null)
+                //create a Bitmap the size of the image provided  
+                var bmp = new Bitmap(image.Width, image.Height);
+
+                //create a graphics object from the image  
+                using (var gfx = Graphics.FromImage(bmp))
                 {
-                    eventArgs.Graphics.DrawImageUnscaled(FrozenImage,
-                        Bounds.OffsetAndReturn(-(Bounds.Width / 2), -(Bounds.Height / 2)));
+                    //create a color matrix object  
+                    var matrix = new ColorMatrix {Matrix33 = opacity};
+
+                    //create image attributes  
+                    var attributes = new ImageAttributes();
+
+                    //set the color(opacity) of the image  
+                    attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                    //now draw the image  
+                    gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height,
+                        GraphicsUnit.Pixel, attributes);
                 }
-            };
+
+                return bmp;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
         }
 
         public void Freeze()
@@ -104,10 +107,7 @@ namespace NickAc.LightPOS.Frontend.Controls
             base.OnPaint(e);
             var targetGraphics = Parent?.CreateGraphics();
             if (targetGraphics == null) return;
-            if (FrozenImage != null)
-            {
-                return;
-            }
+            if (FrozenImage != null) return;
 
             Extensions.RunInAnotherThread(() =>
             {
@@ -116,16 +116,9 @@ namespace NickAc.LightPOS.Frontend.Controls
             }, false);
         }
 
-        private const int SHADOW_OFFSET = 3;
-        private const int HALF_SHADOW_OFFSET = SHADOW_OFFSET / 2;
-        private const int HALF_HALF_SHADOW_OFFSET = HALF_SHADOW_OFFSET / 2;
-
         private void DrawControlShadow(Rectangle rect, Rectangle bounds, Graphics g)
         {
-            if (OldEngine)
-            {
-                return;
-            }
+            if (OldEngine) return;
 
             using (var brush = new SolidBrush(Color.FromArgb(150, Color.Black)))
             {
@@ -142,7 +135,7 @@ namespace NickAc.LightPOS.Frontend.Controls
 
                     StackBlur.StackBlur.Process(img, SHADOW_OFFSET * 2);
                     var result = SetImageOpacity(img, 0.65f);
-                    
+
                     g.DrawImageUnscaled(result, bounds.OffsetAndReturn(-(bounds.Width / 2), -(bounds.Height / 2)));
                     FrozenImage = result;
                     Parent?.Invalidate(Rectangle.Inflate(Bounds, SHADOW_OFFSET * 2, SHADOW_OFFSET * 2));

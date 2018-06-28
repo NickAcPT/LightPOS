@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using NickAc.ModernUIDoneRight.Objects;
-using NickAc.ModernUIDoneRight.Utils;
+﻿using System.Drawing;
 
 namespace NickAc.LightPOS.Frontend.Controls
 {
@@ -18,13 +12,16 @@ namespace NickAc.LightPOS.Frontend.Controls
         {
             using (var sb = new SolidBrush(Parent.ColorScheme.ForegroundColor))
             {
-                using (var sF = new StringFormat {Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center})
+                using (var sF = new StringFormat
+                {
+                    Alignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center
+                })
                 {
                     g.DrawString(Parent.TabPages[id].Text, Parent.Font, sb, rect,
                         sF);
                 }
             }
-
         }
 
         public override bool HandleTabClick(int id, Rectangle rect)

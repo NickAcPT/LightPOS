@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Data;
@@ -14,37 +13,6 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
 {
     public partial class PointOfSaleForm : TemplateForm
     {
-        public class ProductListBoxItem
-        {
-            public static explicit operator ProductListBoxItem(Product prod)
-            {
-                prod.Quantity = 1;
-                prod.RequiresQuantity = true;
-                return new ProductListBoxItem(prod);
-            }
-
-            private ProductListBoxItem(Product product)
-            {
-                Product = product;
-            }
-
-
-            public Product Product { get; }
-
-            public string TextValue => Product == null ? "" : $"$pos_list_prodName {Product.Name}"
-                .AppendLine($"$pos_list_prodCategory {Product.Category.Name}")
-                .AppendLine($"$pos_list_prodQuantity {Product.Quantity}")
-                .AppendLine($"$pos_list_prodPrice {Product.CalculatePrice().ToCurrency()}")
-                .AppendLine($"$pos_list_prodUnitPrice {Product.CalculateUnitPrice().ToCurrency()}");
-        }
-
-        public override Size MaximumSize
-        {
-            get => Size.Empty;
-            set => base.MaximumSize = value;
-        }
-
-
         public PointOfSaleForm()
         {
             InitializeComponent();
@@ -64,11 +32,17 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
                 var item = listBox1.Items.OfType<ProductListBoxItem>().ElementAtOrDefault(index);
                 if (item == null) return;
                 item.Product.Quantity -= 1;
-                if (item.Product.Quantity < 1) 
+                if (item.Product.Quantity < 1)
                     listBox1.Items.RemoveAt(index);
                 listBox1.Refresh();
                 UpdateSaleButton();
             };
+        }
+
+        public override Size MaximumSize
+        {
+            get => Size.Empty;
+            set => base.MaximumSize = value;
         }
 
         private void ProductButton_Click(object sender, EventArgs e)
@@ -76,10 +50,11 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
             if (!(sender is ModernProductButton productButton)) return;
             var prod = productButton.Product;
 
-            var existingItem = listBox1.Items.OfType<ProductListBoxItem>().FirstOrDefault(c => c.Product.Name == prod.Name && c.Product.Barcode == prod.Barcode);
+            var existingItem = listBox1.Items.OfType<ProductListBoxItem>()
+                .FirstOrDefault(c => c.Product.Name == prod.Name && c.Product.Barcode == prod.Barcode);
             if (existingItem == null)
             {
-                listBox1.Items.Add((ProductListBoxItem)prod);
+                listBox1.Items.Add((ProductListBoxItem) prod);
             }
             else
             {
@@ -102,7 +77,32 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
 
         private void modernButton1_Click(object sender, EventArgs e)
         {
+        }
 
+        public class ProductListBoxItem
+        {
+            private ProductListBoxItem(Product product)
+            {
+                Product = product;
+            }
+
+
+            public Product Product { get; }
+
+            public string TextValue => Product == null
+                ? ""
+                : $"$pos_list_prodName {Product.Name}"
+                    .AppendLine($"$pos_list_prodCategory {Product.Category.Name}")
+                    .AppendLine($"$pos_list_prodQuantity {Product.Quantity}")
+                    .AppendLine($"$pos_list_prodPrice {Product.CalculatePrice().ToCurrency()}")
+                    .AppendLine($"$pos_list_prodUnitPrice {Product.CalculateUnitPrice().ToCurrency()}");
+
+            public static explicit operator ProductListBoxItem(Product prod)
+            {
+                prod.Quantity = 1;
+                prod.RequiresQuantity = true;
+                return new ProductListBoxItem(prod);
+            }
         }
     }
 }

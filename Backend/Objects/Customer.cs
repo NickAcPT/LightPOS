@@ -4,16 +4,17 @@
 //
 
 using System.Collections.Generic;
-using NickAc.LightPOS.Backend.Mapping;
-using NickAc.LightPOS.Backend.Mapping.Other;
 
 namespace NickAc.LightPOS.Backend.Objects
 {
     public class Customer
     {
         public virtual int Id { get; set; }
+
         public virtual string Name { get; set; }
+
         public virtual string Street { get; set; }
+
         public virtual string PhoneNumber { get; set; }
 
         public virtual IList<Sale> Sales { get; set; }

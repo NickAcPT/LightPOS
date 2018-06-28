@@ -19,12 +19,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
     {
         private readonly Product _toEdit;
 
-        public override Size MaximumSize
-        {
-            get => Size.Empty;
-            set => base.MaximumSize = value;
-        }
-
         public ModifyProductForm(bool translate = true)
         {
             InitializeComponent();
@@ -50,24 +44,15 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 pictureBox1.Hide();
                 existingProducts = DataManager.GetProducts().Select(p => p.Barcode);
             };
-            modernButton2.Click += (s, e) =>
-            {
-                existingProducts = DataManager.GetProducts().Select(p => p.Barcode);
-            };
+            modernButton2.Click += (s, e) => { existingProducts = DataManager.GetProducts().Select(p => p.Barcode); };
             textBoxEx2.TextChanged += (sender, args) =>
             {
-                pictureBox2.Visible = !float.TryParse(textBoxEx2.Text, NumberStyles.Currency, CultureInfo.InvariantCulture, out _) && textBoxEx2
-                    .Text != "";
+                pictureBox2.Visible =
+                    !float.TryParse(textBoxEx2.Text, NumberStyles.Currency, CultureInfo.InvariantCulture, out _) &&
+                    textBoxEx2
+                        .Text != "";
                 AdaptToErrorImage((Control) sender, pictureBox2);
             };
-        }
-
-        private void LoadCategories()
-        {
-            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox2.Items.Clear();
-            comboBox2.Items.AddRange(DataManager.GetCategories().ToArray<object>());
-            comboBox2.DisplayMember = nameof(Category.Name);
         }
 
 
@@ -80,6 +65,20 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             translationHelper1.SetTranslationLocation(metroButton1, "edit_prod_okbutton");
             translationHelper1.SetTranslationLocation(this, "edit_prod_title");
             translationHelper1.Translate(this);
+        }
+
+        public override Size MaximumSize
+        {
+            get => Size.Empty;
+            set => base.MaximumSize = value;
+        }
+
+        private void LoadCategories()
+        {
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.Items.Clear();
+            comboBox2.Items.AddRange(DataManager.GetCategories().ToArray<object>());
+            comboBox2.DisplayMember = nameof(Category.Name);
         }
 
         private static void AdaptToErrorImage(Control target, Control errorImage)
@@ -106,7 +105,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 _toEdit.Barcode = textBoxEx1.Text;
                 _toEdit.Price = _toEdit.UnitPrice = price;
                 _toEdit.Category = comboBox2.SelectedItem as Category;
-                
+
                 Extensions.RunInAnotherThread(() =>
                 {
                     DataManager.AddProduct(_toEdit);
@@ -123,7 +122,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                     Price = price,
                     UnitPrice = price,
                     Category = comboBox2.SelectedItem as Category,
-                    RequiresQuantity = false,
+                    RequiresQuantity = false
                 };
                 Extensions.RunInAnotherThread(() =>
                 {
@@ -131,10 +130,9 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                     DataManager.LogAction(CurrentUser, UserAction.Action.CreateProduct, textBox1.Text);
                 });
             }
-            
+
             textBox1.Text = textBoxEx1.Text = textBoxEx2.Text = string.Empty;
             comboBox2.SelectedIndex = -1;
-
         }
     }
 }

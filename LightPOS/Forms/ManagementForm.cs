@@ -1,32 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
+using NickAc.LightPOS.Frontend.Forms.Products;
 using NickAc.LightPOS.Frontend.Forms.Users;
-using NickAc.ModernUIDoneRight.Objects;
 using static NickAc.LightPOS.Backend.Utils.GlobalStorage;
 
 namespace NickAc.LightPOS.Frontend.Forms
 {
     public partial class ManagementForm : TemplateForm
     {
-        public override Size MaximumSize
-        {
-            get => Size.Empty;
-            set => base.MaximumSize = value;
-        }
-
         public ManagementForm()
         {
             InitializeComponent();
             translationHelper1.Translate(this);
+        }
+
+        public override Size MaximumSize
+        {
+            get => Size.Empty;
+            set => base.MaximumSize = value;
         }
 
         private void TilePanelReborn2_Click(object sender, EventArgs e)
@@ -54,7 +47,7 @@ namespace NickAc.LightPOS.Frontend.Forms
         {
             if (!CurrentUser.CanManageProducts()) return;
             this.InvokeIfRequired(Hide);
-            Extensions.RunInAnotherApplication<Products.ModifyProductForm>(true, true);
+            Extensions.RunInAnotherApplication<ModifyProductForm>(true, true);
 
             this.InvokeIfRequired(Show);
         }
@@ -63,7 +56,7 @@ namespace NickAc.LightPOS.Frontend.Forms
         {
             if (!CurrentUser.CanManageProducts()) return;
             this.InvokeIfRequired(Hide);
-            Extensions.RunInAnotherApplication<Products.ModifyCategoryForm>(true, true);
+            Extensions.RunInAnotherApplication<ModifyCategoryForm>(true, true);
             this.InvokeIfRequired(Show);
         }
     }
