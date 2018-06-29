@@ -54,9 +54,8 @@ namespace NickAc.LightPOS.Backend.Data
                         return Fluently.Configure(bf.Deserialize(file) as Configuration);
                     }
             }
-            catch (SerializationException ex)
+            catch (SerializationException)
             {
-                Ignore(ex);
                 //Ignore errors deserialization errors and delete the existent file
                 File.Delete(FileConfig);
             }
@@ -78,20 +77,13 @@ namespace NickAc.LightPOS.Backend.Data
             return fluentConfiguration;
         }
 
-        private void Ignore(SerializationException ex)
-        {
-            var exx = ex.GetType().GUID.ToString();
-        }
-
         private void BuildSchema(Configuration config)
         {
-            if (_overwriteExisting)
-            {
-                if (_dbFile.Exists) _dbFile.Delete();
+            if (!_overwriteExisting) return;
+            if (_dbFile.Exists) _dbFile.Delete();
 
-                var se = new SchemaExport(config);
-                se.Execute(false, true, false);
-            }
+            var se = new SchemaExport(config);
+            se.Execute(false, true, false);
         }
     }
 }
