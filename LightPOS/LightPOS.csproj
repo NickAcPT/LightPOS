@@ -262,7 +262,9 @@
   <ItemGroup>
     <None Include="Resources\cash-usd.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\credit-card.png" />
+  </ItemGroup>
   <Import Project="..\SharedResources\SharedResources.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

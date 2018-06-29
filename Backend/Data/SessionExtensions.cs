@@ -8,6 +8,18 @@ namespace NickAc.LightPOS.Backend.Data
 {
     public static class SessionExtensions
     {
+        public static void InitializeProxy(this object proxy)
+        {
+            try
+            {
+                if (!NHibernateUtil.IsInitialized(proxy))
+                    NHibernateUtil.Initialize(proxy);
+            }
+            catch (HibernateException)
+            {
+            }
+        }
+
         public static SessionTransactionWrapper OpenSession(this ISessionFactory sf, out ISession session)
         {
             var wrapper = new SessionTransactionWrapper(sf, false);
