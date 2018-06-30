@@ -6,9 +6,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Resources;
 using System.Windows.Forms;
+using NickAc.LightPOS.Backend.Utils;
 
 namespace NickAc.LightPOS.Backend.Translation
 {
@@ -20,7 +22,7 @@ namespace NickAc.LightPOS.Backend.Translation
             English
         }
 
-        private readonly Dictionary<object, TranslationProvider> translations =
+        private readonly Dictionary<object, TranslationProvider> _translations =
             new Dictionary<object, TranslationProvider>();
 
         public static Language CurrentLanguage { get; set; } = Language.English;
@@ -34,14 +36,14 @@ namespace NickAc.LightPOS.Backend.Translation
         {
             TranslationProvider p;
 
-            if (!translations.ContainsKey(key))
+            if (!_translations.ContainsKey(key))
             {
                 p = new TranslationProvider();
-                translations.Add(key, p);
+                _translations.Add(key, p);
             }
             else
             {
-                p = translations[key];
+                p = _translations[key];
             }
 
             return p;
@@ -98,7 +100,7 @@ namespace NickAc.LightPOS.Backend.Translation
 
         private string GetTranslation(ResourceManager lang, string loc)
         {
-            var original = lang.GetString(loc);
+            var original = CurrentLanguage == Language.English ? lang.GetString(loc) : lang.GetString(loc, CultureInfo.GetCultureInfo(CurrentLanguage.ToDescription()));
             return
                 original == null ? $"-= No Translation: {loc} =-" : TranslateResult(original);
         }
@@ -133,13 +135,7 @@ namespace NickAc.LightPOS.Backend.Translation
 
         public ResourceManager GetLanguage(Language lang)
         {
-            switch (lang)
-            {
-                case Language.English:
-                    return Translation_EN.ResourceManager;
-            }
-
-            return null;
+            return Translation.ResourceManager;
         }
 
         private class TranslationProvider

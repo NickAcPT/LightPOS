@@ -4,6 +4,8 @@
 //
 
 using System;
+using System.ComponentModel;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -11,6 +13,24 @@ namespace NickAc.LightPOS.Backend.Utils
 {
     public static class Extensions
     {
+        public static string GetEnumDescription(Enum value)
+        {
+            var fi = value.GetType().GetField(value.ToString());
+
+            var attributes =
+                (DescriptionAttribute[])fi.GetCustomAttributes(
+                    typeof(DescriptionAttribute),
+                    false);
+
+            return attributes.Length > 0 ? attributes[0].Description : value.ToString();
+        }
+
+        public static string ToDescription<TEnum>(this TEnum enumValue) where TEnum : struct
+        {
+            return GetEnumDescription((Enum)(object)enumValue);
+        }
+
+
         public static string AppendLine(this string original, string otherLine)
         {
             return original + Environment.NewLine + otherLine;
