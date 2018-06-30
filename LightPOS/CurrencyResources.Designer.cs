@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NickAc.LightPOS.Backend {
+namespace NickAc.LightPOS.Frontend {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace NickAc.LightPOS.Backend {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NickAc.LightPOS.Backend.CurrencyResources", typeof(CurrencyResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NickAc.LightPOS.Frontend.CurrencyResources", typeof(CurrencyResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

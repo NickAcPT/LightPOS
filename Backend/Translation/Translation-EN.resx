@@ -306,4 +306,7 @@
   <data name="curr_money" xml:space="preserve">
     <value>Money</value>
   </data>
+  <data name="currency_picker_title" xml:space="preserve">
+    <value>Choose payment type</value>
+  </data>
 </root>

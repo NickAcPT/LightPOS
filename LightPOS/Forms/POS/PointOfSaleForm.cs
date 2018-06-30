@@ -77,6 +77,10 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
 
         private void modernButton1_Click(object sender, EventArgs e)
         {
+            Hide();
+            Extensions.RunInAnotherApplication<CurrencyPickerForm>(constructorArgs: listBox1.Items.OfType<ProductListBoxItem>()
+                .Select(c => c.Product).ToList());
+            Show();
         }
 
         public class ProductListBoxItem

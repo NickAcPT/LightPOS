@@ -14,5 +14,11 @@ namespace NickAc.LightPOS.Backend.Utils
         public static CurrencyManager CurrencyManager { get; set; }
 
         public static User CurrentUser { get; set; }
+
+        public static Customer DefaultCustomer => new Customer
+        {
+            Id = -1,
+            Name = "generic_customer"
+        };
     }
 }

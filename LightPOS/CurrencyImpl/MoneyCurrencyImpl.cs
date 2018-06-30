@@ -21,10 +21,13 @@ namespace NickAc.LightPOS.Frontend.CurrencyImpl
             Console.WriteLine(@"Loaded Money Currency!");
         }
 
-        public override async Task<TransactionResult> RequestTransaction(TransactionState state)
+        
+        public override TransactionResult RequestTransaction(ref TransactionState state)
         {
-            return await Task.FromResult(TransactionResult.Canceled);
+
+            return TransactionResult.Canceled;
         }
+
 
         public override void Dispose()
         {

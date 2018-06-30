@@ -58,8 +58,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ModernUIDoneRight\ModernUIDoneRight\bin\Debug\ModernUIDoneRight.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -77,6 +77,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CurrencyButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\DrawHandler\IListBoxDrawHandler.cs" />
     <Compile Include="Controls\DrawHandler\ProductListBoxDrawHandler.cs" />
     <Compile Include="Controls\ListBoxNoFlicker.cs">
@@ -119,6 +122,12 @@
     </Compile>
     <Compile Include="Forms\ManagementForm.Designer.cs">
       <DependentUpon>ManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\POS\CurrencyPickerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\POS\CurrencyPickerForm.Designer.cs">
+      <DependentUpon>CurrencyPickerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Products\ModifyCategoryForm.cs">
       <SubType>Form</SubType>
@@ -177,12 +186,16 @@
     <Compile Include="Settings\ISettingHolder.cs" />
     <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="Utils\FrontendExtensions.cs" />
+    <Compile Include="Utils\GraphicsExtensions.cs" />
     <EmbeddedResource Include="CurrencyResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CurrencyResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ManagementForm.resx">
       <DependentUpon>ManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\POS\CurrencyPickerForm.resx">
+      <DependentUpon>CurrencyPickerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Products\ModifyCategoryForm.resx">
       <DependentUpon>ModifyCategoryForm.cs</DependentUpon>

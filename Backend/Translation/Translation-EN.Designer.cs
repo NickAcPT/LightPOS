@@ -124,6 +124,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose payment type.
+        /// </summary>
+        public static string currency_picker_title {
+            get {
+                return ResourceManager.GetString("currency_picker_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You.
         /// </summary>
         public static string current_user {

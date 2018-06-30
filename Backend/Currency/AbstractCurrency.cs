@@ -19,6 +19,6 @@ namespace NickAc.LightPOS.Backend.Currency
         public abstract void Dispose();
         public abstract void Init();
 
-        public abstract Task<TransactionResult> RequestTransaction(TransactionState state);
+        public abstract TransactionResult RequestTransaction(ref TransactionState state);
     }
 }

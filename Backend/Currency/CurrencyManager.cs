@@ -30,7 +30,7 @@ namespace NickAc.LightPOS.Backend.Currency
         {
             Catalog = new AggregateCatalog(new AssemblyCatalog(typeof(CurrencyManager).Assembly),
                 new DirectoryCatalog(Environment.CurrentDirectory),
-                new AssemblyCatalog(Assembly.GetExecutingAssembly()));
+                new AssemblyCatalog(Assembly.GetEntryAssembly()));
             Container = new CompositionContainer(Catalog);
         }
 
