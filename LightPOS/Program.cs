@@ -8,7 +8,6 @@ using System.IO;
 using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Data;
 using NickAc.LightPOS.Backend.Utils;
-using NickAc.LightPOS.Frontend.Controls;
 using NickAc.LightPOS.Frontend.Forms.Users;
 
 namespace NickAc.LightPOS.Frontend
