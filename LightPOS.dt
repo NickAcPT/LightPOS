@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-16"?>
-<DevTrackerData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SolutionTotalEditTime="PT15H41M53.48056S" SolutionTotalViewTime="P1DT7H5M24.4520986S" SolutionTotalDebugTime="PT50M56.0625769S">
+<DevTrackerData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SolutionTotalEditTime="PT16H35M1.1165408S" SolutionTotalViewTime="P1DT8H30M48.2305813S" SolutionTotalDebugTime="PT59M14.4466202S">
   <FileVersion>
     <Major>1</Major>
     <Minor>0</Minor>
@@ -7,131 +7,326 @@
   <SolutionFolder>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS</SolutionFolder>
   <SessionTimeList />
   <LastSessionTimeList>
-    <DevTrackerDataItem ViewActiveTime="PT3M41.4256451S" EditActiveTime="PT2M37.9760989S">
-      <ModifiedDate>2018-06-29T19:15:26.2866906+01:00</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT28.2833971S" EditActiveTime="PT3.7988842S">
+      <ModifiedDate>2018-06-30T19:13:49.2914384+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Currency\AbstractCurrency.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:16:59.5347759+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT5.5398817S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
       <ViewedCount>1</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\Mapping\CardMapping.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\LightBankBackend.csproj</ProjectName>
-      <CreatedDate>2018-06-29T19:01:43.2736469+01:00</CreatedDate>
+      <CreatedDate>2018-06-30T12:51:35.8099324+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT4M20.8543608S" EditActiveTime="PT27.6299775S">
-      <ModifiedDate>2018-06-29T22:23:44.1058622+01:00</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT1M25.1482181S" EditActiveTime="PT1.7696037S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\AppData\Local\JetBrains\Shared\vAny\DecompilerCache\decompiler\5AB40F17-FBBD-42BC-88C3-6EF7CE6A3719\28\1cd5bdb9\ControlPaint.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T15:16:05.3052727+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT45.8416975S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\ModernUIDoneRight\ModernUIDoneRight\Utils\ControlPaintWrapper.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T17:12:07.8509443+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT30M11.450058S" EditActiveTime="PT33M27.5610098S">
+      <ModifiedDate>2018-06-30T19:47:01.2128195+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Controls\CurrencyButton.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:16:13.1582489+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT2M43.1385078S" EditActiveTime="PT8.1236166S">
+      <ModifiedDate>2018-06-30T16:43:30.4838805+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Currency\CurrencyManager.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:16:58.2218461+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT7.5610629S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\AppData\Local\JetBrains\Shared\vAny\DecompilerCache\decompiler\5AB40F17-FBBD-42BC-88C3-6EF7CE6A3719\e9\252d8425\CurrencyManager.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T15:50:35.4479499+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT22M12.3489858S" EditActiveTime="PT9M52.369556S">
+      <ModifiedDate>2018-06-30T20:32:14.2119427+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\POS\CurrencyPickerForm.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T12:54:15.6889175+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT35.8023257S" EditActiveTime="PT23.0246904S">
+      <ModifiedDate>2018-06-30T17:23:50.8333596+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\CurrencyResources.resx</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T17:05:12.3754282+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT3M27.2988705S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
       <ViewedCount>1</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Data\DataFactory.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
-      <CreatedDate>2018-06-29T19:21:50.2996086+01:00</CreatedDate>
+      <CreatedDate>2018-06-30T12:50:35.4532515+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT4M7.1521035S" EditActiveTime="PT6M56.8856565S">
-      <ModifiedDate>2018-06-29T20:39:06.082005+01:00</ModifiedDate>
-      <ModifiedBy>User</ModifiedBy>
-      <EditedCount>1</EditedCount>
+    <DevTrackerDataItem ViewActiveTime="PT3.6233349S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
       <ViewedCount>1</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Data\DataManager.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
-      <CreatedDate>2018-06-29T19:21:49.389268+01:00</CreatedDate>
+      <CreatedDate>2018-06-30T19:31:59.5613516+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT5M53.196658S" EditActiveTime="PT8M39.4617703S">
-      <ModifiedDate>2018-06-29T21:44:30.7724358+01:00</ModifiedDate>
-      <ModifiedBy>User</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\Data\LightBankDataManager.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\LightBankBackend.csproj</ProjectName>
-      <CreatedDate>2018-06-29T20:39:41.7077149+01:00</CreatedDate>
-      <ViewedBy>User</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT3.2987342S" EditActiveTime="PT0S">
+    <DevTrackerDataItem ViewActiveTime="PT8M18.3840433S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
       <ViewedCount>1</ViewedCount>
-      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Mapping\Other\ReferenceConvention.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
-      <CreatedDate>2018-06-29T22:22:39.8208713+01:00</CreatedDate>
+      <Item>Debug Mode</Item>
+      <ItemType>DebugModeItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T15:57:14.3925016+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1M24.0997355S" EditActiveTime="PT3M37.9955736S">
-      <ModifiedDate>2018-06-29T21:33:41.2948172+01:00</ModifiedDate>
-      <ModifiedBy>User</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Data\SessionExtensions.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
-      <CreatedDate>2018-06-29T19:37:55.0203094+01:00</CreatedDate>
-      <ViewedBy>User</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1M8.6793476S" EditActiveTime="PT2M56.9457694S">
-      <ModifiedDate>2018-06-29T19:46:26.0475094+01:00</ModifiedDate>
-      <ModifiedBy>User</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Data\SessionTransactionWrapper.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
-      <CreatedDate>2018-06-29T19:32:48.1424162+01:00</CreatedDate>
-      <ViewedBy>User</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT10.9264649S" EditActiveTime="PT0S">
+    <DevTrackerDataItem ViewActiveTime="PT14.648259S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
       <ViewedCount>1</ViewedCount>
-      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Utils\TimeMeasurer.cs</Item>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Utils\Extensions.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
-      <CreatedDate>2018-06-29T19:33:28.1397228+01:00</CreatedDate>
+      <CreatedDate>2018-06-30T19:24:29.8311807+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1M55.6619286S" EditActiveTime="PT1M15.0588642S">
-      <ModifiedDate>2018-06-29T19:19:26.6151797+01:00</ModifiedDate>
-      <ModifiedBy>User</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\Mapping\TransactionMapping.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\LightBankBackend.csproj</ProjectName>
-      <CreatedDate>2018-06-29T19:16:45.5761634+01:00</CreatedDate>
-      <ViewedBy>User</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT11.1109306S" EditActiveTime="PT0S">
+    <DevTrackerDataItem ViewActiveTime="PT3.7690182S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
       <ViewedCount>1</ViewedCount>
-      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\Objects\User.cs</Item>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Utils\FrontendExtensions.cs</Item>
       <ItemType>ProjectItem</ItemType>
-      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\LightBankBackend.csproj</ProjectName>
-      <CreatedDate>2018-06-29T21:29:36.987698+01:00</CreatedDate>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:01:39.9092835+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT23.4121742S" EditActiveTime="PT56.8010506S">
-      <ModifiedDate>2018-06-29T19:19:07.2838738+01:00</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT37.0352931S" EditActiveTime="PT50.2065089S">
+      <ModifiedDate>2018-06-30T19:11:22.4483551+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>1</EditedCount>
       <ViewedCount>1</ViewedCount>
-      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\Mapping\UserMapping.cs</Item>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Utils\GlobalStorage.cs</Item>
       <ItemType>ProjectItem</ItemType>
-      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\LightBankBackend.csproj</ProjectName>
-      <CreatedDate>2018-06-29T19:18:07.5473631+01:00</CreatedDate>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T15:51:53.9347488+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M26.4513912S" EditActiveTime="PT3M3.04854S">
+      <ModifiedDate>2018-06-30T14:18:46.7670173+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Utils\GraphicsExtensions.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:58:14.5181752+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT17.699964S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\MainMenuForm.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T12:56:31.3206088+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT5.0512653S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\ManagementForm.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T17:35:17.5249319+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT18.9099448S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\ModernUIDoneRight\ModernUIDoneRight\Controls\ModernShadowPanel.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T14:07:04.6035246+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1.7477121S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\Products\ModifyCategoryForm.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T17:35:28.1548273+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M58.077303S" EditActiveTime="PT1M1.1714819S">
+      <ModifiedDate>2018-06-30T19:20:21.0070097+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\CurrencyImpl\MoneyCurrencyImpl.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T17:05:32.1974271+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT6M0.4884846S" EditActiveTime="PT13.6791051S">
+      <ModifiedDate>2018-06-30T13:43:15.9697344+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Controls\OuterShadowPanel.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:36:39.8551655+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT5M22.865409S" EditActiveTime="PT1M58.5959208S">
+      <ModifiedDate>2018-06-30T19:26:17.0822015+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\POS\PointOfSaleForm.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:00:43.0223627+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT15.9283641S" EditActiveTime="PT0.7521159S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\POS\PointOfSaleForm.Designer.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:13:53.8651605+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT2M24.8126073S" EditActiveTime="PT1M4.0571394S">
+      <ModifiedDate>2018-06-30T15:56:01.0654604+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Program.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:21:26.8774655+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT3.3081943S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\ModernUIDoneRight\ModernUIDoneRight\Utils\ShadowUtils.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T13:36:10.757142+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT15.5238194S" EditActiveTime="PT59.0541737S">
+      <ModifiedDate>2018-06-30T19:13:31.7100434+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Currency\TransactionState.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T19:09:16.763589+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M35.6623972S" EditActiveTime="PT0.2133225S">
+      <ModifiedDate>2018-06-30T19:22:50.431252+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Translation\Translation-EN.resx</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T19:22:27.5875029+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M57.9617634S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Translation\TranslationHelper.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T18:55:27.8269045+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT17.6617506S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Controls\UserPanel.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T15:57:55.862343+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
   </LastSessionTimeList>
   <TotalTimeList>
-    <DevTrackerDataItem ViewActiveTime="PT6M34.8754187S" EditActiveTime="PT2M23.0892865S">
-      <ModifiedDate>2018-05-11T12:04:33.3618954+01:00</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT7M3.1588158S" EditActiveTime="PT2M26.8881707S">
+      <ModifiedDate>2018-06-30T19:13:49.2914384+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
-      <EditedCount>3</EditedCount>
-      <ViewedCount>5</ViewedCount>
+      <EditedCount>4</EditedCount>
+      <ViewedCount>6</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Currency\AbstractCurrency.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
@@ -314,11 +509,11 @@
       <CreatedDate>2018-06-29T00:27:56.4198172+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT3M41.4256451S" EditActiveTime="PT2M37.9760989S">
+    <DevTrackerDataItem ViewActiveTime="PT3M46.9655268S" EditActiveTime="PT2M37.9760989S">
       <ModifiedDate>2018-06-29T19:15:26.2866906+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
+      <ViewedCount>2</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\Mapping\CardMapping.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\LightBankBackend.csproj</ProjectName>
@@ -470,6 +665,26 @@
       <CreatedDate>2017-11-26T12:04:42.4247372+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M25.1482181S" EditActiveTime="PT1.7696037S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\AppData\Local\JetBrains\Shared\vAny\DecompilerCache\decompiler\5AB40F17-FBBD-42BC-88C3-6EF7CE6A3719\28\1cd5bdb9\ControlPaint.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T15:16:05.3052727+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT45.8416975S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\ModernUIDoneRight\ModernUIDoneRight\Utils\ControlPaintWrapper.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T17:12:07.8509443+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
     <DevTrackerDataItem ViewActiveTime="PT53M34.0471908S" EditActiveTime="PT28M40.3436045S">
       <ModifiedDate>2017-12-01T22:53:52.9551061+00:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
@@ -502,6 +717,17 @@
       <CreatedDate>2017-11-30T23:03:23.6054679+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT30M11.450058S" EditActiveTime="PT33M27.5610098S">
+      <ModifiedDate>2018-06-30T19:47:01.2128195+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Controls\CurrencyButton.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:16:13.1582489+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
     <DevTrackerDataItem ViewActiveTime="PT53.3887625S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
@@ -523,25 +749,36 @@
       <CreatedDate>2018-04-27T09:59:39.599577+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT15.2179098S" EditActiveTime="PT0S">
+    <DevTrackerDataItem ViewActiveTime="PT22.7789727S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
+      <ViewedCount>2</ViewedCount>
       <Item>C:\Users\User\AppData\Local\JetBrains\Shared\vAny\DecompilerCache\decompiler\5AB40F17-FBBD-42BC-88C3-6EF7CE6A3719\e9\252d8425\CurrencyManager.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName />
       <CreatedDate>2018-05-10T00:18:38.7725937+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT9M7.0231421S" EditActiveTime="PT10M58.2398123S">
-      <ModifiedDate>2018-06-26T20:35:24.0708093+01:00</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT11M50.1616499S" EditActiveTime="PT11M6.3634289S">
+      <ModifiedDate>2018-06-30T16:43:30.4838805+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
-      <EditedCount>3</EditedCount>
-      <ViewedCount>9</ViewedCount>
+      <EditedCount>4</EditedCount>
+      <ViewedCount>10</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Currency\CurrencyManager.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
       <CreatedDate>2018-05-10T00:20:21.5034081+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT22M12.3489858S" EditActiveTime="PT9M52.369556S">
+      <ModifiedDate>2018-06-30T20:32:14.2119427+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\POS\CurrencyPickerForm.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T12:54:15.6889175+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
     <DevTrackerDataItem ViewActiveTime="PT47.8842767S" EditActiveTime="PT0.1472154S">
@@ -553,6 +790,17 @@
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
       <CreatedDate>2018-06-22T13:29:34.9152781+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT35.8023257S" EditActiveTime="PT23.0246904S">
+      <ModifiedDate>2018-06-30T17:23:50.8333596+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\CurrencyResources.resx</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T17:05:12.3754282+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
     <DevTrackerDataItem ViewActiveTime="PT9M53.3829849S" EditActiveTime="PT5M52.9584126S">
@@ -588,22 +836,22 @@
       <CreatedDate>2018-03-26T12:30:03.3668566+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT18M43.5565951S" EditActiveTime="PT4M33.3363995S">
+    <DevTrackerDataItem ViewActiveTime="PT22M10.8554656S" EditActiveTime="PT4M33.3363995S">
       <ModifiedDate>2018-06-29T22:23:44.1058622+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>4</EditedCount>
-      <ViewedCount>17</ViewedCount>
+      <ViewedCount>18</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Data\DataFactory.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
       <CreatedDate>2017-11-26T19:07:04.5526076+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1H43M42.3049309S" EditActiveTime="PT58M52.6408232S">
+    <DevTrackerDataItem ViewActiveTime="PT1H43M45.9282658S" EditActiveTime="PT58M52.6408232S">
       <ModifiedDate>2018-06-29T20:39:06.082005+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>13</EditedCount>
-      <ViewedCount>28</ViewedCount>
+      <ViewedCount>29</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Data\DataManager.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
@@ -620,10 +868,10 @@
       <CreatedDate>2017-12-04T17:26:36.9858269+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT50M56.0625769S" EditActiveTime="PT12M6.462505S">
+    <DevTrackerDataItem ViewActiveTime="PT59M14.4466202S" EditActiveTime="PT12M6.462505S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>4</EditedCount>
-      <ViewedCount>34</ViewedCount>
+      <ViewedCount>35</ViewedCount>
       <Item>Debug Mode</Item>
       <ItemType>DebugModeItem</ItemType>
       <ProjectName />
@@ -702,22 +950,22 @@
       <CreatedDate>2017-12-01T19:21:34.2118298+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT30M23.2702568S" EditActiveTime="PT14M33.4465425S">
+    <DevTrackerDataItem ViewActiveTime="PT30M37.9185158S" EditActiveTime="PT14M33.4465425S">
       <ModifiedDate>2018-04-23T10:50:14.9539474+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>12</EditedCount>
-      <ViewedCount>24</ViewedCount>
+      <ViewedCount>25</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Utils\Extensions.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
       <CreatedDate>2017-12-02T00:28:24.257463+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT5M10.9036043S" EditActiveTime="PT5M48.7351133S">
+    <DevTrackerDataItem ViewActiveTime="PT5M14.6726225S" EditActiveTime="PT5M48.7351133S">
       <ModifiedDate>2018-06-24T16:47:36.8951238+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>5</EditedCount>
-      <ViewedCount>9</ViewedCount>
+      <ViewedCount>10</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Utils\FrontendExtensions.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
@@ -745,11 +993,11 @@
       <CreatedDate>2018-06-24T12:25:24.9692388+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT13M59.5143678S" EditActiveTime="PT3M54.5371783S">
-      <ModifiedDate>2018-05-10T00:21:24.9665752+01:00</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT14M36.5496609S" EditActiveTime="PT4M44.7436872S">
+      <ModifiedDate>2018-06-30T19:11:22.4483551+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
-      <EditedCount>3</EditedCount>
-      <ViewedCount>11</ViewedCount>
+      <EditedCount>4</EditedCount>
+      <ViewedCount>12</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Utils\GlobalStorage.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
@@ -764,6 +1012,17 @@
       <ItemType>ProjectItem</ItemType>
       <ProjectName />
       <CreatedDate>2018-03-22T00:03:01.9402623+00:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M26.4513912S" EditActiveTime="PT3M3.04854S">
+      <ModifiedDate>2018-06-30T14:18:46.7670173+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Utils\GraphicsExtensions.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:58:14.5181752+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
     <DevTrackerDataItem ViewActiveTime="PT3.9773924S" EditActiveTime="PT0S">
@@ -1035,11 +1294,11 @@
       <CreatedDate>2018-03-22T20:40:28.6975279+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT2H29M54.0973926S" EditActiveTime="PT39M41.5686601S">
+    <DevTrackerDataItem ViewActiveTime="PT2H30M11.7973566S" EditActiveTime="PT39M41.5686601S">
       <ModifiedDate>2018-06-23T23:13:05.6578594+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>29</EditedCount>
-      <ViewedCount>43</ViewedCount>
+      <ViewedCount>44</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\MainMenuForm.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
@@ -1079,11 +1338,11 @@
       <CreatedDate>2018-04-23T11:11:12.0758736+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT32M38.6325176S" EditActiveTime="PT11M34.7325466S">
+    <DevTrackerDataItem ViewActiveTime="PT32M43.6837829S" EditActiveTime="PT11M34.7325466S">
       <ModifiedDate>2018-03-26T18:30:55.3898107+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>11</EditedCount>
-      <ViewedCount>13</ViewedCount>
+      <ViewedCount>14</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\ManagementForm.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
@@ -1172,10 +1431,10 @@
       <CreatedDate>2018-03-30T15:26:35.1482167+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1M11.9932306S" EditActiveTime="PT0S">
+    <DevTrackerDataItem ViewActiveTime="PT1M30.9031754S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
-      <ViewedCount>2</ViewedCount>
+      <ViewedCount>3</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\ModernUIDoneRight\ModernUIDoneRight\Controls\ModernShadowPanel.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName />
@@ -1203,11 +1462,11 @@
       <CreatedDate>2017-12-08T21:59:53.7424966+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1H15M19.0965584S" EditActiveTime="PT31M46.3730999S">
+    <DevTrackerDataItem ViewActiveTime="PT1H15M20.8442705S" EditActiveTime="PT31M46.3730999S">
       <ModifiedDate>2018-06-24T12:51:49.0334932+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>12</EditedCount>
-      <ViewedCount>17</ViewedCount>
+      <ViewedCount>18</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\Products\ModifyCategoryForm.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
@@ -1332,11 +1591,11 @@
       <CreatedDate>2018-05-11T12:00:58.2865657+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1M29.0731116S" EditActiveTime="PT36.3378202S">
-      <ModifiedDate>2018-06-26T20:36:06.8904406+01:00</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT3M27.1504146S" EditActiveTime="PT1M37.5093021S">
+      <ModifiedDate>2018-06-30T19:20:21.0070097+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>2</ViewedCount>
+      <EditedCount>2</EditedCount>
+      <ViewedCount>3</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\CurrencyImpl\MoneyCurrencyImpl.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
@@ -1364,11 +1623,11 @@
       <CreatedDate>2018-03-30T14:57:41.0248257+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT44M1.7460548S" EditActiveTime="PT26M35.2490246S">
-      <ModifiedDate>2018-06-23T17:25:38.4035542+01:00</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT50M2.2345394S" EditActiveTime="PT26M48.9281297S">
+      <ModifiedDate>2018-06-30T13:43:15.9697344+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
-      <EditedCount>6</EditedCount>
-      <ViewedCount>6</ViewedCount>
+      <EditedCount>7</EditedCount>
+      <ViewedCount>7</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Controls\OuterShadowPanel.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
@@ -1407,22 +1666,22 @@
       <CreatedDate>2018-03-19T11:40:05.7745536+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT2H30M59.1450699S" EditActiveTime="PT44M17.9291592S">
-      <ModifiedDate>2018-06-24T21:01:29.064556+01:00</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT2H36M22.0104789S" EditActiveTime="PT46M16.52508S">
+      <ModifiedDate>2018-06-30T19:26:17.0822015+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
-      <EditedCount>18</EditedCount>
-      <ViewedCount>26</ViewedCount>
+      <EditedCount>19</EditedCount>
+      <ViewedCount>27</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\POS\PointOfSaleForm.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
       <CreatedDate>2017-12-10T14:01:19.7362502+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT29.6749374S" EditActiveTime="PT13.317325S">
+    <DevTrackerDataItem ViewActiveTime="PT45.6033015S" EditActiveTime="PT14.0694409S">
       <ModifiedDate>2018-06-24T18:59:56.6804637+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
-      <EditedCount>2</EditedCount>
-      <ViewedCount>5</ViewedCount>
+      <EditedCount>3</EditedCount>
+      <ViewedCount>6</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\POS\PointOfSaleForm.Designer.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
@@ -1493,11 +1752,11 @@
       <CreatedDate>2017-11-26T18:17:02.104269+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT49M13.0126714S" EditActiveTime="PT35M15.7553307S">
-      <ModifiedDate>2018-06-24T14:53:08.6305266+01:00</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT51M37.8252787S" EditActiveTime="PT36M19.8124701S">
+      <ModifiedDate>2018-06-30T15:56:01.0654604+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
-      <EditedCount>11</EditedCount>
-      <ViewedCount>23</ViewedCount>
+      <EditedCount>12</EditedCount>
+      <ViewedCount>24</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Program.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
@@ -1728,10 +1987,10 @@
       <CreatedDate>2018-06-24T11:56:27.2239525+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT3M55.7824384S" EditActiveTime="PT0S">
+    <DevTrackerDataItem ViewActiveTime="PT3M59.0906327S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
-      <ViewedCount>7</ViewedCount>
+      <ViewedCount>8</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\ModernUIDoneRight\ModernUIDoneRight\Utils\ShadowUtils.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName />
@@ -2004,10 +2263,11 @@
       <CreatedDate>2018-04-27T10:31:57.3410557+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT0.4076057S" EditActiveTime="PT0S">
-      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
-      <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
+    <DevTrackerDataItem ViewActiveTime="PT15.9314251S" EditActiveTime="PT59.0541737S">
+      <ModifiedDate>2018-06-30T19:13:31.7100434+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>2</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Currency\TransactionState.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
@@ -2044,11 +2304,11 @@
       <CreatedDate>2017-11-26T12:02:38.8464388+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1H7M27.4240037S" EditActiveTime="PT3M6.1262442S">
-      <ModifiedDate>2018-04-27T09:31:12.9718892+01:00</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT1H9M3.0864009S" EditActiveTime="PT3M6.3395667S">
+      <ModifiedDate>2018-06-30T19:22:50.431252+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
-      <EditedCount>21</EditedCount>
-      <ViewedCount>27</ViewedCount>
+      <EditedCount>22</EditedCount>
+      <ViewedCount>28</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Translation\Translation-EN.resx</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
@@ -2087,11 +2347,11 @@
       <CreatedDate>2017-11-26T12:03:14.195546+00:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT28M25.9027607S" EditActiveTime="PT18M14.9795304S">
+    <DevTrackerDataItem ViewActiveTime="PT30M23.8645241S" EditActiveTime="PT18M14.9795304S">
       <ModifiedDate>2018-04-20T09:25:52.6754328+01:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>6</EditedCount>
-      <ViewedCount>16</ViewedCount>
+      <ViewedCount>17</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Translation\TranslationHelper.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
@@ -2261,11 +2521,11 @@
       <CreatedDate>2018-06-29T19:18:07.5473631+01:00</CreatedDate>
       <ViewedBy>User</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT8M27.7965274S" EditActiveTime="PT5M3.4775277S">
+    <DevTrackerDataItem ViewActiveTime="PT8M45.458278S" EditActiveTime="PT5M3.4775277S">
       <ModifiedDate>2017-12-11T19:04:41.3749993+00:00</ModifiedDate>
       <ModifiedBy>User</ModifiedBy>
       <EditedCount>4</EditedCount>
-      <ViewedCount>6</ViewedCount>
+      <ViewedCount>7</ViewedCount>
       <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Controls\UserPanel.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
@@ -2295,6 +2555,319 @@
     </DevTrackerDataItem>
   </TotalTimeList>
   <HistoryTimeList>
+    <DevTrackerDataItem ViewActiveTime="PT3.6233349S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Data\DataManager.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T19:31:59.5613516+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT14.648259S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Utils\Extensions.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T19:24:29.8311807+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M35.6623972S" EditActiveTime="PT0.2133225S">
+      <ModifiedDate>2018-06-30T19:22:50.431252+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Translation\Translation-EN.resx</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T19:22:27.5875029+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT15.5238194S" EditActiveTime="PT59.0541737S">
+      <ModifiedDate>2018-06-30T19:13:31.7100434+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Currency\TransactionState.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T19:09:16.763589+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M57.9617634S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Translation\TranslationHelper.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T18:55:27.8269045+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1.7477121S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\Products\ModifyCategoryForm.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T17:35:28.1548273+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT5.0512653S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\ManagementForm.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T17:35:17.5249319+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT45.8416975S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\ModernUIDoneRight\ModernUIDoneRight\Utils\ControlPaintWrapper.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T17:12:07.8509443+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M58.077303S" EditActiveTime="PT1M1.1714819S">
+      <ModifiedDate>2018-06-30T19:20:21.0070097+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\CurrencyImpl\MoneyCurrencyImpl.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T17:05:32.1974271+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT35.8023257S" EditActiveTime="PT23.0246904S">
+      <ModifiedDate>2018-06-30T17:23:50.8333596+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\CurrencyResources.resx</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T17:05:12.3754282+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT17.6617506S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Controls\UserPanel.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T15:57:55.862343+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT8M18.3840433S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>Debug Mode</Item>
+      <ItemType>DebugModeItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T15:57:14.3925016+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT37.0352931S" EditActiveTime="PT50.2065089S">
+      <ModifiedDate>2018-06-30T19:11:22.4483551+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Utils\GlobalStorage.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T15:51:53.9347488+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT7.5610629S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\AppData\Local\JetBrains\Shared\vAny\DecompilerCache\decompiler\5AB40F17-FBBD-42BC-88C3-6EF7CE6A3719\e9\252d8425\CurrencyManager.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T15:50:35.4479499+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M25.1482181S" EditActiveTime="PT1.7696037S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\AppData\Local\JetBrains\Shared\vAny\DecompilerCache\decompiler\5AB40F17-FBBD-42BC-88C3-6EF7CE6A3719\28\1cd5bdb9\ControlPaint.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T15:16:05.3052727+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT18.9099448S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\ModernUIDoneRight\ModernUIDoneRight\Controls\ModernShadowPanel.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T14:07:04.6035246+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M26.4513912S" EditActiveTime="PT3M3.04854S">
+      <ModifiedDate>2018-06-30T14:18:46.7670173+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Utils\GraphicsExtensions.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:58:14.5181752+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT6M0.4884846S" EditActiveTime="PT13.6791051S">
+      <ModifiedDate>2018-06-30T13:43:15.9697344+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Controls\OuterShadowPanel.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:36:39.8551655+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT3.3081943S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\ModernUIDoneRight\ModernUIDoneRight\Utils\ShadowUtils.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName />
+      <CreatedDate>2018-06-30T13:36:10.757142+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT2M24.8126073S" EditActiveTime="PT1M4.0571394S">
+      <ModifiedDate>2018-06-30T15:56:01.0654604+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Program.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:21:26.8774655+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT28.2833971S" EditActiveTime="PT3.7988842S">
+      <ModifiedDate>2018-06-30T19:13:49.2914384+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Currency\AbstractCurrency.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:16:59.5347759+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT2M43.1385078S" EditActiveTime="PT8.1236166S">
+      <ModifiedDate>2018-06-30T16:43:30.4838805+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Currency\CurrencyManager.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:16:58.2218461+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT30M11.450058S" EditActiveTime="PT33M27.5610098S">
+      <ModifiedDate>2018-06-30T19:47:01.2128195+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Controls\CurrencyButton.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:16:13.1582489+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT15.9283641S" EditActiveTime="PT0.7521159S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\POS\PointOfSaleForm.Designer.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:13:53.8651605+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT3.7690182S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Utils\FrontendExtensions.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:01:39.9092835+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT5M22.865409S" EditActiveTime="PT1M58.5959208S">
+      <ModifiedDate>2018-06-30T19:26:17.0822015+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\POS\PointOfSaleForm.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T13:00:43.0223627+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT17.699964S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\MainMenuForm.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T12:56:31.3206088+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT22M12.3489858S" EditActiveTime="PT9M52.369556S">
+      <ModifiedDate>2018-06-30T20:32:14.2119427+01:00</ModifiedDate>
+      <ModifiedBy>User</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\Forms\POS\CurrencyPickerForm.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightPOS\LightPOS.csproj</ProjectName>
+      <CreatedDate>2018-06-30T12:54:15.6889175+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT5.5398817S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\Mapping\CardMapping.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\LightBankBackend\LightBankBackend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T12:51:35.8099324+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT3M27.2988705S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Data\DataFactory.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\User\Documents\Visual Studio 2017\Projects\LightPOS\Backend\Backend.csproj</ProjectName>
+      <CreatedDate>2018-06-30T12:50:35.4532515+01:00</CreatedDate>
+      <ViewedBy>User</ViewedBy>
+    </DevTrackerDataItem>
     <DevTrackerDataItem ViewActiveTime="PT3.2987342S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>

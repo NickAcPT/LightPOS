@@ -229,7 +229,7 @@
     <value>$prefix - $main_menu_labelManagement</value>
   </data>
   <data name="manage_category_title" xml:space="preserve">
-    <value />
+    <value>Manage Category</value>
   </data>
   <data name="modify_product_title" xml:space="preserve">
     <value>Modify product</value>

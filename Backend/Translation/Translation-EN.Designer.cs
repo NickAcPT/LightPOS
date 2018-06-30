@@ -403,7 +403,7 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Manage Category.
         /// </summary>
         public static string manage_category_title {
             get {

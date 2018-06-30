@@ -15,12 +15,16 @@ namespace NickAc.LightPOS.Frontend.Controls
 {
     public class CurrencyButton : Control
     {
-        private TranslationHelper _translationHelper = new TranslationHelper();
         private const int ShadowOffset = 3;
         private const int HalfShadowOffset = ShadowOffset / 2;
+        private readonly TranslationHelper _translationHelper = new TranslationHelper();
         private int _cornerRadius = 4;
 
         private Image _frozenShadowImage;
+
+        private bool _isInsideRect;
+
+        private bool _isMouseDown;
 
         public CurrencyButton()
         {
@@ -44,16 +48,18 @@ namespace NickAc.LightPOS.Frontend.Controls
         }
 
         public int BorderPadding { get; set; } = 16;
-        
+
         public Rectangle ButtonRectangle =>
             Rectangle.FromLTRB(BorderPadding, BorderPadding, Right - BorderPadding, Bottom - BorderPadding);
 
         public Rectangle ImageRectangle =>
-            Rectangle.FromLTRB(ButtonRectangle.Left, ButtonRectangle.Top + BorderPadding, ButtonRectangle.Right, (int) (ButtonRectangle.Bottom * 0.65f));
+            Rectangle.FromLTRB(ButtonRectangle.Left, ButtonRectangle.Top + BorderPadding, ButtonRectangle.Right,
+                (int) (ButtonRectangle.Bottom * 0.65f));
 
-        
+
         public Rectangle TextRectangle =>
-            Rectangle.FromLTRB(ButtonRectangle.Left, BorderPadding + (int) (ButtonRectangle.Bottom * 0.65f), ButtonRectangle.Right, ButtonRectangle.Bottom - BorderPadding / 2);
+            Rectangle.FromLTRB(ButtonRectangle.Left, BorderPadding + (int) (ButtonRectangle.Bottom * 0.65f),
+                ButtonRectangle.Right, ButtonRectangle.Bottom - BorderPadding / 2);
 
         public void ResetButtonColor()
         {
@@ -76,38 +82,28 @@ namespace NickAc.LightPOS.Frontend.Controls
         {
             var color = ControlPaint.Dark(ButtonColor);
             if (Currency?.Name != null)
-            using (var sf = new StringFormat{ LineAlignment = StringAlignment.Center, Alignment = StringAlignment.Center })
-            {
-                using (var sb = new SolidBrush(color))
+                using (var sf = new StringFormat
                 {
-                    e.Graphics.DrawString(_translationHelper.GetTranslation(Currency.Name), Font, sb, TextRectangle, sf);
+                    LineAlignment = StringAlignment.Center,
+                    Alignment = StringAlignment.Center
+                })
+                {
+                    using (var sb = new SolidBrush(color))
+                    {
+                        e.Graphics.DrawString(_translationHelper.GetTranslation(Currency.Name), Font, sb, TextRectangle,
+                            sf);
+                    }
                 }
-            }
-            if (Currency?.Image != null)
-            {
-                ZoomDrawImage(e.Graphics, Currency.Image.ChangeToColor(color), ImageRectangle);
-            }
+
+            if (Currency?.Image != null) ZoomDrawImage(e.Graphics, Currency.Image.ChangeToColor(color), ImageRectangle);
         }
 
         public static void ZoomDrawImage(Graphics g, Image img, Rectangle bounds)
         {
-            var r1 = (decimal)img.Width / img.Height;
-            var r2 = (decimal)bounds.Width / bounds.Height;
-            var w = bounds.Width;
-            var h = bounds.Height;
-            if (r1 > r2) {
-                w = bounds.Width;
-                h = (int)(w / r1);
-            }
-            else if (r1 < r2) {
-                h = bounds.Height;
-                w = (int)(r1 * h);
-            }
-            var x = bounds.X + (bounds.Width - w) / 2;
-            var y = bounds.Y + (bounds.Height - h) / 2;
             var oldMode = g.InterpolationMode;
             g.InterpolationMode = InterpolationMode.High;
-            g.DrawImage(img, ControlPaintWrapper.CalculateBackgroundImageRectangle(bounds, img, ImageLayout.Zoom).Center(bounds));
+            g.DrawImage(img,
+                ControlPaintWrapper.CalculateBackgroundImageRectangle(bounds, img, ImageLayout.Zoom).Center(bounds));
             g.InterpolationMode = oldMode;
         }
 
@@ -147,7 +143,6 @@ namespace NickAc.LightPOS.Frontend.Controls
             Invalidate();
         }
 
-        private bool _isInsideRect;
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -155,7 +150,6 @@ namespace NickAc.LightPOS.Frontend.Controls
             Invalidate();
         }
 
-        private bool _isMouseDown;
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
@@ -170,21 +164,38 @@ namespace NickAc.LightPOS.Frontend.Controls
             Invalidate();
         }
 
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+            _isInsideRect = false;
+            Invalidate();
+        }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            _isInsideRect = false;
+            Invalidate();
+        }
+
         private void DrawButtonBackground(PaintEventArgs e)
         {
             DrawShadow(e.Graphics, ButtonRectangle);
-            using (var sb = new SolidBrush(_isInsideRect ? _isMouseDown ? Darken2(ButtonColor) : Darken(ButtonColor) : ButtonColor))
+            using (var sb =
+                new SolidBrush(_isInsideRect
+                    ? _isMouseDown ? Darken2(ButtonColor) : ButtonColor
+                    : Lighten(ButtonColor)))
             {
                 e.Graphics.FillRoundedRectangle(sb, ButtonRectangle, CornerRadius);
             }
         }
-        
+
         private static Color Darken2(Color buttonColor)
         {
             return ControlPaint.Dark(buttonColor, 0.001f);
         }
 
-        private static Color Darken(Color buttonColor)
+        private static Color Lighten(Color buttonColor)
         {
             return ControlPaint.LightLight(buttonColor);
         }
