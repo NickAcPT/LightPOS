@@ -12,6 +12,15 @@ namespace NickAc.LightPOS.Frontend.Forms
 {
     public partial class TemplateForm : ModernForm
     {
+        public new void CenterToParent()
+        {
+            base.CenterToParent();
+        }
+        public new void CenterToScreen()
+        {
+            base.CenterToScreen();
+        }
+
         public TemplateForm()
         {
             InitializeComponent();
@@ -27,6 +36,12 @@ namespace NickAc.LightPOS.Frontend.Forms
         {
             base.OnLoad(e);
             ColorScheme = DefaultColorSchemes.Blue;
+        }
+
+        protected override void WndProc(ref Message m) {
+            // Suppress the WM_UPDATEUISTATE message
+            if (m.Msg == 0x128) return;
+            base.WndProc(ref m);
         }
     }
 }

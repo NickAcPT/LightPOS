@@ -20,7 +20,6 @@ namespace NickAc.LightPOS.Frontend.CurrencyImpl
             Console.WriteLine(@"Loaded Money Currency!");
         }
 
-        
         public override TransactionResult RequestTransaction(ref TransactionState state)
         {
             var f = new MoneyCurrencyForm(ref state);

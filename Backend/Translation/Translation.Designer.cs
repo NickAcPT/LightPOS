@@ -124,7 +124,7 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose payment type.
+        ///   Looks up a localized string similar to Payment methods.
         /// </summary>
         public static string currency_picker_title {
             get {

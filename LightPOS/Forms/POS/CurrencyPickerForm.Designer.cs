@@ -30,7 +30,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.translationHelper1 = new NickAc.LightPOS.Backend.Translation.TranslationHelper();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -38,7 +37,7 @@
             // 
             this.appBar1.Location = new System.Drawing.Point(1, 1);
             this.appBar1.Size = new System.Drawing.Size(861, 50);
-            this.appBar1.Text = "Choose payment method";
+            this.appBar1.Text = "Payment methods";
             this.translationHelper1.SetTranslationLocation(this.appBar1, "");
             // 
             // tableLayoutPanel1
@@ -47,7 +46,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 116);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 90);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -66,18 +65,6 @@
             this.flowLayoutPanel1.TabIndex = 2;
             this.translationHelper1.SetTranslationLocation(this.flowLayoutPanel1, "");
             // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(304, 64);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(231, 37);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Payment methods";
-            this.translationHelper1.SetTranslationLocation(this.label1, "payment_methods_text");
-            // 
             // CurrencyPickerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -88,19 +75,16 @@
             this.ColorScheme.MouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(100)))), ((int)(((byte)(158)))));
             this.ColorScheme.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(119)))), ((int)(((byte)(189)))));
             this.ColorScheme.SecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(75)))), ((int)(((byte)(120)))));
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "CurrencyPickerForm";
-            this.Text = "Choose payment method";
+            this.Text = "Payment methods";
             this.TitlebarVisible = false;
             this.translationHelper1.SetTranslationLocation(this, "currency_picker_title");
             this.Controls.SetChildIndex(this.appBar1, 0);
             this.Controls.SetChildIndex(this.tableLayoutPanel1, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -109,6 +93,5 @@
         private Backend.Translation.TranslationHelper translationHelper1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label1;
     }
 }
