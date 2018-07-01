@@ -430,6 +430,15 @@ namespace NickAc.LightPOS.Backend.Translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payment - $curr_money.
+        /// </summary>
+        public static string money_currency_title {
+            get {
+                return ResourceManager.GetString("money_currency_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply discounts.
         /// </summary>
         public static string permissions_apply_discounts {

@@ -50,6 +50,8 @@ Global
 		{8211A3BB-5548-47D2-AE63-FFCD5089AD91} = {3FC371CC-D8A4-47ED-9501-31E22E467BA4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_ExcelExportMode = SingleSheet
+		RESX_CodeReferences = {"Items":[{"Expression":"\\W($File.$Key)\\W","Extensions":".cs,.xaml,.cshtml","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"ResourceManager.GetString\\(\"($Key)\"\\)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"typeof\\((\\w+\\.)*($File)\\).+\"($Key)\"|\"($Key)\".+typeof\\((\\w+\\.)*($File)\\)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"\\W($Key)\\W","Extensions":".vb","IsCaseSensitive":false,"SingleLineComment":"'"},{"Expression":"\\W($File::$Key)\\W","Extensions":".cpp,.c,.hxx,.h","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"&lt;%\\$\\s+Resources:\\s*($File)\\s*,\\s*($Key)\\s*%&gt;","Extensions":".aspx,.ascx,.master","IsCaseSensitive":true,"SingleLineComment":null},{"Expression":"StringResourceKey\\.($Key)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"\\.SetTranslationLocation\\(.+, \"($Key)\"\\);","Extensions":".cs,.Designer.cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"}]}
 		SolutionGuid = {1DF25320-A33C-41DB-834D-E03C31405E90}
 	EndGlobalSection
 EndGlobal

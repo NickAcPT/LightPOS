@@ -4,9 +4,8 @@
 
 using System;
 using System.Drawing;
-using System.Threading.Tasks;
-using NickAc.LightPOS.Backend;
 using NickAc.LightPOS.Backend.Currency;
+using NickAc.LightPOS.Backend.Utils;
 
 namespace NickAc.LightPOS.Frontend.CurrencyImpl
 {
@@ -24,7 +23,8 @@ namespace NickAc.LightPOS.Frontend.CurrencyImpl
         
         public override TransactionResult RequestTransaction(ref TransactionState state)
         {
-
+            var f = new MoneyCurrencyForm(ref state);
+            f.RunInAnotherApplication();
             return TransactionResult.Canceled;
         }
 

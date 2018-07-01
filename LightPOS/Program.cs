@@ -25,7 +25,7 @@ namespace NickAc.LightPOS.Frontend
             SettingsManager.Initialize();
             var settingsManager = new Settings.SettingsManager();
             settingsManager.LoadSettings();
-
+            
             //Do winforms stuff
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
