@@ -8,6 +8,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Currency;
 using NickAc.LightPOS.Backend.Translation;
+using NickAc.LightPOS.Backend.Utils;
 using NickAc.LightPOS.Frontend.Utils;
 using NickAc.ModernUIDoneRight.Utils;
 
@@ -98,6 +99,13 @@ namespace NickAc.LightPOS.Frontend.Controls
             if (Currency?.Image != null) ZoomDrawImage(e.Graphics, Currency.Image.ChangeToColor(color), ImageRectangle);
         }
 
+        protected override void OnClick(EventArgs e)
+        {
+            if (!(e is MouseEventArgs mArgs)) return;
+            if (ButtonRectangle.Contains(mArgs.Location))
+                base.OnClick(e);
+        }
+
         public static void ZoomDrawImage(Graphics g, Image img, Rectangle bounds)
         {
             var oldMode = g.InterpolationMode;
@@ -112,17 +120,17 @@ namespace NickAc.LightPOS.Frontend.Controls
             if (_frozenShadowImage == null)
                 using (var brush = new SolidBrush(Color.FromArgb(175, Color.Black)))
                 {
-                    /*using (*/
-                    var img = new Bitmap(Width, Height); //)
+                    var img = new Bitmap(Width, Height);
                     {
                         using (var gp = Graphics.FromImage(img))
                         {
                             gp.FillRoundedRectangle(brush,
                                 Rectangle.Inflate(rect,
-                                    HalfShadowOffset, HalfShadowOffset), CornerRadius);
+                                    HalfShadowOffset, HalfShadowOffset).OffsetAndReturn(HalfShadowOffset, HalfShadowOffset), CornerRadius);
                         }
 
-                        StackBlur.StackBlur.Process(img, ShadowOffset * 2);
+                        StackBlur.StackBlur.Process(img, 2);
+                        img = img.SetImageOpacity(0.45f);
                         _frozenShadowImage = img;
                         g.DrawImageUnscaled(img, Point.Empty);
                     }

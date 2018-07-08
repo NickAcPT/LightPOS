@@ -108,18 +108,17 @@ namespace NickAc.LightPOS.Frontend.Utils
         public static extern bool BitBlt(IntPtr hdc, int x, int y, int cx, int cy, IntPtr hdcSrc, int x1, int y1,
             uint rop);
 
-        public static void ShowDialog<T>(this Form form, params object[] constructorArgs) where T : TemplateForm
+        public static void ShowBlurryDialog<T>(this Form form, T dialogForm) where T : TemplateForm
         {
-            void CloseDialog(object s, TemplateForm templateForm)
+            void CloseDialog(object s, IDisposable templateForm)
             {
                 ((Control) s).Dispose();
                 templateForm.Dispose();
             }
 
             var bmp = GetShadedFormBitmap(form);
-            var dialogForm = (TemplateForm) Activator.CreateInstance(typeof(T), constructorArgs);
+            dialogForm.StartPosition = FormStartPosition.CenterScreen;
             dialogForm.TitlebarVisible = false;
-            dialogForm.Location = Point.Empty;
             var p = new Panel
             {
                 BackgroundImage = bmp,
@@ -138,27 +137,34 @@ namespace NickAc.LightPOS.Frontend.Utils
 
             p.MouseClick += (s, e) =>
             {
-                if (e.Button == MouseButtons.Left && e.Clicks == 1) CloseDialog(s, dialogForm);
+                if (e.Button == MouseButtons.Left && e.Clicks == 1)
+                    CloseDialog(p, dialogForm);
             };
-            dialogForm.FormClosing += (s, e) => CloseDialog(s, dialogForm);
-            form.FormClosing += (s, e) => CloseDialog(s, dialogForm);
-
-            var dialogHolder = new Panel
+            dialogForm.FormClosing += (s, e) =>
             {
-                Size = dialogForm.Size,
-                Location = new Point(p.Width / 2 - dialogForm.Width / 2, p.Height / 2 - dialogForm.Height / 2),
-                Anchor = AnchorStyles.None
+                CloseDialog(p, dialogForm);
+            };
+            form.FormClosing += (s, e) =>
+            {
+                CloseDialog(p, dialogForm);
             };
 
+            dialogForm.KeyPreview = true;
 
-            p.Controls.Add(dialogHolder);
+            dialogForm.KeyUp += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Escape && !e.Shift && !e.Control && !e.Alt)
+                    CloseDialog(p, dialogForm);
+            };
+
             dialogForm.Sizable = false;
-            dialogForm.Opacity = 0f;
+            
             dialogForm.Show();
-            ShowWindow(dialogForm.Handle, SwMaximize);
-            SetParent(dialogForm.Handle, dialogHolder.Handle);
-            dialogForm.WindowState = FormWindowState.Maximized;
-            dialogForm.Opacity = 1f;
+
+            dialogForm.Deactivate += (s, e) =>
+            {
+                CloseDialog(p, dialogForm);
+            };
         }
 
         [DllImport("user32.dll", SetLastError = true)]

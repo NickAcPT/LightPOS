@@ -35,6 +35,7 @@
             this.appBar1.Location = new System.Drawing.Point(1, 1);
             this.appBar1.Size = new System.Drawing.Size(836, 50);
             this.appBar1.Text = "MoneyCurrencyForm";
+            this.translationHelper1.SetTranslationLocation(this.appBar1, "");
             // 
             // MoneyCurrencyForm
             // 
@@ -49,6 +50,7 @@
             this.Name = "MoneyCurrencyForm";
             this.Text = "MoneyCurrencyForm";
             this.TitlebarVisible = false;
+            this.TopMost = true;
             this.translationHelper1.SetTranslationLocation(this, "money_currency_title");
             this.ResumeLayout(false);
 

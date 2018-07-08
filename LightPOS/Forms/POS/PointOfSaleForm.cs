@@ -81,8 +81,8 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
             Extensions.RunInAnotherApplication<CurrencyPickerForm>(constructorArgs: listBox1.Items.OfType<ProductListBoxItem>()
                 .Select(c => c.Product).ToList());
             Show();*/
-            this.ShowDialog<CurrencyPickerForm>(constructorArgs: listBox1.Items.OfType<ProductListBoxItem>()
-                .Select(c => c.Product).ToList());
+            this.ShowBlurryDialog(new CurrencyPickerForm(listBox1.Items.OfType<ProductListBoxItem>()
+                .Select(c => c.Product).ToList()));
         }
 
         public class ProductListBoxItem

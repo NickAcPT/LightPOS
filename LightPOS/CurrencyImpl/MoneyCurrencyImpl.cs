@@ -23,7 +23,7 @@ namespace NickAc.LightPOS.Frontend.CurrencyImpl
         public override TransactionResult RequestTransaction(ref TransactionState state)
         {
             var f = new MoneyCurrencyForm(ref state);
-            f.RunInAnotherApplication();
+            f.ShowDialog();
             return TransactionResult.Canceled;
         }
 

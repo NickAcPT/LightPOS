@@ -5,6 +5,8 @@
 
 using System;
 using System.ComponentModel;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
@@ -42,10 +44,14 @@ namespace NickAc.LightPOS.Backend.Utils
             ((Form) Activator.CreateInstance(typeof(T), constructor)).ShowDialog(owner);
             owner.Show();
         }
-
+        
         public static void RunInAnotherApplication(this Form form)
         {
             RunInAnotherThread(() => Application.Run(form));
+        }
+        public static void RunInAnotherApplicationAndJoin(this Form form)
+        {
+            RunInAnotherThread(() => Application.Run(form), true);
         }
 
 
@@ -73,6 +79,43 @@ namespace NickAc.LightPOS.Backend.Utils
             if (join)
                 th.Join();
         }
+
+        /// <summary>  
+        /// method for changing the opacity of an image  
+        /// </summary>  
+        /// <param name="image">image to set opacity on</param>  
+        /// <param name="opacity">percentage of opacity</param>  
+        /// <returns></returns>  
+        public static Bitmap SetImageOpacity(this Bitmap image, float opacity)  
+        {  
+            try  
+            {  
+                //create a Bitmap the size of the image provided  
+                var bmp = new Bitmap(image.Width, image.Height);  
+
+                //create a graphics object from the image  
+                using (var gfx = Graphics.FromImage(bmp)) {  
+
+                    //create a color matrix object  
+                    var matrix = new ColorMatrix {Matrix33 = opacity};
+
+                    //create image attributes  
+                    var attributes = new ImageAttributes();      
+
+                    //set the color(opacity) of the image  
+                    attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);    
+
+                    //now draw the image  
+                    gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
+                }
+                return bmp;  
+            }  
+            catch (Exception ex)  
+            {
+                return image;
+            }  
+        } 
+
 
         //Code taken and adapted from StackOverflow (https://stackoverflow.com/questions/2367718/automating-the-invokerequired-code-pattern)
         //All credits go to Olivier Jacot-Descombes (https://stackoverflow.com/users/880990/olivier-jacot-descombes)

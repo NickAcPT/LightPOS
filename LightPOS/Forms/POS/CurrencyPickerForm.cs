@@ -25,7 +25,6 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
         {
             Products = products;
             InitializeComponent();
-            WindowState = FormWindowState.Maximized;
             LoadCurrencies();
         }
 
@@ -59,10 +58,6 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
             Close();
         }
 
-        public override Size MaximumSize
-        {
-            get => Size.Empty;
-            set => base.MaximumSize = value;
-        }
+        public override Size MaximumSize { get; set; } = Size.Empty;
     }
 }
