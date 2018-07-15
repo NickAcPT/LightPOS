@@ -98,6 +98,9 @@
     <Compile Include="Controls\PercentageUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\PriceKeypadControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\SimpleSelectionControl.cs">
       <SubType>Component</SubType>
     </Compile>

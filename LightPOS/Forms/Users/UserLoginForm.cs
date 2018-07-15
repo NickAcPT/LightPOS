@@ -41,10 +41,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         #region Fields
 
-        private const int MaxTilesPerRow = 3;
-        private const int TileSize = 145;
-        private IList<User> users;
-        private const int ControlPadding = 8;
+        private IList<User> _users;
 
         #endregion
 
@@ -71,8 +68,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             {
                 InitEverything();
 
-                users = DataManager.GetUsers();
-                panel1.SetupUsers(users);
+                _users = DataManager.GetUsers();
+                panel1.SetupUsers(_users);
             });
             th.Start();
             panel1.UserClick += Panel1_UserClick;
@@ -95,7 +92,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             if (GlobalStorage.CurrentUser != null) return;
             //A user was selected. We can now show a form and ask for a password
             var usr = e.User;
-            const float percentage = 0.25f;
 
             var form = new SecureUserLoginForm
             {
