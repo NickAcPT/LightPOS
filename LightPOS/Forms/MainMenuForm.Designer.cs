@@ -74,7 +74,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(1, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 32);
+            this.label1.Size = new System.Drawing.Size(139, 41);
             this.label1.TabIndex = 0;
             this.label1.Text = "labelMain";
             this.translationHelper1.SetTranslationLocation(this.label1, "main_menu_labelMain");
@@ -117,7 +117,7 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(426, 1);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(196, 32);
+            this.label2.Size = new System.Drawing.Size(245, 41);
             this.label2.TabIndex = 4;
             this.label2.Text = "labelManagement";
             this.translationHelper1.SetTranslationLocation(this.label2, "main_menu_labelManagement");
@@ -125,6 +125,7 @@
             // shadedPanel1
             // 
             this.shadedPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.shadedPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.shadedPanel1.Controls.Add(this.pictureBox1);
             this.shadedPanel1.Controls.Add(this.label3);
             this.shadedPanel1.Location = new System.Drawing.Point(558, 67);
@@ -150,15 +151,14 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(38, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(165, 15);
+            this.label3.Size = new System.Drawing.Size(206, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "Beta version. Use with caution";
             this.translationHelper1.SetTranslationLocation(this.label3, "main_menu_warning");
             // 
             // MainMenuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(786, 478);
             this.ColorScheme.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(64)))), ((int)(((byte)(101)))));

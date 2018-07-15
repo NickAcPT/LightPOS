@@ -23,8 +23,8 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         public SecureUserLoginForm()
         {
-            var screenSize = Screen.FromControl(this).Bounds.Size;
-            Size = new Size((int) (screenSize.Width * SizePercentage), (int) (screenSize.Height * SizePercentage));
+            AutoScaleMode = AutoScaleMode.None;
+            Size = new Size(345, 192);
             Sizable = false;
             TitlebarVisible = false;
             Opacity = 0;
@@ -85,11 +85,6 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             var translationHelper = new TranslationHelper();
             var usr = User;
 
-            const float btnLoginPercentage = 0.20f;
-            const float percentage = 0.25f;
-            const float userNamePercentage = 0.25f;
-            const float textBoxPercentage = 0.70f;
-
             void EscapeKeyHandler(object s, KeyEventArgs ee)
             {
                 if (ee.KeyCode == Keys.Escape && !ee.Control && !ee.Alt && !ee.Shift)
@@ -117,7 +112,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 BackColor = Color.Transparent,
                 Text = usr.UserName,
                 Font = new Font(Font.FontFamily, 12),
-                Location = new Point(0, (int) (form.Height * userNamePercentage))
+                Location = new Point(0, 48)
             };
 
             form.Controls.Add(userNameLabel);
@@ -126,18 +121,18 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             var btn = new ModernButton
             {
                 Text = translationHelper.GetTranslation("user_login_okbutton"),
-                Size = new Size((int) (form.Width * percentage), (int) (form.Height * btnLoginPercentage))
+                Size = new Size(86, 38)
             };
-            btn.Location = new Point(0 /* Will be centered later */, form.Height - ControlPadding - btn.Height);
+            btn.Location = new Point(0 /* Will be centered later */, 192 - ControlPadding - btn.Height);
 
-            var point = new Point(0, (int) (form.Height * textBoxPercentage));
+            var point = new Point(0, 134);
             point.Offset(0, -8);
 
             var textBox = new TextBoxEx
             {
                 Font = userNameLabel.Font,
                 UseSystemPasswordChar = true,
-                Size = new Size((int) (form.Width * textBoxPercentage), 0 /* The textbox sizes automatically */)
+                Size = new Size(241, 0 /* The textbox sizes automatically */)
             };
             point.Offset(0, -textBox.Height);
             textBox.Location = point;

@@ -99,7 +99,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
             var form = new SecureUserLoginForm
             {
-                Size = new Size((int) (Width * percentage), (int) (Height * percentage)),
+                //Size = new Size((int) (Width * percentage), (int) (Height * percentage)),
                 Text = Text
             };
             form.LoginSucceded += Form_LoginSucceded;

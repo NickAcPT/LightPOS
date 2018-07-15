@@ -23,7 +23,7 @@ namespace NickAc.LightPOS.Frontend.Utils
         {
             return price.ToString("C", CultureInfo.CurrentCulture);
         }
-
+        
         public static void LoadProducts(this NickCustomTabControl tab, Action<object, EventArgs> evt)
         {
             Extensions.RunInAnotherThread(() =>
@@ -176,7 +176,7 @@ namespace NickAc.LightPOS.Frontend.Utils
             var bmpsFinal = new List<Bitmap>(2);
 
             var rectFirst = new Rectangle(0, 0, bmp.Width / 2, bmp.Height / 2);
-            var rectSecond = new Rectangle(bmp.Width / 2, 0, bmp.Width / 2, bmp.Height);
+            var rectSecond = new Rectangle(bmp.Width / 2, 0, bmp.Width / 2, bmp.Height / 2);
             var rectThird = new Rectangle(0, bmp.Height / 2, bmp.Width / 2, bmp.Height / 2);
             var rectForth = new Rectangle(bmp.Width / 2, bmp.Height / 2, bmp.Width / 2, bmp.Height / 2);
 

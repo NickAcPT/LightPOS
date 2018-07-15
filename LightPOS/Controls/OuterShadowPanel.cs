@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.ModernUIDoneRight.Utils;
@@ -116,6 +118,64 @@ namespace NickAc.LightPOS.Frontend.Controls
             }, false);
         }
 
+        
+        private Bitmap StackBlurTiled(Bitmap bmp)
+        {
+            var bmps = new List<Bitmap>(2);
+            var bmpsFinal = new List<Bitmap>(2);
+
+            var rectFirst = new Rectangle(0, 0, bmp.Width / 2, bmp.Height / 2);
+            var rectSecond = new Rectangle(bmp.Width / 2, 0, bmp.Width / 2, bmp.Height / 2);
+            var rectThird = new Rectangle(0, bmp.Height / 2, bmp.Width / 2, bmp.Height / 2);
+            var rectForth = new Rectangle(bmp.Width / 2, bmp.Height / 2, bmp.Width / 2, bmp.Height / 2);
+
+
+            Bitmap finalBmp;
+            using (var firstHalf = bmp.Clone(rectFirst, bmp.PixelFormat))
+            {
+                using (var secondHalf = bmp.Clone(rectSecond, bmp.PixelFormat))
+                {
+                    using (var thirdHalf = bmp.Clone(rectThird, bmp.PixelFormat))
+                    {
+                        using (var forthHalf = bmp.Clone(rectForth, bmp.PixelFormat))
+                        {
+                            bmps.Add(firstHalf);
+                            bmps.Add(secondHalf);
+                            bmps.Add(thirdHalf);
+                            bmps.Add(forthHalf);
+                            bmpsFinal.Add(null);
+                            bmpsFinal.Add(null);
+                            bmpsFinal.Add(null);
+                            bmpsFinal.Add(null);
+
+                            Parallel.ForEach(bmps,
+                                (bmps2, _, index) =>
+                                {
+                                    StackBlur.StackBlur.Process(bmps2, SHADOW_OFFSET * 2);
+                                    bmpsFinal[(int) index] = bmps2;
+                                });
+
+                            finalBmp = new Bitmap(bmp);
+                            using (var g = Graphics.FromImage(finalBmp))
+                            {
+                                g.DrawImage(bmpsFinal[0], rectFirst);
+                                g.DrawImage(bmpsFinal[1], rectSecond);
+                                g.DrawImage(bmpsFinal[2], rectThird);
+                                g.DrawImage(bmpsFinal[3], rectForth);
+                            }
+                        }
+                    }
+                }
+            }
+
+            bmpsFinal[0].Dispose();
+            bmpsFinal[1].Dispose();
+            bmpsFinal[2].Dispose();
+            bmpsFinal[3].Dispose();
+            bmpsFinal.Clear();
+            return finalBmp;
+        }
+
         private void DrawControlShadow(Rectangle rect, Rectangle bounds, Graphics g)
         {
             if (OldEngine) return;
@@ -124,17 +184,17 @@ namespace NickAc.LightPOS.Frontend.Controls
             {
                 using (var img = new Bitmap(Width * 2, Height * 2))
                 {
+                    var finalImg = img;
                     using (var gp = Graphics.FromImage(img))
                     {
                         var graphicsUnit = GraphicsUnit.Pixel;
                         gp.FillRectangle(brush,
-                            Rectangle.Inflate(rect.OffsetAndReturn(SHADOW_OFFSET, SHADOW_OFFSET)
-                                    .Center(Rectangle.Round(img.GetBounds(ref graphicsUnit))),
-                                HALF_SHADOW_OFFSET, HALF_SHADOW_OFFSET));
+                            rect.OffsetAndReturn(SHADOW_OFFSET, SHADOW_OFFSET)
+                                .Center(Rectangle.Round(img.GetBounds(ref graphicsUnit))));
                     }
 
-                    StackBlur.StackBlur.Process(img, SHADOW_OFFSET * 2);
-                    var result = SetImageOpacity(img, 0.65f);
+                    finalImg = StackBlurTiled(finalImg);
+                    var result = SetImageOpacity(finalImg, 0.65f);
 
                     g.DrawImageUnscaled(result, bounds.OffsetAndReturn(-(bounds.Width / 2), -(bounds.Height / 2)));
                     FrozenImage = result;

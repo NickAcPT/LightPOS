@@ -48,7 +48,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             textBoxEx2.TextChanged += (sender, args) =>
             {
                 pictureBox2.Visible =
-                    !float.TryParse(textBoxEx2.Text, NumberStyles.Currency, CultureInfo.InvariantCulture, out _) &&
+                    !float.TryParse(textBoxEx2.Text.Replace(',', '.'), NumberStyles.Currency, CultureInfo.InvariantCulture, out _) &&
                     textBoxEx2
                         .Text != "";
                 AdaptToErrorImage((Control) sender, pictureBox2);

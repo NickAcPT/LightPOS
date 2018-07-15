@@ -193,6 +193,7 @@
     <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="Utils\FrontendExtensions.cs" />
     <Compile Include="Utils\GraphicsExtensions.cs" />
+    <Compile Include="Utils\Money.cs" />
     <EmbeddedResource Include="CurrencyImpl\MoneyCurrencyForm.resx">
       <DependentUpon>MoneyCurrencyForm.cs</DependentUpon>
     </EmbeddedResource>
