@@ -38,7 +38,7 @@ namespace NickAc.LightPOS.Frontend.Settings
             foreach (var holder in Settings)
             foreach (var prop in holder.GetType().GetProperties())
             {
-                var setting = Backend.Data.SettingsManager.GetSettingRaw(prop.Name);
+                var setting = Backend.Data.SettingsManager.GetSettingRaw(holder.GetType().Name + prop.Name);
                 if (setting == null) continue;
                 var obj = JsonConvert.DeserializeObject(setting.Data, prop.PropertyType);
                 prop.SetValue(holder, obj);
@@ -51,7 +51,7 @@ namespace NickAc.LightPOS.Frontend.Settings
             {
                 var props = holder.GetType().GetProperties();
                 Backend.Data.SettingsManager.SaveSettings(props.Select(p =>
-                    Backend.Data.SettingsManager.GetSettingObject(p.Name, p.GetValue(holder))));
+                    Backend.Data.SettingsManager.GetSettingObject(holder.GetType().Name + p.Name, p.GetValue(holder))));
             }
         }
     }

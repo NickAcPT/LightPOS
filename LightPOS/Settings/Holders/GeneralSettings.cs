@@ -6,5 +6,6 @@ namespace NickAc.LightPOS.Frontend.Settings.Holders
 {
     public class GeneralSettings
     {
+        public string Currency { get; set; } = "";
     }
 }
