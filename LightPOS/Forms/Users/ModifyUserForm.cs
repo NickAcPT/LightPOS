@@ -30,7 +30,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             {
                 case Backend.Objects.UserAction.Action.ModifyUser:
                     if (GlobalStorage.CurrentUser.CanRemoveUsers() && BaseUser != null &&
-                        BaseUser.UserId != GlobalStorage.CurrentUser.UserId)
+                        BaseUser.Id != GlobalStorage.CurrentUser.Id)
                     {
                         //Remove user menu item
                         var removeUserItem =
@@ -40,7 +40,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                             if (BaseUser != null)
                                 Extensions.RunInAnotherThread(() =>
                                 {
-                                    DataManager.RemoveUser(BaseUser.UserId);
+                                    BaseUser.Delete();
                                     this.InvokeIfRequired(Close);
                                 });
                         };
@@ -60,7 +60,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
 
         #region Properties
 
-        public bool IsCurrentUser => BaseUser != null && BaseUser.UserId == GlobalStorage.CurrentUser.UserId;
+        public bool IsCurrentUser => BaseUser != null && BaseUser.Id == GlobalStorage.CurrentUser.Id;
 
         public User BaseUser { get; set; }
 
@@ -100,9 +100,9 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             for (var i = 0; i < checkedListBox1.Items.Count; i++)
             {
                 dynamic item = checkedListBox1.Items[i];
-                if (item is ExpandoObject)
-                    if (flags.Contains(item.EnumValue))
-                        checkedListBox1.SetItemChecked(i, true);
+                if (!(item is ExpandoObject)) continue;
+                if (flags.Contains(item.EnumValue))
+                    checkedListBox1.SetItemChecked(i, true);
             }
 
             return this;
@@ -159,7 +159,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 {
                     case Backend.Objects.UserAction.Action.CreateUser:
                     case Backend.Objects.UserAction.Action.ModifyUser:
-                        DataManager.AddUser(user);
+                        user.InsertOrUpdate();
                         break;
                 }
 
@@ -188,7 +188,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
                 loginForm.SecureRequest(baseUser);
             }
 
-            if (baseUser.UserId == GlobalStorage.CurrentUser.UserId)
+            if (baseUser.Id == GlobalStorage.CurrentUser.Id)
                 GlobalStorage.CurrentUser = baseUser;
             return baseUser;
         }

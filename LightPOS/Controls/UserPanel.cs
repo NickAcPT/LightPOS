@@ -74,7 +74,7 @@ namespace NickAc.LightPOS.Frontend.Controls
                     Tag = user,
                     Size = tileSz,
                     Text = user.UserName + (GlobalStorage.CurrentUser != null
-                               ? (GlobalStorage.CurrentUser.UserId == user.UserId ? currentExtra : "")
+                               ? (GlobalStorage.CurrentUser.Id == user.Id ? currentExtra : "")
                                : ""),
                     Image = Resources.ic_person_white_48dp_2x,
 
@@ -91,7 +91,7 @@ namespace NickAc.LightPOS.Frontend.Controls
                     {
                         //Invoke click
                         if (GlobalStorage.CurrentUser != null)
-                            if (user.UserId == GlobalStorage.CurrentUser.UserId && !CanSelectCurrentUser)
+                            if (user.Id == GlobalStorage.CurrentUser.Id && !CanSelectCurrentUser)
                                 return;
                         OnUserClick(user);
                     });

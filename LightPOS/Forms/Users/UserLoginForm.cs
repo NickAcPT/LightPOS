@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Data;
@@ -68,7 +69,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             {
                 InitEverything();
 
-                _users = DataManager.GetUsers();
+                _users = DataManager.GetAll<User>();
                 panel1.SetupUsers(_users);
             });
             th.Start();
@@ -143,13 +144,13 @@ namespace NickAc.LightPOS.Frontend.Forms.Users
             }
 
             var numberOfUsers = 0;
-            numberOfUsers = DataManager.GetNumberOfUsers();
+            numberOfUsers = DataManager.GetAll<User>().Count;
             if (numberOfUsers < 1)
                 Application.Run(new ModifyUserForm().WithName(adminUserName).WithPermissions(UserPermission.All)
                     .WithReadOnlyPermissions());
             //The person might've not created a user
             //Check if it was created
-            if (DataManager.GetNumberOfUsers() < 1) this.InvokeIfRequired(Close);
+            if (!DataManager.GetAll<User>().Any()) this.InvokeIfRequired(Close);
         }
 
         #endregion

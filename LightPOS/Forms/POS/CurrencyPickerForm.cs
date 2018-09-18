@@ -54,7 +54,8 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
             var result = sender.Currency?.RequestTransaction(ref state);
             if (result != TransactionResult.Completed) return;
 
-            DataManager.AddSale(DataManager.CreateSale(GlobalStorage.DefaultCustomer, GlobalStorage.CurrentUser, state.PaidPrice, Products.ToArray()));
+            var sale = DataManager.CreateSale(GlobalStorage.DefaultCustomer, GlobalStorage.CurrentUser, state.PaidPrice, Products.ToArray());
+            sale.InsertOrUpdate();
             Close();
         }
 

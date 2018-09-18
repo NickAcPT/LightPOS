@@ -62,7 +62,6 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
             {
                 existingItem.Product.Quantity += 1;
             }
-            listBox1.Refresh();
             listBox1.EndUpdate();
             UpdateSaleButton();
         }

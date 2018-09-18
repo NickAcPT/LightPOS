@@ -29,7 +29,7 @@ namespace NickAc.LightPOS.Frontend.Utils
             Extensions.RunInAnotherThread(() =>
             {
                 tab.InvokeIfRequired(() => tab.DrawHandler = new ModernTabDrawHandler());
-                var allProds = DataManager.GetProducts();
+                var allProds = DataManager.GetAllProducts();
                 var splitProducts = allProds.GroupBy(c => c.Category);
                 foreach (var prods in splitProducts)
                 {

@@ -29,5 +29,10 @@ namespace NickAc.LightPOS.Frontend.CurrencyImpl
             get => Size.Empty;
             set => base.MaximumSize = value;
         }
+
+        private void priceKeypadControl1_ButtonClicked(object sender, string e)
+        {
+
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace NickAc.LightPOS.Frontend.Forms
             this.InvokeIfRequired(Show);
             if (final == null) return;
             this.InvokeIfRequired(Hide);
-            new ModifyUserForm(UserAction.Action.ModifyUser).WithUser(final).RunInAnotherApplication();
+            new ModifyUserForm(UserAction.Action.ModifyUser).WithUser(final).RunInAnotherApplicationAndJoin();
             this.InvokeIfRequired(Show);
         }
 

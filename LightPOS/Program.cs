@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using NickAc.LightPOS.Backend.Data;
+using NickAc.LightPOS.Backend.Objects;
 using NickAc.LightPOS.Backend.Utils;
 using NickAc.LightPOS.Frontend.Forms.Users;
 
@@ -48,19 +49,20 @@ namespace NickAc.LightPOS.Frontend
                     Name = prodName,
                     Tax = 0.23m
                 };
-                DataManager.AddCategory(cat);
+                cat.InsertOrUpdate();
                 const decimal incrementPrice = 0.1m;
                 var basePrice = 0.5m;
                 for (var i = 1; i <= 5; i++)
                 {
-                    DataManager.AddProduct(new Product
+                    var product = new Product
                     {
                         Barcode = barcode.ToString(),
                         Category = cat,
                         Name = $"{prodName} #{i}",
                         Price = basePrice,
                         UnitPrice = basePrice
-                    });
+                    };
+                    product.InsertOrUpdate();
 
                     basePrice += incrementPrice;
                     barcode++;

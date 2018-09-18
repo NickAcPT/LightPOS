@@ -153,7 +153,7 @@ namespace NickAc.LightPOS.Frontend.Controls
                         foreach (var rect in rects)
                         {
                             var buttonRect = Rectangle.Inflate(rect, -2, -2);
-                            e.Graphics.FillRectangle(buttonRect.Contains(curPos) ? _mouseDown ? sb3 : sb2 : sb, buttonRect);
+                            e.Graphics.FillRectangle(buttonRect.Contains(curPos) && !DesignMode ? _mouseDown ? sb3 : sb2 : sb, buttonRect);
                             using (var sF = new StringFormat
                             {
                                 Alignment = StringAlignment.Center,

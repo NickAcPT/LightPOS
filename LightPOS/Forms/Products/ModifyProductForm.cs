@@ -4,6 +4,7 @@
 //
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
     public partial class ModifyProductForm : TemplateForm
     {
         private readonly Product _toEdit;
+        private IEnumerable<string> _existingProducts;
 
         public ModifyProductForm(bool translate = true)
         {
@@ -33,22 +35,23 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
 
             LoadCategories();
 
-            var existingProducts = DataManager.GetProducts().Select(p => p.Barcode);
+            UpdateExistingProducts(out _existingProducts);
             textBoxEx1.TextChanged += (sender, args) =>
             {
-                pictureBox1.Visible = existingProducts.Any(c => c == textBoxEx1.Text);
+                pictureBox1.Visible = _existingProducts.Any(c => c == textBoxEx1.Text);
                 AdaptToErrorImage((Control) sender, pictureBox1);
             };
             metroButton1.Click += (s, e) =>
             {
                 pictureBox1.Hide();
-                existingProducts = DataManager.GetProducts().Select(p => p.Barcode);
+                UpdateExistingProducts(out _existingProducts);
             };
-            modernButton2.Click += (s, e) => { existingProducts = DataManager.GetProducts().Select(p => p.Barcode); };
+            modernButton2.Click += (s, e) => UpdateExistingProducts(out _existingProducts);
             textBoxEx2.TextChanged += (sender, args) =>
             {
                 pictureBox2.Visible =
-                    !float.TryParse(textBoxEx2.Text.Replace(',', '.'), NumberStyles.Currency, CultureInfo.InvariantCulture, out _) &&
+                    !float.TryParse(textBoxEx2.Text.Replace(',', '.'), NumberStyles.Currency,
+                        CultureInfo.InvariantCulture, out _) &&
                     textBoxEx2
                         .Text != "";
                 AdaptToErrorImage((Control) sender, pictureBox2);
@@ -73,11 +76,16 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
             set => base.MaximumSize = value;
         }
 
+        private static void UpdateExistingProducts(out IEnumerable<string> existingProducts)
+        {
+            existingProducts = DataManager.GetAll<Product>().Select(p => p.Barcode);
+        }
+
         private void LoadCategories()
         {
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.Items.Clear();
-            comboBox2.Items.AddRange(DataManager.GetCategories().ToArray<object>());
+            comboBox2.Items.AddRange(DataManager.GetAll<Category>().ToArray<object>());
             comboBox2.DisplayMember = nameof(Category.Name);
         }
 
@@ -108,7 +116,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
 
                 Extensions.RunInAnotherThread(() =>
                 {
-                    DataManager.AddProduct(_toEdit);
+                    _toEdit.InsertOrUpdate();
                     DataManager.LogAction(CurrentUser, UserAction.Action.EditProduct, oldName);
                 });
             }
@@ -126,8 +134,9 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 };
                 Extensions.RunInAnotherThread(() =>
                 {
-                    DataManager.AddProduct(product);
+                    product.InsertOrUpdate();
                     DataManager.LogAction(CurrentUser, UserAction.Action.CreateProduct, textBox1.Text);
+                    UpdateExistingProducts(out _existingProducts);
                 });
             }
 

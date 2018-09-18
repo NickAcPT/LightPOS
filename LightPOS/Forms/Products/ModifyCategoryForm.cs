@@ -19,10 +19,10 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
         public ModifyCategoryForm(bool translate = true)
         {
             InitializeComponent();
-            _categories = DataManager.GetCategories().Select(c => c.Name);
+            _categories = DataManager.GetAll<Category>().Select(c => c.Name);
             metroButton1.Click += (s, e) =>
             {
-                _categories = DataManager.GetCategories().Select(c => c.Name);
+                _categories = DataManager.GetAll<Category>().Select(c => c.Name);
                 errorImage.Hide();
             };
             simpleSelectionControl1.OptionEnum = typeof(PortugueseTax);
@@ -65,7 +65,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 _toEdit.Tax = percentageUpDown1.Value;
                 Extensions.RunInAnotherThread(() =>
                 {
-                    DataManager.AddCategory(_toEdit);
+                    _toEdit.InsertOrUpdate();
                     DataManager.LogAction(GlobalStorage.CurrentUser, UserAction.Action.EditCategory, oldName);
                 });
             }
@@ -82,7 +82,7 @@ namespace NickAc.LightPOS.Frontend.Forms.Products
                 };
                 Extensions.RunInAnotherThread(() =>
                 {
-                    DataManager.AddCategory(finalCategory);
+                    finalCategory.InsertOrUpdate();
                     DataManager.LogAction(GlobalStorage.CurrentUser, UserAction.Action.CreateCategory, textBox1.Text);
                 });
             }
