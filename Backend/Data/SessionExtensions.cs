@@ -1,6 +1,7 @@
-﻿// 
+﻿//  
 // Copyright (c) NickAc. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+// Licensed under the GNU LGPLv3 License. See LICENSE file in the project root for full license information.
+//  
 
 using NHibernate;
 
@@ -26,6 +27,7 @@ namespace NickAc.LightPOS.Backend.Data
             session = wrapper.OpenSession;
             return wrapper;
         }
+
         public static SessionTransactionWrapper OpenSessionWithTransaction(this ISessionFactory sf, out ISession session, out ITransaction transaction)
         {
             var wrapper = new SessionTransactionWrapper(sf, true);
@@ -38,4 +40,5 @@ namespace NickAc.LightPOS.Backend.Data
             return OpenSessionWithTransaction(sf, out session, out _);
         }
     }
+
 }

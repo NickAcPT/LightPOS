@@ -7,14 +7,52 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using NickAc.LightPOS.Backend.Data;
 
 namespace NickAc.LightPOS.Backend.Utils
 {
     public static class Extensions
     {
+        public static PropertyInfo GetPropertyInfo<TSource, TProperty>(
+            this Expression<Func<TSource, TProperty>> propertyLambda)
+        {
+            var type = typeof(TSource);
+            var body = propertyLambda.Body;
+
+            if (body.NodeType == ExpressionType.Convert)
+            {
+                body =
+                    ((UnaryExpression) body).Operand as MemberExpression;
+            }
+
+            if (!(body is MemberExpression member))
+                throw new ArgumentException(
+                    $"Expression '{propertyLambda}' refers to a method, not a property.");
+
+            var propInfo = member.Member as PropertyInfo;
+            if (propInfo == null)
+                throw new ArgumentException(
+                    $"Expression '{propertyLambda}' refers to a field, not a property.");
+
+            if (type != propInfo.ReflectedType &&
+                !type.IsSubclassOf(propInfo.ReflectedType ?? throw new InvalidOperationException()))
+                throw new ArgumentException(
+                    $"Expression '{propertyLambda}' refers to a property that is not from type {type}.");
+
+            return propInfo;
+        }
+
+        public static T CloneModelObject<T>(this T obj) where T : BaseDbItem
+        {
+            return JsonConvert.DeserializeObject(JsonConvert.SerializeObject(obj), obj.GetType()) as T;
+        }
+
+
         public static string GetEnumDescription(Enum value)
         {
             var fi = value.GetType().GetField(value.ToString());

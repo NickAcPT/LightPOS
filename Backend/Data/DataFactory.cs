@@ -1,7 +1,7 @@
-﻿//
+﻿//  
 // Copyright (c) NickAc. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-//
+// Licensed under the GNU LGPLv3 License. See LICENSE file in the project root for full license information.
+//  
 
 using System.IO;
 using System.Runtime.Serialization;
@@ -11,7 +11,6 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
-using NickAc.LightPOS.Backend.Mapping.Other;
 
 namespace NickAc.LightPOS.Backend.Data
 {
@@ -27,6 +26,13 @@ namespace NickAc.LightPOS.Backend.Data
             _overwriteExisting = overwriteExisting;
         }
 
+        public ISessionFactory CreateSessionFactory()
+        {
+            var config = GetConfiguration();
+            return config
+                .BuildSessionFactory();
+        }
+
         public void Create()
         {
             if (_dbFile.Exists) return;
@@ -35,12 +41,6 @@ namespace NickAc.LightPOS.Backend.Data
             {
                 sf.Close();
             }
-        }
-
-        public ISessionFactory CreateSessionFactory()
-        {
-            return GetConfiguration()
-                .BuildSessionFactory();
         }
 
         private FluentConfiguration GetConfiguration()
@@ -56,7 +56,7 @@ namespace NickAc.LightPOS.Backend.Data
             }
             catch (SerializationException)
             {
-                //Ignore errors deserialization errors and delete the existent file
+                //Ignore errors deserialization errors and delete the existing file
                 File.Delete(FileConfig);
             }
 
@@ -65,8 +65,7 @@ namespace NickAc.LightPOS.Backend.Data
                     SQLiteConfiguration.Standard
                         .UsingFile(_dbFile.FullName)
                 )
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<DataFactory>()
-                    .Conventions.Add(new ReferenceConvention()))
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<DataFactory>())
                 .ExposeConfiguration(BuildSchema);
             using (var file = File.Open(FileConfig, FileMode.Create))
             {
@@ -77,13 +76,10 @@ namespace NickAc.LightPOS.Backend.Data
             return fluentConfiguration;
         }
 
-        private void BuildSchema(Configuration config)
+        private static void BuildSchema(Configuration config)
         {
-            if (!_overwriteExisting) return;
-            if (_dbFile.Exists) _dbFile.Delete();
-
-            var se = new SchemaExport(config);
-            se.Execute(false, true, false);
+            var se = new SchemaUpdate(config);
+            se.Execute(false, true);
         }
     }
 }

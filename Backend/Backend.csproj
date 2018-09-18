@@ -123,6 +123,8 @@
     <Compile Include="Currency\AbstractCurrency.cs" />
     <Compile Include="Currency\TransactionResult.cs" />
     <Compile Include="Currency\TransactionState.cs" />
+    <Compile Include="Data\BaseDbItem.cs" />
+    <Compile Include="Data\DbItemExtensionMethods.cs" />
     <Compile Include="Data\SessionExtensions.cs" />
     <Compile Include="Data\MioReaderWrapper.cs" />
     <Compile Include="Data\SessionTransactionWrapper.cs" />
