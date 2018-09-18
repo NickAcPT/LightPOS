@@ -48,7 +48,6 @@
             this.priceKeypadControl1.TabIndex = 1;
             this.priceKeypadControl1.Text = "priceKeypadControl1";
             this.translationHelper1.SetTranslationLocation(this.priceKeypadControl1, "");
-            this.priceKeypadControl1.Click += new System.EventHandler(this.priceKeypadControl1_Click);
             // 
             // MoneyCurrencyForm
             // 

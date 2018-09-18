@@ -31,10 +31,11 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
                 if (index == -1) return;
                 var item = listBox1.Items.OfType<ProductListBoxItem>().ElementAtOrDefault(index);
                 if (item == null) return;
+                listBox1.BeginUpdate();
                 item.Product.Quantity -= 1;
                 if (item.Product.Quantity < 1)
                     listBox1.Items.RemoveAt(index);
-                listBox1.Refresh();
+                listBox1.EndUpdate();
                 UpdateSaleButton();
             };
         }
@@ -52,6 +53,7 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
 
             var existingItem = listBox1.Items.OfType<ProductListBoxItem>()
                 .FirstOrDefault(c => c.Product.Name == prod.Name && c.Product.Barcode == prod.Barcode);
+            listBox1.BeginUpdate();
             if (existingItem == null)
             {
                 listBox1.Items.Add((ProductListBoxItem) prod);
@@ -59,9 +61,9 @@ namespace NickAc.LightPOS.Frontend.Forms.POS
             else
             {
                 existingItem.Product.Quantity += 1;
-                listBox1.Refresh();
             }
-
+            listBox1.Refresh();
+            listBox1.EndUpdate();
             UpdateSaleButton();
         }
 
